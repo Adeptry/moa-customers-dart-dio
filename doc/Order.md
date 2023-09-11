@@ -8,7 +8,7 @@ import 'package:moa_customers/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**closedAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | [optional] 
+**closedAt** | [**DateTime**](DateTime.md) |  | [optional] 
 **currency** | **String** |  | [optional] 
 **customer** | [**Customer**](Customer.md) |  | [optional] 
 **id** | **String** |  | [optional] 

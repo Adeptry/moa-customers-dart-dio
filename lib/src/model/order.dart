@@ -6,7 +6,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:moa_customers/src/model/line_item.dart';
 import 'package:moa_customers/src/model/location.dart';
-import 'package:time_machine/time_machine.dart';
 import 'package:moa_customers/src/model/customer.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -30,7 +29,7 @@ part 'order.g.dart';
 @BuiltValue()
 abstract class Order implements Built<Order, OrderBuilder> {
   @BuiltValueField(wireName: r'closedAt')
-  OffsetDateTime? get closedAt;
+  DateTime? get closedAt;
 
   @BuiltValueField(wireName: r'currency')
   String? get currency;
@@ -89,7 +88,7 @@ class _$OrderSerializer implements PrimitiveSerializer<Order> {
       yield r'closedAt';
       yield serializers.serialize(
         object.closedAt,
-        specifiedType: const FullType.nullable(OffsetDateTime),
+        specifiedType: const FullType.nullable(DateTime),
       );
     }
     if (object.currency != null) {
@@ -188,8 +187,8 @@ class _$OrderSerializer implements PrimitiveSerializer<Order> {
         case r'closedAt':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(OffsetDateTime),
-          ) as OffsetDateTime?;
+            specifiedType: const FullType.nullable(DateTime),
+          ) as DateTime?;
           if (valueDes == null) continue;
           result.closedAt = valueDes;
           break;

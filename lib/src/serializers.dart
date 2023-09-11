@@ -10,9 +10,10 @@ import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
+import 'package:built_value/iso_8601_date_time_serializer.dart';
+import 'package:moa_customers/src/date_serializer.dart';
+import 'package:moa_customers/src/model/date.dart';
 
-import 'package:time_machine/time_machine.dart';
-import 'package:moa_customers/src/offset_date_serializer.dart';
 import 'package:moa_customers/src/model/address.dart';
 import 'package:moa_customers/src/model/app_config.dart';
 import 'package:moa_customers/src/model/app_config_update_dto.dart';
@@ -154,9 +155,9 @@ Serializers serializers = (_$serializers.toBuilder()
         () => ListBuilder<CategoryUpdateAllDto>(),
       )
       ..add(const OneOfSerializer())
-      ..add(const AnyOfSerializer())      
-      ..add(const OffsetDateSerializer())
-      ..add(const OffsetDateTimeSerializer())
+      ..add(const AnyOfSerializer())
+      ..add(const DateSerializer())
+      ..add(Iso8601DateTimeSerializer()))
     .build();
 
 Serializers standardSerializers =
