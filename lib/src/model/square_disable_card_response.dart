@@ -3,129 +3,70 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:moa_customers/src/model/square_error.dart';
 import 'package:moa_customers/src/model/square_card.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'square_disable_card_response.g.dart';
 
-/// SquareDisableCardResponse
-///
-/// Properties:
-/// * [card] 
-/// * [errors] 
-@BuiltValue()
-abstract class SquareDisableCardResponse implements Built<SquareDisableCardResponse, SquareDisableCardResponseBuilder> {
-  @BuiltValueField(wireName: r'card')
-  SquareCard? get card;
 
-  @BuiltValueField(wireName: r'errors')
-  BuiltList<SquareError>? get errors;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class SquareDisableCardResponse {
+  /// Returns a new [SquareDisableCardResponse] instance.
+  SquareDisableCardResponse({
 
-  SquareDisableCardResponse._();
+     this.card,
 
-  factory SquareDisableCardResponse([void updates(SquareDisableCardResponseBuilder b)]) = _$SquareDisableCardResponse;
+     this.errors,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SquareDisableCardResponseBuilder b) => b;
+  @JsonKey(
+    
+    name: r'card',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<SquareDisableCardResponse> get serializer => _$SquareDisableCardResponseSerializer();
-}
 
-class _$SquareDisableCardResponseSerializer implements PrimitiveSerializer<SquareDisableCardResponse> {
-  @override
-  final Iterable<Type> types = const [SquareDisableCardResponse, _$SquareDisableCardResponse];
+  final SquareCard? card;
 
-  @override
-  final String wireName = r'SquareDisableCardResponse';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    SquareDisableCardResponse object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.card != null) {
-      yield r'card';
-      yield serializers.serialize(
-        object.card,
-        specifiedType: const FullType.nullable(SquareCard),
-      );
-    }
-    if (object.errors != null) {
-      yield r'errors';
-      yield serializers.serialize(
-        object.errors,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(SquareError)]),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'errors',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<SquareError>? errors;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    SquareDisableCardResponse object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required SquareDisableCardResponseBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'card':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(SquareCard),
-          ) as SquareCard?;
-          if (valueDes == null) continue;
-          result.card.replace(valueDes);
-          break;
-        case r'errors':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(SquareError)]),
-          ) as BuiltList<SquareError>?;
-          if (valueDes == null) continue;
-          result.errors.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is SquareDisableCardResponse &&
+     other.card == card &&
+     other.errors == errors;
 
   @override
-  SquareDisableCardResponse deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = SquareDisableCardResponseBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    (card == null ? 0 : card.hashCode) +
+    (errors == null ? 0 : errors.hashCode);
+
+  factory SquareDisableCardResponse.fromJson(Map<String, dynamic> json) => _$SquareDisableCardResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SquareDisableCardResponseToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

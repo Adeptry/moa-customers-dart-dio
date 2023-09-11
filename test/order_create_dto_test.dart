@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for OrderCreateDto
 void main() {
-  final instance = OrderCreateDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final OrderCreateDto? instance = /* OrderCreateDto(...) */ null;
+  // TODO add properties to the entity
 
   group(OrderCreateDto, () {
     // String idempotencyKey
@@ -17,7 +17,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<VariationAddDto> variations
+    // List<VariationAddDto> variations
     test('to test the property `variations`', () async {
       // TODO
     });

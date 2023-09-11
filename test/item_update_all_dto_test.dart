@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for ItemUpdateAllDto
 void main() {
-  final instance = ItemUpdateAllDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final ItemUpdateAllDto? instance = /* ItemUpdateAllDto(...) */ null;
+  // TODO add properties to the entity
 
   group(ItemUpdateAllDto, () {
     // String id

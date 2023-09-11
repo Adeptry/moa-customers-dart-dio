@@ -3,335 +3,244 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'square_card.g.dart';
 
-/// SquareCard
-///
-/// Properties:
-/// * [bin] 
-/// * [cardBrand] 
-/// * [cardCoBrand] 
-/// * [cardType] 
-/// * [cardholderName] 
-/// * [enabled] 
-/// * [expMonth] 
-/// * [expYear] 
-/// * [id] 
-/// * [last4] 
-/// * [prepaidType] 
-/// * [referenceId] 
-/// * [version] 
-@BuiltValue()
-abstract class SquareCard implements Built<SquareCard, SquareCardBuilder> {
-  @BuiltValueField(wireName: r'bin')
-  String? get bin;
 
-  @BuiltValueField(wireName: r'cardBrand')
-  String? get cardBrand;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class SquareCard {
+  /// Returns a new [SquareCard] instance.
+  SquareCard({
 
-  @BuiltValueField(wireName: r'cardCoBrand')
-  String? get cardCoBrand;
+     this.bin,
 
-  @BuiltValueField(wireName: r'cardType')
-  String? get cardType;
+     this.cardBrand,
 
-  @BuiltValueField(wireName: r'cardholderName')
-  String? get cardholderName;
+     this.cardCoBrand,
 
-  @BuiltValueField(wireName: r'enabled')
-  bool? get enabled;
+     this.cardType,
 
-  @BuiltValueField(wireName: r'expMonth')
-  String? get expMonth;
+     this.cardholderName,
 
-  @BuiltValueField(wireName: r'expYear')
-  String? get expYear;
+     this.enabled,
 
-  @BuiltValueField(wireName: r'id')
-  String? get id;
+     this.expMonth,
 
-  @BuiltValueField(wireName: r'last4')
-  String? get last4;
+     this.expYear,
 
-  @BuiltValueField(wireName: r'prepaidType')
-  String? get prepaidType;
+     this.id,
 
-  @BuiltValueField(wireName: r'referenceId')
-  String? get referenceId;
+     this.last4,
 
-  @BuiltValueField(wireName: r'version')
-  String? get version;
+     this.prepaidType,
 
-  SquareCard._();
+     this.referenceId,
 
-  factory SquareCard([void updates(SquareCardBuilder b)]) = _$SquareCard;
+     this.version,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SquareCardBuilder b) => b;
+  @JsonKey(
+    
+    name: r'bin',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<SquareCard> get serializer => _$SquareCardSerializer();
-}
 
-class _$SquareCardSerializer implements PrimitiveSerializer<SquareCard> {
-  @override
-  final Iterable<Type> types = const [SquareCard, _$SquareCard];
+  final String? bin;
 
-  @override
-  final String wireName = r'SquareCard';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    SquareCard object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.bin != null) {
-      yield r'bin';
-      yield serializers.serialize(
-        object.bin,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.cardBrand != null) {
-      yield r'cardBrand';
-      yield serializers.serialize(
-        object.cardBrand,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.cardCoBrand != null) {
-      yield r'cardCoBrand';
-      yield serializers.serialize(
-        object.cardCoBrand,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.cardType != null) {
-      yield r'cardType';
-      yield serializers.serialize(
-        object.cardType,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.cardholderName != null) {
-      yield r'cardholderName';
-      yield serializers.serialize(
-        object.cardholderName,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.enabled != null) {
-      yield r'enabled';
-      yield serializers.serialize(
-        object.enabled,
-        specifiedType: const FullType.nullable(bool),
-      );
-    }
-    if (object.expMonth != null) {
-      yield r'expMonth';
-      yield serializers.serialize(
-        object.expMonth,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.expYear != null) {
-      yield r'expYear';
-      yield serializers.serialize(
-        object.expYear,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.last4 != null) {
-      yield r'last4';
-      yield serializers.serialize(
-        object.last4,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.prepaidType != null) {
-      yield r'prepaidType';
-      yield serializers.serialize(
-        object.prepaidType,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.referenceId != null) {
-      yield r'referenceId';
-      yield serializers.serialize(
-        object.referenceId,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.version != null) {
-      yield r'version';
-      yield serializers.serialize(
-        object.version,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    SquareCard object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'cardBrand',
+    required: false,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required SquareCardBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'bin':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.bin = valueDes;
-          break;
-        case r'cardBrand':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.cardBrand = valueDes;
-          break;
-        case r'cardCoBrand':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.cardCoBrand = valueDes;
-          break;
-        case r'cardType':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.cardType = valueDes;
-          break;
-        case r'cardholderName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.cardholderName = valueDes;
-          break;
-        case r'enabled':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
-          if (valueDes == null) continue;
-          result.enabled = valueDes;
-          break;
-        case r'expMonth':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.expMonth = valueDes;
-          break;
-        case r'expYear':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.expYear = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.id = valueDes;
-          break;
-        case r'last4':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.last4 = valueDes;
-          break;
-        case r'prepaidType':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.prepaidType = valueDes;
-          break;
-        case r'referenceId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.referenceId = valueDes;
-          break;
-        case r'version':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.version = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? cardBrand;
+
+
+
+  @JsonKey(
+    
+    name: r'cardCoBrand',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? cardCoBrand;
+
+
+
+  @JsonKey(
+    
+    name: r'cardType',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? cardType;
+
+
+
+  @JsonKey(
+    
+    name: r'cardholderName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? cardholderName;
+
+
+
+  @JsonKey(
+    
+    name: r'enabled',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? enabled;
+
+
+
+  @JsonKey(
+    
+    name: r'expMonth',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? expMonth;
+
+
+
+  @JsonKey(
+    
+    name: r'expYear',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? expYear;
+
+
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? id;
+
+
+
+  @JsonKey(
+    
+    name: r'last4',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? last4;
+
+
+
+  @JsonKey(
+    
+    name: r'prepaidType',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? prepaidType;
+
+
+
+  @JsonKey(
+    
+    name: r'referenceId',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? referenceId;
+
+
+
+  @JsonKey(
+    
+    name: r'version',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? version;
+
+
 
   @override
-  SquareCard deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = SquareCardBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is SquareCard &&
+     other.bin == bin &&
+     other.cardBrand == cardBrand &&
+     other.cardCoBrand == cardCoBrand &&
+     other.cardType == cardType &&
+     other.cardholderName == cardholderName &&
+     other.enabled == enabled &&
+     other.expMonth == expMonth &&
+     other.expYear == expYear &&
+     other.id == id &&
+     other.last4 == last4 &&
+     other.prepaidType == prepaidType &&
+     other.referenceId == referenceId &&
+     other.version == version;
+
+  @override
+  int get hashCode =>
+    (bin == null ? 0 : bin.hashCode) +
+    (cardBrand == null ? 0 : cardBrand.hashCode) +
+    (cardCoBrand == null ? 0 : cardCoBrand.hashCode) +
+    (cardType == null ? 0 : cardType.hashCode) +
+    (cardholderName == null ? 0 : cardholderName.hashCode) +
+    (enabled == null ? 0 : enabled.hashCode) +
+    (expMonth == null ? 0 : expMonth.hashCode) +
+    (expYear == null ? 0 : expYear.hashCode) +
+    (id == null ? 0 : id.hashCode) +
+    (last4 == null ? 0 : last4.hashCode) +
+    (prepaidType == null ? 0 : prepaidType.hashCode) +
+    (referenceId == null ? 0 : referenceId.hashCode) +
+    (version == null ? 0 : version.hashCode);
+
+  factory SquareCard.fromJson(Map<String, dynamic> json) => _$SquareCardFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SquareCardToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

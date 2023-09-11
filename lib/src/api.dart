@@ -3,8 +3,6 @@
 //
 
 import 'package:dio/dio.dart';
-import 'package:built_value/serializer.dart';
-import 'package:moa_customers/src/serializers.dart';
 import 'package:moa_customers/src/auth/api_key_auth.dart';
 import 'package:moa_customers/src/auth/basic_auth.dart';
 import 'package:moa_customers/src/auth/bearer_auth.dart';
@@ -22,14 +20,11 @@ class MoaCustomers {
   static const String basePath = r'https://api.myorderapp.dev';
 
   final Dio dio;
-  final Serializers serializers;
-
   MoaCustomers({
     Dio? dio,
-    Serializers? serializers,
     String? basePathOverride,
     List<Interceptor>? interceptors,
-  })  : this.serializers = serializers ?? standardSerializers,
+  })  : 
         this.dio = dio ??
             Dio(BaseOptions(
               baseUrl: basePathOverride ?? basePath,
@@ -75,48 +70,48 @@ class MoaCustomers {
   /// Get AuthApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   AuthApi getAuthApi() {
-    return AuthApi(dio, serializers);
+    return AuthApi(dio);
   }
 
   /// Get CardsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   CardsApi getCardsApi() {
-    return CardsApi(dio, serializers);
+    return CardsApi(dio);
   }
 
   /// Get CatalogsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   CatalogsApi getCatalogsApi() {
-    return CatalogsApi(dio, serializers);
+    return CatalogsApi(dio);
   }
 
   /// Get ConfigsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   ConfigsApi getConfigsApi() {
-    return ConfigsApi(dio, serializers);
+    return ConfigsApi(dio);
   }
 
   /// Get CustomersApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   CustomersApi getCustomersApi() {
-    return CustomersApi(dio, serializers);
+    return CustomersApi(dio);
   }
 
   /// Get LocationsApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   LocationsApi getLocationsApi() {
-    return LocationsApi(dio, serializers);
+    return LocationsApi(dio);
   }
 
   /// Get OrdersApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   OrdersApi getOrdersApi() {
-    return OrdersApi(dio, serializers);
+    return OrdersApi(dio);
   }
 
   /// Get UsersApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   UsersApi getUsersApi() {
-    return UsersApi(dio, serializers);
+    return UsersApi(dio);
   }
 }

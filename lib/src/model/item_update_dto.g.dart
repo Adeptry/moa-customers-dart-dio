@@ -3,99 +3,32 @@
 part of 'item_update_dto.dart';
 
 // **************************************************************************
-// BuiltValueGenerator
+// JsonSerializableGenerator
 // **************************************************************************
 
-class _$ItemUpdateDto extends ItemUpdateDto {
-  @override
-  final bool? moaEnabled;
-  @override
-  final num? moaOrdinal;
+ItemUpdateDto _$ItemUpdateDtoFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'ItemUpdateDto',
+      json,
+      ($checkedConvert) {
+        final val = ItemUpdateDto(
+          moaEnabled: $checkedConvert('moaEnabled', (v) => v as bool?),
+          moaOrdinal: $checkedConvert('moaOrdinal', (v) => v as num?),
+        );
+        return val;
+      },
+    );
 
-  factory _$ItemUpdateDto([void Function(ItemUpdateDtoBuilder)? updates]) =>
-      (new ItemUpdateDtoBuilder()..update(updates))._build();
+Map<String, dynamic> _$ItemUpdateDtoToJson(ItemUpdateDto instance) {
+  final val = <String, dynamic>{};
 
-  _$ItemUpdateDto._({this.moaEnabled, this.moaOrdinal}) : super._();
-
-  @override
-  ItemUpdateDto rebuild(void Function(ItemUpdateDtoBuilder) updates) =>
-      (toBuilder()..update(updates)).build();
-
-  @override
-  ItemUpdateDtoBuilder toBuilder() => new ItemUpdateDtoBuilder()..replace(this);
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(other, this)) return true;
-    return other is ItemUpdateDto &&
-        moaEnabled == other.moaEnabled &&
-        moaOrdinal == other.moaOrdinal;
-  }
-
-  @override
-  int get hashCode {
-    var _$hash = 0;
-    _$hash = $jc(_$hash, moaEnabled.hashCode);
-    _$hash = $jc(_$hash, moaOrdinal.hashCode);
-    _$hash = $jf(_$hash);
-    return _$hash;
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper(r'ItemUpdateDto')
-          ..add('moaEnabled', moaEnabled)
-          ..add('moaOrdinal', moaOrdinal))
-        .toString();
-  }
-}
-
-class ItemUpdateDtoBuilder
-    implements Builder<ItemUpdateDto, ItemUpdateDtoBuilder> {
-  _$ItemUpdateDto? _$v;
-
-  bool? _moaEnabled;
-  bool? get moaEnabled => _$this._moaEnabled;
-  set moaEnabled(bool? moaEnabled) => _$this._moaEnabled = moaEnabled;
-
-  num? _moaOrdinal;
-  num? get moaOrdinal => _$this._moaOrdinal;
-  set moaOrdinal(num? moaOrdinal) => _$this._moaOrdinal = moaOrdinal;
-
-  ItemUpdateDtoBuilder() {
-    ItemUpdateDto._defaults(this);
-  }
-
-  ItemUpdateDtoBuilder get _$this {
-    final $v = _$v;
-    if ($v != null) {
-      _moaEnabled = $v.moaEnabled;
-      _moaOrdinal = $v.moaOrdinal;
-      _$v = null;
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
     }
-    return this;
   }
 
-  @override
-  void replace(ItemUpdateDto other) {
-    ArgumentError.checkNotNull(other, 'other');
-    _$v = other as _$ItemUpdateDto;
-  }
-
-  @override
-  void update(void Function(ItemUpdateDtoBuilder)? updates) {
-    if (updates != null) updates(this);
-  }
-
-  @override
-  ItemUpdateDto build() => _build();
-
-  _$ItemUpdateDto _build() {
-    final _$result = _$v ??
-        new _$ItemUpdateDto._(moaEnabled: moaEnabled, moaOrdinal: moaOrdinal);
-    replace(_$result);
-    return _$result;
-  }
+  writeNotNull('moaEnabled', instance.moaEnabled);
+  writeNotNull('moaOrdinal', instance.moaOrdinal);
+  return val;
 }
-
-// ignore_for_file: deprecated_member_use_from_same_package,type=lint

@@ -37,7 +37,7 @@ void main() {
 
     // Update Locations
     //
-    //Future<BuiltList<Location>> updateLocations(BuiltList<LocationUpdateAllDto> locationUpdateAllDto) async
+    //Future<List<Location>> updateLocations(List<LocationUpdateAllDto> locationUpdateAllDto) async
     test('test updateLocations', () async {
       // TODO
     });

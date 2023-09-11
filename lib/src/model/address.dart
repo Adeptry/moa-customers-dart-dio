@@ -3,387 +3,290 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'address.g.dart';
 
-/// Address
-///
-/// Properties:
-/// * [addressLine1] - The first line of the address.
-/// * [addressLine2] - The second line of the address, if any.
-/// * [addressLine3] - The third line of the address, if any.
-/// * [administrativeDistrictLevel1] - A civil entity within the address's country. In the US, this is the state.
-/// * [administrativeDistrictLevel2] - A civil entity within the address's `administrative_district_level_1`. In the US, this is the county.
-/// * [administrativeDistrictLevel3] - A civil entity within the address's `administrative_district_level_2`, if any.
-/// * [country] - Indicates the country associated with another entity, such as a business. Values are in ISO 3166-1-alpha-2 format.
-/// * [firstName] - Optional first name when it's representing recipient.
-/// * [id] 
-/// * [lastName] - Optional last name when it's representing recipient.
-/// * [locality] - The city or town of the address.
-/// * [postalCode] - The address's postal code.
-/// * [sublocality] - A civil region within the address's `locality`, if any.
-/// * [sublocality2] - A civil region within the address's `sublocality`, if any.
-/// * [sublocality3] - A civil region within the address's `sublocality_2`, if any.
-@BuiltValue()
-abstract class Address implements Built<Address, AddressBuilder> {
-  /// The first line of the address.
-  @BuiltValueField(wireName: r'addressLine1')
-  String? get addressLine1;
 
-  /// The second line of the address, if any.
-  @BuiltValueField(wireName: r'addressLine2')
-  String? get addressLine2;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class Address {
+  /// Returns a new [Address] instance.
+  Address({
 
-  /// The third line of the address, if any.
-  @BuiltValueField(wireName: r'addressLine3')
-  String? get addressLine3;
+     this.addressLine1,
 
-  /// A civil entity within the address's country. In the US, this is the state.
-  @BuiltValueField(wireName: r'administrativeDistrictLevel1')
-  String? get administrativeDistrictLevel1;
+     this.addressLine2,
 
-  /// A civil entity within the address's `administrative_district_level_1`. In the US, this is the county.
-  @BuiltValueField(wireName: r'administrativeDistrictLevel2')
-  String? get administrativeDistrictLevel2;
+     this.addressLine3,
 
-  /// A civil entity within the address's `administrative_district_level_2`, if any.
-  @BuiltValueField(wireName: r'administrativeDistrictLevel3')
-  String? get administrativeDistrictLevel3;
+     this.administrativeDistrictLevel1,
 
-  /// Indicates the country associated with another entity, such as a business. Values are in ISO 3166-1-alpha-2 format.
-  @BuiltValueField(wireName: r'country')
-  String? get country;
+     this.administrativeDistrictLevel2,
 
-  /// Optional first name when it's representing recipient.
-  @BuiltValueField(wireName: r'firstName')
-  String? get firstName;
+     this.administrativeDistrictLevel3,
 
-  @BuiltValueField(wireName: r'id')
-  String? get id;
+     this.country,
 
-  /// Optional last name when it's representing recipient.
-  @BuiltValueField(wireName: r'lastName')
-  String? get lastName;
+     this.firstName,
 
-  /// The city or town of the address.
-  @BuiltValueField(wireName: r'locality')
-  String? get locality;
+     this.id,
 
-  /// The address's postal code.
-  @BuiltValueField(wireName: r'postalCode')
-  String? get postalCode;
+     this.lastName,
 
-  /// A civil region within the address's `locality`, if any.
-  @BuiltValueField(wireName: r'sublocality')
-  String? get sublocality;
+     this.locality,
 
-  /// A civil region within the address's `sublocality`, if any.
-  @BuiltValueField(wireName: r'sublocality2')
-  String? get sublocality2;
+     this.postalCode,
 
-  /// A civil region within the address's `sublocality_2`, if any.
-  @BuiltValueField(wireName: r'sublocality3')
-  String? get sublocality3;
+     this.sublocality,
 
-  Address._();
+     this.sublocality2,
 
-  factory Address([void updates(AddressBuilder b)]) = _$Address;
+     this.sublocality3,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AddressBuilder b) => b;
+      /// The first line of the address.
+  @JsonKey(
+    
+    name: r'addressLine1',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<Address> get serializer => _$AddressSerializer();
-}
 
-class _$AddressSerializer implements PrimitiveSerializer<Address> {
-  @override
-  final Iterable<Type> types = const [Address, _$Address];
+  final String? addressLine1;
 
-  @override
-  final String wireName = r'Address';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    Address object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.addressLine1 != null) {
-      yield r'addressLine1';
-      yield serializers.serialize(
-        object.addressLine1,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.addressLine2 != null) {
-      yield r'addressLine2';
-      yield serializers.serialize(
-        object.addressLine2,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.addressLine3 != null) {
-      yield r'addressLine3';
-      yield serializers.serialize(
-        object.addressLine3,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.administrativeDistrictLevel1 != null) {
-      yield r'administrativeDistrictLevel1';
-      yield serializers.serialize(
-        object.administrativeDistrictLevel1,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.administrativeDistrictLevel2 != null) {
-      yield r'administrativeDistrictLevel2';
-      yield serializers.serialize(
-        object.administrativeDistrictLevel2,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.administrativeDistrictLevel3 != null) {
-      yield r'administrativeDistrictLevel3';
-      yield serializers.serialize(
-        object.administrativeDistrictLevel3,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.country != null) {
-      yield r'country';
-      yield serializers.serialize(
-        object.country,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.firstName != null) {
-      yield r'firstName';
-      yield serializers.serialize(
-        object.firstName,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.lastName != null) {
-      yield r'lastName';
-      yield serializers.serialize(
-        object.lastName,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.locality != null) {
-      yield r'locality';
-      yield serializers.serialize(
-        object.locality,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.postalCode != null) {
-      yield r'postalCode';
-      yield serializers.serialize(
-        object.postalCode,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.sublocality != null) {
-      yield r'sublocality';
-      yield serializers.serialize(
-        object.sublocality,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.sublocality2 != null) {
-      yield r'sublocality2';
-      yield serializers.serialize(
-        object.sublocality2,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.sublocality3 != null) {
-      yield r'sublocality3';
-      yield serializers.serialize(
-        object.sublocality3,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    Address object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+      /// The second line of the address, if any.
+  @JsonKey(
+    
+    name: r'addressLine2',
+    required: false,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AddressBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'addressLine1':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.addressLine1 = valueDes;
-          break;
-        case r'addressLine2':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.addressLine2 = valueDes;
-          break;
-        case r'addressLine3':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.addressLine3 = valueDes;
-          break;
-        case r'administrativeDistrictLevel1':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.administrativeDistrictLevel1 = valueDes;
-          break;
-        case r'administrativeDistrictLevel2':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.administrativeDistrictLevel2 = valueDes;
-          break;
-        case r'administrativeDistrictLevel3':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.administrativeDistrictLevel3 = valueDes;
-          break;
-        case r'country':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.country = valueDes;
-          break;
-        case r'firstName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.firstName = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.id = valueDes;
-          break;
-        case r'lastName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.lastName = valueDes;
-          break;
-        case r'locality':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.locality = valueDes;
-          break;
-        case r'postalCode':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.postalCode = valueDes;
-          break;
-        case r'sublocality':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.sublocality = valueDes;
-          break;
-        case r'sublocality2':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.sublocality2 = valueDes;
-          break;
-        case r'sublocality3':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.sublocality3 = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? addressLine2;
+
+
+
+      /// The third line of the address, if any.
+  @JsonKey(
+    
+    name: r'addressLine3',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? addressLine3;
+
+
+
+      /// A civil entity within the address's country. In the US, this is the state.
+  @JsonKey(
+    
+    name: r'administrativeDistrictLevel1',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? administrativeDistrictLevel1;
+
+
+
+      /// A civil entity within the address's `administrative_district_level_1`. In the US, this is the county.
+  @JsonKey(
+    
+    name: r'administrativeDistrictLevel2',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? administrativeDistrictLevel2;
+
+
+
+      /// A civil entity within the address's `administrative_district_level_2`, if any.
+  @JsonKey(
+    
+    name: r'administrativeDistrictLevel3',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? administrativeDistrictLevel3;
+
+
+
+      /// Indicates the country associated with another entity, such as a business. Values are in ISO 3166-1-alpha-2 format.
+  @JsonKey(
+    
+    name: r'country',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? country;
+
+
+
+      /// Optional first name when it's representing recipient.
+  @JsonKey(
+    
+    name: r'firstName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? firstName;
+
+
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? id;
+
+
+
+      /// Optional last name when it's representing recipient.
+  @JsonKey(
+    
+    name: r'lastName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? lastName;
+
+
+
+      /// The city or town of the address.
+  @JsonKey(
+    
+    name: r'locality',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? locality;
+
+
+
+      /// The address's postal code.
+  @JsonKey(
+    
+    name: r'postalCode',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? postalCode;
+
+
+
+      /// A civil region within the address's `locality`, if any.
+  @JsonKey(
+    
+    name: r'sublocality',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? sublocality;
+
+
+
+      /// A civil region within the address's `sublocality`, if any.
+  @JsonKey(
+    
+    name: r'sublocality2',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? sublocality2;
+
+
+
+      /// A civil region within the address's `sublocality_2`, if any.
+  @JsonKey(
+    
+    name: r'sublocality3',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? sublocality3;
+
+
 
   @override
-  Address deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = AddressBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is Address &&
+     other.addressLine1 == addressLine1 &&
+     other.addressLine2 == addressLine2 &&
+     other.addressLine3 == addressLine3 &&
+     other.administrativeDistrictLevel1 == administrativeDistrictLevel1 &&
+     other.administrativeDistrictLevel2 == administrativeDistrictLevel2 &&
+     other.administrativeDistrictLevel3 == administrativeDistrictLevel3 &&
+     other.country == country &&
+     other.firstName == firstName &&
+     other.id == id &&
+     other.lastName == lastName &&
+     other.locality == locality &&
+     other.postalCode == postalCode &&
+     other.sublocality == sublocality &&
+     other.sublocality2 == sublocality2 &&
+     other.sublocality3 == sublocality3;
+
+  @override
+  int get hashCode =>
+    (addressLine1 == null ? 0 : addressLine1.hashCode) +
+    (addressLine2 == null ? 0 : addressLine2.hashCode) +
+    (addressLine3 == null ? 0 : addressLine3.hashCode) +
+    (administrativeDistrictLevel1 == null ? 0 : administrativeDistrictLevel1.hashCode) +
+    (administrativeDistrictLevel2 == null ? 0 : administrativeDistrictLevel2.hashCode) +
+    (administrativeDistrictLevel3 == null ? 0 : administrativeDistrictLevel3.hashCode) +
+    (country == null ? 0 : country.hashCode) +
+    (firstName == null ? 0 : firstName.hashCode) +
+    (id == null ? 0 : id.hashCode) +
+    (lastName == null ? 0 : lastName.hashCode) +
+    (locality == null ? 0 : locality.hashCode) +
+    (postalCode == null ? 0 : postalCode.hashCode) +
+    (sublocality == null ? 0 : sublocality.hashCode) +
+    (sublocality2 == null ? 0 : sublocality2.hashCode) +
+    (sublocality3 == null ? 0 : sublocality3.hashCode);
+
+  factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AddressToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for Variation
 void main() {
-  final instance = VariationBuilder();
-  // TODO add properties to the builder and call build()
+  final Variation? instance = /* Variation(...) */ null;
+  // TODO add properties to the entity
 
   group(Variation, () {
     // String id

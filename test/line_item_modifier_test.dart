@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for LineItemModifier
 void main() {
-  final instance = LineItemModifierBuilder();
-  // TODO add properties to the builder and call build()
+  final LineItemModifier? instance = /* LineItemModifier(...) */ null;
+  // TODO add properties to the entity
 
   group(LineItemModifier, () {
     // num baseMoneyAmount

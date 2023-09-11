@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for SquareDisableCardResponse
 void main() {
-  final instance = SquareDisableCardResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final SquareDisableCardResponse? instance = /* SquareDisableCardResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(SquareDisableCardResponse, () {
     // SquareCard card
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<SquareError> errors
+    // List<SquareError> errors
     test('to test the property `errors`', () async {
       // TODO
     });

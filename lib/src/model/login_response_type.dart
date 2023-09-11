@@ -4,152 +4,100 @@
 
 // ignore_for_file: unused_element
 import 'package:moa_customers/src/model/user.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'login_response_type.g.dart';
 
-/// LoginResponseType
-///
-/// Properties:
-/// * [refreshToken] 
-/// * [token] 
-/// * [tokenExpires] 
-/// * [user] 
-@BuiltValue()
-abstract class LoginResponseType implements Built<LoginResponseType, LoginResponseTypeBuilder> {
-  @BuiltValueField(wireName: r'refreshToken')
-  String get refreshToken;
 
-  @BuiltValueField(wireName: r'token')
-  String get token;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class LoginResponseType {
+  /// Returns a new [LoginResponseType] instance.
+  LoginResponseType({
 
-  @BuiltValueField(wireName: r'tokenExpires')
-  num get tokenExpires;
+    required  this.refreshToken,
 
-  @BuiltValueField(wireName: r'user')
-  User get user;
+    required  this.token,
 
-  LoginResponseType._();
+    required  this.tokenExpires,
 
-  factory LoginResponseType([void updates(LoginResponseTypeBuilder b)]) = _$LoginResponseType;
+    required  this.user,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LoginResponseTypeBuilder b) => b;
+  @JsonKey(
+    
+    name: r'refreshToken',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<LoginResponseType> get serializer => _$LoginResponseTypeSerializer();
-}
 
-class _$LoginResponseTypeSerializer implements PrimitiveSerializer<LoginResponseType> {
-  @override
-  final Iterable<Type> types = const [LoginResponseType, _$LoginResponseType];
+  final String refreshToken;
 
-  @override
-  final String wireName = r'LoginResponseType';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    LoginResponseType object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'refreshToken';
-    yield serializers.serialize(
-      object.refreshToken,
-      specifiedType: const FullType(String),
-    );
-    yield r'token';
-    yield serializers.serialize(
-      object.token,
-      specifiedType: const FullType(String),
-    );
-    yield r'tokenExpires';
-    yield serializers.serialize(
-      object.tokenExpires,
-      specifiedType: const FullType(num),
-    );
-    yield r'user';
-    yield serializers.serialize(
-      object.user,
-      specifiedType: const FullType(User),
-    );
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    LoginResponseType object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'token',
+    required: true,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required LoginResponseTypeBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'refreshToken':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.refreshToken = valueDes;
-          break;
-        case r'token':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.token = valueDes;
-          break;
-        case r'tokenExpires':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.tokenExpires = valueDes;
-          break;
-        case r'user':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(User),
-          ) as User;
-          result.user.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String token;
+
+
+
+  @JsonKey(
+    
+    name: r'tokenExpires',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final num tokenExpires;
+
+
+
+  @JsonKey(
+    
+    name: r'user',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final User user;
+
+
 
   @override
-  LoginResponseType deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = LoginResponseTypeBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is LoginResponseType &&
+     other.refreshToken == refreshToken &&
+     other.token == token &&
+     other.tokenExpires == tokenExpires &&
+     other.user == user;
+
+  @override
+  int get hashCode =>
+    refreshToken.hashCode +
+    token.hashCode +
+    tokenExpires.hashCode +
+    user.hashCode;
+
+  factory LoginResponseType.fromJson(Map<String, dynamic> json) => _$LoginResponseTypeFromJson(json);
+
+  Map<String, dynamic> toJson() => _$LoginResponseTypeToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

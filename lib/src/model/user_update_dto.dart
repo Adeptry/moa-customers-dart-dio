@@ -3,145 +3,84 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'user_update_dto.g.dart';
 
-/// UserUpdateDto
-///
-/// Properties:
-/// * [email] 
-/// * [firstName] 
-/// * [lastName] 
-@BuiltValue()
-abstract class UserUpdateDto implements Built<UserUpdateDto, UserUpdateDtoBuilder> {
-  @BuiltValueField(wireName: r'email')
-  String? get email;
 
-  @BuiltValueField(wireName: r'firstName')
-  String? get firstName;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class UserUpdateDto {
+  /// Returns a new [UserUpdateDto] instance.
+  UserUpdateDto({
 
-  @BuiltValueField(wireName: r'lastName')
-  String? get lastName;
+     this.email,
 
-  UserUpdateDto._();
+     this.firstName,
 
-  factory UserUpdateDto([void updates(UserUpdateDtoBuilder b)]) = _$UserUpdateDto;
+     this.lastName,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(UserUpdateDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'email',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<UserUpdateDto> get serializer => _$UserUpdateDtoSerializer();
-}
 
-class _$UserUpdateDtoSerializer implements PrimitiveSerializer<UserUpdateDto> {
-  @override
-  final Iterable<Type> types = const [UserUpdateDto, _$UserUpdateDto];
+  final String? email;
 
-  @override
-  final String wireName = r'UserUpdateDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    UserUpdateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.firstName != null) {
-      yield r'firstName';
-      yield serializers.serialize(
-        object.firstName,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.lastName != null) {
-      yield r'lastName';
-      yield serializers.serialize(
-        object.lastName,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'firstName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? firstName;
+
+
+
+  @JsonKey(
+    
+    name: r'lastName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? lastName;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    UserUpdateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required UserUpdateDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'email':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.email = valueDes;
-          break;
-        case r'firstName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.firstName = valueDes;
-          break;
-        case r'lastName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.lastName = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is UserUpdateDto &&
+     other.email == email &&
+     other.firstName == firstName &&
+     other.lastName == lastName;
 
   @override
-  UserUpdateDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = UserUpdateDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    (email == null ? 0 : email.hashCode) +
+    (firstName == null ? 0 : firstName.hashCode) +
+    (lastName == null ? 0 : lastName.hashCode);
+
+  factory UserUpdateDto.fromJson(Map<String, dynamic> json) => _$UserUpdateDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserUpdateDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

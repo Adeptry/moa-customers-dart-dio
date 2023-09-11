@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for AuthGoogleLoginDto
 void main() {
-  final instance = AuthGoogleLoginDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final AuthGoogleLoginDto? instance = /* AuthGoogleLoginDto(...) */ null;
+  // TODO add properties to the entity
 
   group(AuthGoogleLoginDto, () {
     // String idToken

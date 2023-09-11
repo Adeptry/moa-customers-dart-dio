@@ -3,356 +3,261 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:moa_customers/src/model/line_item_modifier.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'line_item.g.dart';
 
-/// LineItem
-///
-/// Properties:
-/// * [basePriceMoney] 
-/// * [currency] 
-/// * [grossSalesMoneyAmount] 
-/// * [id] 
-/// * [modifiers] 
-/// * [name] 
-/// * [note] 
-/// * [quantity] 
-/// * [totalDiscountMoneyAmount] 
-/// * [totalMoneyAmount] 
-/// * [totalServiceChargeMoneyAmount] 
-/// * [totalTaxMoneyAmount] 
-/// * [variationName] 
-/// * [variationTotalMoneyAmount] 
-@BuiltValue()
-abstract class LineItem implements Built<LineItem, LineItemBuilder> {
-  @BuiltValueField(wireName: r'basePriceMoney')
-  num? get basePriceMoney;
 
-  @BuiltValueField(wireName: r'currency')
-  String? get currency;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class LineItem {
+  /// Returns a new [LineItem] instance.
+  LineItem({
 
-  @BuiltValueField(wireName: r'grossSalesMoneyAmount')
-  num? get grossSalesMoneyAmount;
+     this.basePriceMoney,
 
-  @BuiltValueField(wireName: r'id')
-  String? get id;
+     this.currency,
 
-  @BuiltValueField(wireName: r'modifiers')
-  BuiltList<LineItemModifier>? get modifiers;
+     this.grossSalesMoneyAmount,
 
-  @BuiltValueField(wireName: r'name')
-  String? get name;
+     this.id,
 
-  @BuiltValueField(wireName: r'note')
-  String? get note;
+     this.modifiers,
 
-  @BuiltValueField(wireName: r'quantity')
-  String? get quantity;
+     this.name,
 
-  @BuiltValueField(wireName: r'totalDiscountMoneyAmount')
-  num? get totalDiscountMoneyAmount;
+     this.note,
 
-  @BuiltValueField(wireName: r'totalMoneyAmount')
-  num? get totalMoneyAmount;
+     this.quantity,
 
-  @BuiltValueField(wireName: r'totalServiceChargeMoneyAmount')
-  num? get totalServiceChargeMoneyAmount;
+     this.totalDiscountMoneyAmount,
 
-  @BuiltValueField(wireName: r'totalTaxMoneyAmount')
-  num? get totalTaxMoneyAmount;
+     this.totalMoneyAmount,
 
-  @BuiltValueField(wireName: r'variationName')
-  String? get variationName;
+     this.totalServiceChargeMoneyAmount,
 
-  @BuiltValueField(wireName: r'variationTotalMoneyAmount')
-  num? get variationTotalMoneyAmount;
+     this.totalTaxMoneyAmount,
 
-  LineItem._();
+     this.variationName,
 
-  factory LineItem([void updates(LineItemBuilder b)]) = _$LineItem;
+     this.variationTotalMoneyAmount,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LineItemBuilder b) => b;
+  @JsonKey(
+    
+    name: r'basePriceMoney',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<LineItem> get serializer => _$LineItemSerializer();
-}
 
-class _$LineItemSerializer implements PrimitiveSerializer<LineItem> {
-  @override
-  final Iterable<Type> types = const [LineItem, _$LineItem];
+  final num? basePriceMoney;
 
-  @override
-  final String wireName = r'LineItem';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    LineItem object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.basePriceMoney != null) {
-      yield r'basePriceMoney';
-      yield serializers.serialize(
-        object.basePriceMoney,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.currency != null) {
-      yield r'currency';
-      yield serializers.serialize(
-        object.currency,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.grossSalesMoneyAmount != null) {
-      yield r'grossSalesMoneyAmount';
-      yield serializers.serialize(
-        object.grossSalesMoneyAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.modifiers != null) {
-      yield r'modifiers';
-      yield serializers.serialize(
-        object.modifiers,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(LineItemModifier)]),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.note != null) {
-      yield r'note';
-      yield serializers.serialize(
-        object.note,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.quantity != null) {
-      yield r'quantity';
-      yield serializers.serialize(
-        object.quantity,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.totalDiscountMoneyAmount != null) {
-      yield r'totalDiscountMoneyAmount';
-      yield serializers.serialize(
-        object.totalDiscountMoneyAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.totalMoneyAmount != null) {
-      yield r'totalMoneyAmount';
-      yield serializers.serialize(
-        object.totalMoneyAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.totalServiceChargeMoneyAmount != null) {
-      yield r'totalServiceChargeMoneyAmount';
-      yield serializers.serialize(
-        object.totalServiceChargeMoneyAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.totalTaxMoneyAmount != null) {
-      yield r'totalTaxMoneyAmount';
-      yield serializers.serialize(
-        object.totalTaxMoneyAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.variationName != null) {
-      yield r'variationName';
-      yield serializers.serialize(
-        object.variationName,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.variationTotalMoneyAmount != null) {
-      yield r'variationTotalMoneyAmount';
-      yield serializers.serialize(
-        object.variationTotalMoneyAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    LineItem object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'currency',
+    required: false,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required LineItemBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'basePriceMoney':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.basePriceMoney = valueDes;
-          break;
-        case r'currency':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.currency = valueDes;
-          break;
-        case r'grossSalesMoneyAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.grossSalesMoneyAmount = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.id = valueDes;
-          break;
-        case r'modifiers':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(LineItemModifier)]),
-          ) as BuiltList<LineItemModifier>?;
-          if (valueDes == null) continue;
-          result.modifiers.replace(valueDes);
-          break;
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.name = valueDes;
-          break;
-        case r'note':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.note = valueDes;
-          break;
-        case r'quantity':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.quantity = valueDes;
-          break;
-        case r'totalDiscountMoneyAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.totalDiscountMoneyAmount = valueDes;
-          break;
-        case r'totalMoneyAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.totalMoneyAmount = valueDes;
-          break;
-        case r'totalServiceChargeMoneyAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.totalServiceChargeMoneyAmount = valueDes;
-          break;
-        case r'totalTaxMoneyAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.totalTaxMoneyAmount = valueDes;
-          break;
-        case r'variationName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.variationName = valueDes;
-          break;
-        case r'variationTotalMoneyAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.variationTotalMoneyAmount = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? currency;
+
+
+
+  @JsonKey(
+    
+    name: r'grossSalesMoneyAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? grossSalesMoneyAmount;
+
+
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? id;
+
+
+
+  @JsonKey(
+    
+    name: r'modifiers',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<LineItemModifier>? modifiers;
+
+
+
+  @JsonKey(
+    
+    name: r'name',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? name;
+
+
+
+  @JsonKey(
+    
+    name: r'note',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? note;
+
+
+
+  @JsonKey(
+    
+    name: r'quantity',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? quantity;
+
+
+
+  @JsonKey(
+    
+    name: r'totalDiscountMoneyAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? totalDiscountMoneyAmount;
+
+
+
+  @JsonKey(
+    
+    name: r'totalMoneyAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? totalMoneyAmount;
+
+
+
+  @JsonKey(
+    
+    name: r'totalServiceChargeMoneyAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? totalServiceChargeMoneyAmount;
+
+
+
+  @JsonKey(
+    
+    name: r'totalTaxMoneyAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? totalTaxMoneyAmount;
+
+
+
+  @JsonKey(
+    
+    name: r'variationName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? variationName;
+
+
+
+  @JsonKey(
+    
+    name: r'variationTotalMoneyAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? variationTotalMoneyAmount;
+
+
 
   @override
-  LineItem deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = LineItemBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is LineItem &&
+     other.basePriceMoney == basePriceMoney &&
+     other.currency == currency &&
+     other.grossSalesMoneyAmount == grossSalesMoneyAmount &&
+     other.id == id &&
+     other.modifiers == modifiers &&
+     other.name == name &&
+     other.note == note &&
+     other.quantity == quantity &&
+     other.totalDiscountMoneyAmount == totalDiscountMoneyAmount &&
+     other.totalMoneyAmount == totalMoneyAmount &&
+     other.totalServiceChargeMoneyAmount == totalServiceChargeMoneyAmount &&
+     other.totalTaxMoneyAmount == totalTaxMoneyAmount &&
+     other.variationName == variationName &&
+     other.variationTotalMoneyAmount == variationTotalMoneyAmount;
+
+  @override
+  int get hashCode =>
+    (basePriceMoney == null ? 0 : basePriceMoney.hashCode) +
+    (currency == null ? 0 : currency.hashCode) +
+    (grossSalesMoneyAmount == null ? 0 : grossSalesMoneyAmount.hashCode) +
+    (id == null ? 0 : id.hashCode) +
+    (modifiers == null ? 0 : modifiers.hashCode) +
+    (name == null ? 0 : name.hashCode) +
+    (note == null ? 0 : note.hashCode) +
+    (quantity == null ? 0 : quantity.hashCode) +
+    (totalDiscountMoneyAmount == null ? 0 : totalDiscountMoneyAmount.hashCode) +
+    (totalMoneyAmount == null ? 0 : totalMoneyAmount.hashCode) +
+    (totalServiceChargeMoneyAmount == null ? 0 : totalServiceChargeMoneyAmount.hashCode) +
+    (totalTaxMoneyAmount == null ? 0 : totalTaxMoneyAmount.hashCode) +
+    (variationName == null ? 0 : variationName.hashCode) +
+    (variationTotalMoneyAmount == null ? 0 : variationTotalMoneyAmount.hashCode);
+
+  factory LineItem.fromJson(Map<String, dynamic> json) => _$LineItemFromJson(json);
+
+  Map<String, dynamic> toJson() => _$LineItemToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

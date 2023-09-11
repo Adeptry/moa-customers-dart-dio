@@ -3,126 +3,68 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'category_update_dto.g.dart';
 
-/// CategoryUpdateDto
-///
-/// Properties:
-/// * [moaEnabled] 
-/// * [moaOrdinal] 
-@BuiltValue()
-abstract class CategoryUpdateDto implements Built<CategoryUpdateDto, CategoryUpdateDtoBuilder> {
-  @BuiltValueField(wireName: r'moaEnabled')
-  bool? get moaEnabled;
 
-  @BuiltValueField(wireName: r'moaOrdinal')
-  num? get moaOrdinal;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class CategoryUpdateDto {
+  /// Returns a new [CategoryUpdateDto] instance.
+  CategoryUpdateDto({
 
-  CategoryUpdateDto._();
+     this.moaEnabled,
 
-  factory CategoryUpdateDto([void updates(CategoryUpdateDtoBuilder b)]) = _$CategoryUpdateDto;
+     this.moaOrdinal,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CategoryUpdateDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'moaEnabled',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<CategoryUpdateDto> get serializer => _$CategoryUpdateDtoSerializer();
-}
 
-class _$CategoryUpdateDtoSerializer implements PrimitiveSerializer<CategoryUpdateDto> {
-  @override
-  final Iterable<Type> types = const [CategoryUpdateDto, _$CategoryUpdateDto];
+  final bool? moaEnabled;
 
-  @override
-  final String wireName = r'CategoryUpdateDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    CategoryUpdateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.moaEnabled != null) {
-      yield r'moaEnabled';
-      yield serializers.serialize(
-        object.moaEnabled,
-        specifiedType: const FullType.nullable(bool),
-      );
-    }
-    if (object.moaOrdinal != null) {
-      yield r'moaOrdinal';
-      yield serializers.serialize(
-        object.moaOrdinal,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'moaOrdinal',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? moaOrdinal;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    CategoryUpdateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required CategoryUpdateDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'moaEnabled':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
-          if (valueDes == null) continue;
-          result.moaEnabled = valueDes;
-          break;
-        case r'moaOrdinal':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.moaOrdinal = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is CategoryUpdateDto &&
+     other.moaEnabled == moaEnabled &&
+     other.moaOrdinal == moaOrdinal;
 
   @override
-  CategoryUpdateDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = CategoryUpdateDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    (moaEnabled == null ? 0 : moaEnabled.hashCode) +
+    (moaOrdinal == null ? 0 : moaOrdinal.hashCode);
+
+  factory CategoryUpdateDto.fromJson(Map<String, dynamic> json) => _$CategoryUpdateDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CategoryUpdateDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

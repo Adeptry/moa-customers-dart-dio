@@ -4,10 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:moa_customers/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers/src/api_util.dart';
 import 'package:moa_customers/src/model/nest_error.dart';
 import 'package:moa_customers/src/model/order.dart';
 import 'package:moa_customers/src/model/order_create_dto.dart';
@@ -20,9 +21,7 @@ class OrdersApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const OrdersApi(this._dio, this._serializers);
+  const OrdersApi(this._dio);
 
   /// Create Order
   /// 
@@ -75,15 +74,13 @@ class OrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OrderCreateDto);
-      _bodyData = _serializers.serialize(orderCreateDto, specifiedType: _type);
-
+_bodyData=jsonEncode(orderCreateDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -110,12 +107,8 @@ class OrdersApi {
     Order? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Order),
-      ) as Order;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -186,7 +179,7 @@ class OrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -226,7 +219,7 @@ class OrdersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/orders/current/variation/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/v2/orders/current/variation/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -251,7 +244,7 @@ class OrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -314,7 +307,7 @@ class OrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -329,12 +322,8 @@ class OrdersApi {
     Order? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Order),
-      ) as Order;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -390,7 +379,7 @@ class OrdersApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/orders/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/v2/orders/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -415,11 +404,11 @@ class OrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (lineItems != null) r'lineItems': encodeQueryParameter(_serializers, lineItems, const FullType(bool)),
-      if (location != null) r'location': encodeQueryParameter(_serializers, location, const FullType(bool)),
-      if (customer != null) r'customer': encodeQueryParameter(_serializers, customer, const FullType(bool)),
-      if (actingAs != null) r'actingAs': encodeQueryParameter(_serializers, actingAs, const FullType(String)),
-      if (merchantId != null) r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      if (lineItems != null) r'lineItems': lineItems,
+      if (location != null) r'location': location,
+      if (customer != null) r'customer': customer,
+      if (actingAs != null) r'actingAs': actingAs,
+      if (merchantId != null) r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -434,12 +423,8 @@ class OrdersApi {
     Order? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Order),
-      ) as Order;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -524,14 +509,14 @@ class OrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(num)),
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(num)),
-      if (closed != null) r'closed': encodeQueryParameter(_serializers, closed, const FullType(bool)),
-      if (lineItems != null) r'lineItems': encodeQueryParameter(_serializers, lineItems, const FullType(bool)),
-      if (location != null) r'location': encodeQueryParameter(_serializers, location, const FullType(bool)),
-      if (customer != null) r'customer': encodeQueryParameter(_serializers, customer, const FullType(bool)),
-      if (actingAs != null) r'actingAs': encodeQueryParameter(_serializers, actingAs, const FullType(String)),
-      if (merchantId != null) r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      if (page != null) r'page': page,
+      if (limit != null) r'limit': limit,
+      if (closed != null) r'closed': closed,
+      if (lineItems != null) r'lineItems': lineItems,
+      if (location != null) r'location': location,
+      if (customer != null) r'customer': customer,
+      if (actingAs != null) r'actingAs': actingAs,
+      if (merchantId != null) r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -546,12 +531,8 @@ class OrdersApi {
     OrdersPaginatedReponse? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(OrdersPaginatedReponse),
-      ) as OrdersPaginatedReponse;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<OrdersPaginatedReponse, OrdersPaginatedReponse>(rawData, 'OrdersPaginatedReponse', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -627,16 +608,14 @@ class OrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (idempotencyKey != null) r'idempotencyKey': encodeQueryParameter(_serializers, idempotencyKey, const FullType(String)),
-      if (merchantId != null) r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      if (idempotencyKey != null) r'idempotencyKey': idempotencyKey,
+      if (merchantId != null) r'merchantId': merchantId,
     };
 
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OrderPatchDto);
-      _bodyData = _serializers.serialize(orderPatchDto, specifiedType: _type);
-
+_bodyData=jsonEncode(orderPatchDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -663,12 +642,8 @@ class OrdersApi {
     Order? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Order),
-      ) as Order;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -742,15 +717,13 @@ class OrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     dynamic _bodyData;
 
     try {
-      const _type = FullType(PaymentCreateDto);
-      _bodyData = _serializers.serialize(paymentCreateDto, specifiedType: _type);
-
+_bodyData=jsonEncode(paymentCreateDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -777,12 +750,8 @@ class OrdersApi {
     Order? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Order),
-      ) as Order;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -858,16 +827,14 @@ class OrdersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (idempotencyKey != null) r'idempotencyKey': encodeQueryParameter(_serializers, idempotencyKey, const FullType(String)),
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      if (idempotencyKey != null) r'idempotencyKey': idempotencyKey,
+      r'merchantId': merchantId,
     };
 
     dynamic _bodyData;
 
     try {
-      const _type = FullType(OrderPostDto);
-      _bodyData = _serializers.serialize(orderPostDto, specifiedType: _type);
-
+_bodyData=jsonEncode(orderPostDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -894,12 +861,8 @@ class OrdersApi {
     Order? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Order),
-      ) as Order;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

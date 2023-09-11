@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **address** | [**Address**](Address.md) |  | [optional] 
 **businessEmail** | **String** |  | [optional] 
-**businessHours** | [**BuiltList&lt;BusinessHoursPeriod&gt;**](BusinessHoursPeriod.md) |  | [optional] 
+**businessHours** | [**List&lt;BusinessHoursPeriod&gt;**](BusinessHoursPeriod.md) |  | [optional] 
 **businessName** | **String** |  | [optional] 
 **country** | **String** |  | [optional] 
 **currency** | **String** |  | [optional] 

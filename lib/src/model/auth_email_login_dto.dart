@@ -3,120 +3,68 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'auth_email_login_dto.g.dart';
 
-/// AuthEmailLoginDto
-///
-/// Properties:
-/// * [email] 
-/// * [password] 
-@BuiltValue()
-abstract class AuthEmailLoginDto implements Built<AuthEmailLoginDto, AuthEmailLoginDtoBuilder> {
-  @BuiltValueField(wireName: r'email')
-  String get email;
 
-  @BuiltValueField(wireName: r'password')
-  String get password;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class AuthEmailLoginDto {
+  /// Returns a new [AuthEmailLoginDto] instance.
+  AuthEmailLoginDto({
 
-  AuthEmailLoginDto._();
+    required  this.email,
 
-  factory AuthEmailLoginDto([void updates(AuthEmailLoginDtoBuilder b)]) = _$AuthEmailLoginDto;
+    required  this.password,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AuthEmailLoginDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'email',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<AuthEmailLoginDto> get serializer => _$AuthEmailLoginDtoSerializer();
-}
 
-class _$AuthEmailLoginDtoSerializer implements PrimitiveSerializer<AuthEmailLoginDto> {
-  @override
-  final Iterable<Type> types = const [AuthEmailLoginDto, _$AuthEmailLoginDto];
+  final String email;
 
-  @override
-  final String wireName = r'AuthEmailLoginDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AuthEmailLoginDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'email';
-    yield serializers.serialize(
-      object.email,
-      specifiedType: const FullType(String),
-    );
-    yield r'password';
-    yield serializers.serialize(
-      object.password,
-      specifiedType: const FullType(String),
-    );
-  }
+
+  @JsonKey(
+    
+    name: r'password',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String password;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    AuthEmailLoginDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AuthEmailLoginDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'email':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.email = valueDes;
-          break;
-        case r'password':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.password = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is AuthEmailLoginDto &&
+     other.email == email &&
+     other.password == password;
 
   @override
-  AuthEmailLoginDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = AuthEmailLoginDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    email.hashCode +
+    password.hashCode;
+
+  factory AuthEmailLoginDto.fromJson(Map<String, dynamic> json) => _$AuthEmailLoginDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthEmailLoginDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

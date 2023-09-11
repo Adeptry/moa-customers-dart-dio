@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for SquareCard
 void main() {
-  final instance = SquareCardBuilder();
-  // TODO add properties to the builder and call build()
+  final SquareCard? instance = /* SquareCard(...) */ null;
+  // TODO add properties to the entity
 
   group(SquareCard, () {
     // String bin

@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for AuthRegisterLoginDto
 void main() {
-  final instance = AuthRegisterLoginDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final AuthRegisterLoginDto? instance = /* AuthRegisterLoginDto(...) */ null;
+  // TODO add properties to the entity
 
   group(AuthRegisterLoginDto, () {
     // String email

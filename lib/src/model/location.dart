@@ -3,601 +3,470 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:moa_customers/src/model/address.dart';
 import 'package:moa_customers/src/model/business_hours_period.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'location.g.dart';
 
-/// Location
-///
-/// Properties:
-/// * [address] 
-/// * [businessEmail] 
-/// * [businessHours] 
-/// * [businessName] 
-/// * [country] 
-/// * [currency] 
-/// * [description] 
-/// * [facebookUrl] 
-/// * [fullFormatLogoUrl] 
-/// * [id] 
-/// * [instagramUsername] 
-/// * [isMain] 
-/// * [languageCode] 
-/// * [latitude] 
-/// * [logoUrl] 
-/// * [longitude] 
-/// * [mcc] 
-/// * [moaEnabled] 
-/// * [moaOrdinal] 
-/// * [name] 
-/// * [phoneNumber] 
-/// * [posBackgroundUrl] 
-/// * [status] 
-/// * [timezone] 
-/// * [twitterUsername] 
-/// * [type] 
-/// * [websiteUrl] 
-@BuiltValue()
-abstract class Location implements Built<Location, LocationBuilder> {
-  @BuiltValueField(wireName: r'address')
-  Address? get address;
 
-  @BuiltValueField(wireName: r'businessEmail')
-  String? get businessEmail;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class Location {
+  /// Returns a new [Location] instance.
+  Location({
 
-  @BuiltValueField(wireName: r'businessHours')
-  BuiltList<BusinessHoursPeriod>? get businessHours;
+     this.address,
 
-  @BuiltValueField(wireName: r'businessName')
-  String? get businessName;
+     this.businessEmail,
 
-  @BuiltValueField(wireName: r'country')
-  String? get country;
+     this.businessHours,
 
-  @BuiltValueField(wireName: r'currency')
-  String? get currency;
+     this.businessName,
 
-  @BuiltValueField(wireName: r'description')
-  String? get description;
+     this.country,
 
-  @BuiltValueField(wireName: r'facebookUrl')
-  String? get facebookUrl;
+     this.currency,
 
-  @BuiltValueField(wireName: r'fullFormatLogoUrl')
-  String? get fullFormatLogoUrl;
+     this.description,
 
-  @BuiltValueField(wireName: r'id')
-  String? get id;
+     this.facebookUrl,
 
-  @BuiltValueField(wireName: r'instagramUsername')
-  String? get instagramUsername;
+     this.fullFormatLogoUrl,
 
-  @BuiltValueField(wireName: r'isMain')
-  bool get isMain;
+     this.id,
 
-  @BuiltValueField(wireName: r'languageCode')
-  String? get languageCode;
+     this.instagramUsername,
 
-  @BuiltValueField(wireName: r'latitude')
-  num? get latitude;
+    required  this.isMain,
 
-  @BuiltValueField(wireName: r'logoUrl')
-  String? get logoUrl;
+     this.languageCode,
 
-  @BuiltValueField(wireName: r'longitude')
-  num? get longitude;
+     this.latitude,
 
-  @BuiltValueField(wireName: r'mcc')
-  String? get mcc;
+     this.logoUrl,
 
-  @BuiltValueField(wireName: r'moaEnabled')
-  bool? get moaEnabled;
+     this.longitude,
 
-  @BuiltValueField(wireName: r'moaOrdinal')
-  num? get moaOrdinal;
+     this.mcc,
 
-  @BuiltValueField(wireName: r'name')
-  String? get name;
+     this.moaEnabled,
 
-  @BuiltValueField(wireName: r'phoneNumber')
-  String? get phoneNumber;
+     this.moaOrdinal,
 
-  @BuiltValueField(wireName: r'posBackgroundUrl')
-  String? get posBackgroundUrl;
+     this.name,
 
-  @BuiltValueField(wireName: r'status')
-  String? get status;
+     this.phoneNumber,
 
-  @BuiltValueField(wireName: r'timezone')
-  String? get timezone;
+     this.posBackgroundUrl,
 
-  @BuiltValueField(wireName: r'twitterUsername')
-  String? get twitterUsername;
+     this.status,
 
-  @BuiltValueField(wireName: r'type')
-  String? get type;
+     this.timezone,
 
-  @BuiltValueField(wireName: r'websiteUrl')
-  String? get websiteUrl;
+     this.twitterUsername,
 
-  Location._();
+     this.type,
 
-  factory Location([void updates(LocationBuilder b)]) = _$Location;
+     this.websiteUrl,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(LocationBuilder b) => b;
+  @JsonKey(
+    
+    name: r'address',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<Location> get serializer => _$LocationSerializer();
-}
 
-class _$LocationSerializer implements PrimitiveSerializer<Location> {
-  @override
-  final Iterable<Type> types = const [Location, _$Location];
+  final Address? address;
 
-  @override
-  final String wireName = r'Location';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    Location object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.address != null) {
-      yield r'address';
-      yield serializers.serialize(
-        object.address,
-        specifiedType: const FullType.nullable(Address),
-      );
-    }
-    if (object.businessEmail != null) {
-      yield r'businessEmail';
-      yield serializers.serialize(
-        object.businessEmail,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.businessHours != null) {
-      yield r'businessHours';
-      yield serializers.serialize(
-        object.businessHours,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(BusinessHoursPeriod)]),
-      );
-    }
-    if (object.businessName != null) {
-      yield r'businessName';
-      yield serializers.serialize(
-        object.businessName,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.country != null) {
-      yield r'country';
-      yield serializers.serialize(
-        object.country,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.currency != null) {
-      yield r'currency';
-      yield serializers.serialize(
-        object.currency,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.description != null) {
-      yield r'description';
-      yield serializers.serialize(
-        object.description,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.facebookUrl != null) {
-      yield r'facebookUrl';
-      yield serializers.serialize(
-        object.facebookUrl,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.fullFormatLogoUrl != null) {
-      yield r'fullFormatLogoUrl';
-      yield serializers.serialize(
-        object.fullFormatLogoUrl,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.instagramUsername != null) {
-      yield r'instagramUsername';
-      yield serializers.serialize(
-        object.instagramUsername,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    yield r'isMain';
-    yield serializers.serialize(
-      object.isMain,
-      specifiedType: const FullType(bool),
-    );
-    if (object.languageCode != null) {
-      yield r'languageCode';
-      yield serializers.serialize(
-        object.languageCode,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.latitude != null) {
-      yield r'latitude';
-      yield serializers.serialize(
-        object.latitude,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.logoUrl != null) {
-      yield r'logoUrl';
-      yield serializers.serialize(
-        object.logoUrl,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.longitude != null) {
-      yield r'longitude';
-      yield serializers.serialize(
-        object.longitude,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.mcc != null) {
-      yield r'mcc';
-      yield serializers.serialize(
-        object.mcc,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.moaEnabled != null) {
-      yield r'moaEnabled';
-      yield serializers.serialize(
-        object.moaEnabled,
-        specifiedType: const FullType.nullable(bool),
-      );
-    }
-    if (object.moaOrdinal != null) {
-      yield r'moaOrdinal';
-      yield serializers.serialize(
-        object.moaOrdinal,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.phoneNumber != null) {
-      yield r'phoneNumber';
-      yield serializers.serialize(
-        object.phoneNumber,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.posBackgroundUrl != null) {
-      yield r'posBackgroundUrl';
-      yield serializers.serialize(
-        object.posBackgroundUrl,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.timezone != null) {
-      yield r'timezone';
-      yield serializers.serialize(
-        object.timezone,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.twitterUsername != null) {
-      yield r'twitterUsername';
-      yield serializers.serialize(
-        object.twitterUsername,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.type != null) {
-      yield r'type';
-      yield serializers.serialize(
-        object.type,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.websiteUrl != null) {
-      yield r'websiteUrl';
-      yield serializers.serialize(
-        object.websiteUrl,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    Location object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'businessEmail',
+    required: false,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required LocationBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'address':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(Address),
-          ) as Address?;
-          if (valueDes == null) continue;
-          result.address.replace(valueDes);
-          break;
-        case r'businessEmail':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.businessEmail = valueDes;
-          break;
-        case r'businessHours':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(BusinessHoursPeriod)]),
-          ) as BuiltList<BusinessHoursPeriod>?;
-          if (valueDes == null) continue;
-          result.businessHours.replace(valueDes);
-          break;
-        case r'businessName':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.businessName = valueDes;
-          break;
-        case r'country':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.country = valueDes;
-          break;
-        case r'currency':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.currency = valueDes;
-          break;
-        case r'description':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.description = valueDes;
-          break;
-        case r'facebookUrl':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.facebookUrl = valueDes;
-          break;
-        case r'fullFormatLogoUrl':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.fullFormatLogoUrl = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.id = valueDes;
-          break;
-        case r'instagramUsername':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.instagramUsername = valueDes;
-          break;
-        case r'isMain':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.isMain = valueDes;
-          break;
-        case r'languageCode':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.languageCode = valueDes;
-          break;
-        case r'latitude':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.latitude = valueDes;
-          break;
-        case r'logoUrl':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.logoUrl = valueDes;
-          break;
-        case r'longitude':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.longitude = valueDes;
-          break;
-        case r'mcc':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.mcc = valueDes;
-          break;
-        case r'moaEnabled':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
-          if (valueDes == null) continue;
-          result.moaEnabled = valueDes;
-          break;
-        case r'moaOrdinal':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.moaOrdinal = valueDes;
-          break;
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.name = valueDes;
-          break;
-        case r'phoneNumber':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.phoneNumber = valueDes;
-          break;
-        case r'posBackgroundUrl':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.posBackgroundUrl = valueDes;
-          break;
-        case r'status':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.status = valueDes;
-          break;
-        case r'timezone':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.timezone = valueDes;
-          break;
-        case r'twitterUsername':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.twitterUsername = valueDes;
-          break;
-        case r'type':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.type = valueDes;
-          break;
-        case r'websiteUrl':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.websiteUrl = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? businessEmail;
+
+
+
+  @JsonKey(
+    
+    name: r'businessHours',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<BusinessHoursPeriod>? businessHours;
+
+
+
+  @JsonKey(
+    
+    name: r'businessName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? businessName;
+
+
+
+  @JsonKey(
+    
+    name: r'country',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? country;
+
+
+
+  @JsonKey(
+    
+    name: r'currency',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? currency;
+
+
+
+  @JsonKey(
+    
+    name: r'description',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? description;
+
+
+
+  @JsonKey(
+    
+    name: r'facebookUrl',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? facebookUrl;
+
+
+
+  @JsonKey(
+    
+    name: r'fullFormatLogoUrl',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? fullFormatLogoUrl;
+
+
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? id;
+
+
+
+  @JsonKey(
+    
+    name: r'instagramUsername',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? instagramUsername;
+
+
+
+  @JsonKey(
+    
+    name: r'isMain',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final bool isMain;
+
+
+
+  @JsonKey(
+    
+    name: r'languageCode',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? languageCode;
+
+
+
+  @JsonKey(
+    
+    name: r'latitude',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? latitude;
+
+
+
+  @JsonKey(
+    
+    name: r'logoUrl',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? logoUrl;
+
+
+
+  @JsonKey(
+    
+    name: r'longitude',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? longitude;
+
+
+
+  @JsonKey(
+    
+    name: r'mcc',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? mcc;
+
+
+
+  @JsonKey(
+    
+    name: r'moaEnabled',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? moaEnabled;
+
+
+
+  @JsonKey(
+    
+    name: r'moaOrdinal',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? moaOrdinal;
+
+
+
+  @JsonKey(
+    
+    name: r'name',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? name;
+
+
+
+  @JsonKey(
+    
+    name: r'phoneNumber',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? phoneNumber;
+
+
+
+  @JsonKey(
+    
+    name: r'posBackgroundUrl',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? posBackgroundUrl;
+
+
+
+  @JsonKey(
+    
+    name: r'status',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? status;
+
+
+
+  @JsonKey(
+    
+    name: r'timezone',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? timezone;
+
+
+
+  @JsonKey(
+    
+    name: r'twitterUsername',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? twitterUsername;
+
+
+
+  @JsonKey(
+    
+    name: r'type',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? type;
+
+
+
+  @JsonKey(
+    
+    name: r'websiteUrl',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? websiteUrl;
+
+
 
   @override
-  Location deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = LocationBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is Location &&
+     other.address == address &&
+     other.businessEmail == businessEmail &&
+     other.businessHours == businessHours &&
+     other.businessName == businessName &&
+     other.country == country &&
+     other.currency == currency &&
+     other.description == description &&
+     other.facebookUrl == facebookUrl &&
+     other.fullFormatLogoUrl == fullFormatLogoUrl &&
+     other.id == id &&
+     other.instagramUsername == instagramUsername &&
+     other.isMain == isMain &&
+     other.languageCode == languageCode &&
+     other.latitude == latitude &&
+     other.logoUrl == logoUrl &&
+     other.longitude == longitude &&
+     other.mcc == mcc &&
+     other.moaEnabled == moaEnabled &&
+     other.moaOrdinal == moaOrdinal &&
+     other.name == name &&
+     other.phoneNumber == phoneNumber &&
+     other.posBackgroundUrl == posBackgroundUrl &&
+     other.status == status &&
+     other.timezone == timezone &&
+     other.twitterUsername == twitterUsername &&
+     other.type == type &&
+     other.websiteUrl == websiteUrl;
+
+  @override
+  int get hashCode =>
+    (address == null ? 0 : address.hashCode) +
+    (businessEmail == null ? 0 : businessEmail.hashCode) +
+    (businessHours == null ? 0 : businessHours.hashCode) +
+    (businessName == null ? 0 : businessName.hashCode) +
+    (country == null ? 0 : country.hashCode) +
+    (currency == null ? 0 : currency.hashCode) +
+    (description == null ? 0 : description.hashCode) +
+    (facebookUrl == null ? 0 : facebookUrl.hashCode) +
+    (fullFormatLogoUrl == null ? 0 : fullFormatLogoUrl.hashCode) +
+    (id == null ? 0 : id.hashCode) +
+    (instagramUsername == null ? 0 : instagramUsername.hashCode) +
+    isMain.hashCode +
+    (languageCode == null ? 0 : languageCode.hashCode) +
+    (latitude == null ? 0 : latitude.hashCode) +
+    (logoUrl == null ? 0 : logoUrl.hashCode) +
+    (longitude == null ? 0 : longitude.hashCode) +
+    (mcc == null ? 0 : mcc.hashCode) +
+    (moaEnabled == null ? 0 : moaEnabled.hashCode) +
+    (moaOrdinal == null ? 0 : moaOrdinal.hashCode) +
+    (name == null ? 0 : name.hashCode) +
+    (phoneNumber == null ? 0 : phoneNumber.hashCode) +
+    (posBackgroundUrl == null ? 0 : posBackgroundUrl.hashCode) +
+    (status == null ? 0 : status.hashCode) +
+    (timezone == null ? 0 : timezone.hashCode) +
+    (twitterUsername == null ? 0 : twitterUsername.hashCode) +
+    (type == null ? 0 : type.hashCode) +
+    (websiteUrl == null ? 0 : websiteUrl.hashCode);
+
+  factory Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
+
+  Map<String, dynamic> toJson() => _$LocationToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

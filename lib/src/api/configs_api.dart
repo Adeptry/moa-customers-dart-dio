@@ -4,10 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:moa_customers/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers/src/api_util.dart';
 import 'package:moa_customers/src/model/app_config.dart';
 import 'package:moa_customers/src/model/app_config_update_dto.dart';
 import 'package:moa_customers/src/model/nest_error.dart';
@@ -16,9 +17,7 @@ class ConfigsApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const ConfigsApi(this._dio, this._serializers);
+  const ConfigsApi(this._dio);
 
   /// Create your Config
   /// 
@@ -71,9 +70,7 @@ class ConfigsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(AppConfigUpdateDto);
-      _bodyData = _serializers.serialize(appConfigUpdateDto, specifiedType: _type);
-
+_bodyData=jsonEncode(appConfigUpdateDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -98,12 +95,8 @@ class ConfigsApi {
     AppConfig? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(AppConfig),
-      ) as AppConfig;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -174,7 +167,7 @@ class ConfigsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -189,12 +182,8 @@ class ConfigsApi {
     AppConfig? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(AppConfig),
-      ) as AppConfig;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -267,8 +256,8 @@ class ConfigsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (merchantId != null) r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
-      if (actingAs != null) r'actingAs': encodeQueryParameter(_serializers, actingAs, const FullType(String)),
+      if (merchantId != null) r'merchantId': merchantId,
+      if (actingAs != null) r'actingAs': actingAs,
     };
 
     final _response = await _dio.request<Object>(
@@ -283,12 +272,8 @@ class ConfigsApi {
     AppConfig? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(AppConfig),
-      ) as AppConfig;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -362,9 +347,7 @@ class ConfigsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(AppConfigUpdateDto);
-      _bodyData = _serializers.serialize(appConfigUpdateDto, specifiedType: _type);
-
+_bodyData=jsonEncode(appConfigUpdateDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -389,12 +372,8 @@ class ConfigsApi {
     AppConfig? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(AppConfig),
-      ) as AppConfig;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -468,9 +447,6 @@ class ConfigsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = FormData.fromMap(<String, dynamic>{
-        if (file != null) r'file': file,
-      });
 
     } catch(error, stackTrace) {
       throw DioException(

@@ -9,7 +9,7 @@ import 'package:moa_customers/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
-**modifiers** | [**BuiltList&lt;Modifier&gt;**](Modifier.md) |  | [optional] 
+**modifiers** | [**List&lt;Modifier&gt;**](Modifier.md) |  | [optional] 
 **name** | **String** |  | [optional] 
 **ordinal** | **num** |  | [optional] 
 **selectionType** | [**MoaSelectionType**](MoaSelectionType.md) |  | [optional] 

@@ -37,14 +37,14 @@ void main() {
 
     // Get Item variations with ID
     //
-    //Future<BuiltList<Variation>> getVariationsForItem(String id, { String locationId }) async
+    //Future<List<Variation>> getVariationsForItem(String id, { String locationId }) async
     test('test getVariationsForItem', () async {
       // TODO
     });
 
     // Update multiple Categories
     //
-    //Future<BuiltList<Category>> updateCategories(BuiltList<CategoryUpdateAllDto> categoryUpdateAllDto) async
+    //Future<List<Category>> updateCategories(List<CategoryUpdateAllDto> categoryUpdateAllDto) async
     test('test updateCategories', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
 
     // Update multiple Items
     //
-    //Future<BuiltList<Item>> updateItems(BuiltList<ItemUpdateAllDto> itemUpdateAllDto) async
+    //Future<List<Item>> updateItems(List<ItemUpdateAllDto> itemUpdateAllDto) async
     test('test updateItems', () async {
       // TODO
     });

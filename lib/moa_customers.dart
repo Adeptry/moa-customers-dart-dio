@@ -6,8 +6,7 @@ export 'package:moa_customers/src/api.dart';
 export 'package:moa_customers/src/auth/api_key_auth.dart';
 export 'package:moa_customers/src/auth/basic_auth.dart';
 export 'package:moa_customers/src/auth/oauth.dart';
-export 'package:moa_customers/src/serializers.dart';
-export 'package:moa_customers/src/model/date.dart';
+
 
 export 'package:moa_customers/src/api/auth_api.dart';
 export 'package:moa_customers/src/api/cards_api.dart';

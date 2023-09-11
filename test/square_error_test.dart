@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for SquareError
 void main() {
-  final instance = SquareErrorBuilder();
-  // TODO add properties to the builder and call build()
+  final SquareError? instance = /* SquareError(...) */ null;
+  // TODO add properties to the entity
 
   group(SquareError, () {
     // Indicates the specific error that occurred during a request to a Square API.

@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getVariationsForItem**
-> BuiltList<Variation> getVariationsForItem(id, locationId)
+> List<Variation> getVariationsForItem(id, locationId)
 
 Get Item variations with ID
 
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;Variation&gt;**](Variation.md)
+[**List&lt;Variation&gt;**](Variation.md)
 
 ### Authorization
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateCategories**
-> BuiltList<Category> updateCategories(categoryUpdateAllDto)
+> List<Category> updateCategories(categoryUpdateAllDto)
 
 Update multiple Categories
 
@@ -313,7 +313,7 @@ import 'package:moa_customers/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomers().getCatalogsApi();
-final BuiltList<CategoryUpdateAllDto> categoryUpdateAllDto = ; // BuiltList<CategoryUpdateAllDto> | 
+final List<CategoryUpdateAllDto> categoryUpdateAllDto = ; // List<CategoryUpdateAllDto> | 
 
 try {
     final response = api.updateCategories(categoryUpdateAllDto);
@@ -327,11 +327,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryUpdateAllDto** | [**BuiltList&lt;CategoryUpdateAllDto&gt;**](CategoryUpdateAllDto.md)|  | 
+ **categoryUpdateAllDto** | [**List&lt;CategoryUpdateAllDto&gt;**](CategoryUpdateAllDto.md)|  | 
 
 ### Return type
 
-[**BuiltList&lt;Category&gt;**](Category.md)
+[**List&lt;Category&gt;**](Category.md)
 
 ### Authorization
 
@@ -439,7 +439,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateItems**
-> BuiltList<Item> updateItems(itemUpdateAllDto)
+> List<Item> updateItems(itemUpdateAllDto)
 
 Update multiple Items
 
@@ -452,7 +452,7 @@ import 'package:moa_customers/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomers().getCatalogsApi();
-final BuiltList<ItemUpdateAllDto> itemUpdateAllDto = ; // BuiltList<ItemUpdateAllDto> | 
+final List<ItemUpdateAllDto> itemUpdateAllDto = ; // List<ItemUpdateAllDto> | 
 
 try {
     final response = api.updateItems(itemUpdateAllDto);
@@ -466,11 +466,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **itemUpdateAllDto** | [**BuiltList&lt;ItemUpdateAllDto&gt;**](ItemUpdateAllDto.md)|  | 
+ **itemUpdateAllDto** | [**List&lt;ItemUpdateAllDto&gt;**](ItemUpdateAllDto.md)|  | 
 
 ### Return type
 
-[**BuiltList&lt;Item&gt;**](Item.md)
+[**List&lt;Item&gt;**](Item.md)
 
 ### Authorization
 

@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for ItemUpdateDto
 void main() {
-  final instance = ItemUpdateDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final ItemUpdateDto? instance = /* ItemUpdateDto(...) */ null;
+  // TODO add properties to the entity
 
   group(ItemUpdateDto, () {
     // bool moaEnabled

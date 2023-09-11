@@ -9,7 +9,7 @@ import 'package:moa_customers/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **count** | **num** |  | 
-**data** | [**BuiltList&lt;Item&gt;**](Item.md) |  | [optional] 
+**data** | [**List&lt;Item&gt;**](Item.md) |  | [optional] 
 **pages** | **num** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

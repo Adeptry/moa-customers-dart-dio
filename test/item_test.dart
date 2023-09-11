@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for Item
 void main() {
-  final instance = ItemBuilder();
-  // TODO add properties to the builder and call build()
+  final Item? instance = /* Item(...) */ null;
+  // TODO add properties to the entity
 
   group(Item, () {
     // String description
@@ -17,12 +17,12 @@ void main() {
       // TODO
     });
 
-    // BuiltList<CatalogImage> images
+    // List<CatalogImage> images
     test('to test the property `images`', () async {
       // TODO
     });
 
-    // BuiltList<ItemModifierList> itemModifierLists
+    // List<ItemModifierList> itemModifierLists
     test('to test the property `itemModifierLists`', () async {
       // TODO
     });
@@ -42,7 +42,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<Variation> variations
+    // List<Variation> variations
     test('to test the property `variations`', () async {
       // TODO
     });

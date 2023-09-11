@@ -9,7 +9,7 @@ import 'package:moa_customers/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
-**items** | [**BuiltList&lt;Item&gt;**](Item.md) |  | [optional] 
+**items** | [**List&lt;Item&gt;**](Item.md) |  | [optional] 
 **moaEnabled** | **bool** |  | [optional] 
 **moaOrdinal** | **num** |  | [optional] 
 **name** | **String** |  | [optional] 

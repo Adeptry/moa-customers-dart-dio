@@ -9,7 +9,7 @@ import 'package:moa_customers/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **card** | [**SquareCard**](SquareCard.md) |  | [optional] 
-**errors** | [**BuiltList&lt;SquareError&gt;**](SquareError.md) |  | [optional] 
+**errors** | [**List&lt;SquareError&gt;**](SquareError.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for AuthForgotPasswordDto
 void main() {
-  final instance = AuthForgotPasswordDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final AuthForgotPasswordDto? instance = /* AuthForgotPasswordDto(...) */ null;
+  // TODO add properties to the entity
 
   group(AuthForgotPasswordDto, () {
     // String email

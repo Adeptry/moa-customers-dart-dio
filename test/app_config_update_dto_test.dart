@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for AppConfigUpdateDto
 void main() {
-  final instance = AppConfigUpdateDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final AppConfigUpdateDto? instance = /* AppConfigUpdateDto(...) */ null;
+  // TODO add properties to the entity
 
   group(AppConfigUpdateDto, () {
     // String fontFamily

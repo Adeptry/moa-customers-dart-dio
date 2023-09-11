@@ -5,297 +5,212 @@
 // ignore_for_file: unused_element
 import 'package:moa_customers/src/model/file_entity.dart';
 import 'package:moa_customers/src/model/theme_mode_enum.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'app_config.g.dart';
 
-/// AppConfig
-///
-/// Properties:
-/// * [blockingMessage] 
-/// * [fontFamily] 
-/// * [iconFile] 
-/// * [message] 
-/// * [minimumVersion] 
-/// * [name] 
-/// * [seedColor] 
-/// * [showAds] 
-/// * [showsAds] 
-/// * [themeMode] 
-/// * [useMaterial3] 
-@BuiltValue()
-abstract class AppConfig implements Built<AppConfig, AppConfigBuilder> {
-  @BuiltValueField(wireName: r'blockingMessage')
-  String? get blockingMessage;
 
-  @BuiltValueField(wireName: r'fontFamily')
-  String? get fontFamily;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class AppConfig {
+  /// Returns a new [AppConfig] instance.
+  AppConfig({
 
-  @BuiltValueField(wireName: r'iconFile')
-  FileEntity? get iconFile;
+     this.blockingMessage,
 
-  @BuiltValueField(wireName: r'message')
-  String? get message;
+     this.fontFamily,
 
-  @BuiltValueField(wireName: r'minimumVersion')
-  String? get minimumVersion;
+     this.iconFile,
 
-  @BuiltValueField(wireName: r'name')
-  String? get name;
+     this.message,
 
-  @BuiltValueField(wireName: r'seedColor')
-  String? get seedColor;
+     this.minimumVersion,
 
-  @BuiltValueField(wireName: r'showAds')
-  bool? get showAds;
+     this.name,
 
-  @BuiltValueField(wireName: r'showsAds')
-  bool? get showsAds;
+     this.seedColor,
 
-  @BuiltValueField(wireName: r'themeMode')
-  ThemeModeEnum? get themeMode;
-  // enum themeModeEnum {  system,  light,  dark,  };
+     this.showAds,
 
-  @BuiltValueField(wireName: r'useMaterial3')
-  bool? get useMaterial3;
+     this.showsAds,
 
-  AppConfig._();
+     this.themeMode,
 
-  factory AppConfig([void updates(AppConfigBuilder b)]) = _$AppConfig;
+     this.useMaterial3,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AppConfigBuilder b) => b;
+  @JsonKey(
+    
+    name: r'blockingMessage',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<AppConfig> get serializer => _$AppConfigSerializer();
-}
 
-class _$AppConfigSerializer implements PrimitiveSerializer<AppConfig> {
-  @override
-  final Iterable<Type> types = const [AppConfig, _$AppConfig];
+  final String? blockingMessage;
 
-  @override
-  final String wireName = r'AppConfig';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AppConfig object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.blockingMessage != null) {
-      yield r'blockingMessage';
-      yield serializers.serialize(
-        object.blockingMessage,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.fontFamily != null) {
-      yield r'fontFamily';
-      yield serializers.serialize(
-        object.fontFamily,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.iconFile != null) {
-      yield r'iconFile';
-      yield serializers.serialize(
-        object.iconFile,
-        specifiedType: const FullType.nullable(FileEntity),
-      );
-    }
-    if (object.message != null) {
-      yield r'message';
-      yield serializers.serialize(
-        object.message,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.minimumVersion != null) {
-      yield r'minimumVersion';
-      yield serializers.serialize(
-        object.minimumVersion,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.seedColor != null) {
-      yield r'seedColor';
-      yield serializers.serialize(
-        object.seedColor,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.showAds != null) {
-      yield r'showAds';
-      yield serializers.serialize(
-        object.showAds,
-        specifiedType: const FullType.nullable(bool),
-      );
-    }
-    if (object.showsAds != null) {
-      yield r'showsAds';
-      yield serializers.serialize(
-        object.showsAds,
-        specifiedType: const FullType.nullable(bool),
-      );
-    }
-    if (object.themeMode != null) {
-      yield r'themeMode';
-      yield serializers.serialize(
-        object.themeMode,
-        specifiedType: const FullType(ThemeModeEnum),
-      );
-    }
-    if (object.useMaterial3 != null) {
-      yield r'useMaterial3';
-      yield serializers.serialize(
-        object.useMaterial3,
-        specifiedType: const FullType.nullable(bool),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    AppConfig object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'fontFamily',
+    required: false,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AppConfigBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'blockingMessage':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.blockingMessage = valueDes;
-          break;
-        case r'fontFamily':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.fontFamily = valueDes;
-          break;
-        case r'iconFile':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(FileEntity),
-          ) as FileEntity?;
-          if (valueDes == null) continue;
-          result.iconFile.replace(valueDes);
-          break;
-        case r'message':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.message = valueDes;
-          break;
-        case r'minimumVersion':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.minimumVersion = valueDes;
-          break;
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.name = valueDes;
-          break;
-        case r'seedColor':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.seedColor = valueDes;
-          break;
-        case r'showAds':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
-          if (valueDes == null) continue;
-          result.showAds = valueDes;
-          break;
-        case r'showsAds':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
-          if (valueDes == null) continue;
-          result.showsAds = valueDes;
-          break;
-        case r'themeMode':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(ThemeModeEnum),
-          ) as ThemeModeEnum;
-          result.themeMode = valueDes;
-          break;
-        case r'useMaterial3':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
-          if (valueDes == null) continue;
-          result.useMaterial3 = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? fontFamily;
+
+
+
+  @JsonKey(
+    
+    name: r'iconFile',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final FileEntity? iconFile;
+
+
+
+  @JsonKey(
+    
+    name: r'message',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? message;
+
+
+
+  @JsonKey(
+    
+    name: r'minimumVersion',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? minimumVersion;
+
+
+
+  @JsonKey(
+    
+    name: r'name',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? name;
+
+
+
+  @JsonKey(
+    
+    name: r'seedColor',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? seedColor;
+
+
+
+  @JsonKey(
+    
+    name: r'showAds',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? showAds;
+
+
+
+  @JsonKey(
+    
+    name: r'showsAds',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? showsAds;
+
+
+
+  @JsonKey(
+    
+    name: r'themeMode',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final ThemeModeEnum? themeMode;
+
+
+
+  @JsonKey(
+    
+    name: r'useMaterial3',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? useMaterial3;
+
+
 
   @override
-  AppConfig deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = AppConfigBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is AppConfig &&
+     other.blockingMessage == blockingMessage &&
+     other.fontFamily == fontFamily &&
+     other.iconFile == iconFile &&
+     other.message == message &&
+     other.minimumVersion == minimumVersion &&
+     other.name == name &&
+     other.seedColor == seedColor &&
+     other.showAds == showAds &&
+     other.showsAds == showsAds &&
+     other.themeMode == themeMode &&
+     other.useMaterial3 == useMaterial3;
+
+  @override
+  int get hashCode =>
+    (blockingMessage == null ? 0 : blockingMessage.hashCode) +
+    (fontFamily == null ? 0 : fontFamily.hashCode) +
+    (iconFile == null ? 0 : iconFile.hashCode) +
+    (message == null ? 0 : message.hashCode) +
+    (minimumVersion == null ? 0 : minimumVersion.hashCode) +
+    (name == null ? 0 : name.hashCode) +
+    (seedColor == null ? 0 : seedColor.hashCode) +
+    (showAds == null ? 0 : showAds.hashCode) +
+    (showsAds == null ? 0 : showsAds.hashCode) +
+    themeMode.hashCode +
+    (useMaterial3 == null ? 0 : useMaterial3.hashCode);
+
+  factory AppConfig.fromJson(Map<String, dynamic> json) => _$AppConfigFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AppConfigToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

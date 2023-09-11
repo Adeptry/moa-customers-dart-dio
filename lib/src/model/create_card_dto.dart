@@ -3,154 +3,60 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'create_card_dto.g.dart';
 
-/// CreateCardDto
-///
-/// Properties:
-/// * [idempotencyKey] 
-/// * [postalCode] 
-/// * [sourceId] 
-/// * [verificationToken] 
-@BuiltValue()
-abstract class CreateCardDto implements Built<CreateCardDto, CreateCardDtoBuilder> {
-  @BuiltValueField(wireName: r'idempotencyKey')
-  String get idempotencyKey;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class CreateCardDto {
+  /// Returns a new [CreateCardDto] instance.
+  CreateCardDto({
+    required this.idempotencyKey,
+    required this.postalCode,
+    required this.sourceId,
+    required this.verificationToken,
+  });
 
-  @BuiltValueField(wireName: r'postalCode')
-  String? get postalCode;
+  @JsonKey(name: r'idempotencyKey', required: true, includeIfNull: false)
+  final String idempotencyKey;
 
-  @BuiltValueField(wireName: r'sourceId')
-  String get sourceId;
+  @JsonKey(name: r'postalCode', required: true, includeIfNull: false)
+  final String? postalCode;
 
-  @BuiltValueField(wireName: r'verificationToken')
-  String? get verificationToken;
+  @JsonKey(name: r'sourceId', required: true, includeIfNull: false)
+  final String sourceId;
 
-  CreateCardDto._();
-
-  factory CreateCardDto([void updates(CreateCardDtoBuilder b)]) = _$CreateCardDto;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CreateCardDtoBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<CreateCardDto> get serializer => _$CreateCardDtoSerializer();
-}
-
-class _$CreateCardDtoSerializer implements PrimitiveSerializer<CreateCardDto> {
-  @override
-  final Iterable<Type> types = const [CreateCardDto, _$CreateCardDto];
+  @JsonKey(name: r'verificationToken', required: true, includeIfNull: false)
+  final String? verificationToken;
 
   @override
-  final String wireName = r'CreateCardDto';
-
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    CreateCardDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'idempotencyKey';
-    yield serializers.serialize(
-      object.idempotencyKey,
-      specifiedType: const FullType(String),
-    );
-    yield r'postalCode';
-    yield object.postalCode == null ? null : serializers.serialize(
-      object.postalCode,
-      specifiedType: const FullType.nullable(String),
-    );
-    yield r'sourceId';
-    yield serializers.serialize(
-      object.sourceId,
-      specifiedType: const FullType(String),
-    );
-    yield r'verificationToken';
-    yield object.verificationToken == null ? null : serializers.serialize(
-      object.verificationToken,
-      specifiedType: const FullType.nullable(String),
-    );
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is CreateCardDto &&
+          other.idempotencyKey == idempotencyKey &&
+          other.postalCode == postalCode &&
+          other.sourceId == sourceId &&
+          other.verificationToken == verificationToken;
 
   @override
-  Object serialize(
-    Serializers serializers,
-    CreateCardDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  int get hashCode =>
+      idempotencyKey.hashCode +
+      (postalCode == null ? 0 : postalCode.hashCode) +
+      sourceId.hashCode +
+      (verificationToken == null ? 0 : verificationToken.hashCode);
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required CreateCardDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'idempotencyKey':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.idempotencyKey = valueDes;
-          break;
-        case r'postalCode':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.postalCode = valueDes;
-          break;
-        case r'sourceId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.sourceId = valueDes;
-          break;
-        case r'verificationToken':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.verificationToken = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  factory CreateCardDto.fromJson(Map<String, dynamic> json) =>
+      _$CreateCardDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CreateCardDtoToJson(this);
 
   @override
-  CreateCardDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = CreateCardDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
 }
-

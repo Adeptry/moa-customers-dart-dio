@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for VariationAddDto
 void main() {
-  final instance = VariationAddDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final VariationAddDto? instance = /* VariationAddDto(...) */ null;
+  // TODO add properties to the entity
 
   group(VariationAddDto, () {
     // String id
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<String> modifierIds
+    // List<String> modifierIds
     test('to test the property `modifierIds`', () async {
       // TODO
     });

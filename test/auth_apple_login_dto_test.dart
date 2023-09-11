@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for AuthAppleLoginDto
 void main() {
-  final instance = AuthAppleLoginDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final AuthAppleLoginDto? instance = /* AuthAppleLoginDto(...) */ null;
+  // TODO add properties to the entity
 
   group(AuthAppleLoginDto, () {
     // String firstName

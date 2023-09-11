@@ -3,120 +3,68 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'auth_update_dto.g.dart';
 
-/// AuthUpdateDto
-///
-/// Properties:
-/// * [oldPassword] 
-/// * [password] 
-@BuiltValue()
-abstract class AuthUpdateDto implements Built<AuthUpdateDto, AuthUpdateDtoBuilder> {
-  @BuiltValueField(wireName: r'oldPassword')
-  String get oldPassword;
 
-  @BuiltValueField(wireName: r'password')
-  String get password;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class AuthUpdateDto {
+  /// Returns a new [AuthUpdateDto] instance.
+  AuthUpdateDto({
 
-  AuthUpdateDto._();
+    required  this.oldPassword,
 
-  factory AuthUpdateDto([void updates(AuthUpdateDtoBuilder b)]) = _$AuthUpdateDto;
+    required  this.password,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AuthUpdateDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'oldPassword',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<AuthUpdateDto> get serializer => _$AuthUpdateDtoSerializer();
-}
 
-class _$AuthUpdateDtoSerializer implements PrimitiveSerializer<AuthUpdateDto> {
-  @override
-  final Iterable<Type> types = const [AuthUpdateDto, _$AuthUpdateDto];
+  final String oldPassword;
 
-  @override
-  final String wireName = r'AuthUpdateDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AuthUpdateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'oldPassword';
-    yield serializers.serialize(
-      object.oldPassword,
-      specifiedType: const FullType(String),
-    );
-    yield r'password';
-    yield serializers.serialize(
-      object.password,
-      specifiedType: const FullType(String),
-    );
-  }
+
+  @JsonKey(
+    
+    name: r'password',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String password;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    AuthUpdateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AuthUpdateDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'oldPassword':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.oldPassword = valueDes;
-          break;
-        case r'password':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.password = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is AuthUpdateDto &&
+     other.oldPassword == oldPassword &&
+     other.password == password;
 
   @override
-  AuthUpdateDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = AuthUpdateDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    oldPassword.hashCode +
+    password.hashCode;
+
+  factory AuthUpdateDto.fromJson(Map<String, dynamic> json) => _$AuthUpdateDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthUpdateDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -3,183 +3,116 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'catalog_image.g.dart';
 
-/// CatalogImage
-///
-/// Properties:
-/// * [caption] 
-/// * [id] 
-/// * [name] 
-/// * [squareId] 
-/// * [url] 
-@BuiltValue()
-abstract class CatalogImage implements Built<CatalogImage, CatalogImageBuilder> {
-  @BuiltValueField(wireName: r'caption')
-  String? get caption;
 
-  @BuiltValueField(wireName: r'id')
-  String? get id;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class CatalogImage {
+  /// Returns a new [CatalogImage] instance.
+  CatalogImage({
 
-  @BuiltValueField(wireName: r'name')
-  String? get name;
+     this.caption,
 
-  @BuiltValueField(wireName: r'squareId')
-  String? get squareId;
+     this.id,
 
-  @BuiltValueField(wireName: r'url')
-  String? get url;
+     this.name,
 
-  CatalogImage._();
+     this.squareId,
 
-  factory CatalogImage([void updates(CatalogImageBuilder b)]) = _$CatalogImage;
+     this.url,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(CatalogImageBuilder b) => b;
+  @JsonKey(
+    
+    name: r'caption',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<CatalogImage> get serializer => _$CatalogImageSerializer();
-}
 
-class _$CatalogImageSerializer implements PrimitiveSerializer<CatalogImage> {
-  @override
-  final Iterable<Type> types = const [CatalogImage, _$CatalogImage];
+  final String? caption;
 
-  @override
-  final String wireName = r'CatalogImage';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    CatalogImage object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.caption != null) {
-      yield r'caption';
-      yield serializers.serialize(
-        object.caption,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.squareId != null) {
-      yield r'squareId';
-      yield serializers.serialize(
-        object.squareId,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.url != null) {
-      yield r'url';
-      yield serializers.serialize(
-        object.url,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? id;
+
+
+
+  @JsonKey(
+    
+    name: r'name',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? name;
+
+
+
+  @JsonKey(
+    
+    name: r'squareId',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? squareId;
+
+
+
+  @JsonKey(
+    
+    name: r'url',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? url;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    CatalogImage object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required CatalogImageBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'caption':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.caption = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.id = valueDes;
-          break;
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.name = valueDes;
-          break;
-        case r'squareId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.squareId = valueDes;
-          break;
-        case r'url':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.url = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is CatalogImage &&
+     other.caption == caption &&
+     other.id == id &&
+     other.name == name &&
+     other.squareId == squareId &&
+     other.url == url;
 
   @override
-  CatalogImage deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = CatalogImageBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    (caption == null ? 0 : caption.hashCode) +
+    (id == null ? 0 : id.hashCode) +
+    (name == null ? 0 : name.hashCode) +
+    (squareId == null ? 0 : squareId.hashCode) +
+    (url == null ? 0 : url.hashCode);
+
+  factory CatalogImage.fromJson(Map<String, dynamic> json) => _$CatalogImageFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CatalogImageToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

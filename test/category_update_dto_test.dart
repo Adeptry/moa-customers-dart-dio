@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for CategoryUpdateDto
 void main() {
-  final instance = CategoryUpdateDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final CategoryUpdateDto? instance = /* CategoryUpdateDto(...) */ null;
+  // TODO add properties to the entity
 
   group(CategoryUpdateDto, () {
     // bool moaEnabled

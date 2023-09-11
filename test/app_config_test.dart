@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for AppConfig
 void main() {
-  final instance = AppConfigBuilder();
-  // TODO add properties to the builder and call build()
+  final AppConfig? instance = /* AppConfig(...) */ null;
+  // TODO add properties to the entity
 
   group(AppConfig, () {
     // String blockingMessage

@@ -4,140 +4,84 @@
 
 // ignore_for_file: unused_element
 import 'package:moa_customers/src/model/item.dart';
-import 'package:built_collection/built_collection.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'item_paginated_response.g.dart';
 
-/// ItemPaginatedResponse
-///
-/// Properties:
-/// * [count] 
-/// * [data] 
-/// * [pages] 
-@BuiltValue()
-abstract class ItemPaginatedResponse implements Built<ItemPaginatedResponse, ItemPaginatedResponseBuilder> {
-  @BuiltValueField(wireName: r'count')
-  num get count;
 
-  @BuiltValueField(wireName: r'data')
-  BuiltList<Item>? get data;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class ItemPaginatedResponse {
+  /// Returns a new [ItemPaginatedResponse] instance.
+  ItemPaginatedResponse({
 
-  @BuiltValueField(wireName: r'pages')
-  num get pages;
+    required  this.count,
 
-  ItemPaginatedResponse._();
+     this.data,
 
-  factory ItemPaginatedResponse([void updates(ItemPaginatedResponseBuilder b)]) = _$ItemPaginatedResponse;
+    required  this.pages,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ItemPaginatedResponseBuilder b) => b;
+  @JsonKey(
+    
+    name: r'count',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<ItemPaginatedResponse> get serializer => _$ItemPaginatedResponseSerializer();
-}
 
-class _$ItemPaginatedResponseSerializer implements PrimitiveSerializer<ItemPaginatedResponse> {
-  @override
-  final Iterable<Type> types = const [ItemPaginatedResponse, _$ItemPaginatedResponse];
+  final num count;
 
-  @override
-  final String wireName = r'ItemPaginatedResponse';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    ItemPaginatedResponse object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'count';
-    yield serializers.serialize(
-      object.count,
-      specifiedType: const FullType(num),
-    );
-    if (object.data != null) {
-      yield r'data';
-      yield serializers.serialize(
-        object.data,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(Item)]),
-      );
-    }
-    yield r'pages';
-    yield serializers.serialize(
-      object.pages,
-      specifiedType: const FullType(num),
-    );
-  }
+
+  @JsonKey(
+    
+    name: r'data',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<Item>? data;
+
+
+
+  @JsonKey(
+    
+    name: r'pages',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final num pages;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    ItemPaginatedResponse object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required ItemPaginatedResponseBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'count':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.count = valueDes;
-          break;
-        case r'data':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(Item)]),
-          ) as BuiltList<Item>?;
-          if (valueDes == null) continue;
-          result.data.replace(valueDes);
-          break;
-        case r'pages':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.pages = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is ItemPaginatedResponse &&
+     other.count == count &&
+     other.data == data &&
+     other.pages == pages;
 
   @override
-  ItemPaginatedResponse deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = ItemPaginatedResponseBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    count.hashCode +
+    (data == null ? 0 : data.hashCode) +
+    pages.hashCode;
+
+  factory ItemPaginatedResponse.fromJson(Map<String, dynamic> json) => _$ItemPaginatedResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ItemPaginatedResponseToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

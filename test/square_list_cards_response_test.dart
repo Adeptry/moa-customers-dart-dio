@@ -3,11 +3,11 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for SquareListCardsResponse
 void main() {
-  final instance = SquareListCardsResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final SquareListCardsResponse? instance = /* SquareListCardsResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(SquareListCardsResponse, () {
-    // BuiltList<SquareCard> cards
+    // List<SquareCard> cards
     test('to test the property `cards`', () async {
       // TODO
     });
@@ -17,7 +17,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<SquareError> errors
+    // List<SquareError> errors
     test('to test the property `errors`', () async {
       // TODO
     });

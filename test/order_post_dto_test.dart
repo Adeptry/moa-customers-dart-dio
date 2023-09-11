@@ -3,11 +3,11 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for OrderPostDto
 void main() {
-  final instance = OrderPostDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final OrderPostDto? instance = /* OrderPostDto(...) */ null;
+  // TODO add properties to the entity
 
   group(OrderPostDto, () {
-    // BuiltList<VariationAddDto> variations
+    // List<VariationAddDto> variations
     test('to test the property `variations`', () async {
       // TODO
     });

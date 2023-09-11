@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for LocationUpdateDto
 void main() {
-  final instance = LocationUpdateDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final LocationUpdateDto? instance = /* LocationUpdateDto(...) */ null;
+  // TODO add properties to the entity
 
   group(LocationUpdateDto, () {
     // bool moaEnabled

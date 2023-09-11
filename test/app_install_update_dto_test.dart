@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for AppInstallUpdateDto
 void main() {
-  final instance = AppInstallUpdateDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final AppInstallUpdateDto? instance = /* AppInstallUpdateDto(...) */ null;
+  // TODO add properties to the entity
 
   group(AppInstallUpdateDto, () {
     // String firebaseCloudMessagingToken

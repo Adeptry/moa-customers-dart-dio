@@ -4,11 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:moa_customers/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:built_collection/built_collection.dart';
-import 'package:moa_customers/src/api_util.dart';
 import 'package:moa_customers/src/model/catalog_image.dart';
 import 'package:moa_customers/src/model/category.dart';
 import 'package:moa_customers/src/model/category_paginated_response.dart';
@@ -26,9 +26,7 @@ class CatalogsApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const CatalogsApi(this._dio, this._serializers);
+  const CatalogsApi(this._dio);
 
   /// Get Categories for Merchant ID with Items, Variations, and/or ModifierLists
   /// 
@@ -94,15 +92,15 @@ class CatalogsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
-      r'actingAs': encodeQueryParameter(_serializers, actingAs, const FullType(String)),
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(num)),
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(num)),
-      if (locationId != null) r'locationId': encodeQueryParameter(_serializers, locationId, const FullType(String)),
-      if (items != null) r'items': encodeQueryParameter(_serializers, items, const FullType(bool)),
-      if (images != null) r'images': encodeQueryParameter(_serializers, images, const FullType(bool)),
-      if (variations != null) r'variations': encodeQueryParameter(_serializers, variations, const FullType(bool)),
-      if (modifierLists != null) r'modifierLists': encodeQueryParameter(_serializers, modifierLists, const FullType(bool)),
+      r'merchantId': merchantId,
+      r'actingAs': actingAs,
+      if (page != null) r'page': page,
+      if (limit != null) r'limit': limit,
+      if (locationId != null) r'locationId': locationId,
+      if (items != null) r'items': items,
+      if (images != null) r'images': images,
+      if (variations != null) r'variations': variations,
+      if (modifierLists != null) r'modifierLists': modifierLists,
     };
 
     final _response = await _dio.request<Object>(
@@ -117,12 +115,8 @@ class CatalogsApi {
     CategoryPaginatedResponse? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CategoryPaginatedResponse),
-      ) as CategoryPaginatedResponse;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<CategoryPaginatedResponse, CategoryPaginatedResponse>(rawData, 'CategoryPaginatedResponse', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -170,7 +164,7 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/items/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/v2/items/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -195,7 +189,7 @@ class CatalogsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (locationId != null) r'locationId': encodeQueryParameter(_serializers, locationId, const FullType(String)),
+      if (locationId != null) r'locationId': locationId,
     };
 
     final _response = await _dio.request<Object>(
@@ -210,12 +204,8 @@ class CatalogsApi {
     Item? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Item),
-      ) as Item;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Item, Item>(rawData, 'Item', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -277,7 +267,7 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/categories/{id}/items'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/v2/categories/{id}/items'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -302,14 +292,14 @@ class CatalogsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (actingAs != null) r'actingAs': encodeQueryParameter(_serializers, actingAs, const FullType(String)),
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(num)),
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(num)),
-      if (locationId != null) r'locationId': encodeQueryParameter(_serializers, locationId, const FullType(String)),
-      if (images != null) r'images': encodeQueryParameter(_serializers, images, const FullType(bool)),
-      if (variations != null) r'variations': encodeQueryParameter(_serializers, variations, const FullType(bool)),
-      if (modifierLists != null) r'modifierLists': encodeQueryParameter(_serializers, modifierLists, const FullType(bool)),
-      if (merchantId != null) r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      if (actingAs != null) r'actingAs': actingAs,
+      if (page != null) r'page': page,
+      if (limit != null) r'limit': limit,
+      if (locationId != null) r'locationId': locationId,
+      if (images != null) r'images': images,
+      if (variations != null) r'variations': variations,
+      if (modifierLists != null) r'modifierLists': modifierLists,
+      if (merchantId != null) r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -324,12 +314,8 @@ class CatalogsApi {
     ItemPaginatedResponse? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(ItemPaginatedResponse),
-      ) as ItemPaginatedResponse;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<ItemPaginatedResponse, ItemPaginatedResponse>(rawData, 'ItemPaginatedResponse', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -416,15 +402,15 @@ class CatalogsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(num)),
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(num)),
-      if (locationId != null) r'locationId': encodeQueryParameter(_serializers, locationId, const FullType(String)),
-      if (items != null) r'items': encodeQueryParameter(_serializers, items, const FullType(bool)),
-      if (images != null) r'images': encodeQueryParameter(_serializers, images, const FullType(bool)),
-      if (variations != null) r'variations': encodeQueryParameter(_serializers, variations, const FullType(bool)),
-      if (modifierLists != null) r'modifierLists': encodeQueryParameter(_serializers, modifierLists, const FullType(bool)),
-      if (actingAs != null) r'actingAs': encodeQueryParameter(_serializers, actingAs, const FullType(String)),
-      if (merchantId != null) r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      if (page != null) r'page': page,
+      if (limit != null) r'limit': limit,
+      if (locationId != null) r'locationId': locationId,
+      if (items != null) r'items': items,
+      if (images != null) r'images': images,
+      if (variations != null) r'variations': variations,
+      if (modifierLists != null) r'modifierLists': modifierLists,
+      if (actingAs != null) r'actingAs': actingAs,
+      if (merchantId != null) r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -439,12 +425,8 @@ class CatalogsApi {
     CategoryPaginatedResponse? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CategoryPaginatedResponse),
-      ) as CategoryPaginatedResponse;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<CategoryPaginatedResponse, CategoryPaginatedResponse>(rawData, 'CategoryPaginatedResponse', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -480,9 +462,9 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<Variation>] as data
+  /// Returns a [Future] containing a [Response] with a [List<Variation>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<Variation>>> getVariationsForItem({ 
+  Future<Response<List<Variation>>> getVariationsForItem({ 
     required String id,
     String? locationId,
     CancelToken? cancelToken,
@@ -492,7 +474,7 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/items/{id}/variations'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/v2/items/{id}/variations'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -517,7 +499,7 @@ class CatalogsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (locationId != null) r'locationId': encodeQueryParameter(_serializers, locationId, const FullType(String)),
+      if (locationId != null) r'locationId': locationId,
     };
 
     final _response = await _dio.request<Object>(
@@ -529,15 +511,11 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<Variation>? _responseData;
+    List<Variation>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(Variation)]),
-      ) as BuiltList<Variation>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<Variation>, Variation>(rawData, 'List<Variation>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -548,7 +526,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<BuiltList<Variation>>(
+    return Response<List<Variation>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -572,10 +550,10 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<Category>] as data
+  /// Returns a [Future] containing a [Response] with a [List<Category>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<Category>>> updateCategories({ 
-    required BuiltList<CategoryUpdateAllDto> categoryUpdateAllDto,
+  Future<Response<List<Category>>> updateCategories({ 
+    required List<CategoryUpdateAllDto> categoryUpdateAllDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -611,9 +589,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BuiltList, [FullType(CategoryUpdateAllDto)]);
-      _bodyData = _serializers.serialize(categoryUpdateAllDto, specifiedType: _type);
-
+_bodyData=jsonEncode(categoryUpdateAllDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -635,15 +611,11 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<Category>? _responseData;
+    List<Category>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(Category)]),
-      ) as BuiltList<Category>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<Category>, Category>(rawData, 'List<Category>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -654,7 +626,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<BuiltList<Category>>(
+    return Response<List<Category>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -691,7 +663,7 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/categories/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/v2/categories/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -719,9 +691,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CategoryUpdateDto);
-      _bodyData = _serializers.serialize(categoryUpdateDto, specifiedType: _type);
-
+_bodyData=jsonEncode(categoryUpdateDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -746,12 +716,8 @@ class CatalogsApi {
     Category? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Category),
-      ) as Category;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Category, Category>(rawData, 'Category', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -799,7 +765,7 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/items/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/v2/items/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -827,9 +793,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(ItemUpdateDto);
-      _bodyData = _serializers.serialize(itemUpdateDto, specifiedType: _type);
-
+_bodyData=jsonEncode(itemUpdateDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -854,12 +818,8 @@ class CatalogsApi {
     Item? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Item),
-      ) as Item;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Item, Item>(rawData, 'Item', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -894,10 +854,10 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [BuiltList<Item>] as data
+  /// Returns a [Future] containing a [Response] with a [List<Item>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<BuiltList<Item>>> updateItems({ 
-    required BuiltList<ItemUpdateAllDto> itemUpdateAllDto,
+  Future<Response<List<Item>>> updateItems({ 
+    required List<ItemUpdateAllDto> itemUpdateAllDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -933,9 +893,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(BuiltList, [FullType(ItemUpdateAllDto)]);
-      _bodyData = _serializers.serialize(itemUpdateAllDto, specifiedType: _type);
-
+_bodyData=jsonEncode(itemUpdateAllDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -957,15 +915,11 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<Item>? _responseData;
+    List<Item>? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(BuiltList, [FullType(Item)]),
-      ) as BuiltList<Item>;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<List<Item>, Item>(rawData, 'List<Item>', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -976,7 +930,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<BuiltList<Item>>(
+    return Response<List<Item>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -1013,7 +967,7 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/variations/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/v2/variations/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -1041,9 +995,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      const _type = FullType(VariationUpdateDto);
-      _bodyData = _serializers.serialize(variationUpdateDto, specifiedType: _type);
-
+_bodyData=jsonEncode(variationUpdateDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -1068,12 +1020,8 @@ class CatalogsApi {
     Variation? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Variation),
-      ) as Variation;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Variation, Variation>(rawData, 'Variation', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -1123,7 +1071,7 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/items/{id}/square/image'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/v2/items/{id}/square/image'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -1149,15 +1097,12 @@ class CatalogsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'idempotencyKey': encodeQueryParameter(_serializers, idempotencyKey, const FullType(String)),
+      r'idempotencyKey': idempotencyKey,
     };
 
     dynamic _bodyData;
 
     try {
-      _bodyData = FormData.fromMap(<String, dynamic>{
-        if (file != null) r'file': file,
-      });
 
     } catch(error, stackTrace) {
       throw DioException(
@@ -1185,12 +1130,8 @@ class CatalogsApi {
     CatalogImage? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CatalogImage),
-      ) as CatalogImage;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<CatalogImage, CatalogImage>(rawData, 'CatalogImage', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

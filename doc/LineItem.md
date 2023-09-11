@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **currency** | **String** |  | [optional] 
 **grossSalesMoneyAmount** | **num** |  | [optional] 
 **id** | **String** |  | [optional] 
-**modifiers** | [**BuiltList&lt;LineItemModifier&gt;**](LineItemModifier.md) |  | [optional] 
+**modifiers** | [**List&lt;LineItemModifier&gt;**](LineItemModifier.md) |  | [optional] 
 **name** | **String** |  | [optional] 
 **note** | **String** |  | [optional] 
 **quantity** | **String** |  | [optional] 

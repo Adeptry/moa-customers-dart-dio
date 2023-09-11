@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for Category
 void main() {
-  final instance = CategoryBuilder();
-  // TODO add properties to the builder and call build()
+  final Category? instance = /* Category(...) */ null;
+  // TODO add properties to the entity
 
   group(Category, () {
     // String id
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<Item> items
+    // List<Item> items
     test('to test the property `items`', () async {
       // TODO
     });

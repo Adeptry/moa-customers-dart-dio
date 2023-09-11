@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for UserUpdateDto
 void main() {
-  final instance = UserUpdateDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final UserUpdateDto? instance = /* UserUpdateDto(...) */ null;
+  // TODO add properties to the entity
 
   group(UserUpdateDto, () {
     // String email

@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for FileEntity
 void main() {
-  final instance = FileEntityBuilder();
-  // TODO add properties to the builder and call build()
+  final FileEntity? instance = /* FileEntity(...) */ null;
+  // TODO add properties to the entity
 
   group(FileEntity, () {
     // String id

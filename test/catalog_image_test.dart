@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for CatalogImage
 void main() {
-  final instance = CatalogImageBuilder();
-  // TODO add properties to the builder and call build()
+  final CatalogImage? instance = /* CatalogImage(...) */ null;
+  // TODO add properties to the entity
 
   group(CatalogImage, () {
     // String caption

@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for AuthUpdateDto
 void main() {
-  final instance = AuthUpdateDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final AuthUpdateDto? instance = /* AuthUpdateDto(...) */ null;
+  // TODO add properties to the entity
 
   group(AuthUpdateDto, () {
     // String oldPassword

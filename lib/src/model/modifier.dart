@@ -3,183 +3,116 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'modifier.g.dart';
 
-/// Modifier
-///
-/// Properties:
-/// * [id] 
-/// * [name] 
-/// * [ordinal] 
-/// * [priceAmount] 
-/// * [priceCurrency] 
-@BuiltValue()
-abstract class Modifier implements Built<Modifier, ModifierBuilder> {
-  @BuiltValueField(wireName: r'id')
-  String? get id;
 
-  @BuiltValueField(wireName: r'name')
-  String? get name;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class Modifier {
+  /// Returns a new [Modifier] instance.
+  Modifier({
 
-  @BuiltValueField(wireName: r'ordinal')
-  num? get ordinal;
+     this.id,
 
-  @BuiltValueField(wireName: r'priceAmount')
-  num? get priceAmount;
+     this.name,
 
-  @BuiltValueField(wireName: r'priceCurrency')
-  String? get priceCurrency;
+     this.ordinal,
 
-  Modifier._();
+     this.priceAmount,
 
-  factory Modifier([void updates(ModifierBuilder b)]) = _$Modifier;
+     this.priceCurrency,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ModifierBuilder b) => b;
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<Modifier> get serializer => _$ModifierSerializer();
-}
 
-class _$ModifierSerializer implements PrimitiveSerializer<Modifier> {
-  @override
-  final Iterable<Type> types = const [Modifier, _$Modifier];
+  final String? id;
 
-  @override
-  final String wireName = r'Modifier';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    Modifier object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.name != null) {
-      yield r'name';
-      yield serializers.serialize(
-        object.name,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.ordinal != null) {
-      yield r'ordinal';
-      yield serializers.serialize(
-        object.ordinal,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.priceAmount != null) {
-      yield r'priceAmount';
-      yield serializers.serialize(
-        object.priceAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.priceCurrency != null) {
-      yield r'priceCurrency';
-      yield serializers.serialize(
-        object.priceCurrency,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'name',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? name;
+
+
+
+  @JsonKey(
+    
+    name: r'ordinal',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? ordinal;
+
+
+
+  @JsonKey(
+    
+    name: r'priceAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? priceAmount;
+
+
+
+  @JsonKey(
+    
+    name: r'priceCurrency',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? priceCurrency;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    Modifier object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required ModifierBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.id = valueDes;
-          break;
-        case r'name':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.name = valueDes;
-          break;
-        case r'ordinal':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.ordinal = valueDes;
-          break;
-        case r'priceAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.priceAmount = valueDes;
-          break;
-        case r'priceCurrency':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.priceCurrency = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is Modifier &&
+     other.id == id &&
+     other.name == name &&
+     other.ordinal == ordinal &&
+     other.priceAmount == priceAmount &&
+     other.priceCurrency == priceCurrency;
 
   @override
-  Modifier deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = ModifierBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    (id == null ? 0 : id.hashCode) +
+    (name == null ? 0 : name.hashCode) +
+    (ordinal == null ? 0 : ordinal.hashCode) +
+    (priceAmount == null ? 0 : priceAmount.hashCode) +
+    (priceCurrency == null ? 0 : priceCurrency.hashCode);
+
+  factory Modifier.fromJson(Map<String, dynamic> json) => _$ModifierFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ModifierToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for Modifier
 void main() {
-  final instance = ModifierBuilder();
-  // TODO add properties to the builder and call build()
+  final Modifier? instance = /* Modifier(...) */ null;
+  // TODO add properties to the entity
 
   group(Modifier, () {
     // String id

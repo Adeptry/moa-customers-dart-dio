@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for VariationUpdateDto
 void main() {
-  final instance = VariationUpdateDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final VariationUpdateDto? instance = /* VariationUpdateDto(...) */ null;
+  // TODO add properties to the entity
 
   group(VariationUpdateDto, () {
     // bool moaEnabled

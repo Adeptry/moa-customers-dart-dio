@@ -4,10 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:moa_customers/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers/src/api_util.dart';
 import 'package:moa_customers/src/model/create_card_dto.dart';
 import 'package:moa_customers/src/model/nest_error.dart';
 import 'package:moa_customers/src/model/square_card.dart';
@@ -18,9 +19,7 @@ class CardsApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const CardsApi(this._dio, this._serializers);
+  const CardsApi(this._dio);
 
   /// Create my Square Card
   /// 
@@ -73,15 +72,13 @@ class CardsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     dynamic _bodyData;
 
     try {
-      const _type = FullType(CreateCardDto);
-      _bodyData = _serializers.serialize(createCardDto, specifiedType: _type);
-
+_bodyData=jsonEncode(createCardDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(
@@ -108,12 +105,8 @@ class CardsApi {
     SquareCard? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(SquareCard),
-      ) as SquareCard;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<SquareCard, SquareCard>(rawData, 'SquareCard', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -161,7 +154,7 @@ class CardsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/square/cards/me/{id}'.replaceAll('{' r'id' '}', encodeQueryParameter(_serializers, id, const FullType(String)).toString());
+    final _path = r'/v2/square/cards/me/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -186,7 +179,7 @@ class CardsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -201,12 +194,8 @@ class CardsApi {
     SquareDisableCardResponse? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(SquareDisableCardResponse),
-      ) as SquareDisableCardResponse;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<SquareDisableCardResponse, SquareDisableCardResponse>(rawData, 'SquareDisableCardResponse', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -279,8 +268,8 @@ class CardsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (cursor != null) r'cursor': encodeQueryParameter(_serializers, cursor, const FullType(String)),
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      if (cursor != null) r'cursor': cursor,
+      r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -295,12 +284,8 @@ class CardsApi {
     SquareListCardsResponse? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(SquareListCardsResponse),
-      ) as SquareListCardsResponse;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<SquareListCardsResponse, SquareListCardsResponse>(rawData, 'SquareListCardsResponse', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,

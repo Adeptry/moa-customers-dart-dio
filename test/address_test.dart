@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for Address
 void main() {
-  final instance = AddressBuilder();
-  // TODO add properties to the builder and call build()
+  final Address? instance = /* Address(...) */ null;
+  // TODO add properties to the entity
 
   group(Address, () {
     // The first line of the address.

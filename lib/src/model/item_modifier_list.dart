@@ -5,202 +5,132 @@
 // ignore_for_file: unused_element
 import 'package:moa_customers/src/model/item.dart';
 import 'package:moa_customers/src/model/modifier_list.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'item_modifier_list.g.dart';
 
-/// ItemModifierList
-///
-/// Properties:
-/// * [enabled] 
-/// * [id] 
-/// * [item] 
-/// * [maxSelectedModifiers] 
-/// * [minSelectedModifiers] 
-/// * [modifierList] 
-@BuiltValue()
-abstract class ItemModifierList implements Built<ItemModifierList, ItemModifierListBuilder> {
-  @BuiltValueField(wireName: r'enabled')
-  bool? get enabled;
 
-  @BuiltValueField(wireName: r'id')
-  String? get id;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class ItemModifierList {
+  /// Returns a new [ItemModifierList] instance.
+  ItemModifierList({
 
-  @BuiltValueField(wireName: r'item')
-  Item? get item;
+     this.enabled,
 
-  @BuiltValueField(wireName: r'maxSelectedModifiers')
-  num? get maxSelectedModifiers;
+     this.id,
 
-  @BuiltValueField(wireName: r'minSelectedModifiers')
-  num? get minSelectedModifiers;
+     this.item,
 
-  @BuiltValueField(wireName: r'modifierList')
-  ModifierList? get modifierList;
+     this.maxSelectedModifiers,
 
-  ItemModifierList._();
+     this.minSelectedModifiers,
 
-  factory ItemModifierList([void updates(ItemModifierListBuilder b)]) = _$ItemModifierList;
+     this.modifierList,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(ItemModifierListBuilder b) => b;
+  @JsonKey(
+    
+    name: r'enabled',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<ItemModifierList> get serializer => _$ItemModifierListSerializer();
-}
 
-class _$ItemModifierListSerializer implements PrimitiveSerializer<ItemModifierList> {
-  @override
-  final Iterable<Type> types = const [ItemModifierList, _$ItemModifierList];
+  final bool? enabled;
 
-  @override
-  final String wireName = r'ItemModifierList';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    ItemModifierList object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.enabled != null) {
-      yield r'enabled';
-      yield serializers.serialize(
-        object.enabled,
-        specifiedType: const FullType.nullable(bool),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.item != null) {
-      yield r'item';
-      yield serializers.serialize(
-        object.item,
-        specifiedType: const FullType.nullable(Item),
-      );
-    }
-    if (object.maxSelectedModifiers != null) {
-      yield r'maxSelectedModifiers';
-      yield serializers.serialize(
-        object.maxSelectedModifiers,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.minSelectedModifiers != null) {
-      yield r'minSelectedModifiers';
-      yield serializers.serialize(
-        object.minSelectedModifiers,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.modifierList != null) {
-      yield r'modifierList';
-      yield serializers.serialize(
-        object.modifierList,
-        specifiedType: const FullType.nullable(ModifierList),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    ItemModifierList object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required ItemModifierListBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'enabled':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(bool),
-          ) as bool?;
-          if (valueDes == null) continue;
-          result.enabled = valueDes;
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.id = valueDes;
-          break;
-        case r'item':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(Item),
-          ) as Item?;
-          if (valueDes == null) continue;
-          result.item.replace(valueDes);
-          break;
-        case r'maxSelectedModifiers':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.maxSelectedModifiers = valueDes;
-          break;
-        case r'minSelectedModifiers':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.minSelectedModifiers = valueDes;
-          break;
-        case r'modifierList':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(ModifierList),
-          ) as ModifierList?;
-          if (valueDes == null) continue;
-          result.modifierList.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? id;
+
+
+
+  @JsonKey(
+    
+    name: r'item',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final Item? item;
+
+
+
+  @JsonKey(
+    
+    name: r'maxSelectedModifiers',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? maxSelectedModifiers;
+
+
+
+  @JsonKey(
+    
+    name: r'minSelectedModifiers',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? minSelectedModifiers;
+
+
+
+  @JsonKey(
+    
+    name: r'modifierList',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final ModifierList? modifierList;
+
+
 
   @override
-  ItemModifierList deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = ItemModifierListBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is ItemModifierList &&
+     other.enabled == enabled &&
+     other.id == id &&
+     other.item == item &&
+     other.maxSelectedModifiers == maxSelectedModifiers &&
+     other.minSelectedModifiers == minSelectedModifiers &&
+     other.modifierList == modifierList;
+
+  @override
+  int get hashCode =>
+    (enabled == null ? 0 : enabled.hashCode) +
+    (id == null ? 0 : id.hashCode) +
+    (item == null ? 0 : item.hashCode) +
+    (maxSelectedModifiers == null ? 0 : maxSelectedModifiers.hashCode) +
+    (minSelectedModifiers == null ? 0 : minSelectedModifiers.hashCode) +
+    (modifierList == null ? 0 : modifierList.hashCode);
+
+  factory ItemModifierList.fromJson(Map<String, dynamic> json) => _$ItemModifierListFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ItemModifierListToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

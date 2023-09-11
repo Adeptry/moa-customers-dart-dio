@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for BusinessHoursPeriod
 void main() {
-  final instance = BusinessHoursPeriodBuilder();
-  // TODO add properties to the builder and call build()
+  final BusinessHoursPeriod? instance = /* BusinessHoursPeriod(...) */ null;
+  // TODO add properties to the entity
 
   group(BusinessHoursPeriod, () {
     // Indicates the specific day  of the week.

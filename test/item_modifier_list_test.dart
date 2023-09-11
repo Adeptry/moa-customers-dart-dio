@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for ItemModifierList
 void main() {
-  final instance = ItemModifierListBuilder();
-  // TODO add properties to the builder and call build()
+  final ItemModifierList? instance = /* ItemModifierList(...) */ null;
+  // TODO add properties to the entity
 
   group(ItemModifierList, () {
     // bool enabled

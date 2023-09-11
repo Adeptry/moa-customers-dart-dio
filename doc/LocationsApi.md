@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateLocations**
-> BuiltList<Location> updateLocations(locationUpdateAllDto)
+> List<Location> updateLocations(locationUpdateAllDto)
 
 Update Locations
 
@@ -226,7 +226,7 @@ import 'package:moa_customers/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomers().getLocationsApi();
-final BuiltList<LocationUpdateAllDto> locationUpdateAllDto = ; // BuiltList<LocationUpdateAllDto> | 
+final List<LocationUpdateAllDto> locationUpdateAllDto = ; // List<LocationUpdateAllDto> | 
 
 try {
     final response = api.updateLocations(locationUpdateAllDto);
@@ -240,11 +240,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locationUpdateAllDto** | [**BuiltList&lt;LocationUpdateAllDto&gt;**](LocationUpdateAllDto.md)|  | 
+ **locationUpdateAllDto** | [**List&lt;LocationUpdateAllDto&gt;**](LocationUpdateAllDto.md)|  | 
 
 ### Return type
 
-[**BuiltList&lt;Location&gt;**](Location.md)
+[**List&lt;Location&gt;**](Location.md)
 
 ### Authorization
 

@@ -3,167 +3,103 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'square_error.g.dart';
 
-/// SquareError
-///
-/// Properties:
-/// * [category] - Indicates the specific error that occurred during a request to a Square API.
-/// * [code] 
-/// * [detail] - A human-readable description of the error for debugging purposes.
-/// * [field] - The name of the field provided in the original request (if any) that the error pertains to.
-@BuiltValue()
-abstract class SquareError implements Built<SquareError, SquareErrorBuilder> {
-  /// Indicates the specific error that occurred during a request to a Square API.
-  @BuiltValueField(wireName: r'category')
-  String? get category;
 
-  @BuiltValueField(wireName: r'code')
-  String? get code;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class SquareError {
+  /// Returns a new [SquareError] instance.
+  SquareError({
 
-  /// A human-readable description of the error for debugging purposes.
-  @BuiltValueField(wireName: r'detail')
-  String? get detail;
+     this.category,
 
-  /// The name of the field provided in the original request (if any) that the error pertains to.
-  @BuiltValueField(wireName: r'field')
-  String? get field;
+     this.code,
 
-  SquareError._();
+     this.detail,
 
-  factory SquareError([void updates(SquareErrorBuilder b)]) = _$SquareError;
+     this.field,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SquareErrorBuilder b) => b;
+      /// Indicates the specific error that occurred during a request to a Square API.
+  @JsonKey(
+    
+    name: r'category',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<SquareError> get serializer => _$SquareErrorSerializer();
-}
 
-class _$SquareErrorSerializer implements PrimitiveSerializer<SquareError> {
-  @override
-  final Iterable<Type> types = const [SquareError, _$SquareError];
+  final String? category;
 
-  @override
-  final String wireName = r'SquareError';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    SquareError object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.category != null) {
-      yield r'category';
-      yield serializers.serialize(
-        object.category,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.code != null) {
-      yield r'code';
-      yield serializers.serialize(
-        object.code,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.detail != null) {
-      yield r'detail';
-      yield serializers.serialize(
-        object.detail,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.field != null) {
-      yield r'field';
-      yield serializers.serialize(
-        object.field,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'code',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? code;
+
+
+
+      /// A human-readable description of the error for debugging purposes.
+  @JsonKey(
+    
+    name: r'detail',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? detail;
+
+
+
+      /// The name of the field provided in the original request (if any) that the error pertains to.
+  @JsonKey(
+    
+    name: r'field',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? field;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    SquareError object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required SquareErrorBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'category':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.category = valueDes;
-          break;
-        case r'code':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.code = valueDes;
-          break;
-        case r'detail':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.detail = valueDes;
-          break;
-        case r'field':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.field = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is SquareError &&
+     other.category == category &&
+     other.code == code &&
+     other.detail == detail &&
+     other.field == field;
 
   @override
-  SquareError deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = SquareErrorBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    (category == null ? 0 : category.hashCode) +
+    (code == null ? 0 : code.hashCode) +
+    (detail == null ? 0 : detail.hashCode) +
+    (field == null ? 0 : field.hashCode);
+
+  factory SquareError.fromJson(Map<String, dynamic> json) => _$SquareErrorFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SquareErrorToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

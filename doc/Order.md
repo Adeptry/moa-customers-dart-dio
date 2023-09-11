@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **currency** | **String** |  | [optional] 
 **customer** | [**Customer**](Customer.md) |  | [optional] 
 **id** | **String** |  | [optional] 
-**lineItems** | [**BuiltList&lt;LineItem&gt;**](LineItem.md) |  | [optional] 
+**lineItems** | [**List&lt;LineItem&gt;**](LineItem.md) |  | [optional] 
 **location** | [**Location**](Location.md) |  | [optional] 
 **totalMoneyAmount** | **num** |  | [optional] 
 **totalMoneyDiscountAmount** | **num** |  | [optional] 

@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for AuthEmailLoginDto
 void main() {
-  final instance = AuthEmailLoginDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final AuthEmailLoginDto? instance = /* AuthEmailLoginDto(...) */ null;
+  // TODO add properties to the entity
 
   group(AuthEmailLoginDto, () {
     // String email

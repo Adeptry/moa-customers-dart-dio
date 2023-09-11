@@ -3,301 +3,215 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:moa_customers/src/model/line_item.dart';
 import 'package:moa_customers/src/model/location.dart';
 import 'package:moa_customers/src/model/customer.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'order.g.dart';
 
-/// Order
-///
-/// Properties:
-/// * [closedAt] 
-/// * [currency] 
-/// * [customer] 
-/// * [id] 
-/// * [lineItems] 
-/// * [location] 
-/// * [totalMoneyAmount] 
-/// * [totalMoneyDiscountAmount] 
-/// * [totalMoneyServiceChargeAmount] 
-/// * [totalMoneyTaxAmount] 
-/// * [totalMoneyTipAmount] 
-@BuiltValue()
-abstract class Order implements Built<Order, OrderBuilder> {
-  @BuiltValueField(wireName: r'closedAt')
-  DateTime? get closedAt;
 
-  @BuiltValueField(wireName: r'currency')
-  String? get currency;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class Order {
+  /// Returns a new [Order] instance.
+  Order({
 
-  @BuiltValueField(wireName: r'customer')
-  Customer? get customer;
+     this.closedAt,
 
-  @BuiltValueField(wireName: r'id')
-  String? get id;
+     this.currency,
 
-  @BuiltValueField(wireName: r'lineItems')
-  BuiltList<LineItem>? get lineItems;
+     this.customer,
 
-  @BuiltValueField(wireName: r'location')
-  Location? get location;
+     this.id,
 
-  @BuiltValueField(wireName: r'totalMoneyAmount')
-  num? get totalMoneyAmount;
+     this.lineItems,
 
-  @BuiltValueField(wireName: r'totalMoneyDiscountAmount')
-  num? get totalMoneyDiscountAmount;
+     this.location,
 
-  @BuiltValueField(wireName: r'totalMoneyServiceChargeAmount')
-  num? get totalMoneyServiceChargeAmount;
+     this.totalMoneyAmount,
 
-  @BuiltValueField(wireName: r'totalMoneyTaxAmount')
-  num? get totalMoneyTaxAmount;
+     this.totalMoneyDiscountAmount,
 
-  @BuiltValueField(wireName: r'totalMoneyTipAmount')
-  num? get totalMoneyTipAmount;
+     this.totalMoneyServiceChargeAmount,
 
-  Order._();
+     this.totalMoneyTaxAmount,
 
-  factory Order([void updates(OrderBuilder b)]) = _$Order;
+     this.totalMoneyTipAmount,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(OrderBuilder b) => b;
+  @JsonKey(
+    
+    name: r'closedAt',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<Order> get serializer => _$OrderSerializer();
-}
 
-class _$OrderSerializer implements PrimitiveSerializer<Order> {
-  @override
-  final Iterable<Type> types = const [Order, _$Order];
+  final DateTime? closedAt;
 
-  @override
-  final String wireName = r'Order';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    Order object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.closedAt != null) {
-      yield r'closedAt';
-      yield serializers.serialize(
-        object.closedAt,
-        specifiedType: const FullType.nullable(DateTime),
-      );
-    }
-    if (object.currency != null) {
-      yield r'currency';
-      yield serializers.serialize(
-        object.currency,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.customer != null) {
-      yield r'customer';
-      yield serializers.serialize(
-        object.customer,
-        specifiedType: const FullType.nullable(Customer),
-      );
-    }
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.lineItems != null) {
-      yield r'lineItems';
-      yield serializers.serialize(
-        object.lineItems,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(LineItem)]),
-      );
-    }
-    if (object.location != null) {
-      yield r'location';
-      yield serializers.serialize(
-        object.location,
-        specifiedType: const FullType.nullable(Location),
-      );
-    }
-    if (object.totalMoneyAmount != null) {
-      yield r'totalMoneyAmount';
-      yield serializers.serialize(
-        object.totalMoneyAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.totalMoneyDiscountAmount != null) {
-      yield r'totalMoneyDiscountAmount';
-      yield serializers.serialize(
-        object.totalMoneyDiscountAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.totalMoneyServiceChargeAmount != null) {
-      yield r'totalMoneyServiceChargeAmount';
-      yield serializers.serialize(
-        object.totalMoneyServiceChargeAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.totalMoneyTaxAmount != null) {
-      yield r'totalMoneyTaxAmount';
-      yield serializers.serialize(
-        object.totalMoneyTaxAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-    if (object.totalMoneyTipAmount != null) {
-      yield r'totalMoneyTipAmount';
-      yield serializers.serialize(
-        object.totalMoneyTipAmount,
-        specifiedType: const FullType.nullable(num),
-      );
-    }
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    Order object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'currency',
+    required: false,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required OrderBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'closedAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(DateTime),
-          ) as DateTime?;
-          if (valueDes == null) continue;
-          result.closedAt = valueDes;
-          break;
-        case r'currency':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.currency = valueDes;
-          break;
-        case r'customer':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(Customer),
-          ) as Customer?;
-          if (valueDes == null) continue;
-          result.customer.replace(valueDes);
-          break;
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.id = valueDes;
-          break;
-        case r'lineItems':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(LineItem)]),
-          ) as BuiltList<LineItem>?;
-          if (valueDes == null) continue;
-          result.lineItems.replace(valueDes);
-          break;
-        case r'location':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(Location),
-          ) as Location?;
-          if (valueDes == null) continue;
-          result.location.replace(valueDes);
-          break;
-        case r'totalMoneyAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.totalMoneyAmount = valueDes;
-          break;
-        case r'totalMoneyDiscountAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.totalMoneyDiscountAmount = valueDes;
-          break;
-        case r'totalMoneyServiceChargeAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.totalMoneyServiceChargeAmount = valueDes;
-          break;
-        case r'totalMoneyTaxAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.totalMoneyTaxAmount = valueDes;
-          break;
-        case r'totalMoneyTipAmount':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(num),
-          ) as num?;
-          if (valueDes == null) continue;
-          result.totalMoneyTipAmount = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final String? currency;
+
+
+
+  @JsonKey(
+    
+    name: r'customer',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final Customer? customer;
+
+
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? id;
+
+
+
+  @JsonKey(
+    
+    name: r'lineItems',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<LineItem>? lineItems;
+
+
+
+  @JsonKey(
+    
+    name: r'location',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final Location? location;
+
+
+
+  @JsonKey(
+    
+    name: r'totalMoneyAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? totalMoneyAmount;
+
+
+
+  @JsonKey(
+    
+    name: r'totalMoneyDiscountAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? totalMoneyDiscountAmount;
+
+
+
+  @JsonKey(
+    
+    name: r'totalMoneyServiceChargeAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? totalMoneyServiceChargeAmount;
+
+
+
+  @JsonKey(
+    
+    name: r'totalMoneyTaxAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? totalMoneyTaxAmount;
+
+
+
+  @JsonKey(
+    
+    name: r'totalMoneyTipAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? totalMoneyTipAmount;
+
+
 
   @override
-  Order deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = OrderBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is Order &&
+     other.closedAt == closedAt &&
+     other.currency == currency &&
+     other.customer == customer &&
+     other.id == id &&
+     other.lineItems == lineItems &&
+     other.location == location &&
+     other.totalMoneyAmount == totalMoneyAmount &&
+     other.totalMoneyDiscountAmount == totalMoneyDiscountAmount &&
+     other.totalMoneyServiceChargeAmount == totalMoneyServiceChargeAmount &&
+     other.totalMoneyTaxAmount == totalMoneyTaxAmount &&
+     other.totalMoneyTipAmount == totalMoneyTipAmount;
+
+  @override
+  int get hashCode =>
+    (closedAt == null ? 0 : closedAt.hashCode) +
+    (currency == null ? 0 : currency.hashCode) +
+    (customer == null ? 0 : customer.hashCode) +
+    (id == null ? 0 : id.hashCode) +
+    (lineItems == null ? 0 : lineItems.hashCode) +
+    (location == null ? 0 : location.hashCode) +
+    (totalMoneyAmount == null ? 0 : totalMoneyAmount.hashCode) +
+    (totalMoneyDiscountAmount == null ? 0 : totalMoneyDiscountAmount.hashCode) +
+    (totalMoneyServiceChargeAmount == null ? 0 : totalMoneyServiceChargeAmount.hashCode) +
+    (totalMoneyTaxAmount == null ? 0 : totalMoneyTaxAmount.hashCode) +
+    (totalMoneyTipAmount == null ? 0 : totalMoneyTipAmount.hashCode);
+
+  factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrderToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

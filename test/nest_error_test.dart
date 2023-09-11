@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for NestError
 void main() {
-  final instance = NestErrorBuilder();
-  // TODO add properties to the builder and call build()
+  final NestError? instance = /* NestError(...) */ null;
+  // TODO add properties to the entity
 
   group(NestError, () {
     // String error

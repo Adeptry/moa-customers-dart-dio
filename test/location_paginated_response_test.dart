@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for LocationPaginatedResponse
 void main() {
-  final instance = LocationPaginatedResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final LocationPaginatedResponse? instance = /* LocationPaginatedResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(LocationPaginatedResponse, () {
     // num count
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<Location> data
+    // List<Location> data
     test('to test the property `data`', () async {
       // TODO
     });

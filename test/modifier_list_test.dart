@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for ModifierList
 void main() {
-  final instance = ModifierListBuilder();
-  // TODO add properties to the builder and call build()
+  final ModifierList? instance = /* ModifierList(...) */ null;
+  // TODO add properties to the entity
 
   group(ModifierList, () {
     // String id
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<Modifier> modifiers
+    // List<Modifier> modifiers
     test('to test the property `modifiers`', () async {
       // TODO
     });

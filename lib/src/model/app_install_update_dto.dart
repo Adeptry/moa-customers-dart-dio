@@ -3,124 +3,54 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'app_install_update_dto.g.dart';
 
-/// AppInstallUpdateDto
-///
-/// Properties:
-/// * [firebaseCloudMessagingToken] 
-/// * [firebaseInstallationId] 
-@BuiltValue()
-abstract class AppInstallUpdateDto implements Built<AppInstallUpdateDto, AppInstallUpdateDtoBuilder> {
-  @BuiltValueField(wireName: r'firebaseCloudMessagingToken')
-  String? get firebaseCloudMessagingToken;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class AppInstallUpdateDto {
+  /// Returns a new [AppInstallUpdateDto] instance.
+  AppInstallUpdateDto({
+    this.firebaseCloudMessagingToken,
+    required this.firebaseInstallationId,
+  });
 
-  @BuiltValueField(wireName: r'firebaseInstallationId')
-  String? get firebaseInstallationId;
+  @JsonKey(
+      name: r'firebaseCloudMessagingToken',
+      required: false,
+      includeIfNull: false)
+  final String? firebaseCloudMessagingToken;
 
-  AppInstallUpdateDto._();
-
-  factory AppInstallUpdateDto([void updates(AppInstallUpdateDtoBuilder b)]) = _$AppInstallUpdateDto;
-
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AppInstallUpdateDtoBuilder b) => b;
-
-  @BuiltValueSerializer(custom: true)
-  static Serializer<AppInstallUpdateDto> get serializer => _$AppInstallUpdateDtoSerializer();
-}
-
-class _$AppInstallUpdateDtoSerializer implements PrimitiveSerializer<AppInstallUpdateDto> {
-  @override
-  final Iterable<Type> types = const [AppInstallUpdateDto, _$AppInstallUpdateDto];
+  @JsonKey(
+      name: r'firebaseInstallationId', required: true, includeIfNull: false)
+  final String? firebaseInstallationId;
 
   @override
-  final String wireName = r'AppInstallUpdateDto';
-
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AppInstallUpdateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.firebaseCloudMessagingToken != null) {
-      yield r'firebaseCloudMessagingToken';
-      yield serializers.serialize(
-        object.firebaseCloudMessagingToken,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    yield r'firebaseInstallationId';
-    yield object.firebaseInstallationId == null ? null : serializers.serialize(
-      object.firebaseInstallationId,
-      specifiedType: const FullType.nullable(String),
-    );
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AppInstallUpdateDto &&
+          other.firebaseCloudMessagingToken == firebaseCloudMessagingToken &&
+          other.firebaseInstallationId == firebaseInstallationId;
 
   @override
-  Object serialize(
-    Serializers serializers,
-    AppInstallUpdateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  int get hashCode =>
+      (firebaseCloudMessagingToken == null
+          ? 0
+          : firebaseCloudMessagingToken.hashCode) +
+      (firebaseInstallationId == null ? 0 : firebaseInstallationId.hashCode);
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AppInstallUpdateDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'firebaseCloudMessagingToken':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.firebaseCloudMessagingToken = valueDes;
-          break;
-        case r'firebaseInstallationId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.firebaseInstallationId = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  factory AppInstallUpdateDto.fromJson(Map<String, dynamic> json) =>
+      _$AppInstallUpdateDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AppInstallUpdateDtoToJson(this);
 
   @override
-  AppInstallUpdateDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = AppInstallUpdateDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  String toString() {
+    return toJson().toString();
   }
 }
-

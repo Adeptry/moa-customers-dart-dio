@@ -3,153 +3,101 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'payment_create_dto.g.dart';
 
-/// PaymentCreateDto
-///
-/// Properties:
-/// * [idempotencyKey] 
-/// * [orderTipMoney] 
-/// * [paymentSquareId] 
-/// * [pickupAt] - The timestamp that represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
-@BuiltValue()
-abstract class PaymentCreateDto implements Built<PaymentCreateDto, PaymentCreateDtoBuilder> {
-  @BuiltValueField(wireName: r'idempotencyKey')
-  String get idempotencyKey;
 
-  @BuiltValueField(wireName: r'orderTipMoney')
-  num get orderTipMoney;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class PaymentCreateDto {
+  /// Returns a new [PaymentCreateDto] instance.
+  PaymentCreateDto({
 
-  @BuiltValueField(wireName: r'paymentSquareId')
-  String get paymentSquareId;
+    required  this.idempotencyKey,
 
-  /// The timestamp that represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
-  @BuiltValueField(wireName: r'pickupAt')
-  String get pickupAt;
+    required  this.orderTipMoney,
 
-  PaymentCreateDto._();
+    required  this.paymentSquareId,
 
-  factory PaymentCreateDto([void updates(PaymentCreateDtoBuilder b)]) = _$PaymentCreateDto;
+    required  this.pickupAt,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(PaymentCreateDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'idempotencyKey',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<PaymentCreateDto> get serializer => _$PaymentCreateDtoSerializer();
-}
 
-class _$PaymentCreateDtoSerializer implements PrimitiveSerializer<PaymentCreateDto> {
-  @override
-  final Iterable<Type> types = const [PaymentCreateDto, _$PaymentCreateDto];
+  final String idempotencyKey;
 
-  @override
-  final String wireName = r'PaymentCreateDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    PaymentCreateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'idempotencyKey';
-    yield serializers.serialize(
-      object.idempotencyKey,
-      specifiedType: const FullType(String),
-    );
-    yield r'orderTipMoney';
-    yield serializers.serialize(
-      object.orderTipMoney,
-      specifiedType: const FullType(num),
-    );
-    yield r'paymentSquareId';
-    yield serializers.serialize(
-      object.paymentSquareId,
-      specifiedType: const FullType(String),
-    );
-    yield r'pickupAt';
-    yield serializers.serialize(
-      object.pickupAt,
-      specifiedType: const FullType(String),
-    );
-  }
 
-  @override
-  Object serialize(
-    Serializers serializers,
-    PaymentCreateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
+  @JsonKey(
+    
+    name: r'orderTipMoney',
+    required: true,
+    includeIfNull: false
+  )
 
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required PaymentCreateDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'idempotencyKey':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.idempotencyKey = valueDes;
-          break;
-        case r'orderTipMoney':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.orderTipMoney = valueDes;
-          break;
-        case r'paymentSquareId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.paymentSquareId = valueDes;
-          break;
-        case r'pickupAt':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.pickupAt = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+
+  final num orderTipMoney;
+
+
+
+  @JsonKey(
+    
+    name: r'paymentSquareId',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String paymentSquareId;
+
+
+
+      /// The timestamp that represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
+  @JsonKey(
+    
+    name: r'pickupAt',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String pickupAt;
+
+
 
   @override
-  PaymentCreateDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = PaymentCreateDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  bool operator ==(Object other) => identical(this, other) || other is PaymentCreateDto &&
+     other.idempotencyKey == idempotencyKey &&
+     other.orderTipMoney == orderTipMoney &&
+     other.paymentSquareId == paymentSquareId &&
+     other.pickupAt == pickupAt;
+
+  @override
+  int get hashCode =>
+    idempotencyKey.hashCode +
+    orderTipMoney.hashCode +
+    paymentSquareId.hashCode +
+    pickupAt.hashCode;
+
+  factory PaymentCreateDto.fromJson(Map<String, dynamic> json) => _$PaymentCreateDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PaymentCreateDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

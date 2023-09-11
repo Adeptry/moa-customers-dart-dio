@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for PaymentCreateDto
 void main() {
-  final instance = PaymentCreateDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final PaymentCreateDto? instance = /* PaymentCreateDto(...) */ null;
+  // TODO add properties to the entity
 
   group(PaymentCreateDto, () {
     // String idempotencyKey

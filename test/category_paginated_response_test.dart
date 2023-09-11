@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for CategoryPaginatedResponse
 void main() {
-  final instance = CategoryPaginatedResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final CategoryPaginatedResponse? instance = /* CategoryPaginatedResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(CategoryPaginatedResponse, () {
     // num count
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<Category> data
+    // List<Category> data
     test('to test the property `data`', () async {
       // TODO
     });

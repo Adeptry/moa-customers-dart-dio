@@ -3,147 +3,85 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_collection/built_collection.dart';
 import 'package:moa_customers/src/model/variation_add_dto.dart';
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'order_create_dto.g.dart';
 
-/// OrderCreateDto
-///
-/// Properties:
-/// * [idempotencyKey] 
-/// * [locationId] 
-/// * [variations] 
-@BuiltValue()
-abstract class OrderCreateDto implements Built<OrderCreateDto, OrderCreateDtoBuilder> {
-  @BuiltValueField(wireName: r'idempotencyKey')
-  String? get idempotencyKey;
 
-  @BuiltValueField(wireName: r'locationId')
-  String? get locationId;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class OrderCreateDto {
+  /// Returns a new [OrderCreateDto] instance.
+  OrderCreateDto({
 
-  @BuiltValueField(wireName: r'variations')
-  BuiltList<VariationAddDto>? get variations;
+     this.idempotencyKey,
 
-  OrderCreateDto._();
+     this.locationId,
 
-  factory OrderCreateDto([void updates(OrderCreateDtoBuilder b)]) = _$OrderCreateDto;
+     this.variations,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(OrderCreateDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'idempotencyKey',
+    required: false,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<OrderCreateDto> get serializer => _$OrderCreateDtoSerializer();
-}
 
-class _$OrderCreateDtoSerializer implements PrimitiveSerializer<OrderCreateDto> {
-  @override
-  final Iterable<Type> types = const [OrderCreateDto, _$OrderCreateDto];
+  final String? idempotencyKey;
 
-  @override
-  final String wireName = r'OrderCreateDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    OrderCreateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    if (object.idempotencyKey != null) {
-      yield r'idempotencyKey';
-      yield serializers.serialize(
-        object.idempotencyKey,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.locationId != null) {
-      yield r'locationId';
-      yield serializers.serialize(
-        object.locationId,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.variations != null) {
-      yield r'variations';
-      yield serializers.serialize(
-        object.variations,
-        specifiedType: const FullType.nullable(BuiltList, [FullType(VariationAddDto)]),
-      );
-    }
-  }
+
+  @JsonKey(
+    
+    name: r'locationId',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? locationId;
+
+
+
+  @JsonKey(
+    
+    name: r'variations',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<VariationAddDto>? variations;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    OrderCreateDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required OrderCreateDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'idempotencyKey':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.idempotencyKey = valueDes;
-          break;
-        case r'locationId':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.locationId = valueDes;
-          break;
-        case r'variations':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType.nullable(BuiltList, [FullType(VariationAddDto)]),
-          ) as BuiltList<VariationAddDto>?;
-          if (valueDes == null) continue;
-          result.variations.replace(valueDes);
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is OrderCreateDto &&
+     other.idempotencyKey == idempotencyKey &&
+     other.locationId == locationId &&
+     other.variations == variations;
 
   @override
-  OrderCreateDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = OrderCreateDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    (idempotencyKey == null ? 0 : idempotencyKey.hashCode) +
+    (locationId == null ? 0 : locationId.hashCode) +
+    (variations == null ? 0 : variations.hashCode);
+
+  factory OrderCreateDto.fromJson(Map<String, dynamic> json) => _$OrderCreateDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$OrderCreateDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

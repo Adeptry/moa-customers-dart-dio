@@ -4,10 +4,11 @@
 
 import 'dart:async';
 
-import 'package:built_value/serializer.dart';
+// ignore: unused_import
+import 'dart:convert';
+import 'package:moa_customers/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers/src/api_util.dart';
 import 'package:moa_customers/src/model/app_install_update_dto.dart';
 import 'package:moa_customers/src/model/customer.dart';
 import 'package:moa_customers/src/model/customers_paginated_response.dart';
@@ -17,9 +18,7 @@ class CustomersApi {
 
   final Dio _dio;
 
-  final Serializers _serializers;
-
-  const CustomersApi(this._dio, this._serializers);
+  const CustomersApi(this._dio);
 
   /// Create Customer for current User
   /// 
@@ -69,7 +68,7 @@ class CustomersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -84,12 +83,8 @@ class CustomersApi {
     Customer? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Customer),
-      ) as Customer;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData, 'Customer', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -160,7 +155,7 @@ class CustomersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     final _response = await _dio.request<Object>(
@@ -175,12 +170,8 @@ class CustomersApi {
     Customer? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(Customer),
-      ) as Customer;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData, 'Customer', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -253,8 +244,8 @@ class CustomersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(num)),
-      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(num)),
+      if (page != null) r'page': page,
+      if (limit != null) r'limit': limit,
     };
 
     final _response = await _dio.request<Object>(
@@ -269,12 +260,8 @@ class CustomersApi {
     CustomersPaginatedResponse? _responseData;
 
     try {
-      final rawResponse = _response.data;
-      _responseData = rawResponse == null ? null : _serializers.deserialize(
-        rawResponse,
-        specifiedType: const FullType(CustomersPaginatedResponse),
-      ) as CustomersPaginatedResponse;
-
+final rawData = _response.data;
+_responseData = rawData == null ? null : deserialize<CustomersPaginatedResponse, CustomersPaginatedResponse>(rawData, 'CustomersPaginatedResponse', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -348,15 +335,13 @@ class CustomersApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': encodeQueryParameter(_serializers, merchantId, const FullType(String)),
+      r'merchantId': merchantId,
     };
 
     dynamic _bodyData;
 
     try {
-      const _type = FullType(AppInstallUpdateDto);
-      _bodyData = _serializers.serialize(appInstallUpdateDto, specifiedType: _type);
-
+_bodyData=jsonEncode(appInstallUpdateDto);
     } catch(error, stackTrace) {
       throw DioException(
          requestOptions: _options.compose(

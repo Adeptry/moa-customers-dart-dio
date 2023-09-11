@@ -3,104 +3,52 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'auth_forgot_password_dto.g.dart';
 
-/// AuthForgotPasswordDto
-///
-/// Properties:
-/// * [email] 
-@BuiltValue()
-abstract class AuthForgotPasswordDto implements Built<AuthForgotPasswordDto, AuthForgotPasswordDtoBuilder> {
-  @BuiltValueField(wireName: r'email')
-  String get email;
 
-  AuthForgotPasswordDto._();
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class AuthForgotPasswordDto {
+  /// Returns a new [AuthForgotPasswordDto] instance.
+  AuthForgotPasswordDto({
 
-  factory AuthForgotPasswordDto([void updates(AuthForgotPasswordDtoBuilder b)]) = _$AuthForgotPasswordDto;
+    required  this.email,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(AuthForgotPasswordDtoBuilder b) => b;
+  @JsonKey(
+    
+    name: r'email',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<AuthForgotPasswordDto> get serializer => _$AuthForgotPasswordDtoSerializer();
-}
 
-class _$AuthForgotPasswordDtoSerializer implements PrimitiveSerializer<AuthForgotPasswordDto> {
-  @override
-  final Iterable<Type> types = const [AuthForgotPasswordDto, _$AuthForgotPasswordDto];
+  final String email;
 
-  @override
-  final String wireName = r'AuthForgotPasswordDto';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    AuthForgotPasswordDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'email';
-    yield serializers.serialize(
-      object.email,
-      specifiedType: const FullType(String),
-    );
-  }
 
   @override
-  Object serialize(
-    Serializers serializers,
-    AuthForgotPasswordDto object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required AuthForgotPasswordDtoBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'email':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.email = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is AuthForgotPasswordDto &&
+     other.email == email;
 
   @override
-  AuthForgotPasswordDto deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = AuthForgotPasswordDtoBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    email.hashCode;
+
+  factory AuthForgotPasswordDto.fromJson(Map<String, dynamic> json) => _$AuthForgotPasswordDtoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AuthForgotPasswordDtoToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

@@ -3,120 +3,68 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:built_value/built_value.dart';
-import 'package:built_value/serializer.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'file_entity.g.dart';
 
-/// FileEntity
-///
-/// Properties:
-/// * [id] 
-/// * [url] 
-@BuiltValue()
-abstract class FileEntity implements Built<FileEntity, FileEntityBuilder> {
-  @BuiltValueField(wireName: r'id')
-  String get id;
 
-  @BuiltValueField(wireName: r'url')
-  String get url;
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class FileEntity {
+  /// Returns a new [FileEntity] instance.
+  FileEntity({
 
-  FileEntity._();
+    required  this.id,
 
-  factory FileEntity([void updates(FileEntityBuilder b)]) = _$FileEntity;
+    required  this.url,
+  });
 
-  @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(FileEntityBuilder b) => b;
+  @JsonKey(
+    
+    name: r'id',
+    required: true,
+    includeIfNull: false
+  )
 
-  @BuiltValueSerializer(custom: true)
-  static Serializer<FileEntity> get serializer => _$FileEntitySerializer();
-}
 
-class _$FileEntitySerializer implements PrimitiveSerializer<FileEntity> {
-  @override
-  final Iterable<Type> types = const [FileEntity, _$FileEntity];
+  final String id;
 
-  @override
-  final String wireName = r'FileEntity';
 
-  Iterable<Object?> _serializeProperties(
-    Serializers serializers,
-    FileEntity object, {
-    FullType specifiedType = FullType.unspecified,
-  }) sync* {
-    yield r'id';
-    yield serializers.serialize(
-      object.id,
-      specifiedType: const FullType(String),
-    );
-    yield r'url';
-    yield serializers.serialize(
-      object.url,
-      specifiedType: const FullType(String),
-    );
-  }
+
+  @JsonKey(
+    
+    name: r'url',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String url;
+
+
 
   @override
-  Object serialize(
-    Serializers serializers,
-    FileEntity object, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
-  }
-
-  void _deserializeProperties(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-    required List<Object?> serializedList,
-    required FileEntityBuilder result,
-    required List<Object?> unhandled,
-  }) {
-    for (var i = 0; i < serializedList.length; i += 2) {
-      final key = serializedList[i] as String;
-      final value = serializedList[i + 1];
-      switch (key) {
-        case r'id':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.id = valueDes;
-          break;
-        case r'url':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(String),
-          ) as String;
-          result.url = valueDes;
-          break;
-        default:
-          unhandled.add(key);
-          unhandled.add(value);
-          break;
-      }
-    }
-  }
+  bool operator ==(Object other) => identical(this, other) || other is FileEntity &&
+     other.id == id &&
+     other.url == url;
 
   @override
-  FileEntity deserialize(
-    Serializers serializers,
-    Object serialized, {
-    FullType specifiedType = FullType.unspecified,
-  }) {
-    final result = FileEntityBuilder();
-    final serializedList = (serialized as Iterable<Object?>).toList();
-    final unhandled = <Object?>[];
-    _deserializeProperties(
-      serializers,
-      serialized,
-      specifiedType: specifiedType,
-      serializedList: serializedList,
-      unhandled: unhandled,
-      result: result,
-    );
-    return result.build();
+  int get hashCode =>
+    id.hashCode +
+    url.hashCode;
+
+  factory FileEntity.fromJson(Map<String, dynamic> json) => _$FileEntityFromJson(json);
+
+  Map<String, dynamic> toJson() => _$FileEntityToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
   }
+
 }
 

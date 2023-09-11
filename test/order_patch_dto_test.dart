@@ -3,8 +3,8 @@ import 'package:moa_customers/moa_customers.dart';
 
 // tests for OrderPatchDto
 void main() {
-  final instance = OrderPatchDtoBuilder();
-  // TODO add properties to the builder and call build()
+  final OrderPatchDto? instance = /* OrderPatchDto(...) */ null;
+  // TODO add properties to the entity
 
   group(OrderPatchDto, () {
     // String locationId
