@@ -7,7 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'auth_apple_login_dto.g.dart';
 
-
 @JsonSerializable(
   checked: true,
   createToJson: true,
@@ -17,79 +16,42 @@ part 'auth_apple_login_dto.g.dart';
 class AuthAppleLoginDto {
   /// Returns a new [AuthAppleLoginDto] instance.
   AuthAppleLoginDto({
-
-    required  this.idToken,
-
-     this.firstName,
-
-     this.lastName,
-
-    required  this.role,
+    required this.idToken,
+    this.firstName,
+    this.lastName,
+    required this.role,
   });
 
-  @JsonKey(
-    
-    name: r'idToken',
-    required: true,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'idToken', required: true, includeIfNull: false)
   final String idToken;
 
-
-
-  @JsonKey(
-    
-    name: r'firstName',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'firstName', required: false, includeIfNull: false)
   final String? firstName;
 
-
-
-  @JsonKey(
-    
-    name: r'lastName',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'lastName', required: false, includeIfNull: false)
   final String? lastName;
 
-
-
-  @JsonKey(
-    
-    name: r'role',
-    required: true,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'role', required: true, includeIfNull: false)
   final AuthAppleLoginDtoRoleEnum role;
 
-
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AuthAppleLoginDto &&
-     other.idToken == idToken &&
-     other.firstName == firstName &&
-     other.lastName == lastName &&
-     other.role == role;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AuthAppleLoginDto &&
+          other.idToken == idToken &&
+          other.firstName == firstName &&
+          other.lastName == lastName &&
+          other.role == role;
 
   @override
   int get hashCode =>
-    idToken.hashCode +
-    (firstName == null ? 0 : firstName.hashCode) +
-    (lastName == null ? 0 : lastName.hashCode) +
-    role.hashCode;
+      idToken.hashCode +
+      (firstName == null ? 0 : firstName.hashCode) +
+      (lastName == null ? 0 : lastName.hashCode) +
+      role.hashCode;
 
-  factory AuthAppleLoginDto.fromJson(Map<String, dynamic> json) => _$AuthAppleLoginDtoFromJson(json);
+  factory AuthAppleLoginDto.fromJson(Map<String, dynamic> json) =>
+      _$AuthAppleLoginDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthAppleLoginDtoToJson(this);
 
@@ -97,9 +59,7 @@ class AuthAppleLoginDto {
   String toString() {
     return toJson().toString();
   }
-
 }
-
 
 enum AuthAppleLoginDtoRoleEnum {
   @JsonValue(r'admin')
@@ -109,5 +69,3 @@ enum AuthAppleLoginDtoRoleEnum {
   @JsonValue(r'unknown_default_open_api')
   unknownDefaultOpenApi,
 }
-
-

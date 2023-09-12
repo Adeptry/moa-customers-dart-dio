@@ -7,7 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';
 
-
 @JsonSerializable(
   checked: true,
   createToJson: true,
@@ -17,109 +16,51 @@ part 'user.g.dart';
 class User {
   /// Returns a new [User] instance.
   User({
-
-    required  this.id,
-
-     this.email,
-
-     this.provider,
-
-     this.socialId,
-
-     this.firstName,
-
-     this.lastName,
+    required this.id,
+    this.email,
+    this.provider,
+    this.socialId,
+    this.firstName,
+    this.lastName,
   });
 
-  @JsonKey(
-    
-    name: r'id',
-    required: true,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'id', required: true, includeIfNull: false)
   final String id;
 
-
-
-  @JsonKey(
-    
-    name: r'email',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'email', required: false, includeIfNull: false)
   final String? email;
 
-
-
-  @JsonKey(
-    
-    name: r'provider',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'provider', required: false, includeIfNull: false)
   final UserProviderEnum? provider;
 
-
-
-  @JsonKey(
-    
-    name: r'socialId',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'socialId', required: false, includeIfNull: false)
   final String? socialId;
 
-
-
-  @JsonKey(
-    
-    name: r'firstName',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'firstName', required: false, includeIfNull: false)
   final String? firstName;
 
-
-
-  @JsonKey(
-    
-    name: r'lastName',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'lastName', required: false, includeIfNull: false)
   final String? lastName;
 
-
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is User &&
-     other.id == id &&
-     other.email == email &&
-     other.provider == provider &&
-     other.socialId == socialId &&
-     other.firstName == firstName &&
-     other.lastName == lastName;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is User &&
+          other.id == id &&
+          other.email == email &&
+          other.provider == provider &&
+          other.socialId == socialId &&
+          other.firstName == firstName &&
+          other.lastName == lastName;
 
   @override
   int get hashCode =>
-    id.hashCode +
-    (email == null ? 0 : email.hashCode) +
-    (provider == null ? 0 : provider.hashCode) +
-    (socialId == null ? 0 : socialId.hashCode) +
-    (firstName == null ? 0 : firstName.hashCode) +
-    (lastName == null ? 0 : lastName.hashCode);
+      id.hashCode +
+      (email == null ? 0 : email.hashCode) +
+      (provider == null ? 0 : provider.hashCode) +
+      (socialId == null ? 0 : socialId.hashCode) +
+      (firstName == null ? 0 : firstName.hashCode) +
+      (lastName == null ? 0 : lastName.hashCode);
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
@@ -129,9 +70,7 @@ class User {
   String toString() {
     return toJson().toString();
   }
-
 }
-
 
 enum UserProviderEnum {
   @JsonValue(r'email')
@@ -147,5 +86,3 @@ enum UserProviderEnum {
   @JsonValue(r'unknown_default_open_api')
   unknownDefaultOpenApi,
 }
-
-

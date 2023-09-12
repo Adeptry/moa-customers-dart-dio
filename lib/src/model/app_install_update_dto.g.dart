@@ -11,10 +11,6 @@ AppInstallUpdateDto _$AppInstallUpdateDtoFromJson(Map<String, dynamic> json) =>
       'AppInstallUpdateDto',
       json,
       ($checkedConvert) {
-        $checkKeys(
-          json,
-          requiredKeys: const ['firebaseInstallationId'],
-        );
         final val = AppInstallUpdateDto(
           firebaseInstallationId:
               $checkedConvert('firebaseInstallationId', (v) => v as String?),

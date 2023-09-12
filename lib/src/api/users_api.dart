@@ -3,24 +3,21 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/nest_error.dart';
+import 'package:dio/dio.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:moa_customers_client/src/model/user.dart';
 import 'package:moa_customers_client/src/model/user_update_dto.dart';
 
 class UsersApi {
-
   final Dio _dio;
 
   const UsersApi(this._dio);
 
   /// Delete your User
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -32,7 +29,7 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> deleteCurrentUser({ 
+  Future<Response<User>> deleteCurrentUser({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -52,7 +49,8 @@ class UsersApi {
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -75,8 +73,10 @@ class UsersApi {
     User? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<User, User>(rawData, 'User', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -100,7 +100,7 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
   }
 
   /// Get your User
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -112,7 +112,7 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> getCurrentUser({ 
+  Future<Response<User>> getCurrentUser({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -132,7 +132,8 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -155,8 +156,10 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
     User? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<User, User>(rawData, 'User', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -180,10 +183,10 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
   }
 
   /// Update your User
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [userUpdateDto] 
+  /// * [userUpdateDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -193,7 +196,7 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> patchCurrentUser({ 
+  Future<Response<User>> patchCurrentUser({
     required UserUpdateDto userUpdateDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -214,7 +217,8 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -230,10 +234,10 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(userUpdateDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(userUpdateDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -255,8 +259,10 @@ _bodyData=jsonEncode(userUpdateDto);
     User? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<User, User>(rawData, 'User', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -278,5 +284,4 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
       extra: _response.extra,
     );
   }
-
 }

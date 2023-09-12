@@ -20,13 +20,12 @@ import 'package:moa_customers_client/src/model/login_response_type.dart';
 import 'package:moa_customers_client/src/model/user.dart';
 
 class AuthApi {
-
   final Dio _dio;
 
   const AuthApi(this._dio);
 
   /// Get current Auth
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -38,7 +37,7 @@ class AuthApi {
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> currentAuth({ 
+  Future<Response<User>> currentAuth({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -58,7 +57,8 @@ class AuthApi {
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -81,8 +81,10 @@ class AuthApi {
     User? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<User, User>(rawData, 'User', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -106,10 +108,10 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
   }
 
   /// Forgot password
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [authForgotPasswordDto] 
+  /// * [authForgotPasswordDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -119,7 +121,7 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> forgotPassword({ 
+  Future<Response<void>> forgotPassword({
     required AuthForgotPasswordDto authForgotPasswordDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -152,10 +154,10 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(authForgotPasswordDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(authForgotPasswordDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -178,10 +180,10 @@ _bodyData=jsonEncode(authForgotPasswordDto);
   }
 
   /// Get access token
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [authEmailLoginDto] 
+  /// * [authEmailLoginDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -191,7 +193,7 @@ _bodyData=jsonEncode(authForgotPasswordDto);
   ///
   /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> login({ 
+  Future<Response<LoginResponseType>> login({
     required AuthEmailLoginDto authEmailLoginDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -224,10 +226,10 @@ _bodyData=jsonEncode(authForgotPasswordDto);
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(authEmailLoginDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(authEmailLoginDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -249,8 +251,12 @@ _bodyData=jsonEncode(authEmailLoginDto);
     LoginResponseType? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<LoginResponseType, LoginResponseType>(rawData, 'LoginResponseType', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -274,10 +280,10 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   }
 
   /// Apple login
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [authAppleLoginDto] 
+  /// * [authAppleLoginDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -287,7 +293,7 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   ///
   /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> loginApple({ 
+  Future<Response<LoginResponseType>> loginApple({
     required AuthAppleLoginDto authAppleLoginDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -320,10 +326,10 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(authAppleLoginDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(authAppleLoginDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -345,8 +351,12 @@ _bodyData=jsonEncode(authAppleLoginDto);
     LoginResponseType? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<LoginResponseType, LoginResponseType>(rawData, 'LoginResponseType', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -370,10 +380,10 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   }
 
   /// Google login
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [authGoogleLoginDto] 
+  /// * [authGoogleLoginDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -383,7 +393,7 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   ///
   /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> loginGoogle({ 
+  Future<Response<LoginResponseType>> loginGoogle({
     required AuthGoogleLoginDto authGoogleLoginDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -416,10 +426,10 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(authGoogleLoginDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(authGoogleLoginDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -441,8 +451,12 @@ _bodyData=jsonEncode(authGoogleLoginDto);
     LoginResponseType? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<LoginResponseType, LoginResponseType>(rawData, 'LoginResponseType', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -466,7 +480,7 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   }
 
   /// Delete Session
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -478,7 +492,7 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> logout({ 
+  Future<Response<void>> logout({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -498,7 +512,8 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -522,7 +537,7 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   }
 
   /// Refresh token
-  /// 
+  ///
   ///
   /// Parameters:
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -534,7 +549,7 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   ///
   /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> refreshToken({ 
+  Future<Response<LoginResponseType>> refreshToken({
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -554,7 +569,8 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -577,8 +593,12 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
     LoginResponseType? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<LoginResponseType, LoginResponseType>(rawData, 'LoginResponseType', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -602,10 +622,10 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   }
 
   /// Create User and Authorize
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [authRegisterLoginDto] 
+  /// * [authRegisterLoginDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -615,7 +635,7 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   ///
   /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> register({ 
+  Future<Response<LoginResponseType>> register({
     required AuthRegisterLoginDto authRegisterLoginDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -648,10 +668,10 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(authRegisterLoginDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(authRegisterLoginDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -673,8 +693,12 @@ _bodyData=jsonEncode(authRegisterLoginDto);
     LoginResponseType? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<LoginResponseType, LoginResponseType>(rawData, 'LoginResponseType', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -698,10 +722,10 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   }
 
   /// Reset password
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [authResetPasswordDto] 
+  /// * [authResetPasswordDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -711,7 +735,7 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> resetPassword({ 
+  Future<Response<void>> resetPassword({
     required AuthResetPasswordDto authResetPasswordDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -744,10 +768,10 @@ _responseData = rawData == null ? null : deserialize<LoginResponseType, LoginRes
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(authResetPasswordDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(authResetPasswordDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -770,10 +794,10 @@ _bodyData=jsonEncode(authResetPasswordDto);
   }
 
   /// Update password
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [authUpdateDto] 
+  /// * [authUpdateDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -783,7 +807,7 @@ _bodyData=jsonEncode(authResetPasswordDto);
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> updateCurrentAuth({ 
+  Future<Response<User>> updateCurrentAuth({
     required AuthUpdateDto authUpdateDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -804,7 +828,8 @@ _bodyData=jsonEncode(authResetPasswordDto);
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -820,10 +845,10 @@ _bodyData=jsonEncode(authResetPasswordDto);
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(authUpdateDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(authUpdateDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -845,8 +870,10 @@ _bodyData=jsonEncode(authUpdateDto);
     User? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<User, User>(rawData, 'User', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -868,5 +895,4 @@ _responseData = rawData == null ? null : deserialize<User, User>(rawData, 'User'
       extra: _response.extra,
     );
   }
-
 }

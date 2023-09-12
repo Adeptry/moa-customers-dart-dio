@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**getCurrentCustomer**](CustomersApi.md#getcurrentcustomer) | **GET** /v2/customers/me | Get current Customer
 [**getCustomers**](CustomersApi.md#getcustomers) | **GET** /v2/customers | Get my Customers
 [**updateAppInstall**](CustomersApi.md#updateappinstall) | **POST** /v2/customers/me/app-install | Create or update Customer App Install
+[**updateMyCustomer**](CustomersApi.md#updatemycustomer) | **PATCH** /v2/customers/me | Update your Customer
 
 
 # **createCustomer**
@@ -61,7 +62,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCurrentCustomer**
-> Customer getCurrentCustomer(merchantId)
+> Customer getCurrentCustomer(merchantId, user, merchant, currentOrder, preferredLocation)
 
 Get current Customer
 
@@ -75,9 +76,13 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getCustomersApi();
 final String merchantId = merchantId_example; // String | 
+final bool user = true; // bool | 
+final bool merchant = true; // bool | 
+final bool currentOrder = true; // bool | 
+final bool preferredLocation = true; // bool | 
 
 try {
-    final response = api.getCurrentCustomer(merchantId);
+    final response = api.getCurrentCustomer(merchantId, user, merchant, currentOrder, preferredLocation);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CustomersApi->getCurrentCustomer: $e\n');
@@ -89,6 +94,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchantId** | **String**|  | 
+ **user** | **bool**|  | [optional] 
+ **merchant** | **bool**|  | [optional] 
+ **currentOrder** | **bool**|  | [optional] 
+ **preferredLocation** | **bool**|  | [optional] 
 
 ### Return type
 
@@ -186,6 +195,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateMyCustomer**
+> Customer updateMyCustomer(merchantId, customerUpdateDto)
+
+Update your Customer
+
+### Example
+```dart
+import 'package:moa_customers_client/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MoaCustomersClient().getCustomersApi();
+final String merchantId = merchantId_example; // String | 
+final CustomerUpdateDto customerUpdateDto = ; // CustomerUpdateDto | 
+
+try {
+    final response = api.updateMyCustomer(merchantId, customerUpdateDto);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling CustomersApi->updateMyCustomer: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchantId** | **String**|  | 
+ **customerUpdateDto** | [**CustomerUpdateDto**](CustomerUpdateDto.md)|  | 
+
+### Return type
+
+[**Customer**](Customer.md)
 
 ### Authorization
 

@@ -3,30 +3,27 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:moa_customers_client/src/model/create_card_dto.dart';
-import 'package:moa_customers_client/src/model/nest_error.dart';
 import 'package:moa_customers_client/src/model/square_card.dart';
 import 'package:moa_customers_client/src/model/square_disable_card_response.dart';
 import 'package:moa_customers_client/src/model/square_list_cards_response.dart';
 
 class CardsApi {
-
   final Dio _dio;
 
   const CardsApi(this._dio);
 
   /// Create my Square Card
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
-  /// * [createCardDto] 
+  /// * [merchantId]
+  /// * [createCardDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -36,7 +33,7 @@ class CardsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [SquareCard] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SquareCard>> createSquareCard({ 
+  Future<Response<SquareCard>> createSquareCard({
     required String merchantId,
     required CreateCardDto createCardDto,
     CancelToken? cancelToken,
@@ -58,7 +55,8 @@ class CardsApi {
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -78,10 +76,10 @@ class CardsApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(createCardDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(createCardDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -105,8 +103,11 @@ _bodyData=jsonEncode(createCardDto);
     SquareCard? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<SquareCard, SquareCard>(rawData, 'SquareCard', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<SquareCard, SquareCard>(rawData, 'SquareCard',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -130,11 +131,11 @@ _responseData = rawData == null ? null : deserialize<SquareCard, SquareCard>(raw
   }
 
   /// Disable my Square Card
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [id] 
-  /// * [merchantId] 
+  /// * [id]
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -144,7 +145,7 @@ _responseData = rawData == null ? null : deserialize<SquareCard, SquareCard>(raw
   ///
   /// Returns a [Future] containing a [Response] with a [SquareDisableCardResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SquareDisableCardResponse>> deleteSquareCard({ 
+  Future<Response<SquareDisableCardResponse>> deleteSquareCard({
     required String id,
     required String merchantId,
     CancelToken? cancelToken,
@@ -154,7 +155,8 @@ _responseData = rawData == null ? null : deserialize<SquareCard, SquareCard>(raw
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/square/cards/me/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path =
+        r'/v2/square/cards/me/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -166,7 +168,8 @@ _responseData = rawData == null ? null : deserialize<SquareCard, SquareCard>(raw
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -194,8 +197,12 @@ _responseData = rawData == null ? null : deserialize<SquareCard, SquareCard>(raw
     SquareDisableCardResponse? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<SquareDisableCardResponse, SquareDisableCardResponse>(rawData, 'SquareDisableCardResponse', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<SquareDisableCardResponse, SquareDisableCardResponse>(
+              rawData, 'SquareDisableCardResponse',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -219,11 +226,11 @@ _responseData = rawData == null ? null : deserialize<SquareDisableCardResponse, 
   }
 
   /// List my Square Cards
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
-  /// * [cursor] 
+  /// * [merchantId]
+  /// * [cursor]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -233,7 +240,7 @@ _responseData = rawData == null ? null : deserialize<SquareDisableCardResponse, 
   ///
   /// Returns a [Future] containing a [Response] with a [SquareListCardsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SquareListCardsResponse>> getSquareCards({ 
+  Future<Response<SquareListCardsResponse>> getSquareCards({
     required String merchantId,
     String? cursor,
     CancelToken? cancelToken,
@@ -255,7 +262,8 @@ _responseData = rawData == null ? null : deserialize<SquareDisableCardResponse, 
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -284,8 +292,12 @@ _responseData = rawData == null ? null : deserialize<SquareDisableCardResponse, 
     SquareListCardsResponse? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<SquareListCardsResponse, SquareListCardsResponse>(rawData, 'SquareListCardsResponse', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<SquareListCardsResponse, SquareListCardsResponse>(
+              rawData, 'SquareListCardsResponse',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -307,5 +319,4 @@ _responseData = rawData == null ? null : deserialize<SquareListCardsResponse, Sq
       extra: _response.extra,
     );
   }
-
 }

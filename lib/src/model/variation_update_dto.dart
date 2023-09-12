@@ -7,7 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'variation_update_dto.g.dart';
 
-
 @JsonSerializable(
   checked: true,
   createToJson: true,
@@ -17,31 +16,22 @@ part 'variation_update_dto.g.dart';
 class VariationUpdateDto {
   /// Returns a new [VariationUpdateDto] instance.
   VariationUpdateDto({
-
-    required  this.moaEnabled,
+    required this.moaEnabled,
   });
 
-  @JsonKey(
-    
-    name: r'moaEnabled',
-    required: true,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'moaEnabled', required: true, includeIfNull: false)
   final bool moaEnabled;
 
-
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VariationUpdateDto && other.moaEnabled == moaEnabled;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is VariationUpdateDto &&
-     other.moaEnabled == moaEnabled;
+  int get hashCode => moaEnabled.hashCode;
 
-  @override
-  int get hashCode =>
-    moaEnabled.hashCode;
-
-  factory VariationUpdateDto.fromJson(Map<String, dynamic> json) => _$VariationUpdateDtoFromJson(json);
+  factory VariationUpdateDto.fromJson(Map<String, dynamic> json) =>
+      _$VariationUpdateDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$VariationUpdateDtoToJson(this);
 
@@ -49,6 +39,4 @@ class VariationUpdateDto {
   String toString() {
     return toJson().toString();
   }
-
 }
-

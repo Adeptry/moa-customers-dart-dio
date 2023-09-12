@@ -7,7 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'order_patch_dto.g.dart';
 
-
 @JsonSerializable(
   checked: true,
   createToJson: true,
@@ -17,31 +16,22 @@ part 'order_patch_dto.g.dart';
 class OrderPatchDto {
   /// Returns a new [OrderPatchDto] instance.
   OrderPatchDto({
-
-     this.locationId,
+    this.locationId,
   });
 
-  @JsonKey(
-    
-    name: r'locationId',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'locationId', required: false, includeIfNull: false)
   final String? locationId;
 
-
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is OrderPatchDto && other.locationId == locationId;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is OrderPatchDto &&
-     other.locationId == locationId;
+  int get hashCode => (locationId == null ? 0 : locationId.hashCode);
 
-  @override
-  int get hashCode =>
-    (locationId == null ? 0 : locationId.hashCode);
-
-  factory OrderPatchDto.fromJson(Map<String, dynamic> json) => _$OrderPatchDtoFromJson(json);
+  factory OrderPatchDto.fromJson(Map<String, dynamic> json) =>
+      _$OrderPatchDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$OrderPatchDtoToJson(this);
 
@@ -49,6 +39,4 @@ class OrderPatchDto {
   String toString() {
     return toJson().toString();
   }
-
 }
-

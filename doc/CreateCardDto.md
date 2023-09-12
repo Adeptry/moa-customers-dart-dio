@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **idempotencyKey** | **String** |  | 
 **sourceId** | **String** |  | 
-**verificationToken** | **String** |  | 
-**postalCode** | **String** |  | 
+**verificationToken** | **String** |  | [optional] 
+**postalCode** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

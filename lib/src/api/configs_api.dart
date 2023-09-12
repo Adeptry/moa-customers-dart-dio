@@ -3,27 +3,24 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:moa_customers_client/src/model/app_config.dart';
 import 'package:moa_customers_client/src/model/app_config_update_dto.dart';
-import 'package:moa_customers_client/src/model/nest_error.dart';
 
 class ConfigsApi {
-
   final Dio _dio;
 
   const ConfigsApi(this._dio);
 
   /// Create your Config
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [appConfigUpdateDto] 
+  /// * [appConfigUpdateDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -33,7 +30,7 @@ class ConfigsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [AppConfig] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> createConfig({ 
+  Future<Response<AppConfig>> createConfig({
     required AppConfigUpdateDto appConfigUpdateDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -54,7 +51,8 @@ class ConfigsApi {
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -70,10 +68,10 @@ class ConfigsApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(appConfigUpdateDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(appConfigUpdateDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -95,8 +93,11 @@ _bodyData=jsonEncode(appConfigUpdateDto);
     AppConfig? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -120,10 +121,10 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
   }
 
   /// Get Config for Merchant ID
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -133,7 +134,7 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
   ///
   /// Returns a [Future] containing a [Response] with a [AppConfig] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> getConfigForMerchant({ 
+  Future<Response<AppConfig>> getConfigForMerchant({
     required String merchantId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -154,7 +155,8 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -182,8 +184,11 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
     AppConfig? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -207,11 +212,11 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
   }
 
   /// Get your Config
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
-  /// * [actingAs] 
+  /// * [merchantId]
+  /// * [actingAs]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -221,7 +226,7 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
   ///
   /// Returns a [Future] containing a [Response] with a [AppConfig] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> getMyConfig({ 
+  Future<Response<AppConfig>> getMyConfig({
     String? merchantId,
     String? actingAs,
     CancelToken? cancelToken,
@@ -243,7 +248,8 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -272,8 +278,11 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
     AppConfig? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -297,10 +306,10 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
   }
 
   /// Update your Config
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [appConfigUpdateDto] 
+  /// * [appConfigUpdateDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -310,7 +319,7 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
   ///
   /// Returns a [Future] containing a [Response] with a [AppConfig] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> updateConfig({ 
+  Future<Response<AppConfig>> updateConfig({
     required AppConfigUpdateDto appConfigUpdateDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -331,7 +340,8 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -347,10 +357,10 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(appConfigUpdateDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(appConfigUpdateDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -372,8 +382,11 @@ _bodyData=jsonEncode(appConfigUpdateDto);
     AppConfig? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -397,10 +410,10 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
   }
 
   /// Upload icon
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [file] 
+  /// * [file]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -410,7 +423,7 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> uploadIcon({ 
+  Future<Response<void>> uploadIcon({
     MultipartFile? file,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -431,7 +444,8 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -446,11 +460,9 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
 
     dynamic _bodyData;
 
-    try {
-
-    } catch(error, stackTrace) {
+    try {} catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -471,5 +483,4 @@ _responseData = rawData == null ? null : deserialize<AppConfig, AppConfig>(rawDa
 
     return _response;
   }
-
 }

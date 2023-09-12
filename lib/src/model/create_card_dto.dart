@@ -18,8 +18,8 @@ class CreateCardDto {
   CreateCardDto({
     required this.idempotencyKey,
     required this.sourceId,
-    required this.verificationToken,
-    required this.postalCode,
+    this.verificationToken,
+    this.postalCode,
   });
 
   @JsonKey(name: r'idempotencyKey', required: true, includeIfNull: false)
@@ -28,10 +28,10 @@ class CreateCardDto {
   @JsonKey(name: r'sourceId', required: true, includeIfNull: false)
   final String sourceId;
 
-  @JsonKey(name: r'verificationToken', required: true, includeIfNull: false)
+  @JsonKey(name: r'verificationToken', required: false, includeIfNull: false)
   final String? verificationToken;
 
-  @JsonKey(name: r'postalCode', required: true, includeIfNull: false)
+  @JsonKey(name: r'postalCode', required: false, includeIfNull: false)
   final String? postalCode;
 
   @override

@@ -3,31 +3,28 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:moa_customers_client/src/model/location.dart';
 import 'package:moa_customers_client/src/model/location_paginated_response.dart';
 import 'package:moa_customers_client/src/model/location_update_all_dto.dart';
 import 'package:moa_customers_client/src/model/location_update_dto.dart';
-import 'package:moa_customers_client/src/model/nest_error.dart';
 
 class LocationsApi {
-
   final Dio _dio;
 
   const LocationsApi(this._dio);
 
   /// Get a Location with ID
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [id] 
-  /// * [actingAs] 
-  /// * [merchantId] 
+  /// * [id]
+  /// * [actingAs]
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -37,7 +34,7 @@ class LocationsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Location] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Location>> getLocation({ 
+  Future<Response<Location>> getLocation({
     required String id,
     required String actingAs,
     String? merchantId,
@@ -48,7 +45,8 @@ class LocationsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/locations/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path =
+        r'/v2/locations/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
@@ -60,7 +58,8 @@ class LocationsApi {
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -89,8 +88,11 @@ class LocationsApi {
     Location? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Location, Location>(rawData, 'Location', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Location, Location>(rawData, 'Location',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -114,12 +116,12 @@ _responseData = rawData == null ? null : deserialize<Location, Location>(rawData
   }
 
   /// Get Locations for Merchant
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
-  /// * [page] 
-  /// * [limit] 
+  /// * [merchantId]
+  /// * [page]
+  /// * [limit]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -129,7 +131,7 @@ _responseData = rawData == null ? null : deserialize<Location, Location>(rawData
   ///
   /// Returns a [Future] containing a [Response] with a [LocationPaginatedResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LocationPaginatedResponse>> getLocations({ 
+  Future<Response<LocationPaginatedResponse>> getLocations({
     required String merchantId,
     num? page,
     num? limit,
@@ -152,7 +154,8 @@ _responseData = rawData == null ? null : deserialize<Location, Location>(rawData
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -182,8 +185,12 @@ _responseData = rawData == null ? null : deserialize<Location, Location>(rawData
     LocationPaginatedResponse? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, LocationPaginatedResponse>(rawData, 'LocationPaginatedResponse', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LocationPaginatedResponse, LocationPaginatedResponse>(
+              rawData, 'LocationPaginatedResponse',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -207,13 +214,13 @@ _responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, 
   }
 
   /// Get all your Locations
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [page] 
-  /// * [limit] 
-  /// * [actingAs] 
-  /// * [merchantId] 
+  /// * [page]
+  /// * [limit]
+  /// * [actingAs]
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -223,7 +230,7 @@ _responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, 
   ///
   /// Returns a [Future] containing a [Response] with a [LocationPaginatedResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LocationPaginatedResponse>> getMyLocations({ 
+  Future<Response<LocationPaginatedResponse>> getMyLocations({
     num? page,
     num? limit,
     String? actingAs,
@@ -247,7 +254,8 @@ _responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, 
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -278,8 +286,12 @@ _responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, 
     LocationPaginatedResponse? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, LocationPaginatedResponse>(rawData, 'LocationPaginatedResponse', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LocationPaginatedResponse, LocationPaginatedResponse>(
+              rawData, 'LocationPaginatedResponse',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -303,11 +315,11 @@ _responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, 
   }
 
   /// Update a Location
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [id] 
-  /// * [locationUpdateDto] 
+  /// * [id]
+  /// * [locationUpdateDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -317,7 +329,7 @@ _responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, 
   ///
   /// Returns a [Future] containing a [Response] with a [Location] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Location>> updateLocation({ 
+  Future<Response<Location>> updateLocation({
     required String id,
     required LocationUpdateDto locationUpdateDto,
     CancelToken? cancelToken,
@@ -327,7 +339,8 @@ _responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, 
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/locations/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path =
+        r'/v2/locations/{id}'.replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -339,7 +352,8 @@ _responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, 
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -355,10 +369,10 @@ _responseData = rawData == null ? null : deserialize<LocationPaginatedResponse, 
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(locationUpdateDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(locationUpdateDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -380,8 +394,11 @@ _bodyData=jsonEncode(locationUpdateDto);
     Location? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Location, Location>(rawData, 'Location', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Location, Location>(rawData, 'Location',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -405,10 +422,10 @@ _responseData = rawData == null ? null : deserialize<Location, Location>(rawData
   }
 
   /// Update Locations
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [locationUpdateAllDto] 
+  /// * [locationUpdateAllDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -418,7 +435,7 @@ _responseData = rawData == null ? null : deserialize<Location, Location>(rawData
   ///
   /// Returns a [Future] containing a [Response] with a [List<Location>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Location>>> updateLocations({ 
+  Future<Response<List<Location>>> updateLocations({
     required List<LocationUpdateAllDto> locationUpdateAllDto,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -439,7 +456,8 @@ _responseData = rawData == null ? null : deserialize<Location, Location>(rawData
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -455,10 +473,10 @@ _responseData = rawData == null ? null : deserialize<Location, Location>(rawData
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(locationUpdateAllDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(locationUpdateAllDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
         ),
@@ -480,8 +498,11 @@ _bodyData=jsonEncode(locationUpdateAllDto);
     List<Location>? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<List<Location>, Location>(rawData, 'List<Location>', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<List<Location>, Location>(rawData, 'List<Location>',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -503,5 +524,4 @@ _responseData = rawData == null ? null : deserialize<List<Location>, Location>(r
       extra: _response.extra,
     );
   }
-
 }

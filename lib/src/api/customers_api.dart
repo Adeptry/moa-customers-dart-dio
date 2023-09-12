@@ -3,28 +3,26 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:moa_customers_client/src/model/app_install_update_dto.dart';
 import 'package:moa_customers_client/src/model/customer.dart';
+import 'package:moa_customers_client/src/model/customer_update_dto.dart';
 import 'package:moa_customers_client/src/model/customers_paginated_response.dart';
-import 'package:moa_customers_client/src/model/nest_error.dart';
 
 class CustomersApi {
-
   final Dio _dio;
 
   const CustomersApi(this._dio);
 
   /// Create Customer for current User
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -34,7 +32,7 @@ class CustomersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Customer] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Customer>> createCustomer({ 
+  Future<Response<Customer>> createCustomer({
     required String merchantId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -55,7 +53,8 @@ class CustomersApi {
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -83,8 +82,11 @@ class CustomersApi {
     Customer? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData, 'Customer', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Customer, Customer>(rawData, 'Customer',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -108,10 +110,14 @@ _responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData
   }
 
   /// Get current Customer
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
+  /// * [merchantId]
+  /// * [user]
+  /// * [merchant]
+  /// * [currentOrder]
+  /// * [preferredLocation]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -121,8 +127,12 @@ _responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData
   ///
   /// Returns a [Future] containing a [Response] with a [Customer] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Customer>> getCurrentCustomer({ 
+  Future<Response<Customer>> getCurrentCustomer({
     required String merchantId,
+    bool? user,
+    bool? merchant,
+    bool? currentOrder,
+    bool? preferredLocation,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -142,7 +152,8 @@ _responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -155,6 +166,10 @@ _responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData
     );
 
     final _queryParameters = <String, dynamic>{
+      if (user != null) r'user': user,
+      if (merchant != null) r'merchant': merchant,
+      if (currentOrder != null) r'currentOrder': currentOrder,
+      if (preferredLocation != null) r'preferredLocation': preferredLocation,
       r'merchantId': merchantId,
     };
 
@@ -170,8 +185,11 @@ _responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData
     Customer? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData, 'Customer', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Customer, Customer>(rawData, 'Customer',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -195,11 +213,11 @@ _responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData
   }
 
   /// Get my Customers
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [page] 
-  /// * [limit] 
+  /// * [page]
+  /// * [limit]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -209,7 +227,7 @@ _responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData
   ///
   /// Returns a [Future] containing a [Response] with a [CustomersPaginatedResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CustomersPaginatedResponse>> getCustomers({ 
+  Future<Response<CustomersPaginatedResponse>> getCustomers({
     num? page,
     num? limit,
     CancelToken? cancelToken,
@@ -231,7 +249,8 @@ _responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -260,8 +279,12 @@ _responseData = rawData == null ? null : deserialize<Customer, Customer>(rawData
     CustomersPaginatedResponse? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<CustomersPaginatedResponse, CustomersPaginatedResponse>(rawData, 'CustomersPaginatedResponse', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<CustomersPaginatedResponse, CustomersPaginatedResponse>(
+              rawData, 'CustomersPaginatedResponse',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -285,11 +308,11 @@ _responseData = rawData == null ? null : deserialize<CustomersPaginatedResponse,
   }
 
   /// Create or update Customer App Install
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
-  /// * [appInstallUpdateDto] 
+  /// * [merchantId]
+  /// * [appInstallUpdateDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -299,7 +322,7 @@ _responseData = rawData == null ? null : deserialize<CustomersPaginatedResponse,
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> updateAppInstall({ 
+  Future<Response<void>> updateAppInstall({
     required String merchantId,
     required AppInstallUpdateDto appInstallUpdateDto,
     CancelToken? cancelToken,
@@ -321,7 +344,8 @@ _responseData = rawData == null ? null : deserialize<CustomersPaginatedResponse,
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -341,10 +365,10 @@ _responseData = rawData == null ? null : deserialize<CustomersPaginatedResponse,
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(appInstallUpdateDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(appInstallUpdateDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -368,4 +392,115 @@ _bodyData=jsonEncode(appInstallUpdateDto);
     return _response;
   }
 
+  /// Update your Customer
+  ///
+  ///
+  /// Parameters:
+  /// * [merchantId]
+  /// * [customerUpdateDto]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [Customer] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<Customer>> updateMyCustomer({
+    required String merchantId,
+    required CustomerUpdateDto customerUpdateDto,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/customers/me';
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'merchantId': merchantId,
+    };
+
+    dynamic _bodyData;
+
+    try {
+      _bodyData = jsonEncode(customerUpdateDto);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+          queryParameters: _queryParameters,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    Customer? _responseData;
+
+    try {
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Customer, Customer>(rawData, 'Customer',
+              growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<Customer>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
 }

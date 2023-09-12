@@ -16,12 +16,12 @@ part 'app_install_update_dto.g.dart';
 class AppInstallUpdateDto {
   /// Returns a new [AppInstallUpdateDto] instance.
   AppInstallUpdateDto({
-    required this.firebaseInstallationId,
+    this.firebaseInstallationId,
     this.firebaseCloudMessagingToken,
   });
 
   @JsonKey(
-      name: r'firebaseInstallationId', required: true, includeIfNull: false)
+      name: r'firebaseInstallationId', required: false, includeIfNull: false)
   final String? firebaseInstallationId;
 
   @JsonKey(

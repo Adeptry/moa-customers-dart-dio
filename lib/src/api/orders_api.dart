@@ -3,13 +3,11 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/nest_error.dart';
+import 'package:dio/dio.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:moa_customers_client/src/model/order.dart';
 import 'package:moa_customers_client/src/model/order_create_dto.dart';
 import 'package:moa_customers_client/src/model/order_patch_dto.dart';
@@ -18,17 +16,16 @@ import 'package:moa_customers_client/src/model/orders_paginated_reponse.dart';
 import 'package:moa_customers_client/src/model/payment_create_dto.dart';
 
 class OrdersApi {
-
   final Dio _dio;
 
   const OrdersApi(this._dio);
 
   /// Create Order
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
-  /// * [orderCreateDto] 
+  /// * [merchantId]
+  /// * [orderCreateDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -38,7 +35,7 @@ class OrdersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Order] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> createCurrentOrder({ 
+  Future<Response<Order>> createCurrentOrder({
     required String merchantId,
     required OrderCreateDto orderCreateDto,
     CancelToken? cancelToken,
@@ -60,7 +57,8 @@ class OrdersApi {
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -80,10 +78,10 @@ class OrdersApi {
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(orderCreateDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(orderCreateDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -107,8 +105,10 @@ _bodyData=jsonEncode(orderCreateDto);
     Order? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -132,10 +132,10 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   }
 
   /// Delete Order
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -145,7 +145,7 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteCurrentOrder({ 
+  Future<Response<void>> deleteCurrentOrder({
     required String merchantId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -166,7 +166,8 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -195,11 +196,11 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   }
 
   /// Remove Line Items from Order
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [id] 
-  /// * [merchantId] 
+  /// * [id]
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -209,7 +210,7 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> deleteLineItemInCurrentOrder({ 
+  Future<Response<void>> deleteLineItemInCurrentOrder({
     required String id,
     required String merchantId,
     CancelToken? cancelToken,
@@ -219,7 +220,8 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/orders/current/variation/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/v2/orders/current/variation/{id}'
+        .replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
@@ -231,7 +233,8 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -260,10 +263,10 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   }
 
   /// Get current Order
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -273,7 +276,7 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   ///
   /// Returns a [Future] containing a [Response] with a [Order] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> getCurrentOrder({ 
+  Future<Response<Order>> getCurrentOrder({
     required String merchantId,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -294,7 +297,8 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -322,8 +326,10 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
     Order? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -347,15 +353,15 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   }
 
   /// Get Order
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [id] 
-  /// * [lineItems] 
-  /// * [location] 
-  /// * [customer] 
-  /// * [actingAs] 
-  /// * [merchantId] 
+  /// * [id]
+  /// * [lineItems]
+  /// * [location]
+  /// * [customer]
+  /// * [actingAs]
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -365,7 +371,7 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   ///
   /// Returns a [Future] containing a [Response] with a [Order] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> getOrder({ 
+  Future<Response<Order>> getOrder({
     required String id,
     bool? lineItems,
     bool? location,
@@ -391,7 +397,8 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -423,8 +430,10 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
     Order? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -448,17 +457,17 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   }
 
   /// Get my Orders
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [page] 
-  /// * [limit] 
-  /// * [closed] 
-  /// * [lineItems] 
-  /// * [location] 
-  /// * [customer] 
-  /// * [actingAs] 
-  /// * [merchantId] 
+  /// * [page]
+  /// * [limit]
+  /// * [closed]
+  /// * [lineItems]
+  /// * [location]
+  /// * [customer]
+  /// * [actingAs]
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -468,7 +477,7 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   ///
   /// Returns a [Future] containing a [Response] with a [OrdersPaginatedReponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<OrdersPaginatedReponse>> getOrders({ 
+  Future<Response<OrdersPaginatedReponse>> getOrders({
     num? page,
     num? limit,
     bool? closed,
@@ -496,7 +505,8 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -531,8 +541,12 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
     OrdersPaginatedReponse? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<OrdersPaginatedReponse, OrdersPaginatedReponse>(rawData, 'OrdersPaginatedReponse', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<OrdersPaginatedReponse, OrdersPaginatedReponse>(
+              rawData, 'OrdersPaginatedReponse',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -556,12 +570,12 @@ _responseData = rawData == null ? null : deserialize<OrdersPaginatedReponse, Ord
   }
 
   /// Patch update Order, e.g. modify Location
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [orderPatchDto] 
-  /// * [idempotencyKey] 
-  /// * [merchantId] 
+  /// * [orderPatchDto]
+  /// * [idempotencyKey]
+  /// * [merchantId]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -571,7 +585,7 @@ _responseData = rawData == null ? null : deserialize<OrdersPaginatedReponse, Ord
   ///
   /// Returns a [Future] containing a [Response] with a [Order] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> patchUpdateToCurrentOrder({ 
+  Future<Response<Order>> patchUpdateToCurrentOrder({
     required OrderPatchDto orderPatchDto,
     String? idempotencyKey,
     String? merchantId,
@@ -594,7 +608,8 @@ _responseData = rawData == null ? null : deserialize<OrdersPaginatedReponse, Ord
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -615,10 +630,10 @@ _responseData = rawData == null ? null : deserialize<OrdersPaginatedReponse, Ord
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(orderPatchDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(orderPatchDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -642,8 +657,10 @@ _bodyData=jsonEncode(orderPatchDto);
     Order? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -667,11 +684,11 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   }
 
   /// Pay for Order
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
-  /// * [paymentCreateDto] 
+  /// * [merchantId]
+  /// * [paymentCreateDto]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -681,7 +698,7 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   ///
   /// Returns a [Future] containing a [Response] with a [Order] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> postPaymentForCurrentOrder({ 
+  Future<Response<Order>> postPaymentForCurrentOrder({
     required String merchantId,
     required PaymentCreateDto paymentCreateDto,
     CancelToken? cancelToken,
@@ -703,7 +720,8 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -723,10 +741,10 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(paymentCreateDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(paymentCreateDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -750,8 +768,10 @@ _bodyData=jsonEncode(paymentCreateDto);
     Order? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -775,12 +795,12 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   }
 
   /// Post update Order, e.g. add Variations &amp; Modifiers in Line Items
-  /// 
+  ///
   ///
   /// Parameters:
-  /// * [merchantId] 
-  /// * [orderPostDto] 
-  /// * [idempotencyKey] 
+  /// * [merchantId]
+  /// * [orderPostDto]
+  /// * [idempotencyKey]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -790,7 +810,7 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
   ///
   /// Returns a [Future] containing a [Response] with a [Order] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> postUpdateToCurrentOrder({ 
+  Future<Response<Order>> postUpdateToCurrentOrder({
     required String merchantId,
     required OrderPostDto orderPostDto,
     String? idempotencyKey,
@@ -813,7 +833,8 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
             'type': 'http',
             'scheme': 'bearer',
             'name': 'bearer',
-          },{
+          },
+          {
             'type': 'apiKey',
             'name': 'Api-Key',
             'keyName': 'Api-Key',
@@ -834,10 +855,10 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
     dynamic _bodyData;
 
     try {
-_bodyData=jsonEncode(orderPostDto);
-    } catch(error, stackTrace) {
+      _bodyData = jsonEncode(orderPostDto);
+    } catch (error, stackTrace) {
       throw DioException(
-         requestOptions: _options.compose(
+        requestOptions: _options.compose(
           _dio.options,
           _path,
           queryParameters: _queryParameters,
@@ -861,8 +882,10 @@ _bodyData=jsonEncode(orderPostDto);
     Order? _responseData;
 
     try {
-final rawData = _response.data;
-_responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Order', growable: true);
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Order, Order>(rawData, 'Order', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -884,5 +907,4 @@ _responseData = rawData == null ? null : deserialize<Order, Order>(rawData, 'Ord
       extra: _response.extra,
     );
   }
-
 }

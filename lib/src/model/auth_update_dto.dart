@@ -7,7 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'auth_update_dto.g.dart';
 
-
 @JsonSerializable(
   checked: true,
   createToJson: true,
@@ -17,47 +16,28 @@ part 'auth_update_dto.g.dart';
 class AuthUpdateDto {
   /// Returns a new [AuthUpdateDto] instance.
   AuthUpdateDto({
-
-    required  this.password,
-
-    required  this.oldPassword,
+    required this.password,
+    required this.oldPassword,
   });
 
-  @JsonKey(
-    
-    name: r'password',
-    required: true,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'password', required: true, includeIfNull: false)
   final String password;
 
-
-
-  @JsonKey(
-    
-    name: r'oldPassword',
-    required: true,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'oldPassword', required: true, includeIfNull: false)
   final String oldPassword;
 
-
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AuthUpdateDto &&
+          other.password == password &&
+          other.oldPassword == oldPassword;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AuthUpdateDto &&
-     other.password == password &&
-     other.oldPassword == oldPassword;
+  int get hashCode => password.hashCode + oldPassword.hashCode;
 
-  @override
-  int get hashCode =>
-    password.hashCode +
-    oldPassword.hashCode;
-
-  factory AuthUpdateDto.fromJson(Map<String, dynamic> json) => _$AuthUpdateDtoFromJson(json);
+  factory AuthUpdateDto.fromJson(Map<String, dynamic> json) =>
+      _$AuthUpdateDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthUpdateDtoToJson(this);
 
@@ -65,6 +45,4 @@ class AuthUpdateDto {
   String toString() {
     return toJson().toString();
   }
-
 }
-

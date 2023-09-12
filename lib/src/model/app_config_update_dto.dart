@@ -7,7 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'app_config_update_dto.g.dart';
 
-
 @JsonSerializable(
   checked: true,
   createToJson: true,
@@ -17,111 +16,54 @@ part 'app_config_update_dto.g.dart';
 class AppConfigUpdateDto {
   /// Returns a new [AppConfigUpdateDto] instance.
   AppConfigUpdateDto({
-
-     this.name,
-
-     this.seedColor,
-
-     this.fontFamily,
-
-     this.shortDescription,
-
-     this.useMaterial3,
-
-     this.themeMode,
+    this.name,
+    this.seedColor,
+    this.fontFamily,
+    this.shortDescription,
+    this.useMaterial3,
+    this.themeMode,
   });
 
-  @JsonKey(
-    
-    name: r'name',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'name', required: false, includeIfNull: false)
   final String? name;
 
-
-
-  @JsonKey(
-    
-    name: r'seedColor',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'seedColor', required: false, includeIfNull: false)
   final String? seedColor;
 
-
-
-  @JsonKey(
-    
-    name: r'fontFamily',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'fontFamily', required: false, includeIfNull: false)
   final String? fontFamily;
 
-
-
-  @JsonKey(
-    
-    name: r'shortDescription',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'shortDescription', required: false, includeIfNull: false)
   final String? shortDescription;
 
-
-
-  @JsonKey(
-    
-    name: r'useMaterial3',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'useMaterial3', required: false, includeIfNull: false)
   final bool? useMaterial3;
 
-
-
-  @JsonKey(
-    
-    name: r'themeMode',
-    required: false,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'themeMode', required: false, includeIfNull: false)
   final AppConfigUpdateDtoThemeModeEnum? themeMode;
 
-
-
   @override
-  bool operator ==(Object other) => identical(this, other) || other is AppConfigUpdateDto &&
-     other.name == name &&
-     other.seedColor == seedColor &&
-     other.fontFamily == fontFamily &&
-     other.shortDescription == shortDescription &&
-     other.useMaterial3 == useMaterial3 &&
-     other.themeMode == themeMode;
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AppConfigUpdateDto &&
+          other.name == name &&
+          other.seedColor == seedColor &&
+          other.fontFamily == fontFamily &&
+          other.shortDescription == shortDescription &&
+          other.useMaterial3 == useMaterial3 &&
+          other.themeMode == themeMode;
 
   @override
   int get hashCode =>
-    (name == null ? 0 : name.hashCode) +
-    (seedColor == null ? 0 : seedColor.hashCode) +
-    (fontFamily == null ? 0 : fontFamily.hashCode) +
-    (shortDescription == null ? 0 : shortDescription.hashCode) +
-    (useMaterial3 == null ? 0 : useMaterial3.hashCode) +
-    (themeMode == null ? 0 : themeMode.hashCode);
+      (name == null ? 0 : name.hashCode) +
+      (seedColor == null ? 0 : seedColor.hashCode) +
+      (fontFamily == null ? 0 : fontFamily.hashCode) +
+      (shortDescription == null ? 0 : shortDescription.hashCode) +
+      (useMaterial3 == null ? 0 : useMaterial3.hashCode) +
+      (themeMode == null ? 0 : themeMode.hashCode);
 
-  factory AppConfigUpdateDto.fromJson(Map<String, dynamic> json) => _$AppConfigUpdateDtoFromJson(json);
+  factory AppConfigUpdateDto.fromJson(Map<String, dynamic> json) =>
+      _$AppConfigUpdateDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$AppConfigUpdateDtoToJson(this);
 
@@ -129,9 +71,7 @@ class AppConfigUpdateDto {
   String toString() {
     return toJson().toString();
   }
-
 }
-
 
 enum AppConfigUpdateDtoThemeModeEnum {
   @JsonValue(r'system')
@@ -143,5 +83,3 @@ enum AppConfigUpdateDtoThemeModeEnum {
   @JsonValue(r'unknown_default_open_api')
   unknownDefaultOpenApi,
 }
-
-

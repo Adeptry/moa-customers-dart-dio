@@ -13,12 +13,7 @@ CreateCardDto _$CreateCardDtoFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const [
-            'idempotencyKey',
-            'sourceId',
-            'verificationToken',
-            'postalCode'
-          ],
+          requiredKeys: const ['idempotencyKey', 'sourceId'],
         );
         final val = CreateCardDto(
           idempotencyKey: $checkedConvert('idempotencyKey', (v) => v as String),

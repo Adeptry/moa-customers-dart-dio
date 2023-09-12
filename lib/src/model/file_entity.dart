@@ -7,7 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'file_entity.g.dart';
 
-
 @JsonSerializable(
   checked: true,
   createToJson: true,
@@ -17,47 +16,26 @@ part 'file_entity.g.dart';
 class FileEntity {
   /// Returns a new [FileEntity] instance.
   FileEntity({
-
-    required  this.id,
-
-    required  this.url,
+    required this.id,
+    required this.url,
   });
 
-  @JsonKey(
-    
-    name: r'id',
-    required: true,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'id', required: true, includeIfNull: false)
   final String id;
 
-
-
-  @JsonKey(
-    
-    name: r'url',
-    required: true,
-    includeIfNull: false
-  )
-
-
+  @JsonKey(name: r'url', required: true, includeIfNull: false)
   final String url;
 
-
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is FileEntity && other.id == id && other.url == url;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is FileEntity &&
-     other.id == id &&
-     other.url == url;
+  int get hashCode => id.hashCode + url.hashCode;
 
-  @override
-  int get hashCode =>
-    id.hashCode +
-    url.hashCode;
-
-  factory FileEntity.fromJson(Map<String, dynamic> json) => _$FileEntityFromJson(json);
+  factory FileEntity.fromJson(Map<String, dynamic> json) =>
+      _$FileEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$FileEntityToJson(this);
 
@@ -65,6 +43,4 @@ class FileEntity {
   String toString() {
     return toJson().toString();
   }
-
 }
-
