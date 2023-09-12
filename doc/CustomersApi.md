@@ -1,8 +1,8 @@
-# moa_customers.api.CustomersApi
+# moa_customers_client.api.CustomersApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -22,13 +22,13 @@ Create Customer for current User
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCustomersApi();
+final api = MoaCustomersClient().getCustomersApi();
 final String merchantId = merchantId_example; // String | 
 
 try {
@@ -67,13 +67,13 @@ Get current Customer
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCustomersApi();
+final api = MoaCustomersClient().getCustomersApi();
 final String merchantId = merchantId_example; // String | 
 
 try {
@@ -112,13 +112,13 @@ Get my Customers
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCustomersApi();
+final api = MoaCustomersClient().getCustomersApi();
 final num page = 8.14; // num | 
 final num limit = 8.14; // num | 
 
@@ -159,13 +159,13 @@ Create or update Customer App Install
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCustomersApi();
+final api = MoaCustomersClient().getCustomersApi();
 final String merchantId = merchantId_example; // String | 
 final AppInstallUpdateDto appInstallUpdateDto = ; // AppInstallUpdateDto | 
 

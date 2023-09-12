@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for User
 void main() {
@@ -7,23 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(User, () {
-    // String email
-    test('to test the property `email`', () async {
-      // TODO
-    });
-
-    // String firstName
-    test('to test the property `firstName`', () async {
-      // TODO
-    });
-
     // String id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // String lastName
-    test('to test the property `lastName`', () async {
+    // String email
+    test('to test the property `email`', () async {
       // TODO
     });
 
@@ -34,6 +24,16 @@ void main() {
 
     // String socialId
     test('to test the property `socialId`', () async {
+      // TODO
+    });
+
+    // String firstName
+    test('to test the property `firstName`', () async {
+      // TODO
+    });
+
+    // String lastName
+    test('to test the property `lastName`', () async {
       // TODO
     });
 

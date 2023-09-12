@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for AppConfig
 void main() {
@@ -7,28 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(AppConfig, () {
-    // String blockingMessage
-    test('to test the property `blockingMessage`', () async {
-      // TODO
-    });
-
-    // String fontFamily
-    test('to test the property `fontFamily`', () async {
-      // TODO
-    });
-
-    // FileEntity iconFile
-    test('to test the property `iconFile`', () async {
-      // TODO
-    });
-
-    // String message
-    test('to test the property `message`', () async {
-      // TODO
-    });
-
-    // String minimumVersion
-    test('to test the property `minimumVersion`', () async {
+    // bool showsAds
+    test('to test the property `showsAds`', () async {
       // TODO
     });
 
@@ -42,13 +22,13 @@ void main() {
       // TODO
     });
 
-    // bool showAds
-    test('to test the property `showAds`', () async {
+    // String fontFamily
+    test('to test the property `fontFamily`', () async {
       // TODO
     });
 
-    // bool showsAds
-    test('to test the property `showsAds`', () async {
+    // bool useMaterial3
+    test('to test the property `useMaterial3`', () async {
       // TODO
     });
 
@@ -57,8 +37,28 @@ void main() {
       // TODO
     });
 
-    // bool useMaterial3
-    test('to test the property `useMaterial3`', () async {
+    // String message
+    test('to test the property `message`', () async {
+      // TODO
+    });
+
+    // String blockingMessage
+    test('to test the property `blockingMessage`', () async {
+      // TODO
+    });
+
+    // String minimumVersion
+    test('to test the property `minimumVersion`', () async {
+      // TODO
+    });
+
+    // bool showAds
+    test('to test the property `showAds`', () async {
+      // TODO
+    });
+
+    // FileEntity iconFile
+    test('to test the property `iconFile`', () async {
       // TODO
     });
 

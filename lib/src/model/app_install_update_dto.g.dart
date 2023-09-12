@@ -16,10 +16,10 @@ AppInstallUpdateDto _$AppInstallUpdateDtoFromJson(Map<String, dynamic> json) =>
           requiredKeys: const ['firebaseInstallationId'],
         );
         final val = AppInstallUpdateDto(
-          firebaseCloudMessagingToken: $checkedConvert(
-              'firebaseCloudMessagingToken', (v) => v as String?),
           firebaseInstallationId:
               $checkedConvert('firebaseInstallationId', (v) => v as String?),
+          firebaseCloudMessagingToken: $checkedConvert(
+              'firebaseCloudMessagingToken', (v) => v as String?),
         );
         return val;
       },
@@ -34,8 +34,8 @@ Map<String, dynamic> _$AppInstallUpdateDtoToJson(AppInstallUpdateDto instance) {
     }
   }
 
+  writeNotNull('firebaseInstallationId', instance.firebaseInstallationId);
   writeNotNull(
       'firebaseCloudMessagingToken', instance.firebaseCloudMessagingToken);
-  writeNotNull('firebaseInstallationId', instance.firebaseInstallationId);
   return val;
 }

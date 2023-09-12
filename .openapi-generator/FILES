@@ -64,7 +64,7 @@ doc/UsersApi.md
 doc/Variation.md
 doc/VariationAddDto.md
 doc/VariationUpdateDto.md
-lib/moa_customers.dart
+lib/moa_customers_client.dart
 lib/src/api.dart
 lib/src/api/auth_api.dart
 lib/src/api/cards_api.dart

@@ -18,22 +18,10 @@ class AuthUpdateDto {
   /// Returns a new [AuthUpdateDto] instance.
   AuthUpdateDto({
 
-    required  this.oldPassword,
-
     required  this.password,
+
+    required  this.oldPassword,
   });
-
-  @JsonKey(
-    
-    name: r'oldPassword',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String oldPassword;
-
-
 
   @JsonKey(
     
@@ -47,15 +35,27 @@ class AuthUpdateDto {
 
 
 
+  @JsonKey(
+    
+    name: r'oldPassword',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String oldPassword;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AuthUpdateDto &&
-     other.oldPassword == oldPassword &&
-     other.password == password;
+     other.password == password &&
+     other.oldPassword == oldPassword;
 
   @override
   int get hashCode =>
-    oldPassword.hashCode +
-    password.hashCode;
+    password.hashCode +
+    oldPassword.hashCode;
 
   factory AuthUpdateDto.fromJson(Map<String, dynamic> json) => _$AuthUpdateDtoFromJson(json);
 

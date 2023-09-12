@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:moa_customers/src/model/variation_add_dto.dart';
+import 'package:moa_customers_client/src/model/variation_add_dto.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'order_post_dto.g.dart';

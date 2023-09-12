@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for ModifierList
 void main() {
@@ -9,11 +9,6 @@ void main() {
   group(ModifierList, () {
     // String id
     test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // List<Modifier> modifiers
-    test('to test the property `modifiers`', () async {
       // TODO
     });
 
@@ -29,6 +24,11 @@ void main() {
 
     // MoaSelectionType selectionType
     test('to test the property `selectionType`', () async {
+      // TODO
+    });
+
+    // List<Modifier> modifiers
+    test('to test the property `modifiers`', () async {
       // TODO
     });
 

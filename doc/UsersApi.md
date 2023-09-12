@@ -1,8 +1,8 @@
-# moa_customers.api.UsersApi
+# moa_customers_client.api.UsersApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -21,13 +21,13 @@ Delete your User
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getUsersApi();
+final api = MoaCustomersClient().getUsersApi();
 
 try {
     final response = api.deleteCurrentUser();
@@ -62,13 +62,13 @@ Get your User
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getUsersApi();
+final api = MoaCustomersClient().getUsersApi();
 
 try {
     final response = api.getCurrentUser();
@@ -103,13 +103,13 @@ Update your User
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getUsersApi();
+final api = MoaCustomersClient().getUsersApi();
 final UserUpdateDto userUpdateDto = ; // UserUpdateDto | 
 
 try {

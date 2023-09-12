@@ -1,8 +1,8 @@
-# moa_customers.api.ConfigsApi
+# moa_customers_client.api.ConfigsApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -23,13 +23,13 @@ Create your Config
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getConfigsApi();
+final api = MoaCustomersClient().getConfigsApi();
 final AppConfigUpdateDto appConfigUpdateDto = ; // AppConfigUpdateDto | 
 
 try {
@@ -68,13 +68,13 @@ Get Config for Merchant ID
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getConfigsApi();
+final api = MoaCustomersClient().getConfigsApi();
 final String merchantId = merchantId_example; // String | 
 
 try {
@@ -113,13 +113,13 @@ Get your Config
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getConfigsApi();
+final api = MoaCustomersClient().getConfigsApi();
 final String merchantId = merchantId_example; // String | 
 final String actingAs = actingAs_example; // String | 
 
@@ -160,13 +160,13 @@ Update your Config
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getConfigsApi();
+final api = MoaCustomersClient().getConfigsApi();
 final AppConfigUpdateDto appConfigUpdateDto = ; // AppConfigUpdateDto | 
 
 try {
@@ -205,13 +205,13 @@ Upload icon
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getConfigsApi();
+final api = MoaCustomersClient().getConfigsApi();
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
 
 try {

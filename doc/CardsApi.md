@@ -1,8 +1,8 @@
-# moa_customers.api.CardsApi
+# moa_customers_client.api.CardsApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -21,15 +21,15 @@ Create my Square Card
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCardsApi();
+final api = MoaCustomersClient().getCardsApi();
 final String merchantId = merchantId_example; // String | 
-final CreateCardDto createCardDto = {"idempotencyKey":"N4AvtWo98bp2ZylSDWmWG","postalCode":"94103","sourceId":"cnon:card-nonce-ok"}; // CreateCardDto | 
+final CreateCardDto createCardDto = {"idempotencyKey":"_-t9nEhfcz6-upc5yn4jR","sourceId":"cnon:card-nonce-ok","postalCode":"94103"}; // CreateCardDto | 
 
 try {
     final response = api.createSquareCard(merchantId, createCardDto);
@@ -68,13 +68,13 @@ Disable my Square Card
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCardsApi();
+final api = MoaCustomersClient().getCardsApi();
 final String id = id_example; // String | 
 final String merchantId = merchantId_example; // String | 
 
@@ -115,13 +115,13 @@ List my Square Cards
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCardsApi();
+final api = MoaCustomersClient().getCardsApi();
 final String merchantId = merchantId_example; // String | 
 final String cursor = cursor_example; // String | 
 

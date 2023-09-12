@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for LoginResponseType
 void main() {
@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(LoginResponseType, () {
-    // String refreshToken
-    test('to test the property `refreshToken`', () async {
+    // String token
+    test('to test the property `token`', () async {
       // TODO
     });
 
-    // String token
-    test('to test the property `token`', () async {
+    // String refreshToken
+    test('to test the property `refreshToken`', () async {
       // TODO
     });
 

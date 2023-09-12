@@ -18,42 +18,18 @@ class LineItemModifier {
   /// Returns a new [LineItemModifier] instance.
   LineItemModifier({
 
-     this.baseMoneyAmount,
-
-     this.currency,
-
      this.id,
 
      this.name,
 
      this.quantity,
 
+     this.currency,
+
+     this.baseMoneyAmount,
+
      this.totalMoneyAmount,
   });
-
-  @JsonKey(
-    
-    name: r'baseMoneyAmount',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final num? baseMoneyAmount;
-
-
-
-  @JsonKey(
-    
-    name: r'currency',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? currency;
-
-
 
   @JsonKey(
     
@@ -93,6 +69,30 @@ class LineItemModifier {
 
   @JsonKey(
     
+    name: r'currency',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? currency;
+
+
+
+  @JsonKey(
+    
+    name: r'baseMoneyAmount',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? baseMoneyAmount;
+
+
+
+  @JsonKey(
+    
     name: r'totalMoneyAmount',
     required: false,
     includeIfNull: false
@@ -105,20 +105,20 @@ class LineItemModifier {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LineItemModifier &&
-     other.baseMoneyAmount == baseMoneyAmount &&
-     other.currency == currency &&
      other.id == id &&
      other.name == name &&
      other.quantity == quantity &&
+     other.currency == currency &&
+     other.baseMoneyAmount == baseMoneyAmount &&
      other.totalMoneyAmount == totalMoneyAmount;
 
   @override
   int get hashCode =>
-    (baseMoneyAmount == null ? 0 : baseMoneyAmount.hashCode) +
-    (currency == null ? 0 : currency.hashCode) +
     (id == null ? 0 : id.hashCode) +
     (name == null ? 0 : name.hashCode) +
     (quantity == null ? 0 : quantity.hashCode) +
+    (currency == null ? 0 : currency.hashCode) +
+    (baseMoneyAmount == null ? 0 : baseMoneyAmount.hashCode) +
     (totalMoneyAmount == null ? 0 : totalMoneyAmount.hashCode);
 
   factory LineItemModifier.fromJson(Map<String, dynamic> json) => _$LineItemModifierFromJson(json);

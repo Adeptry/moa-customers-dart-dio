@@ -20,9 +20,9 @@ class CategoryUpdateAllDto {
 
     required  this.id,
 
-     this.moaEnabled,
-
      this.moaOrdinal,
+
+     this.moaEnabled,
   });
 
   @JsonKey(
@@ -39,18 +39,6 @@ class CategoryUpdateAllDto {
 
   @JsonKey(
     
-    name: r'moaEnabled',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final bool? moaEnabled;
-
-
-
-  @JsonKey(
-    
     name: r'moaOrdinal',
     required: false,
     includeIfNull: false
@@ -61,17 +49,29 @@ class CategoryUpdateAllDto {
 
 
 
+  @JsonKey(
+    
+    name: r'moaEnabled',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? moaEnabled;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is CategoryUpdateAllDto &&
      other.id == id &&
-     other.moaEnabled == moaEnabled &&
-     other.moaOrdinal == moaOrdinal;
+     other.moaOrdinal == moaOrdinal &&
+     other.moaEnabled == moaEnabled;
 
   @override
   int get hashCode =>
     id.hashCode +
-    (moaEnabled == null ? 0 : moaEnabled.hashCode) +
-    (moaOrdinal == null ? 0 : moaOrdinal.hashCode);
+    (moaOrdinal == null ? 0 : moaOrdinal.hashCode) +
+    (moaEnabled == null ? 0 : moaEnabled.hashCode);
 
   factory CategoryUpdateAllDto.fromJson(Map<String, dynamic> json) => _$CategoryUpdateAllDtoFromJson(json);
 

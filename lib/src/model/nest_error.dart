@@ -18,22 +18,22 @@ class NestError {
   /// Returns a new [NestError] instance.
   NestError({
 
-    required  this.error,
+    required  this.statusCode,
 
     required  this.message,
 
-    required  this.statusCode,
+    required  this.error,
   });
 
   @JsonKey(
     
-    name: r'error',
+    name: r'statusCode',
     required: true,
     includeIfNull: false
   )
 
 
-  final String error;
+  final num statusCode;
 
 
 
@@ -51,27 +51,27 @@ class NestError {
 
   @JsonKey(
     
-    name: r'statusCode',
+    name: r'error',
     required: true,
     includeIfNull: false
   )
 
 
-  final num statusCode;
+  final String error;
 
 
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is NestError &&
-     other.error == error &&
+     other.statusCode == statusCode &&
      other.message == message &&
-     other.statusCode == statusCode;
+     other.error == error;
 
   @override
   int get hashCode =>
-    error.hashCode +
+    statusCode.hashCode +
     message.hashCode +
-    statusCode.hashCode;
+    error.hashCode;
 
   factory NestError.fromJson(Map<String, dynamic> json) => _$NestErrorFromJson(json);
 

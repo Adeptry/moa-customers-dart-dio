@@ -3,24 +3,24 @@
 //
 
 import 'package:dio/dio.dart';
-import 'package:moa_customers/src/auth/api_key_auth.dart';
-import 'package:moa_customers/src/auth/basic_auth.dart';
-import 'package:moa_customers/src/auth/bearer_auth.dart';
-import 'package:moa_customers/src/auth/oauth.dart';
-import 'package:moa_customers/src/api/auth_api.dart';
-import 'package:moa_customers/src/api/cards_api.dart';
-import 'package:moa_customers/src/api/catalogs_api.dart';
-import 'package:moa_customers/src/api/configs_api.dart';
-import 'package:moa_customers/src/api/customers_api.dart';
-import 'package:moa_customers/src/api/locations_api.dart';
-import 'package:moa_customers/src/api/orders_api.dart';
-import 'package:moa_customers/src/api/users_api.dart';
+import 'package:moa_customers_client/src/auth/api_key_auth.dart';
+import 'package:moa_customers_client/src/auth/basic_auth.dart';
+import 'package:moa_customers_client/src/auth/bearer_auth.dart';
+import 'package:moa_customers_client/src/auth/oauth.dart';
+import 'package:moa_customers_client/src/api/auth_api.dart';
+import 'package:moa_customers_client/src/api/cards_api.dart';
+import 'package:moa_customers_client/src/api/catalogs_api.dart';
+import 'package:moa_customers_client/src/api/configs_api.dart';
+import 'package:moa_customers_client/src/api/customers_api.dart';
+import 'package:moa_customers_client/src/api/locations_api.dart';
+import 'package:moa_customers_client/src/api/orders_api.dart';
+import 'package:moa_customers_client/src/api/users_api.dart';
 
-class MoaCustomers {
+class MoaCustomersClient {
   static const String basePath = r'https://api.myorderapp.dev';
 
   final Dio dio;
-  MoaCustomers({
+  MoaCustomersClient({
     Dio? dio,
     String? basePathOverride,
     List<Interceptor>? interceptors,

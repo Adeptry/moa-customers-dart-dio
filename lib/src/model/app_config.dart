@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:moa_customers/src/model/file_entity.dart';
-import 'package:moa_customers/src/model/theme_mode_enum.dart';
+import 'package:moa_customers_client/src/model/theme_mode_enum.dart';
+import 'package:moa_customers_client/src/model/file_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'app_config.g.dart';
@@ -20,86 +20,38 @@ class AppConfig {
   /// Returns a new [AppConfig] instance.
   AppConfig({
 
-     this.blockingMessage,
-
-     this.fontFamily,
-
-     this.iconFile,
-
-     this.message,
-
-     this.minimumVersion,
+     this.showsAds,
 
      this.name,
 
      this.seedColor,
 
-     this.showAds,
+     this.fontFamily,
 
-     this.showsAds,
+     this.useMaterial3,
 
      this.themeMode,
 
-     this.useMaterial3,
+     this.message,
+
+     this.blockingMessage,
+
+     this.minimumVersion,
+
+     this.showAds,
+
+     this.iconFile,
   });
 
   @JsonKey(
     
-    name: r'blockingMessage',
+    name: r'showsAds',
     required: false,
     includeIfNull: false
   )
 
 
-  final String? blockingMessage;
-
-
-
-  @JsonKey(
-    
-    name: r'fontFamily',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? fontFamily;
-
-
-
-  @JsonKey(
-    
-    name: r'iconFile',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final FileEntity? iconFile;
-
-
-
-  @JsonKey(
-    
-    name: r'message',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? message;
-
-
-
-  @JsonKey(
-    
-    name: r'minimumVersion',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? minimumVersion;
+  final bool? showsAds;
 
 
 
@@ -129,25 +81,25 @@ class AppConfig {
 
   @JsonKey(
     
-    name: r'showAds',
+    name: r'fontFamily',
     required: false,
     includeIfNull: false
   )
 
 
-  final bool? showAds;
+  final String? fontFamily;
 
 
 
   @JsonKey(
     
-    name: r'showsAds',
+    name: r'useMaterial3',
     required: false,
     includeIfNull: false
   )
 
 
-  final bool? showsAds;
+  final bool? useMaterial3;
 
 
 
@@ -165,43 +117,91 @@ class AppConfig {
 
   @JsonKey(
     
-    name: r'useMaterial3',
+    name: r'message',
     required: false,
     includeIfNull: false
   )
 
 
-  final bool? useMaterial3;
+  final String? message;
+
+
+
+  @JsonKey(
+    
+    name: r'blockingMessage',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? blockingMessage;
+
+
+
+  @JsonKey(
+    
+    name: r'minimumVersion',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? minimumVersion;
+
+
+
+  @JsonKey(
+    
+    name: r'showAds',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? showAds;
+
+
+
+  @JsonKey(
+    
+    name: r'iconFile',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final FileEntity? iconFile;
 
 
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is AppConfig &&
-     other.blockingMessage == blockingMessage &&
-     other.fontFamily == fontFamily &&
-     other.iconFile == iconFile &&
-     other.message == message &&
-     other.minimumVersion == minimumVersion &&
+     other.showsAds == showsAds &&
      other.name == name &&
      other.seedColor == seedColor &&
-     other.showAds == showAds &&
-     other.showsAds == showsAds &&
+     other.fontFamily == fontFamily &&
+     other.useMaterial3 == useMaterial3 &&
      other.themeMode == themeMode &&
-     other.useMaterial3 == useMaterial3;
+     other.message == message &&
+     other.blockingMessage == blockingMessage &&
+     other.minimumVersion == minimumVersion &&
+     other.showAds == showAds &&
+     other.iconFile == iconFile;
 
   @override
   int get hashCode =>
-    (blockingMessage == null ? 0 : blockingMessage.hashCode) +
-    (fontFamily == null ? 0 : fontFamily.hashCode) +
-    (iconFile == null ? 0 : iconFile.hashCode) +
-    (message == null ? 0 : message.hashCode) +
-    (minimumVersion == null ? 0 : minimumVersion.hashCode) +
+    (showsAds == null ? 0 : showsAds.hashCode) +
     (name == null ? 0 : name.hashCode) +
     (seedColor == null ? 0 : seedColor.hashCode) +
-    (showAds == null ? 0 : showAds.hashCode) +
-    (showsAds == null ? 0 : showsAds.hashCode) +
+    (fontFamily == null ? 0 : fontFamily.hashCode) +
+    (useMaterial3 == null ? 0 : useMaterial3.hashCode) +
     themeMode.hashCode +
-    (useMaterial3 == null ? 0 : useMaterial3.hashCode);
+    (message == null ? 0 : message.hashCode) +
+    (blockingMessage == null ? 0 : blockingMessage.hashCode) +
+    (minimumVersion == null ? 0 : minimumVersion.hashCode) +
+    (showAds == null ? 0 : showAds.hashCode) +
+    (iconFile == null ? 0 : iconFile.hashCode);
 
   factory AppConfig.fromJson(Map<String, dynamic> json) => _$AppConfigFromJson(json);
 

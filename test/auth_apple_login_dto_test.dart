@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for AuthAppleLoginDto
 void main() {
@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(AuthAppleLoginDto, () {
-    // String firstName
-    test('to test the property `firstName`', () async {
+    // String idToken
+    test('to test the property `idToken`', () async {
       // TODO
     });
 
-    // String idToken
-    test('to test the property `idToken`', () async {
+    // String firstName
+    test('to test the property `firstName`', () async {
       // TODO
     });
 

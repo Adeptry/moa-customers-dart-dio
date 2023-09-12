@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:moa_customers/src/model/variation_add_dto.dart';
+import 'package:moa_customers_client/src/model/variation_add_dto.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'order_create_dto.g.dart';
@@ -19,22 +19,22 @@ class OrderCreateDto {
   /// Returns a new [OrderCreateDto] instance.
   OrderCreateDto({
 
-     this.idempotencyKey,
+     this.variations,
 
      this.locationId,
 
-     this.variations,
+     this.idempotencyKey,
   });
 
   @JsonKey(
     
-    name: r'idempotencyKey',
+    name: r'variations',
     required: false,
     includeIfNull: false
   )
 
 
-  final String? idempotencyKey;
+  final List<VariationAddDto>? variations;
 
 
 
@@ -52,27 +52,27 @@ class OrderCreateDto {
 
   @JsonKey(
     
-    name: r'variations',
+    name: r'idempotencyKey',
     required: false,
     includeIfNull: false
   )
 
 
-  final List<VariationAddDto>? variations;
+  final String? idempotencyKey;
 
 
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is OrderCreateDto &&
-     other.idempotencyKey == idempotencyKey &&
+     other.variations == variations &&
      other.locationId == locationId &&
-     other.variations == variations;
+     other.idempotencyKey == idempotencyKey;
 
   @override
   int get hashCode =>
-    (idempotencyKey == null ? 0 : idempotencyKey.hashCode) +
+    (variations == null ? 0 : variations.hashCode) +
     (locationId == null ? 0 : locationId.hashCode) +
-    (variations == null ? 0 : variations.hashCode);
+    (idempotencyKey == null ? 0 : idempotencyKey.hashCode);
 
   factory OrderCreateDto.fromJson(Map<String, dynamic> json) => _$OrderCreateDtoFromJson(json);
 

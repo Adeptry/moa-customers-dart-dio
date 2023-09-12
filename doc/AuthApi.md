@@ -1,8 +1,8 @@
-# moa_customers.api.AuthApi
+# moa_customers_client.api.AuthApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -28,13 +28,13 @@ Get current Auth
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getAuthApi();
+final api = MoaCustomersClient().getAuthApi();
 
 try {
     final response = api.currentAuth();
@@ -69,13 +69,13 @@ Forgot password
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getAuthApi();
+final api = MoaCustomersClient().getAuthApi();
 final AuthForgotPasswordDto authForgotPasswordDto = ; // AuthForgotPasswordDto | 
 
 try {
@@ -113,13 +113,13 @@ Get access token
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getAuthApi();
+final api = MoaCustomersClient().getAuthApi();
 final AuthEmailLoginDto authEmailLoginDto = ; // AuthEmailLoginDto | 
 
 try {
@@ -158,13 +158,13 @@ Apple login
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getAuthApi();
+final api = MoaCustomersClient().getAuthApi();
 final AuthAppleLoginDto authAppleLoginDto = ; // AuthAppleLoginDto | 
 
 try {
@@ -203,13 +203,13 @@ Google login
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getAuthApi();
+final api = MoaCustomersClient().getAuthApi();
 final AuthGoogleLoginDto authGoogleLoginDto = ; // AuthGoogleLoginDto | 
 
 try {
@@ -248,13 +248,13 @@ Delete Session
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getAuthApi();
+final api = MoaCustomersClient().getAuthApi();
 
 try {
     api.logout();
@@ -288,13 +288,13 @@ Refresh token
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getAuthApi();
+final api = MoaCustomersClient().getAuthApi();
 
 try {
     final response = api.refreshToken();
@@ -329,13 +329,13 @@ Create User and Authorize
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getAuthApi();
+final api = MoaCustomersClient().getAuthApi();
 final AuthRegisterLoginDto authRegisterLoginDto = ; // AuthRegisterLoginDto | 
 
 try {
@@ -374,13 +374,13 @@ Reset password
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getAuthApi();
+final api = MoaCustomersClient().getAuthApi();
 final AuthResetPasswordDto authResetPasswordDto = ; // AuthResetPasswordDto | 
 
 try {
@@ -418,13 +418,13 @@ Update password
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getAuthApi();
+final api = MoaCustomersClient().getAuthApi();
 final AuthUpdateDto authUpdateDto = ; // AuthUpdateDto | 
 
 try {

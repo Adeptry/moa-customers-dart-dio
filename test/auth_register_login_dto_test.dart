@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for AuthRegisterLoginDto
 void main() {
@@ -12,6 +12,11 @@ void main() {
       // TODO
     });
 
+    // String password
+    test('to test the property `password`', () async {
+      // TODO
+    });
+
     // String firstName
     test('to test the property `firstName`', () async {
       // TODO
@@ -19,11 +24,6 @@ void main() {
 
     // String lastName
     test('to test the property `lastName`', () async {
-      // TODO
-    });
-
-    // String password
-    test('to test the property `password`', () async {
       // TODO
     });
 

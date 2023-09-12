@@ -18,22 +18,10 @@ class AuthResetPasswordDto {
   /// Returns a new [AuthResetPasswordDto] instance.
   AuthResetPasswordDto({
 
-    required  this.hash,
-
     required  this.password,
+
+    required  this.hash,
   });
-
-  @JsonKey(
-    
-    name: r'hash',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String hash;
-
-
 
   @JsonKey(
     
@@ -47,15 +35,27 @@ class AuthResetPasswordDto {
 
 
 
+  @JsonKey(
+    
+    name: r'hash',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String hash;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AuthResetPasswordDto &&
-     other.hash == hash &&
-     other.password == password;
+     other.password == password &&
+     other.hash == hash;
 
   @override
   int get hashCode =>
-    hash.hashCode +
-    password.hashCode;
+    password.hashCode +
+    hash.hashCode;
 
   factory AuthResetPasswordDto.fromJson(Map<String, dynamic> json) => _$AuthResetPasswordDtoFromJson(json);
 

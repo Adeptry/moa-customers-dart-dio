@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for OrderCreateDto
 void main() {
@@ -7,8 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(OrderCreateDto, () {
-    // String idempotencyKey
-    test('to test the property `idempotencyKey`', () async {
+    // List<VariationAddDto> variations
+    test('to test the property `variations`', () async {
       // TODO
     });
 
@@ -17,8 +17,8 @@ void main() {
       // TODO
     });
 
-    // List<VariationAddDto> variations
-    test('to test the property `variations`', () async {
+    // String idempotencyKey
+    test('to test the property `idempotencyKey`', () async {
       // TODO
     });
 

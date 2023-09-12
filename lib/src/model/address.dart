@@ -18,11 +18,21 @@ class Address {
   /// Returns a new [Address] instance.
   Address({
 
+     this.id,
+
      this.addressLine1,
 
      this.addressLine2,
 
      this.addressLine3,
+
+     this.locality,
+
+     this.sublocality,
+
+     this.sublocality2,
+
+     this.sublocality3,
 
      this.administrativeDistrictLevel1,
 
@@ -30,24 +40,26 @@ class Address {
 
      this.administrativeDistrictLevel3,
 
+     this.postalCode,
+
      this.country,
 
      this.firstName,
 
-     this.id,
-
      this.lastName,
-
-     this.locality,
-
-     this.postalCode,
-
-     this.sublocality,
-
-     this.sublocality2,
-
-     this.sublocality3,
   });
+
+  @JsonKey(
+    
+    name: r'id',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? id;
+
+
 
       /// The first line of the address.
   @JsonKey(
@@ -88,96 +100,6 @@ class Address {
 
 
 
-      /// A civil entity within the address's country. In the US, this is the state.
-  @JsonKey(
-    
-    name: r'administrativeDistrictLevel1',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? administrativeDistrictLevel1;
-
-
-
-      /// A civil entity within the address's `administrative_district_level_1`. In the US, this is the county.
-  @JsonKey(
-    
-    name: r'administrativeDistrictLevel2',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? administrativeDistrictLevel2;
-
-
-
-      /// A civil entity within the address's `administrative_district_level_2`, if any.
-  @JsonKey(
-    
-    name: r'administrativeDistrictLevel3',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? administrativeDistrictLevel3;
-
-
-
-      /// Indicates the country associated with another entity, such as a business. Values are in ISO 3166-1-alpha-2 format.
-  @JsonKey(
-    
-    name: r'country',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? country;
-
-
-
-      /// Optional first name when it's representing recipient.
-  @JsonKey(
-    
-    name: r'firstName',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? firstName;
-
-
-
-  @JsonKey(
-    
-    name: r'id',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? id;
-
-
-
-      /// Optional last name when it's representing recipient.
-  @JsonKey(
-    
-    name: r'lastName',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? lastName;
-
-
-
       /// The city or town of the address.
   @JsonKey(
     
@@ -188,19 +110,6 @@ class Address {
 
 
   final String? locality;
-
-
-
-      /// The address's postal code.
-  @JsonKey(
-    
-    name: r'postalCode',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? postalCode;
 
 
 
@@ -243,41 +152,132 @@ class Address {
 
 
 
+      /// A civil entity within the address's country. In the US, this is the state.
+  @JsonKey(
+    
+    name: r'administrativeDistrictLevel1',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? administrativeDistrictLevel1;
+
+
+
+      /// A civil entity within the address's `administrative_district_level_1`. In the US, this is the county.
+  @JsonKey(
+    
+    name: r'administrativeDistrictLevel2',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? administrativeDistrictLevel2;
+
+
+
+      /// A civil entity within the address's `administrative_district_level_2`, if any.
+  @JsonKey(
+    
+    name: r'administrativeDistrictLevel3',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? administrativeDistrictLevel3;
+
+
+
+      /// The address's postal code.
+  @JsonKey(
+    
+    name: r'postalCode',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? postalCode;
+
+
+
+      /// Indicates the country associated with another entity, such as a business. Values are in ISO 3166-1-alpha-2 format.
+  @JsonKey(
+    
+    name: r'country',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? country;
+
+
+
+      /// Optional first name when it's representing recipient.
+  @JsonKey(
+    
+    name: r'firstName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? firstName;
+
+
+
+      /// Optional last name when it's representing recipient.
+  @JsonKey(
+    
+    name: r'lastName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? lastName;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Address &&
+     other.id == id &&
      other.addressLine1 == addressLine1 &&
      other.addressLine2 == addressLine2 &&
      other.addressLine3 == addressLine3 &&
+     other.locality == locality &&
+     other.sublocality == sublocality &&
+     other.sublocality2 == sublocality2 &&
+     other.sublocality3 == sublocality3 &&
      other.administrativeDistrictLevel1 == administrativeDistrictLevel1 &&
      other.administrativeDistrictLevel2 == administrativeDistrictLevel2 &&
      other.administrativeDistrictLevel3 == administrativeDistrictLevel3 &&
+     other.postalCode == postalCode &&
      other.country == country &&
      other.firstName == firstName &&
-     other.id == id &&
-     other.lastName == lastName &&
-     other.locality == locality &&
-     other.postalCode == postalCode &&
-     other.sublocality == sublocality &&
-     other.sublocality2 == sublocality2 &&
-     other.sublocality3 == sublocality3;
+     other.lastName == lastName;
 
   @override
   int get hashCode =>
+    (id == null ? 0 : id.hashCode) +
     (addressLine1 == null ? 0 : addressLine1.hashCode) +
     (addressLine2 == null ? 0 : addressLine2.hashCode) +
     (addressLine3 == null ? 0 : addressLine3.hashCode) +
+    (locality == null ? 0 : locality.hashCode) +
+    (sublocality == null ? 0 : sublocality.hashCode) +
+    (sublocality2 == null ? 0 : sublocality2.hashCode) +
+    (sublocality3 == null ? 0 : sublocality3.hashCode) +
     (administrativeDistrictLevel1 == null ? 0 : administrativeDistrictLevel1.hashCode) +
     (administrativeDistrictLevel2 == null ? 0 : administrativeDistrictLevel2.hashCode) +
     (administrativeDistrictLevel3 == null ? 0 : administrativeDistrictLevel3.hashCode) +
+    (postalCode == null ? 0 : postalCode.hashCode) +
     (country == null ? 0 : country.hashCode) +
     (firstName == null ? 0 : firstName.hashCode) +
-    (id == null ? 0 : id.hashCode) +
-    (lastName == null ? 0 : lastName.hashCode) +
-    (locality == null ? 0 : locality.hashCode) +
-    (postalCode == null ? 0 : postalCode.hashCode) +
-    (sublocality == null ? 0 : sublocality.hashCode) +
-    (sublocality2 == null ? 0 : sublocality2.hashCode) +
-    (sublocality3 == null ? 0 : sublocality3.hashCode);
+    (lastName == null ? 0 : lastName.hashCode);
 
   factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
 

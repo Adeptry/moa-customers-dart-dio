@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for Variation
 void main() {
@@ -12,6 +12,11 @@ void main() {
       // TODO
     });
 
+    // num ordinal
+    test('to test the property `ordinal`', () async {
+      // TODO
+    });
+
     // bool moaEnabled
     test('to test the property `moaEnabled`', () async {
       // TODO
@@ -19,11 +24,6 @@ void main() {
 
     // String name
     test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // num ordinal
-    test('to test the property `ordinal`', () async {
       // TODO
     });
 

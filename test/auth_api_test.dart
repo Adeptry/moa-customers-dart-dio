@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 
 /// tests for AuthApi
 void main() {
-  final instance = MoaCustomers().getAuthApi();
+  final instance = MoaCustomersClient().getAuthApi();
 
   group(AuthApi, () {
     // Get current Auth

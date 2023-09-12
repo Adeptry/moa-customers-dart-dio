@@ -1,8 +1,8 @@
-# moa_customers.model.AuthEmailLoginDto
+# moa_customers_client.model.AuthEmailLoginDto
 
 ## Load the model package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 ## Properties

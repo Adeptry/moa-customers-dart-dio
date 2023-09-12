@@ -22,11 +22,11 @@ class Modifier {
 
      this.name,
 
-     this.ordinal,
-
      this.priceAmount,
 
      this.priceCurrency,
+
+     this.ordinal,
   });
 
   @JsonKey(
@@ -55,18 +55,6 @@ class Modifier {
 
   @JsonKey(
     
-    name: r'ordinal',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final num? ordinal;
-
-
-
-  @JsonKey(
-    
     name: r'priceAmount',
     required: false,
     includeIfNull: false
@@ -89,21 +77,33 @@ class Modifier {
 
 
 
+  @JsonKey(
+    
+    name: r'ordinal',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? ordinal;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Modifier &&
      other.id == id &&
      other.name == name &&
-     other.ordinal == ordinal &&
      other.priceAmount == priceAmount &&
-     other.priceCurrency == priceCurrency;
+     other.priceCurrency == priceCurrency &&
+     other.ordinal == ordinal;
 
   @override
   int get hashCode =>
     (id == null ? 0 : id.hashCode) +
     (name == null ? 0 : name.hashCode) +
-    (ordinal == null ? 0 : ordinal.hashCode) +
     (priceAmount == null ? 0 : priceAmount.hashCode) +
-    (priceCurrency == null ? 0 : priceCurrency.hashCode);
+    (priceCurrency == null ? 0 : priceCurrency.hashCode) +
+    (ordinal == null ? 0 : ordinal.hashCode);
 
   factory Modifier.fromJson(Map<String, dynamic> json) => _$ModifierFromJson(json);
 

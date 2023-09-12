@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for AuthResetPasswordDto
 void main() {
@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(AuthResetPasswordDto, () {
-    // String hash
-    test('to test the property `hash`', () async {
+    // String password
+    test('to test the property `password`', () async {
       // TODO
     });
 
-    // String password
-    test('to test the property `password`', () async {
+    // String hash
+    test('to test the property `hash`', () async {
       // TODO
     });
 

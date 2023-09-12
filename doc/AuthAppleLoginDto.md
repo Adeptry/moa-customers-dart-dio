@@ -1,15 +1,15 @@
-# moa_customers.model.AuthAppleLoginDto
+# moa_customers_client.model.AuthAppleLoginDto
 
 ## Load the model package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**firstName** | **String** |  | [optional] 
 **idToken** | **String** |  | 
+**firstName** | **String** |  | [optional] 
 **lastName** | **String** |  | [optional] 
 **role** | **String** |  | 
 

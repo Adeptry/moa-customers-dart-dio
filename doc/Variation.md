@@ -1,17 +1,17 @@
-# moa_customers.model.Variation
+# moa_customers_client.model.Variation
 
 ## Load the model package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
+**ordinal** | **num** |  | [optional] 
 **moaEnabled** | **bool** |  | [optional] 
 **name** | **String** |  | [optional] 
-**ordinal** | **num** |  | [optional] 
 **priceAmount** | **num** |  | [optional] 
 **priceCurrency** | **String** |  | [optional] 
 

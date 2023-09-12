@@ -17,9 +17,10 @@ VariationAddDto _$VariationAddDtoFromJson(Map<String, dynamic> json) =>
         );
         final val = VariationAddDto(
           id: $checkedConvert('id', (v) => v as String),
+          quantity: $checkedConvert('quantity', (v) => v as num),
           modifierIds: $checkedConvert('modifierIds',
               (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
-          quantity: $checkedConvert('quantity', (v) => v as num),
+          note: $checkedConvert('note', (v) => v as String?),
         );
         return val;
       },
@@ -28,6 +29,7 @@ VariationAddDto _$VariationAddDtoFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$VariationAddDtoToJson(VariationAddDto instance) {
   final val = <String, dynamic>{
     'id': instance.id,
+    'quantity': instance.quantity,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -37,6 +39,6 @@ Map<String, dynamic> _$VariationAddDtoToJson(VariationAddDto instance) {
   }
 
   writeNotNull('modifierIds', instance.modifierIds);
-  val['quantity'] = instance.quantity;
+  writeNotNull('note', instance.note);
   return val;
 }

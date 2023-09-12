@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 
 /// tests for CustomersApi
 void main() {
-  final instance = MoaCustomers().getCustomersApi();
+  final instance = MoaCustomersClient().getCustomersApi();
 
   group(CustomersApi, () {
     // Create Customer for current User

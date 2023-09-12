@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for Category
 void main() {
@@ -12,8 +12,8 @@ void main() {
       // TODO
     });
 
-    // List<Item> items
-    test('to test the property `items`', () async {
+    // num moaOrdinal
+    test('to test the property `moaOrdinal`', () async {
       // TODO
     });
 
@@ -22,13 +22,13 @@ void main() {
       // TODO
     });
 
-    // num moaOrdinal
-    test('to test the property `moaOrdinal`', () async {
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 
-    // String name
-    test('to test the property `name`', () async {
+    // List<Item> items
+    test('to test the property `items`', () async {
       // TODO
     });
 

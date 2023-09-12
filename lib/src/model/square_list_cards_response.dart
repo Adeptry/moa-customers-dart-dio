@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:moa_customers/src/model/square_error.dart';
-import 'package:moa_customers/src/model/square_card.dart';
+import 'package:moa_customers_client/src/model/square_card.dart';
+import 'package:moa_customers_client/src/model/square_error.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'square_list_cards_response.g.dart';
@@ -20,12 +20,24 @@ class SquareListCardsResponse {
   /// Returns a new [SquareListCardsResponse] instance.
   SquareListCardsResponse({
 
+     this.errors,
+
      this.cards,
 
      this.cursor,
-
-     this.errors,
   });
+
+  @JsonKey(
+    
+    name: r'errors',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<SquareError>? errors;
+
+
 
   @JsonKey(
     
@@ -51,29 +63,17 @@ class SquareListCardsResponse {
 
 
 
-  @JsonKey(
-    
-    name: r'errors',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final List<SquareError>? errors;
-
-
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is SquareListCardsResponse &&
+     other.errors == errors &&
      other.cards == cards &&
-     other.cursor == cursor &&
-     other.errors == errors;
+     other.cursor == cursor;
 
   @override
   int get hashCode =>
+    (errors == null ? 0 : errors.hashCode) +
     (cards == null ? 0 : cards.hashCode) +
-    (cursor == null ? 0 : cursor.hashCode) +
-    (errors == null ? 0 : errors.hashCode);
+    (cursor == null ? 0 : cursor.hashCode);
 
   factory SquareListCardsResponse.fromJson(Map<String, dynamic> json) => _$SquareListCardsResponseFromJson(json);
 

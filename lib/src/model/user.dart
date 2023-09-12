@@ -18,42 +18,18 @@ class User {
   /// Returns a new [User] instance.
   User({
 
-     this.email,
-
-     this.firstName,
-
     required  this.id,
 
-     this.lastName,
+     this.email,
 
      this.provider,
 
      this.socialId,
+
+     this.firstName,
+
+     this.lastName,
   });
-
-  @JsonKey(
-    
-    name: r'email',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? email;
-
-
-
-  @JsonKey(
-    
-    name: r'firstName',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? firstName;
-
-
 
   @JsonKey(
     
@@ -69,13 +45,13 @@ class User {
 
   @JsonKey(
     
-    name: r'lastName',
+    name: r'email',
     required: false,
     includeIfNull: false
   )
 
 
-  final String? lastName;
+  final String? email;
 
 
 
@@ -103,23 +79,47 @@ class User {
 
 
 
+  @JsonKey(
+    
+    name: r'firstName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? firstName;
+
+
+
+  @JsonKey(
+    
+    name: r'lastName',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? lastName;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is User &&
-     other.email == email &&
-     other.firstName == firstName &&
      other.id == id &&
-     other.lastName == lastName &&
+     other.email == email &&
      other.provider == provider &&
-     other.socialId == socialId;
+     other.socialId == socialId &&
+     other.firstName == firstName &&
+     other.lastName == lastName;
 
   @override
   int get hashCode =>
-    (email == null ? 0 : email.hashCode) +
-    (firstName == null ? 0 : firstName.hashCode) +
     id.hashCode +
-    (lastName == null ? 0 : lastName.hashCode) +
+    (email == null ? 0 : email.hashCode) +
     (provider == null ? 0 : provider.hashCode) +
-    (socialId == null ? 0 : socialId.hashCode);
+    (socialId == null ? 0 : socialId.hashCode) +
+    (firstName == null ? 0 : firstName.hashCode) +
+    (lastName == null ? 0 : lastName.hashCode);
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 

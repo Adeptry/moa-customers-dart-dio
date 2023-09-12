@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for Item
 void main() {
@@ -7,13 +7,28 @@ void main() {
   // TODO add properties to the entity
 
   group(Item, () {
-    // String description
-    test('to test the property `description`', () async {
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 
-    // String id
-    test('to test the property `id`', () async {
+    // num moaOrdinal
+    test('to test the property `moaOrdinal`', () async {
+      // TODO
+    });
+
+    // bool moaEnabled
+    test('to test the property `moaEnabled`', () async {
+      // TODO
+    });
+
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // String description
+    test('to test the property `description`', () async {
       // TODO
     });
 
@@ -24,21 +39,6 @@ void main() {
 
     // List<ItemModifierList> itemModifierLists
     test('to test the property `itemModifierLists`', () async {
-      // TODO
-    });
-
-    // bool moaEnabled
-    test('to test the property `moaEnabled`', () async {
-      // TODO
-    });
-
-    // num moaOrdinal
-    test('to test the property `moaOrdinal`', () async {
-      // TODO
-    });
-
-    // String name
-    test('to test the property `name`', () async {
       // TODO
     });
 

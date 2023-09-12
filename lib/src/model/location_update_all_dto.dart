@@ -20,9 +20,9 @@ class LocationUpdateAllDto {
 
     required  this.id,
 
-     this.moaEnabled,
-
      this.moaOrdinal,
+
+     this.moaEnabled,
   });
 
   @JsonKey(
@@ -39,18 +39,6 @@ class LocationUpdateAllDto {
 
   @JsonKey(
     
-    name: r'moaEnabled',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final bool? moaEnabled;
-
-
-
-  @JsonKey(
-    
     name: r'moaOrdinal',
     required: false,
     includeIfNull: false
@@ -61,17 +49,29 @@ class LocationUpdateAllDto {
 
 
 
+  @JsonKey(
+    
+    name: r'moaEnabled',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? moaEnabled;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is LocationUpdateAllDto &&
      other.id == id &&
-     other.moaEnabled == moaEnabled &&
-     other.moaOrdinal == moaOrdinal;
+     other.moaOrdinal == moaOrdinal &&
+     other.moaEnabled == moaEnabled;
 
   @override
   int get hashCode =>
     id.hashCode +
-    (moaEnabled == null ? 0 : moaEnabled.hashCode) +
-    (moaOrdinal == null ? 0 : moaOrdinal.hashCode);
+    (moaOrdinal == null ? 0 : moaOrdinal.hashCode) +
+    (moaEnabled == null ? 0 : moaEnabled.hashCode);
 
   factory LocationUpdateAllDto.fromJson(Map<String, dynamic> json) => _$LocationUpdateAllDtoFromJson(json);
 

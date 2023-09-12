@@ -18,30 +18,18 @@ class AppConfigUpdateDto {
   /// Returns a new [AppConfigUpdateDto] instance.
   AppConfigUpdateDto({
 
-     this.fontFamily,
-
      this.name,
 
      this.seedColor,
 
+     this.fontFamily,
+
      this.shortDescription,
 
-     this.themeMode,
-
      this.useMaterial3,
+
+     this.themeMode,
   });
-
-  @JsonKey(
-    
-    name: r'fontFamily',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? fontFamily;
-
-
 
   @JsonKey(
     
@@ -69,6 +57,18 @@ class AppConfigUpdateDto {
 
   @JsonKey(
     
+    name: r'fontFamily',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? fontFamily;
+
+
+
+  @JsonKey(
+    
     name: r'shortDescription',
     required: false,
     includeIfNull: false
@@ -76,18 +76,6 @@ class AppConfigUpdateDto {
 
 
   final String? shortDescription;
-
-
-
-  @JsonKey(
-    
-    name: r'themeMode',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final AppConfigUpdateDtoThemeModeEnum? themeMode;
 
 
 
@@ -103,23 +91,35 @@ class AppConfigUpdateDto {
 
 
 
+  @JsonKey(
+    
+    name: r'themeMode',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final AppConfigUpdateDtoThemeModeEnum? themeMode;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is AppConfigUpdateDto &&
-     other.fontFamily == fontFamily &&
      other.name == name &&
      other.seedColor == seedColor &&
+     other.fontFamily == fontFamily &&
      other.shortDescription == shortDescription &&
-     other.themeMode == themeMode &&
-     other.useMaterial3 == useMaterial3;
+     other.useMaterial3 == useMaterial3 &&
+     other.themeMode == themeMode;
 
   @override
   int get hashCode =>
-    (fontFamily == null ? 0 : fontFamily.hashCode) +
     (name == null ? 0 : name.hashCode) +
     (seedColor == null ? 0 : seedColor.hashCode) +
+    (fontFamily == null ? 0 : fontFamily.hashCode) +
     (shortDescription == null ? 0 : shortDescription.hashCode) +
-    (themeMode == null ? 0 : themeMode.hashCode) +
-    (useMaterial3 == null ? 0 : useMaterial3.hashCode);
+    (useMaterial3 == null ? 0 : useMaterial3.hashCode) +
+    (themeMode == null ? 0 : themeMode.hashCode);
 
   factory AppConfigUpdateDto.fromJson(Map<String, dynamic> json) => _$AppConfigUpdateDtoFromJson(json);
 

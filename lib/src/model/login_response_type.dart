@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:moa_customers/src/model/user.dart';
+import 'package:moa_customers_client/src/model/user.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login_response_type.g.dart';
@@ -19,26 +19,14 @@ class LoginResponseType {
   /// Returns a new [LoginResponseType] instance.
   LoginResponseType({
 
-    required  this.refreshToken,
-
     required  this.token,
+
+    required  this.refreshToken,
 
     required  this.tokenExpires,
 
-    required  this.user,
+     this.user,
   });
-
-  @JsonKey(
-    
-    name: r'refreshToken',
-    required: true,
-    includeIfNull: false
-  )
-
-
-  final String refreshToken;
-
-
 
   @JsonKey(
     
@@ -49,6 +37,18 @@ class LoginResponseType {
 
 
   final String token;
+
+
+
+  @JsonKey(
+    
+    name: r'refreshToken',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final String refreshToken;
 
 
 
@@ -67,28 +67,28 @@ class LoginResponseType {
   @JsonKey(
     
     name: r'user',
-    required: true,
+    required: false,
     includeIfNull: false
   )
 
 
-  final User user;
+  final User? user;
 
 
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is LoginResponseType &&
-     other.refreshToken == refreshToken &&
      other.token == token &&
+     other.refreshToken == refreshToken &&
      other.tokenExpires == tokenExpires &&
      other.user == user;
 
   @override
   int get hashCode =>
-    refreshToken.hashCode +
     token.hashCode +
+    refreshToken.hashCode +
     tokenExpires.hashCode +
-    user.hashCode;
+    (user == null ? 0 : user.hashCode);
 
   factory LoginResponseType.fromJson(Map<String, dynamic> json) => _$LoginResponseTypeFromJson(json);
 

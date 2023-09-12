@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 
 /// tests for UsersApi
 void main() {
-  final instance = MoaCustomers().getUsersApi();
+  final instance = MoaCustomersClient().getUsersApi();
 
   group(UsersApi, () {
     // Delete your User

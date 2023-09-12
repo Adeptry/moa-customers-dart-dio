@@ -1,16 +1,17 @@
-# moa_customers.model.VariationAddDto
+# moa_customers_client.model.VariationAddDto
 
 ## Load the model package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
-**modifierIds** | **List&lt;String&gt;** |  | [optional] 
 **quantity** | **num** |  | 
+**modifierIds** | **List&lt;String&gt;** |  | [optional] 
+**note** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

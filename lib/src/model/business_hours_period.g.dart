@@ -12,11 +12,11 @@ BusinessHoursPeriod _$BusinessHoursPeriodFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = BusinessHoursPeriod(
-          dayOfWeek: $checkedConvert('dayOfWeek', (v) => v as String?),
-          endLocalTime: $checkedConvert('endLocalTime', (v) => v as String?),
           id: $checkedConvert('id', (v) => v as String?),
+          dayOfWeek: $checkedConvert('dayOfWeek', (v) => v as String?),
           startLocalTime:
               $checkedConvert('startLocalTime', (v) => v as String?),
+          endLocalTime: $checkedConvert('endLocalTime', (v) => v as String?),
         );
         return val;
       },
@@ -31,9 +31,9 @@ Map<String, dynamic> _$BusinessHoursPeriodToJson(BusinessHoursPeriod instance) {
     }
   }
 
-  writeNotNull('dayOfWeek', instance.dayOfWeek);
-  writeNotNull('endLocalTime', instance.endLocalTime);
   writeNotNull('id', instance.id);
+  writeNotNull('dayOfWeek', instance.dayOfWeek);
   writeNotNull('startLocalTime', instance.startLocalTime);
+  writeNotNull('endLocalTime', instance.endLocalTime);
   return val;
 }

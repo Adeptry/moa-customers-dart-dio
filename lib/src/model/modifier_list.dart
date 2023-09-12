@@ -3,8 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:moa_customers/src/model/moa_selection_type.dart';
-import 'package:moa_customers/src/model/modifier.dart';
+import 'package:moa_customers_client/src/model/moa_selection_type.dart';
+import 'package:moa_customers_client/src/model/modifier.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'modifier_list.g.dart';
@@ -22,13 +22,13 @@ class ModifierList {
 
      this.id,
 
-     this.modifiers,
-
      this.name,
 
      this.ordinal,
 
      this.selectionType,
+
+     this.modifiers,
   });
 
   @JsonKey(
@@ -40,18 +40,6 @@ class ModifierList {
 
 
   final String? id;
-
-
-
-  @JsonKey(
-    
-    name: r'modifiers',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final List<Modifier>? modifiers;
 
 
 
@@ -91,21 +79,33 @@ class ModifierList {
 
 
 
+  @JsonKey(
+    
+    name: r'modifiers',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<Modifier>? modifiers;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ModifierList &&
      other.id == id &&
-     other.modifiers == modifiers &&
      other.name == name &&
      other.ordinal == ordinal &&
-     other.selectionType == selectionType;
+     other.selectionType == selectionType &&
+     other.modifiers == modifiers;
 
   @override
   int get hashCode =>
     (id == null ? 0 : id.hashCode) +
-    (modifiers == null ? 0 : modifiers.hashCode) +
     (name == null ? 0 : name.hashCode) +
     (ordinal == null ? 0 : ordinal.hashCode) +
-    selectionType.hashCode;
+    selectionType.hashCode +
+    (modifiers == null ? 0 : modifiers.hashCode);
 
   factory ModifierList.fromJson(Map<String, dynamic> json) => _$ModifierListFromJson(json);
 

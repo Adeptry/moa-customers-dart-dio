@@ -6,14 +6,14 @@ import 'dart:async';
 
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers/src/deserialize.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers/src/model/location.dart';
-import 'package:moa_customers/src/model/location_paginated_response.dart';
-import 'package:moa_customers/src/model/location_update_all_dto.dart';
-import 'package:moa_customers/src/model/location_update_dto.dart';
-import 'package:moa_customers/src/model/nest_error.dart';
+import 'package:moa_customers_client/src/model/location.dart';
+import 'package:moa_customers_client/src/model/location_paginated_response.dart';
+import 'package:moa_customers_client/src/model/location_update_all_dto.dart';
+import 'package:moa_customers_client/src/model/location_update_dto.dart';
+import 'package:moa_customers_client/src/model/nest_error.dart';
 
 class LocationsApi {
 

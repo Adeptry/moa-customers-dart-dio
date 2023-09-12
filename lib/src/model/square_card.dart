@@ -18,42 +18,42 @@ class SquareCard {
   /// Returns a new [SquareCard] instance.
   SquareCard({
 
-     this.bin,
+     this.id,
 
      this.cardBrand,
 
-     this.cardCoBrand,
-
-     this.cardType,
-
-     this.cardholderName,
-
-     this.enabled,
+     this.last4,
 
      this.expMonth,
 
      this.expYear,
 
-     this.id,
-
-     this.last4,
-
-     this.prepaidType,
+     this.cardholderName,
 
      this.referenceId,
 
+     this.enabled,
+
+     this.cardType,
+
+     this.prepaidType,
+
+     this.bin,
+
      this.version,
+
+     this.cardCoBrand,
   });
 
   @JsonKey(
     
-    name: r'bin',
+    name: r'id',
     required: false,
     includeIfNull: false
   )
 
 
-  final String? bin;
+  final String? id;
 
 
 
@@ -71,49 +71,13 @@ class SquareCard {
 
   @JsonKey(
     
-    name: r'cardCoBrand',
+    name: r'last4',
     required: false,
     includeIfNull: false
   )
 
 
-  final String? cardCoBrand;
-
-
-
-  @JsonKey(
-    
-    name: r'cardType',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? cardType;
-
-
-
-  @JsonKey(
-    
-    name: r'cardholderName',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? cardholderName;
-
-
-
-  @JsonKey(
-    
-    name: r'enabled',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final bool? enabled;
+  final String? last4;
 
 
 
@@ -143,37 +107,13 @@ class SquareCard {
 
   @JsonKey(
     
-    name: r'id',
+    name: r'cardholderName',
     required: false,
     includeIfNull: false
   )
 
 
-  final String? id;
-
-
-
-  @JsonKey(
-    
-    name: r'last4',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? last4;
-
-
-
-  @JsonKey(
-    
-    name: r'prepaidType',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final String? prepaidType;
+  final String? cardholderName;
 
 
 
@@ -191,6 +131,54 @@ class SquareCard {
 
   @JsonKey(
     
+    name: r'enabled',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? enabled;
+
+
+
+  @JsonKey(
+    
+    name: r'cardType',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? cardType;
+
+
+
+  @JsonKey(
+    
+    name: r'prepaidType',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? prepaidType;
+
+
+
+  @JsonKey(
+    
+    name: r'bin',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? bin;
+
+
+
+  @JsonKey(
+    
     name: r'version',
     required: false,
     includeIfNull: false
@@ -201,37 +189,49 @@ class SquareCard {
 
 
 
+  @JsonKey(
+    
+    name: r'cardCoBrand',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final String? cardCoBrand;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is SquareCard &&
-     other.bin == bin &&
+     other.id == id &&
      other.cardBrand == cardBrand &&
-     other.cardCoBrand == cardCoBrand &&
-     other.cardType == cardType &&
-     other.cardholderName == cardholderName &&
-     other.enabled == enabled &&
+     other.last4 == last4 &&
      other.expMonth == expMonth &&
      other.expYear == expYear &&
-     other.id == id &&
-     other.last4 == last4 &&
-     other.prepaidType == prepaidType &&
+     other.cardholderName == cardholderName &&
      other.referenceId == referenceId &&
-     other.version == version;
+     other.enabled == enabled &&
+     other.cardType == cardType &&
+     other.prepaidType == prepaidType &&
+     other.bin == bin &&
+     other.version == version &&
+     other.cardCoBrand == cardCoBrand;
 
   @override
   int get hashCode =>
-    (bin == null ? 0 : bin.hashCode) +
+    (id == null ? 0 : id.hashCode) +
     (cardBrand == null ? 0 : cardBrand.hashCode) +
-    (cardCoBrand == null ? 0 : cardCoBrand.hashCode) +
-    (cardType == null ? 0 : cardType.hashCode) +
-    (cardholderName == null ? 0 : cardholderName.hashCode) +
-    (enabled == null ? 0 : enabled.hashCode) +
+    (last4 == null ? 0 : last4.hashCode) +
     (expMonth == null ? 0 : expMonth.hashCode) +
     (expYear == null ? 0 : expYear.hashCode) +
-    (id == null ? 0 : id.hashCode) +
-    (last4 == null ? 0 : last4.hashCode) +
-    (prepaidType == null ? 0 : prepaidType.hashCode) +
+    (cardholderName == null ? 0 : cardholderName.hashCode) +
     (referenceId == null ? 0 : referenceId.hashCode) +
-    (version == null ? 0 : version.hashCode);
+    (enabled == null ? 0 : enabled.hashCode) +
+    (cardType == null ? 0 : cardType.hashCode) +
+    (prepaidType == null ? 0 : prepaidType.hashCode) +
+    (bin == null ? 0 : bin.hashCode) +
+    (version == null ? 0 : version.hashCode) +
+    (cardCoBrand == null ? 0 : cardCoBrand.hashCode);
 
   factory SquareCard.fromJson(Map<String, dynamic> json) => _$SquareCardFromJson(json);
 

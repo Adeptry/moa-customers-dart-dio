@@ -1,8 +1,8 @@
-# moa_customers.api.LocationsApi
+# moa_customers_client.api.LocationsApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -23,13 +23,13 @@ Get a Location with ID
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getLocationsApi();
+final api = MoaCustomersClient().getLocationsApi();
 final String id = id_example; // String | 
 final String actingAs = actingAs_example; // String | 
 final String merchantId = merchantId_example; // String | 
@@ -72,13 +72,13 @@ Get Locations for Merchant
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getLocationsApi();
+final api = MoaCustomersClient().getLocationsApi();
 final String merchantId = merchantId_example; // String | 
 final num page = 8.14; // num | 
 final num limit = 8.14; // num | 
@@ -121,13 +121,13 @@ Get all your Locations
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getLocationsApi();
+final api = MoaCustomersClient().getLocationsApi();
 final num page = 8.14; // num | 
 final num limit = 8.14; // num | 
 final String actingAs = actingAs_example; // String | 
@@ -172,13 +172,13 @@ Update a Location
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getLocationsApi();
+final api = MoaCustomersClient().getLocationsApi();
 final String id = id_example; // String | 
 final LocationUpdateDto locationUpdateDto = ; // LocationUpdateDto | 
 
@@ -219,13 +219,13 @@ Update Locations
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getLocationsApi();
+final api = MoaCustomersClient().getLocationsApi();
 final List<LocationUpdateAllDto> locationUpdateAllDto = ; // List<LocationUpdateAllDto> | 
 
 try {

@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for Address
 void main() {
@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the entity
 
   group(Address, () {
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
     // The first line of the address.
     // String addressLine1
     test('to test the property `addressLine1`', () async {
@@ -22,6 +27,30 @@ void main() {
     // The third line of the address, if any.
     // String addressLine3
     test('to test the property `addressLine3`', () async {
+      // TODO
+    });
+
+    // The city or town of the address.
+    // String locality
+    test('to test the property `locality`', () async {
+      // TODO
+    });
+
+    // A civil region within the address's `locality`, if any.
+    // String sublocality
+    test('to test the property `sublocality`', () async {
+      // TODO
+    });
+
+    // A civil region within the address's `sublocality`, if any.
+    // String sublocality2
+    test('to test the property `sublocality2`', () async {
+      // TODO
+    });
+
+    // A civil region within the address's `sublocality_2`, if any.
+    // String sublocality3
+    test('to test the property `sublocality3`', () async {
       // TODO
     });
 
@@ -43,6 +72,12 @@ void main() {
       // TODO
     });
 
+    // The address's postal code.
+    // String postalCode
+    test('to test the property `postalCode`', () async {
+      // TODO
+    });
+
     // Indicates the country associated with another entity, such as a business. Values are in ISO 3166-1-alpha-2 format.
     // String country
     test('to test the property `country`', () async {
@@ -55,44 +90,9 @@ void main() {
       // TODO
     });
 
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
     // Optional last name when it's representing recipient.
     // String lastName
     test('to test the property `lastName`', () async {
-      // TODO
-    });
-
-    // The city or town of the address.
-    // String locality
-    test('to test the property `locality`', () async {
-      // TODO
-    });
-
-    // The address's postal code.
-    // String postalCode
-    test('to test the property `postalCode`', () async {
-      // TODO
-    });
-
-    // A civil region within the address's `locality`, if any.
-    // String sublocality
-    test('to test the property `sublocality`', () async {
-      // TODO
-    });
-
-    // A civil region within the address's `sublocality`, if any.
-    // String sublocality2
-    test('to test the property `sublocality2`', () async {
-      // TODO
-    });
-
-    // A civil region within the address's `sublocality_2`, if any.
-    // String sublocality3
-    test('to test the property `sublocality3`', () async {
       // TODO
     });
 

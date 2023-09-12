@@ -1,8 +1,8 @@
-# moa_customers.model.OrderPostDto
+# moa_customers_client.model.OrderPostDto
 
 ## Load the model package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 ## Properties

@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for ItemUpdateDto
 void main() {
@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(ItemUpdateDto, () {
-    // bool moaEnabled
-    test('to test the property `moaEnabled`', () async {
+    // num moaOrdinal
+    test('to test the property `moaOrdinal`', () async {
       // TODO
     });
 
-    // num moaOrdinal
-    test('to test the property `moaOrdinal`', () async {
+    // bool moaEnabled
+    test('to test the property `moaEnabled`', () async {
       // TODO
     });
 

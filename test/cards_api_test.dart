@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 
 /// tests for CardsApi
 void main() {
-  final instance = MoaCustomers().getCardsApi();
+  final instance = MoaCustomersClient().getCardsApi();
 
   group(CardsApi, () {
     // Create my Square Card

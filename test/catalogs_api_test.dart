@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 
 /// tests for CatalogsApi
 void main() {
-  final instance = MoaCustomers().getCatalogsApi();
+  final instance = MoaCustomersClient().getCatalogsApi();
 
   group(CatalogsApi, () {
     // Get Categories for Merchant ID with Items, Variations, and/or ModifierLists

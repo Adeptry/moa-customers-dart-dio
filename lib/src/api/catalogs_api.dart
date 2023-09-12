@@ -6,21 +6,21 @@ import 'dart:async';
 
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers/src/deserialize.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers/src/model/catalog_image.dart';
-import 'package:moa_customers/src/model/category.dart';
-import 'package:moa_customers/src/model/category_paginated_response.dart';
-import 'package:moa_customers/src/model/category_update_all_dto.dart';
-import 'package:moa_customers/src/model/category_update_dto.dart';
-import 'package:moa_customers/src/model/item.dart';
-import 'package:moa_customers/src/model/item_paginated_response.dart';
-import 'package:moa_customers/src/model/item_update_all_dto.dart';
-import 'package:moa_customers/src/model/item_update_dto.dart';
-import 'package:moa_customers/src/model/nest_error.dart';
-import 'package:moa_customers/src/model/variation.dart';
-import 'package:moa_customers/src/model/variation_update_dto.dart';
+import 'package:moa_customers_client/src/model/catalog_image.dart';
+import 'package:moa_customers_client/src/model/category.dart';
+import 'package:moa_customers_client/src/model/category_paginated_response.dart';
+import 'package:moa_customers_client/src/model/category_update_all_dto.dart';
+import 'package:moa_customers_client/src/model/category_update_dto.dart';
+import 'package:moa_customers_client/src/model/item.dart';
+import 'package:moa_customers_client/src/model/item_paginated_response.dart';
+import 'package:moa_customers_client/src/model/item_update_all_dto.dart';
+import 'package:moa_customers_client/src/model/item_update_dto.dart';
+import 'package:moa_customers_client/src/model/nest_error.dart';
+import 'package:moa_customers_client/src/model/variation.dart';
+import 'package:moa_customers_client/src/model/variation_update_dto.dart';
 
 class CatalogsApi {
 

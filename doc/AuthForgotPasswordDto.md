@@ -1,8 +1,8 @@
-# moa_customers.model.AuthForgotPasswordDto
+# moa_customers_client.model.AuthForgotPasswordDto
 
 ## Load the model package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 ## Properties

@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for Location
 void main() {
@@ -7,93 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(Location, () {
-    // Address address
-    test('to test the property `address`', () async {
-      // TODO
-    });
-
-    // String businessEmail
-    test('to test the property `businessEmail`', () async {
-      // TODO
-    });
-
-    // List<BusinessHoursPeriod> businessHours
-    test('to test the property `businessHours`', () async {
-      // TODO
-    });
-
-    // String businessName
-    test('to test the property `businessName`', () async {
-      // TODO
-    });
-
-    // String country
-    test('to test the property `country`', () async {
-      // TODO
-    });
-
-    // String currency
-    test('to test the property `currency`', () async {
-      // TODO
-    });
-
-    // String description
-    test('to test the property `description`', () async {
-      // TODO
-    });
-
-    // String facebookUrl
-    test('to test the property `facebookUrl`', () async {
-      // TODO
-    });
-
-    // String fullFormatLogoUrl
-    test('to test the property `fullFormatLogoUrl`', () async {
-      // TODO
-    });
-
     // String id
     test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // String instagramUsername
-    test('to test the property `instagramUsername`', () async {
-      // TODO
-    });
-
-    // bool isMain
-    test('to test the property `isMain`', () async {
-      // TODO
-    });
-
-    // String languageCode
-    test('to test the property `languageCode`', () async {
-      // TODO
-    });
-
-    // num latitude
-    test('to test the property `latitude`', () async {
-      // TODO
-    });
-
-    // String logoUrl
-    test('to test the property `logoUrl`', () async {
-      // TODO
-    });
-
-    // num longitude
-    test('to test the property `longitude`', () async {
-      // TODO
-    });
-
-    // String mcc
-    test('to test the property `mcc`', () async {
-      // TODO
-    });
-
-    // bool moaEnabled
-    test('to test the property `moaEnabled`', () async {
       // TODO
     });
 
@@ -102,18 +17,38 @@ void main() {
       // TODO
     });
 
+    // bool moaEnabled
+    test('to test the property `moaEnabled`', () async {
+      // TODO
+    });
+
+    // bool isMain
+    test('to test the property `isMain`', () async {
+      // TODO
+    });
+
     // String name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // String phoneNumber
-    test('to test the property `phoneNumber`', () async {
+    // num latitude
+    test('to test the property `latitude`', () async {
       // TODO
     });
 
-    // String posBackgroundUrl
-    test('to test the property `posBackgroundUrl`', () async {
+    // num longitude
+    test('to test the property `longitude`', () async {
+      // TODO
+    });
+
+    // String description
+    test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // String phoneNumber
+    test('to test the property `phoneNumber`', () async {
       // TODO
     });
 
@@ -127,8 +62,23 @@ void main() {
       // TODO
     });
 
-    // String twitterUsername
-    test('to test the property `twitterUsername`', () async {
+    // String country
+    test('to test the property `country`', () async {
+      // TODO
+    });
+
+    // String languageCode
+    test('to test the property `languageCode`', () async {
+      // TODO
+    });
+
+    // String currency
+    test('to test the property `currency`', () async {
+      // TODO
+    });
+
+    // String businessName
+    test('to test the property `businessName`', () async {
       // TODO
     });
 
@@ -139,6 +89,56 @@ void main() {
 
     // String websiteUrl
     test('to test the property `websiteUrl`', () async {
+      // TODO
+    });
+
+    // String businessEmail
+    test('to test the property `businessEmail`', () async {
+      // TODO
+    });
+
+    // String twitterUsername
+    test('to test the property `twitterUsername`', () async {
+      // TODO
+    });
+
+    // String instagramUsername
+    test('to test the property `instagramUsername`', () async {
+      // TODO
+    });
+
+    // String facebookUrl
+    test('to test the property `facebookUrl`', () async {
+      // TODO
+    });
+
+    // String logoUrl
+    test('to test the property `logoUrl`', () async {
+      // TODO
+    });
+
+    // String posBackgroundUrl
+    test('to test the property `posBackgroundUrl`', () async {
+      // TODO
+    });
+
+    // String mcc
+    test('to test the property `mcc`', () async {
+      // TODO
+    });
+
+    // String fullFormatLogoUrl
+    test('to test the property `fullFormatLogoUrl`', () async {
+      // TODO
+    });
+
+    // List<BusinessHoursPeriod> businessHours
+    test('to test the property `businessHours`', () async {
+      // TODO
+    });
+
+    // Address address
+    test('to test the property `address`', () async {
       // TODO
     });
 

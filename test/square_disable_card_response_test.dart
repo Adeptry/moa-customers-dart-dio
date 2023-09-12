@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for SquareDisableCardResponse
 void main() {
@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(SquareDisableCardResponse, () {
-    // SquareCard card
-    test('to test the property `card`', () async {
+    // List<SquareError> errors
+    test('to test the property `errors`', () async {
       // TODO
     });
 
-    // List<SquareError> errors
-    test('to test the property `errors`', () async {
+    // SquareCard card
+    test('to test the property `card`', () async {
       // TODO
     });
 

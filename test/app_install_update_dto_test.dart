@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for AppInstallUpdateDto
 void main() {
@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(AppInstallUpdateDto, () {
-    // String firebaseCloudMessagingToken
-    test('to test the property `firebaseCloudMessagingToken`', () async {
+    // String firebaseInstallationId
+    test('to test the property `firebaseInstallationId`', () async {
       // TODO
     });
 
-    // String firebaseInstallationId
-    test('to test the property `firebaseInstallationId`', () async {
+    // String firebaseCloudMessagingToken
+    test('to test the property `firebaseCloudMessagingToken`', () async {
       // TODO
     });
 

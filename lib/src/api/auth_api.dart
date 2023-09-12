@@ -6,18 +6,18 @@ import 'dart:async';
 
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers/src/deserialize.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers/src/model/auth_apple_login_dto.dart';
-import 'package:moa_customers/src/model/auth_email_login_dto.dart';
-import 'package:moa_customers/src/model/auth_forgot_password_dto.dart';
-import 'package:moa_customers/src/model/auth_google_login_dto.dart';
-import 'package:moa_customers/src/model/auth_register_login_dto.dart';
-import 'package:moa_customers/src/model/auth_reset_password_dto.dart';
-import 'package:moa_customers/src/model/auth_update_dto.dart';
-import 'package:moa_customers/src/model/login_response_type.dart';
-import 'package:moa_customers/src/model/user.dart';
+import 'package:moa_customers_client/src/model/auth_apple_login_dto.dart';
+import 'package:moa_customers_client/src/model/auth_email_login_dto.dart';
+import 'package:moa_customers_client/src/model/auth_forgot_password_dto.dart';
+import 'package:moa_customers_client/src/model/auth_google_login_dto.dart';
+import 'package:moa_customers_client/src/model/auth_register_login_dto.dart';
+import 'package:moa_customers_client/src/model/auth_reset_password_dto.dart';
+import 'package:moa_customers_client/src/model/auth_update_dto.dart';
+import 'package:moa_customers_client/src/model/login_response_type.dart';
+import 'package:moa_customers_client/src/model/user.dart';
 
 class AuthApi {
 

@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:moa_customers/src/model/user.dart';
+import 'package:moa_customers_client/src/model/user.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'customer.g.dart';

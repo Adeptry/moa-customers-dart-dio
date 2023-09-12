@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for NestError
 void main() {
@@ -7,8 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(NestError, () {
-    // String error
-    test('to test the property `error`', () async {
+    // num statusCode
+    test('to test the property `statusCode`', () async {
       // TODO
     });
 
@@ -17,8 +17,8 @@ void main() {
       // TODO
     });
 
-    // num statusCode
-    test('to test the property `statusCode`', () async {
+    // String error
+    test('to test the property `error`', () async {
       // TODO
     });
 

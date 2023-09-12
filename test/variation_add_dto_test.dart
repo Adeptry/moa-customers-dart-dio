@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for VariationAddDto
 void main() {
@@ -12,13 +12,18 @@ void main() {
       // TODO
     });
 
+    // num quantity
+    test('to test the property `quantity`', () async {
+      // TODO
+    });
+
     // List<String> modifierIds
     test('to test the property `modifierIds`', () async {
       // TODO
     });
 
-    // num quantity
-    test('to test the property `quantity`', () async {
+    // String note
+    test('to test the property `note`', () async {
       // TODO
     });
 

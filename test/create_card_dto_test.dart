@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for CreateCardDto
 void main() {
@@ -12,11 +12,6 @@ void main() {
       // TODO
     });
 
-    // String postalCode
-    test('to test the property `postalCode`', () async {
-      // TODO
-    });
-
     // String sourceId
     test('to test the property `sourceId`', () async {
       // TODO
@@ -24,6 +19,11 @@ void main() {
 
     // String verificationToken
     test('to test the property `verificationToken`', () async {
+      // TODO
+    });
+
+    // String postalCode
+    test('to test the property `postalCode`', () async {
       // TODO
     });
 

@@ -1,8 +1,8 @@
-# moa_customers.api.CatalogsApi
+# moa_customers_client.api.CatalogsApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -29,13 +29,13 @@ Get Categories for Merchant ID with Items, Variations, and/or ModifierLists
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
+final api = MoaCustomersClient().getCatalogsApi();
 final String merchantId = merchantId_example; // String | 
 final String actingAs = actingAs_example; // String | 
 final num page = 8.14; // num | 
@@ -90,13 +90,13 @@ Get Item with ID
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
+final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final String locationId = locationId_example; // String | 
 
@@ -137,13 +137,13 @@ Get Items in Category
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
+final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final String actingAs = actingAs_example; // String | 
 final num page = 8.14; // num | 
@@ -198,13 +198,13 @@ Get your Categories with Items, Variations, and/or ModifierLists
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
+final api = MoaCustomersClient().getCatalogsApi();
 final num page = 8.14; // num | 
 final num limit = 8.14; // num | 
 final String locationId = locationId_example; // String | 
@@ -259,13 +259,13 @@ Get Item variations with ID
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
+final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final String locationId = locationId_example; // String | 
 
@@ -306,13 +306,13 @@ Update multiple Categories
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
+final api = MoaCustomersClient().getCatalogsApi();
 final List<CategoryUpdateAllDto> categoryUpdateAllDto = ; // List<CategoryUpdateAllDto> | 
 
 try {
@@ -351,13 +351,13 @@ Update a Category
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
+final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final CategoryUpdateDto categoryUpdateDto = ; // CategoryUpdateDto | 
 
@@ -398,13 +398,13 @@ Update an Item
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
+final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final ItemUpdateDto itemUpdateDto = ; // ItemUpdateDto | 
 
@@ -445,13 +445,13 @@ Update multiple Items
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
+final api = MoaCustomersClient().getCatalogsApi();
 final List<ItemUpdateAllDto> itemUpdateAllDto = ; // List<ItemUpdateAllDto> | 
 
 try {
@@ -490,13 +490,13 @@ Update an Variation
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
+final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final VariationUpdateDto variationUpdateDto = ; // VariationUpdateDto | 
 
@@ -537,14 +537,14 @@ Upload Square Catalog Image
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getCatalogsApi();
-final String idempotencyKey = xYrYwKn16ZmguylkBABj9; // String | 
+final api = MoaCustomersClient().getCatalogsApi();
+final String idempotencyKey = dh2WznnnH7m4qp_YRmVHq; // String | 
 final String id = id_example; // String | 
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
 

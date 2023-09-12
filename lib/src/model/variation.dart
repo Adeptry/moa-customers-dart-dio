@@ -20,11 +20,11 @@ class Variation {
 
      this.id,
 
+     this.ordinal,
+
      this.moaEnabled,
 
      this.name,
-
-     this.ordinal,
 
      this.priceAmount,
 
@@ -40,6 +40,18 @@ class Variation {
 
 
   final String? id;
+
+
+
+  @JsonKey(
+    
+    name: r'ordinal',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final num? ordinal;
 
 
 
@@ -64,18 +76,6 @@ class Variation {
 
 
   final String? name;
-
-
-
-  @JsonKey(
-    
-    name: r'ordinal',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final num? ordinal;
 
 
 
@@ -106,18 +106,18 @@ class Variation {
   @override
   bool operator ==(Object other) => identical(this, other) || other is Variation &&
      other.id == id &&
+     other.ordinal == ordinal &&
      other.moaEnabled == moaEnabled &&
      other.name == name &&
-     other.ordinal == ordinal &&
      other.priceAmount == priceAmount &&
      other.priceCurrency == priceCurrency;
 
   @override
   int get hashCode =>
     (id == null ? 0 : id.hashCode) +
+    (ordinal == null ? 0 : ordinal.hashCode) +
     (moaEnabled == null ? 0 : moaEnabled.hashCode) +
     (name == null ? 0 : name.hashCode) +
-    (ordinal == null ? 0 : ordinal.hashCode) +
     (priceAmount == null ? 0 : priceAmount.hashCode) +
     (priceCurrency == null ? 0 : priceCurrency.hashCode);
 

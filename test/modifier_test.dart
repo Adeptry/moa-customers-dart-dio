@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers/moa_customers.dart';
+import 'package:moa_customers_client/moa_customers_client.dart';
 
 // tests for Modifier
 void main() {
@@ -17,11 +17,6 @@ void main() {
       // TODO
     });
 
-    // num ordinal
-    test('to test the property `ordinal`', () async {
-      // TODO
-    });
-
     // num priceAmount
     test('to test the property `priceAmount`', () async {
       // TODO
@@ -29,6 +24,11 @@ void main() {
 
     // String priceCurrency
     test('to test the property `priceCurrency`', () async {
+      // TODO
+    });
+
+    // num ordinal
+    test('to test the property `ordinal`', () async {
       // TODO
     });
 

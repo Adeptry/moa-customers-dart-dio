@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:moa_customers/src/model/item.dart';
+import 'package:moa_customers_client/src/model/item.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'category.g.dart';
@@ -21,13 +21,13 @@ class Category {
 
      this.id,
 
-     this.items,
+     this.moaOrdinal,
 
      this.moaEnabled,
 
-     this.moaOrdinal,
-
      this.name,
+
+     this.items,
   });
 
   @JsonKey(
@@ -39,30 +39,6 @@ class Category {
 
 
   final String? id;
-
-
-
-  @JsonKey(
-    
-    name: r'items',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final List<Item>? items;
-
-
-
-  @JsonKey(
-    
-    name: r'moaEnabled',
-    required: false,
-    includeIfNull: false
-  )
-
-
-  final bool? moaEnabled;
 
 
 
@@ -80,6 +56,18 @@ class Category {
 
   @JsonKey(
     
+    name: r'moaEnabled',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final bool? moaEnabled;
+
+
+
+  @JsonKey(
+    
     name: r'name',
     required: false,
     includeIfNull: false
@@ -90,21 +78,33 @@ class Category {
 
 
 
+  @JsonKey(
+    
+    name: r'items',
+    required: false,
+    includeIfNull: false
+  )
+
+
+  final List<Item>? items;
+
+
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is Category &&
      other.id == id &&
-     other.items == items &&
-     other.moaEnabled == moaEnabled &&
      other.moaOrdinal == moaOrdinal &&
-     other.name == name;
+     other.moaEnabled == moaEnabled &&
+     other.name == name &&
+     other.items == items;
 
   @override
   int get hashCode =>
     (id == null ? 0 : id.hashCode) +
-    (items == null ? 0 : items.hashCode) +
-    (moaEnabled == null ? 0 : moaEnabled.hashCode) +
     (moaOrdinal == null ? 0 : moaOrdinal.hashCode) +
-    (name == null ? 0 : name.hashCode);
+    (moaEnabled == null ? 0 : moaEnabled.hashCode) +
+    (name == null ? 0 : name.hashCode) +
+    (items == null ? 0 : items.hashCode);
 
   factory Category.fromJson(Map<String, dynamic> json) => _$CategoryFromJson(json);
 

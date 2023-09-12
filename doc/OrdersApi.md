@@ -1,8 +1,8 @@
-# moa_customers.api.OrdersApi
+# moa_customers_client.api.OrdersApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -27,13 +27,13 @@ Create Order
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getOrdersApi();
+final api = MoaCustomersClient().getOrdersApi();
 final String merchantId = merchantId_example; // String | 
 final OrderCreateDto orderCreateDto = ; // OrderCreateDto | 
 
@@ -74,13 +74,13 @@ Delete Order
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getOrdersApi();
+final api = MoaCustomersClient().getOrdersApi();
 final String merchantId = merchantId_example; // String | 
 
 try {
@@ -118,13 +118,13 @@ Remove Line Items from Order
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getOrdersApi();
+final api = MoaCustomersClient().getOrdersApi();
 final String id = id_example; // String | 
 final String merchantId = merchantId_example; // String | 
 
@@ -164,13 +164,13 @@ Get current Order
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getOrdersApi();
+final api = MoaCustomersClient().getOrdersApi();
 final String merchantId = merchantId_example; // String | 
 
 try {
@@ -209,13 +209,13 @@ Get Order
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getOrdersApi();
+final api = MoaCustomersClient().getOrdersApi();
 final String id = id_example; // String | 
 final bool lineItems = true; // bool | 
 final bool location = true; // bool | 
@@ -264,13 +264,13 @@ Get my Orders
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getOrdersApi();
+final api = MoaCustomersClient().getOrdersApi();
 final num page = 8.14; // num | 
 final num limit = 8.14; // num | 
 final bool closed = true; // bool | 
@@ -323,13 +323,13 @@ Patch update Order, e.g. modify Location
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getOrdersApi();
+final api = MoaCustomersClient().getOrdersApi();
 final OrderPatchDto orderPatchDto = ; // OrderPatchDto | 
 final String idempotencyKey = idempotencyKey_example; // String | 
 final String merchantId = merchantId_example; // String | 
@@ -372,13 +372,13 @@ Pay for Order
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getOrdersApi();
+final api = MoaCustomersClient().getOrdersApi();
 final String merchantId = merchantId_example; // String | 
 final PaymentCreateDto paymentCreateDto = ; // PaymentCreateDto | 
 
@@ -419,13 +419,13 @@ Post update Order, e.g. add Variations & Modifiers in Line Items
 
 ### Example
 ```dart
-import 'package:moa_customers/api.dart';
+import 'package:moa_customers_client/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomers().getOrdersApi();
+final api = MoaCustomersClient().getOrdersApi();
 final String merchantId = merchantId_example; // String | 
 final OrderPostDto orderPostDto = ; // OrderPostDto | 
 final String idempotencyKey = idempotencyKey_example; // String | 

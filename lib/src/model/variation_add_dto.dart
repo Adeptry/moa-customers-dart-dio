@@ -20,9 +20,11 @@ class VariationAddDto {
 
     required  this.id,
 
+    required  this.quantity,
+
      this.modifierIds,
 
-    required  this.quantity,
+     this.note,
   });
 
   @JsonKey(
@@ -34,6 +36,18 @@ class VariationAddDto {
 
 
   final String id;
+
+
+
+  @JsonKey(
+    
+    name: r'quantity',
+    required: true,
+    includeIfNull: false
+  )
+
+
+  final num quantity;
 
 
 
@@ -51,27 +65,29 @@ class VariationAddDto {
 
   @JsonKey(
     
-    name: r'quantity',
-    required: true,
+    name: r'note',
+    required: false,
     includeIfNull: false
   )
 
 
-  final num quantity;
+  final String? note;
 
 
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is VariationAddDto &&
      other.id == id &&
+     other.quantity == quantity &&
      other.modifierIds == modifierIds &&
-     other.quantity == quantity;
+     other.note == note;
 
   @override
   int get hashCode =>
     id.hashCode +
+    quantity.hashCode +
     (modifierIds == null ? 0 : modifierIds.hashCode) +
-    quantity.hashCode;
+    (note == null ? 0 : note.hashCode);
 
   factory VariationAddDto.fromJson(Map<String, dynamic> json) => _$VariationAddDtoFromJson(json);
 
