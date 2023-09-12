@@ -3,11 +3,13 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:moa_customers_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
+import 'package:moa_customers_client/src/model/nest_error.dart';
 import 'package:moa_customers_client/src/model/order.dart';
 import 'package:moa_customers_client/src/model/order_create_dto.dart';
 import 'package:moa_customers_client/src/model/order_patch_dto.dart';

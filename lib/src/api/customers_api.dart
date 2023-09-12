@@ -3,15 +3,17 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:moa_customers_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:moa_customers_client/src/model/app_install_update_dto.dart';
 import 'package:moa_customers_client/src/model/customer.dart';
 import 'package:moa_customers_client/src/model/customer_update_dto.dart';
 import 'package:moa_customers_client/src/model/customers_paginated_response.dart';
+import 'package:moa_customers_client/src/model/nest_error.dart';
 
 class CustomersApi {
   final Dio _dio;

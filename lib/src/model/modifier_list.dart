@@ -2,10 +2,10 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:json_annotation/json_annotation.dart';
 // ignore_for_file: unused_element
 import 'package:moa_customers_client/src/model/moa_selection_type.dart';
 import 'package:moa_customers_client/src/model/modifier.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'modifier_list.g.dart';
 
