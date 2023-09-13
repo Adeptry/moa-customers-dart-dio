@@ -2,10 +2,10 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:json_annotation/json_annotation.dart';
+import 'package:moa_customers_client/src/model/file_entity.dart';
 // ignore_for_file: unused_element
 import 'package:moa_customers_client/src/model/theme_mode_enum.dart';
-import 'package:moa_customers_client/src/model/file_entity.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'app_config.g.dart';
 

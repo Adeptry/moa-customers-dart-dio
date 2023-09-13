@@ -2,11 +2,11 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:json_annotation/json_annotation.dart';
+import 'package:moa_customers_client/src/model/catalog_image.dart';
+import 'package:moa_customers_client/src/model/item_modifier_list.dart';
 // ignore_for_file: unused_element
 import 'package:moa_customers_client/src/model/variation.dart';
-import 'package:moa_customers_client/src/model/item_modifier_list.dart';
-import 'package:moa_customers_client/src/model/catalog_image.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'item.g.dart';
 

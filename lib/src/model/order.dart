@@ -2,11 +2,11 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:json_annotation/json_annotation.dart';
+import 'package:moa_customers_client/src/model/customer.dart';
+import 'package:moa_customers_client/src/model/line_item.dart';
 // ignore_for_file: unused_element
 import 'package:moa_customers_client/src/model/location.dart';
-import 'package:moa_customers_client/src/model/line_item.dart';
-import 'package:moa_customers_client/src/model/customer.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'order.g.dart';
 

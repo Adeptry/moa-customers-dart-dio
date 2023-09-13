@@ -3,12 +3,11 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:moa_customers_client/src/model/auth_apple_login_dto.dart';
 import 'package:moa_customers_client/src/model/auth_email_login_dto.dart';
 import 'package:moa_customers_client/src/model/auth_forgot_password_dto.dart';
