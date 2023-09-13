@@ -7,8 +7,28 @@ void main() {
   // TODO add properties to the entity
 
   group(AppConfig, () {
-    // bool showsAds
-    test('to test the property `showsAds`', () async {
+    // String blockingMessage
+    test('to test the property `blockingMessage`', () async {
+      // TODO
+    });
+
+    // String fontFamily
+    test('to test the property `fontFamily`', () async {
+      // TODO
+    });
+
+    // FileEntity iconFile
+    test('to test the property `iconFile`', () async {
+      // TODO
+    });
+
+    // String message
+    test('to test the property `message`', () async {
+      // TODO
+    });
+
+    // String minimumVersion
+    test('to test the property `minimumVersion`', () async {
       // TODO
     });
 
@@ -22,13 +42,13 @@ void main() {
       // TODO
     });
 
-    // String fontFamily
-    test('to test the property `fontFamily`', () async {
+    // bool showAds
+    test('to test the property `showAds`', () async {
       // TODO
     });
 
-    // bool useMaterial3
-    test('to test the property `useMaterial3`', () async {
+    // bool showsAds
+    test('to test the property `showsAds`', () async {
       // TODO
     });
 
@@ -37,28 +57,8 @@ void main() {
       // TODO
     });
 
-    // String message
-    test('to test the property `message`', () async {
-      // TODO
-    });
-
-    // String blockingMessage
-    test('to test the property `blockingMessage`', () async {
-      // TODO
-    });
-
-    // String minimumVersion
-    test('to test the property `minimumVersion`', () async {
-      // TODO
-    });
-
-    // bool showAds
-    test('to test the property `showAds`', () async {
-      // TODO
-    });
-
-    // FileEntity iconFile
-    test('to test the property `iconFile`', () async {
+    // bool useMaterial3
+    test('to test the property `useMaterial3`', () async {
       // TODO
     });
 

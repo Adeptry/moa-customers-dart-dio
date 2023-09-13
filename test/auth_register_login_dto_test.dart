@@ -12,11 +12,6 @@ void main() {
       // TODO
     });
 
-    // String password
-    test('to test the property `password`', () async {
-      // TODO
-    });
-
     // String firstName
     test('to test the property `firstName`', () async {
       // TODO
@@ -24,6 +19,11 @@ void main() {
 
     // String lastName
     test('to test the property `lastName`', () async {
+      // TODO
+    });
+
+    // String password
+    test('to test the property `password`', () async {
       // TODO
     });
 

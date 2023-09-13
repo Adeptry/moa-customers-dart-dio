@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(AppInstallUpdateDto, () {
-    // String firebaseInstallationId
-    test('to test the property `firebaseInstallationId`', () async {
+    // String firebaseCloudMessagingToken
+    test('to test the property `firebaseCloudMessagingToken`', () async {
       // TODO
     });
 
-    // String firebaseCloudMessagingToken
-    test('to test the property `firebaseCloudMessagingToken`', () async {
+    // String firebaseInstallationId
+    test('to test the property `firebaseInstallationId`', () async {
       // TODO
     });
 

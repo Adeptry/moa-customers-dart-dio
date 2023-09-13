@@ -7,9 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(PaymentCreateDto, () {
-    // The timestamp that represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
-    // String pickupAt
-    test('to test the property `pickupAt`', () async {
+    // String idempotencyKey
+    test('to test the property `idempotencyKey`', () async {
+      // TODO
+    });
+
+    // num orderTipMoney
+    test('to test the property `orderTipMoney`', () async {
       // TODO
     });
 
@@ -18,13 +22,9 @@ void main() {
       // TODO
     });
 
-    // String idempotencyKey
-    test('to test the property `idempotencyKey`', () async {
-      // TODO
-    });
-
-    // num orderTipMoney
-    test('to test the property `orderTipMoney`', () async {
+    // The timestamp that represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
+    // String pickupAt
+    test('to test the property `pickupAt`', () async {
       // TODO
     });
 

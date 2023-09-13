@@ -16,18 +16,11 @@ part 'payment_create_dto.g.dart';
 class PaymentCreateDto {
   /// Returns a new [PaymentCreateDto] instance.
   PaymentCreateDto({
-    required this.pickupAt,
-    required this.paymentSquareId,
     required this.idempotencyKey,
     required this.orderTipMoney,
+    required this.paymentSquareId,
+    required this.pickupAt,
   });
-
-  /// The timestamp that represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
-  @JsonKey(name: r'pickupAt', required: true, includeIfNull: false)
-  final String pickupAt;
-
-  @JsonKey(name: r'paymentSquareId', required: true, includeIfNull: false)
-  final String paymentSquareId;
 
   @JsonKey(name: r'idempotencyKey', required: true, includeIfNull: false)
   final String idempotencyKey;
@@ -35,21 +28,28 @@ class PaymentCreateDto {
   @JsonKey(name: r'orderTipMoney', required: true, includeIfNull: false)
   final num orderTipMoney;
 
+  @JsonKey(name: r'paymentSquareId', required: true, includeIfNull: false)
+  final String paymentSquareId;
+
+  /// The timestamp that represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
+  @JsonKey(name: r'pickupAt', required: true, includeIfNull: false)
+  final String pickupAt;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is PaymentCreateDto &&
-          other.pickupAt == pickupAt &&
-          other.paymentSquareId == paymentSquareId &&
           other.idempotencyKey == idempotencyKey &&
-          other.orderTipMoney == orderTipMoney;
+          other.orderTipMoney == orderTipMoney &&
+          other.paymentSquareId == paymentSquareId &&
+          other.pickupAt == pickupAt;
 
   @override
   int get hashCode =>
-      pickupAt.hashCode +
-      paymentSquareId.hashCode +
       idempotencyKey.hashCode +
-      orderTipMoney.hashCode;
+      orderTipMoney.hashCode +
+      paymentSquareId.hashCode +
+      pickupAt.hashCode;
 
   factory PaymentCreateDto.fromJson(Map<String, dynamic> json) =>
       _$PaymentCreateDtoFromJson(json);

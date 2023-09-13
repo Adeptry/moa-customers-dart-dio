@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(AuthAppleLoginDto, () {
-    // String idToken
-    test('to test the property `idToken`', () async {
+    // String firstName
+    test('to test the property `firstName`', () async {
       // TODO
     });
 
-    // String firstName
-    test('to test the property `firstName`', () async {
+    // String idToken
+    test('to test the property `idToken`', () async {
       // TODO
     });
 

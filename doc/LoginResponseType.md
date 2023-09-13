@@ -8,8 +8,8 @@ import 'package:moa_customers_client/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**token** | **String** |  | 
 **refreshToken** | **String** |  | 
+**token** | **String** |  | 
 **tokenExpires** | **num** |  | 
 **user** | [**User**](User.md) |  | [optional] 
 

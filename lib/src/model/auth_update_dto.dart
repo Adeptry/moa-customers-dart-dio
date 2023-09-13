@@ -16,25 +16,25 @@ part 'auth_update_dto.g.dart';
 class AuthUpdateDto {
   /// Returns a new [AuthUpdateDto] instance.
   AuthUpdateDto({
-    required this.password,
     required this.oldPassword,
+    required this.password,
   });
-
-  @JsonKey(name: r'password', required: true, includeIfNull: false)
-  final String password;
 
   @JsonKey(name: r'oldPassword', required: true, includeIfNull: false)
   final String oldPassword;
+
+  @JsonKey(name: r'password', required: true, includeIfNull: false)
+  final String password;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AuthUpdateDto &&
-          other.password == password &&
-          other.oldPassword == oldPassword;
+          other.oldPassword == oldPassword &&
+          other.password == password;
 
   @override
-  int get hashCode => password.hashCode + oldPassword.hashCode;
+  int get hashCode => oldPassword.hashCode + password.hashCode;
 
   factory AuthUpdateDto.fromJson(Map<String, dynamic> json) =>
       _$AuthUpdateDtoFromJson(json);

@@ -12,11 +12,6 @@ void main() {
       // TODO
     });
 
-    // num quantity
-    test('to test the property `quantity`', () async {
-      // TODO
-    });
-
     // List<String> modifierIds
     test('to test the property `modifierIds`', () async {
       // TODO
@@ -24,6 +19,11 @@ void main() {
 
     // String note
     test('to test the property `note`', () async {
+      // TODO
+    });
+
+    // num quantity
+    test('to test the property `quantity`', () async {
       // TODO
     });
 

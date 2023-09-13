@@ -12,19 +12,19 @@ NestError _$NestErrorFromJson(Map<String, dynamic> json) => $checkedCreate(
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['statusCode', 'message', 'error'],
+          requiredKeys: const ['error', 'message', 'statusCode'],
         );
         final val = NestError(
-          statusCode: $checkedConvert('statusCode', (v) => v as num),
-          message: $checkedConvert('message', (v) => v as String),
           error: $checkedConvert('error', (v) => v as String),
+          message: $checkedConvert('message', (v) => v as String),
+          statusCode: $checkedConvert('statusCode', (v) => v as num),
         );
         return val;
       },
     );
 
 Map<String, dynamic> _$NestErrorToJson(NestError instance) => <String, dynamic>{
-      'statusCode': instance.statusCode,
-      'message': instance.message,
       'error': instance.error,
+      'message': instance.message,
+      'statusCode': instance.statusCode,
     };

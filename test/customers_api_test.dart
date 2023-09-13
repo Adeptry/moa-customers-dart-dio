@@ -16,7 +16,7 @@ void main() {
 
     // Get current Customer
     //
-    //Future<Customer> getCurrentCustomer(String merchantId) async
+    //Future<Customer> getCurrentCustomer(String merchantId, { bool user, bool merchant, bool currentOrder, bool preferredLocation }) async
     test('test getCurrentCustomer', () async {
       // TODO
     });
@@ -32,6 +32,13 @@ void main() {
     //
     //Future updateAppInstall(String merchantId, AppInstallUpdateDto appInstallUpdateDto) async
     test('test updateAppInstall', () async {
+      // TODO
+    });
+
+    // Update your Customer
+    //
+    //Future<Customer> updateMyCustomer(String merchantId, CustomerUpdateDto customerUpdateDto) async
+    test('test updateMyCustomer', () async {
       // TODO
     });
 

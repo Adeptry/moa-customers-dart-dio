@@ -7,8 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(NestError, () {
-    // num statusCode
-    test('to test the property `statusCode`', () async {
+    // String error
+    test('to test the property `error`', () async {
       // TODO
     });
 
@@ -17,8 +17,8 @@ void main() {
       // TODO
     });
 
-    // String error
-    test('to test the property `error`', () async {
+    // num statusCode
+    test('to test the property `statusCode`', () async {
       // TODO
     });
 

@@ -18,28 +18,28 @@ part 'item_modifier_list.g.dart';
 class ItemModifierList {
   /// Returns a new [ItemModifierList] instance.
   ItemModifierList({
-    this.id,
-    this.minSelectedModifiers,
-    this.maxSelectedModifiers,
     this.enabled,
+    this.id,
     this.item,
+    this.maxSelectedModifiers,
+    this.minSelectedModifiers,
     this.modifierList,
   });
-
-  @JsonKey(name: r'id', required: false, includeIfNull: false)
-  final String? id;
-
-  @JsonKey(name: r'minSelectedModifiers', required: false, includeIfNull: false)
-  final num? minSelectedModifiers;
-
-  @JsonKey(name: r'maxSelectedModifiers', required: false, includeIfNull: false)
-  final num? maxSelectedModifiers;
 
   @JsonKey(name: r'enabled', required: false, includeIfNull: false)
   final bool? enabled;
 
+  @JsonKey(name: r'id', required: false, includeIfNull: false)
+  final String? id;
+
   @JsonKey(name: r'item', required: false, includeIfNull: false)
   final Item? item;
+
+  @JsonKey(name: r'maxSelectedModifiers', required: false, includeIfNull: false)
+  final num? maxSelectedModifiers;
+
+  @JsonKey(name: r'minSelectedModifiers', required: false, includeIfNull: false)
+  final num? minSelectedModifiers;
 
   @JsonKey(name: r'modifierList', required: false, includeIfNull: false)
   final ModifierList? modifierList;
@@ -48,20 +48,20 @@ class ItemModifierList {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ItemModifierList &&
-          other.id == id &&
-          other.minSelectedModifiers == minSelectedModifiers &&
-          other.maxSelectedModifiers == maxSelectedModifiers &&
           other.enabled == enabled &&
+          other.id == id &&
           other.item == item &&
+          other.maxSelectedModifiers == maxSelectedModifiers &&
+          other.minSelectedModifiers == minSelectedModifiers &&
           other.modifierList == modifierList;
 
   @override
   int get hashCode =>
-      (id == null ? 0 : id.hashCode) +
-      (minSelectedModifiers == null ? 0 : minSelectedModifiers.hashCode) +
-      (maxSelectedModifiers == null ? 0 : maxSelectedModifiers.hashCode) +
       (enabled == null ? 0 : enabled.hashCode) +
+      (id == null ? 0 : id.hashCode) +
       (item == null ? 0 : item.hashCode) +
+      (maxSelectedModifiers == null ? 0 : maxSelectedModifiers.hashCode) +
+      (minSelectedModifiers == null ? 0 : minSelectedModifiers.hashCode) +
       (modifierList == null ? 0 : modifierList.hashCode);
 
   factory ItemModifierList.fromJson(Map<String, dynamic> json) =>

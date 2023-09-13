@@ -12,6 +12,11 @@ void main() {
       // TODO
     });
 
+    // String postalCode
+    test('to test the property `postalCode`', () async {
+      // TODO
+    });
+
     // String sourceId
     test('to test the property `sourceId`', () async {
       // TODO
@@ -19,11 +24,6 @@ void main() {
 
     // String verificationToken
     test('to test the property `verificationToken`', () async {
-      // TODO
-    });
-
-    // String postalCode
-    test('to test the property `postalCode`', () async {
       // TODO
     });
 

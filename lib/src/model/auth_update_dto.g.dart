@@ -13,11 +13,11 @@ AuthUpdateDto _$AuthUpdateDtoFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['password', 'oldPassword'],
+          requiredKeys: const ['oldPassword', 'password'],
         );
         final val = AuthUpdateDto(
-          password: $checkedConvert('password', (v) => v as String),
           oldPassword: $checkedConvert('oldPassword', (v) => v as String),
+          password: $checkedConvert('password', (v) => v as String),
         );
         return val;
       },
@@ -25,6 +25,6 @@ AuthUpdateDto _$AuthUpdateDtoFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$AuthUpdateDtoToJson(AuthUpdateDto instance) =>
     <String, dynamic>{
-      'password': instance.password,
       'oldPassword': instance.oldPassword,
+      'password': instance.password,
     };

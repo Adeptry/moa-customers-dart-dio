@@ -7,8 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(SquareCard, () {
-    // String id
-    test('to test the property `id`', () async {
+    // String bin
+    test('to test the property `bin`', () async {
       // TODO
     });
 
@@ -17,8 +17,23 @@ void main() {
       // TODO
     });
 
-    // String last4
-    test('to test the property `last4`', () async {
+    // String cardCoBrand
+    test('to test the property `cardCoBrand`', () async {
+      // TODO
+    });
+
+    // String cardType
+    test('to test the property `cardType`', () async {
+      // TODO
+    });
+
+    // String cardholderName
+    test('to test the property `cardholderName`', () async {
+      // TODO
+    });
+
+    // bool enabled
+    test('to test the property `enabled`', () async {
       // TODO
     });
 
@@ -32,23 +47,13 @@ void main() {
       // TODO
     });
 
-    // String cardholderName
-    test('to test the property `cardholderName`', () async {
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 
-    // String referenceId
-    test('to test the property `referenceId`', () async {
-      // TODO
-    });
-
-    // bool enabled
-    test('to test the property `enabled`', () async {
-      // TODO
-    });
-
-    // String cardType
-    test('to test the property `cardType`', () async {
+    // String last4
+    test('to test the property `last4`', () async {
       // TODO
     });
 
@@ -57,18 +62,13 @@ void main() {
       // TODO
     });
 
-    // String bin
-    test('to test the property `bin`', () async {
+    // String referenceId
+    test('to test the property `referenceId`', () async {
       // TODO
     });
 
     // String version
     test('to test the property `version`', () async {
-      // TODO
-    });
-
-    // String cardCoBrand
-    test('to test the property `cardCoBrand`', () async {
       // TODO
     });
 

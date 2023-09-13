@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(AuthResetPasswordDto, () {
-    // String password
-    test('to test the property `password`', () async {
+    // String hash
+    test('to test the property `hash`', () async {
       // TODO
     });
 
-    // String hash
-    test('to test the property `hash`', () async {
+    // String password
+    test('to test the property `password`', () async {
       // TODO
     });
 

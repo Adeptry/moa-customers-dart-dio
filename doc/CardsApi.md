@@ -29,7 +29,7 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getCardsApi();
 final String merchantId = merchantId_example; // String | 
-final CreateCardDto createCardDto = {"idempotencyKey":"0Bzzz673eGNf0QkqRSZ6F","sourceId":"cnon:card-nonce-ok","postalCode":"94103"}; // CreateCardDto | 
+final CreateCardDto createCardDto = {"idempotencyKey":"Car9dBo6tcgmA0DTWcIf4","postalCode":"94103","sourceId":"cnon:card-nonce-ok"}; // CreateCardDto | 
 
 try {
     final response = api.createSquareCard(merchantId, createCardDto);

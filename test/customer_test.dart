@@ -12,6 +12,16 @@ void main() {
       // TODO
     });
 
+    // Location preferredLocation
+    test('to test the property `preferredLocation`', () async {
+      // TODO
+    });
+
+    // String preferredLocationId
+    test('to test the property `preferredLocationId`', () async {
+      // TODO
+    });
+
     // User user
     test('to test the property `user`', () async {
       // TODO

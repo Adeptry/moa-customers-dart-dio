@@ -7,28 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(LineItem, () {
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
-    // String quantity
-    test('to test the property `quantity`', () async {
-      // TODO
-    });
-
-    // String note
-    test('to test the property `note`', () async {
-      // TODO
-    });
-
-    // String variationName
-    test('to test the property `variationName`', () async {
+    // num basePriceMoney
+    test('to test the property `basePriceMoney`', () async {
       // TODO
     });
 
@@ -37,23 +17,33 @@ void main() {
       // TODO
     });
 
-    // num basePriceMoney
-    test('to test the property `basePriceMoney`', () async {
-      // TODO
-    });
-
-    // num variationTotalMoneyAmount
-    test('to test the property `variationTotalMoneyAmount`', () async {
-      // TODO
-    });
-
     // num grossSalesMoneyAmount
     test('to test the property `grossSalesMoneyAmount`', () async {
       // TODO
     });
 
-    // num totalTaxMoneyAmount
-    test('to test the property `totalTaxMoneyAmount`', () async {
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // List<LineItemModifier> modifiers
+    test('to test the property `modifiers`', () async {
+      // TODO
+    });
+
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // String note
+    test('to test the property `note`', () async {
+      // TODO
+    });
+
+    // String quantity
+    test('to test the property `quantity`', () async {
       // TODO
     });
 
@@ -72,8 +62,18 @@ void main() {
       // TODO
     });
 
-    // List<LineItemModifier> modifiers
-    test('to test the property `modifiers`', () async {
+    // num totalTaxMoneyAmount
+    test('to test the property `totalTaxMoneyAmount`', () async {
+      // TODO
+    });
+
+    // String variationName
+    test('to test the property `variationName`', () async {
+      // TODO
+    });
+
+    // num variationTotalMoneyAmount
+    test('to test the property `variationTotalMoneyAmount`', () async {
       // TODO
     });
 

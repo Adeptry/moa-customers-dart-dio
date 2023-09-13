@@ -9,8 +9,8 @@ import 'package:moa_customers_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
-**moaOrdinal** | **num** |  | [optional] 
 **moaEnabled** | **bool** |  | [optional] 
+**moaOrdinal** | **num** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
