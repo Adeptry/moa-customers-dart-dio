@@ -2,10 +2,10 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:json_annotation/json_annotation.dart';
 // ignore_for_file: unused_element
 import 'package:moa_customers_client/src/model/location.dart';
 import 'package:moa_customers_client/src/model/user.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'customer.g.dart';
 
@@ -21,6 +21,7 @@ class Customer {
     this.id,
     this.preferredLocation,
     this.preferredLocationId,
+    this.squareId,
     this.user,
   });
 
@@ -33,6 +34,9 @@ class Customer {
   @JsonKey(name: r'preferredLocationId', required: false, includeIfNull: false)
   final String? preferredLocationId;
 
+  @JsonKey(name: r'squareId', required: false, includeIfNull: false)
+  final String? squareId;
+
   @JsonKey(name: r'user', required: false, includeIfNull: false)
   final User? user;
 
@@ -43,6 +47,7 @@ class Customer {
           other.id == id &&
           other.preferredLocation == preferredLocation &&
           other.preferredLocationId == preferredLocationId &&
+          other.squareId == squareId &&
           other.user == user;
 
   @override
@@ -50,6 +55,7 @@ class Customer {
       (id == null ? 0 : id.hashCode) +
       (preferredLocation == null ? 0 : preferredLocation.hashCode) +
       (preferredLocationId == null ? 0 : preferredLocationId.hashCode) +
+      (squareId == null ? 0 : squareId.hashCode) +
       (user == null ? 0 : user.hashCode);
 
   factory Customer.fromJson(Map<String, dynamic> json) =>

@@ -2,9 +2,9 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:json_annotation/json_annotation.dart';
 // ignore_for_file: unused_element
 import 'package:moa_customers_client/src/model/line_item_modifier.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'line_item.g.dart';
 
