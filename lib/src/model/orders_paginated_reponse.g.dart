@@ -14,16 +14,16 @@ OrdersPaginatedReponse _$OrdersPaginatedReponseFromJson(
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['count', 'pages'],
+          requiredKeys: const ['pages', 'count'],
         );
         final val = OrdersPaginatedReponse(
-          count: $checkedConvert('count', (v) => v as num),
           data: $checkedConvert(
               'data',
               (v) => (v as List<dynamic>?)
                   ?.map((e) => Order.fromJson(e as Map<String, dynamic>))
                   .toList()),
           pages: $checkedConvert('pages', (v) => v as num),
+          count: $checkedConvert('count', (v) => v as num),
         );
         return val;
       },
@@ -31,9 +31,7 @@ OrdersPaginatedReponse _$OrdersPaginatedReponseFromJson(
 
 Map<String, dynamic> _$OrdersPaginatedReponseToJson(
     OrdersPaginatedReponse instance) {
-  final val = <String, dynamic>{
-    'count': instance.count,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -43,5 +41,6 @@ Map<String, dynamic> _$OrdersPaginatedReponseToJson(
 
   writeNotNull('data', instance.data?.map((e) => e.toJson()).toList());
   val['pages'] = instance.pages;
+  val['count'] = instance.count;
   return val;
 }

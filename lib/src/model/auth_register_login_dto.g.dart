@@ -18,9 +18,9 @@ AuthRegisterLoginDto _$AuthRegisterLoginDtoFromJson(
         );
         final val = AuthRegisterLoginDto(
           email: $checkedConvert('email', (v) => v as String),
+          password: $checkedConvert('password', (v) => v as String),
           firstName: $checkedConvert('firstName', (v) => v as String?),
           lastName: $checkedConvert('lastName', (v) => v as String?),
-          password: $checkedConvert('password', (v) => v as String),
         );
         return val;
       },
@@ -30,6 +30,7 @@ Map<String, dynamic> _$AuthRegisterLoginDtoToJson(
     AuthRegisterLoginDto instance) {
   final val = <String, dynamic>{
     'email': instance.email,
+    'password': instance.password,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -40,6 +41,5 @@ Map<String, dynamic> _$AuthRegisterLoginDtoToJson(
 
   writeNotNull('firstName', instance.firstName);
   writeNotNull('lastName', instance.lastName);
-  val['password'] = instance.password;
   return val;
 }

@@ -16,17 +16,17 @@ part 'auth_apple_login_dto.g.dart';
 class AuthAppleLoginDto {
   /// Returns a new [AuthAppleLoginDto] instance.
   AuthAppleLoginDto({
-    this.firstName,
     required this.idToken,
+    this.firstName,
     this.lastName,
     required this.role,
   });
 
-  @JsonKey(name: r'firstName', required: false, includeIfNull: false)
-  final String? firstName;
-
   @JsonKey(name: r'idToken', required: true, includeIfNull: false)
   final String idToken;
+
+  @JsonKey(name: r'firstName', required: false, includeIfNull: false)
+  final String? firstName;
 
   @JsonKey(name: r'lastName', required: false, includeIfNull: false)
   final String? lastName;
@@ -38,15 +38,15 @@ class AuthAppleLoginDto {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AuthAppleLoginDto &&
-          other.firstName == firstName &&
           other.idToken == idToken &&
+          other.firstName == firstName &&
           other.lastName == lastName &&
           other.role == role;
 
   @override
   int get hashCode =>
-      (firstName == null ? 0 : firstName.hashCode) +
       idToken.hashCode +
+      (firstName == null ? 0 : firstName.hashCode) +
       (lastName == null ? 0 : lastName.hashCode) +
       role.hashCode;
 

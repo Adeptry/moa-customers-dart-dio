@@ -13,17 +13,17 @@ SquareListCardsResponse _$SquareListCardsResponseFromJson(
       json,
       ($checkedConvert) {
         final val = SquareListCardsResponse(
+          errors: $checkedConvert(
+              'errors',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))
+                  .toList()),
           cards: $checkedConvert(
               'cards',
               (v) => (v as List<dynamic>?)
                   ?.map((e) => SquareCard.fromJson(e as Map<String, dynamic>))
                   .toList()),
           cursor: $checkedConvert('cursor', (v) => v as String?),
-          errors: $checkedConvert(
-              'errors',
-              (v) => (v as List<dynamic>?)
-                  ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))
-                  .toList()),
         );
         return val;
       },
@@ -39,8 +39,8 @@ Map<String, dynamic> _$SquareListCardsResponseToJson(
     }
   }
 
+  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
   writeNotNull('cards', instance.cards?.map((e) => e.toJson()).toList());
   writeNotNull('cursor', instance.cursor);
-  writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
   return val;
 }

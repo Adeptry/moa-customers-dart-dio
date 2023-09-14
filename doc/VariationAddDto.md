@@ -9,9 +9,9 @@ import 'package:moa_customers_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
+**quantity** | **num** |  | 
 **modifierIds** | **List&lt;String&gt;** |  | [optional] 
 **note** | **String** |  | [optional] 
-**quantity** | **num** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -19,44 +19,44 @@ class Customer {
   /// Returns a new [Customer] instance.
   Customer({
     this.id,
-    this.preferredLocation,
-    this.preferredLocationId,
-    this.squareId,
     this.user,
+    this.squareId,
+    this.preferredLocationId,
+    this.preferredLocation,
   });
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
 
-  @JsonKey(name: r'preferredLocation', required: false, includeIfNull: false)
-  final Location? preferredLocation;
-
-  @JsonKey(name: r'preferredLocationId', required: false, includeIfNull: false)
-  final String? preferredLocationId;
+  @JsonKey(name: r'user', required: false, includeIfNull: false)
+  final User? user;
 
   @JsonKey(name: r'squareId', required: false, includeIfNull: false)
   final String? squareId;
 
-  @JsonKey(name: r'user', required: false, includeIfNull: false)
-  final User? user;
+  @JsonKey(name: r'preferredLocationId', required: false, includeIfNull: false)
+  final String? preferredLocationId;
+
+  @JsonKey(name: r'preferredLocation', required: false, includeIfNull: false)
+  final Location? preferredLocation;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is Customer &&
           other.id == id &&
-          other.preferredLocation == preferredLocation &&
-          other.preferredLocationId == preferredLocationId &&
+          other.user == user &&
           other.squareId == squareId &&
-          other.user == user;
+          other.preferredLocationId == preferredLocationId &&
+          other.preferredLocation == preferredLocation;
 
   @override
   int get hashCode =>
       (id == null ? 0 : id.hashCode) +
-      (preferredLocation == null ? 0 : preferredLocation.hashCode) +
-      (preferredLocationId == null ? 0 : preferredLocationId.hashCode) +
+      (user == null ? 0 : user.hashCode) +
       (squareId == null ? 0 : squareId.hashCode) +
-      (user == null ? 0 : user.hashCode);
+      (preferredLocationId == null ? 0 : preferredLocationId.hashCode) +
+      (preferredLocation == null ? 0 : preferredLocation.hashCode);
 
   factory Customer.fromJson(Map<String, dynamic> json) =>
       _$CustomerFromJson(json);

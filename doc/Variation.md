@@ -9,9 +9,9 @@ import 'package:moa_customers_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
+**ordinal** | **num** |  | [optional] 
 **moaEnabled** | **bool** |  | [optional] 
 **name** | **String** |  | [optional] 
-**ordinal** | **num** |  | [optional] 
 **priceAmount** | **num** |  | [optional] 
 **priceCurrency** | **String** |  | [optional] 
 

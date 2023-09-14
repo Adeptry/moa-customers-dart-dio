@@ -2,10 +2,10 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:json_annotation/json_annotation.dart';
 // ignore_for_file: unused_element
 import 'package:moa_customers_client/src/model/square_card.dart';
 import 'package:moa_customers_client/src/model/square_error.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'square_disable_card_response.g.dart';
 
@@ -18,27 +18,27 @@ part 'square_disable_card_response.g.dart';
 class SquareDisableCardResponse {
   /// Returns a new [SquareDisableCardResponse] instance.
   SquareDisableCardResponse({
-    this.card,
     this.errors,
+    this.card,
   });
-
-  @JsonKey(name: r'card', required: false, includeIfNull: false)
-  final SquareCard? card;
 
   @JsonKey(name: r'errors', required: false, includeIfNull: false)
   final List<SquareError>? errors;
+
+  @JsonKey(name: r'card', required: false, includeIfNull: false)
+  final SquareCard? card;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is SquareDisableCardResponse &&
-          other.card == card &&
-          other.errors == errors;
+          other.errors == errors &&
+          other.card == card;
 
   @override
   int get hashCode =>
-      (card == null ? 0 : card.hashCode) +
-      (errors == null ? 0 : errors.hashCode);
+      (errors == null ? 0 : errors.hashCode) +
+      (card == null ? 0 : card.hashCode);
 
   factory SquareDisableCardResponse.fromJson(Map<String, dynamic> json) =>
       _$SquareDisableCardResponseFromJson(json);

@@ -179,15 +179,15 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
+### bearer
+
+- **Type**: HTTP Bearer Token authentication (JWT)
+
 ### Api-Key
 
 - **Type**: API key
 - **API key parameter name**: Api-Key
 - **Location**: HTTP header
-
-### bearer
-
-- **Type**: HTTP Bearer Token authentication (JWT)
 
 
 ## Author

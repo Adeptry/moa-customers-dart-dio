@@ -17,13 +17,16 @@ class VariationAddDto {
   /// Returns a new [VariationAddDto] instance.
   VariationAddDto({
     required this.id,
+    required this.quantity,
     this.modifierIds,
     this.note,
-    required this.quantity,
   });
 
   @JsonKey(name: r'id', required: true, includeIfNull: false)
   final String id;
+
+  @JsonKey(name: r'quantity', required: true, includeIfNull: false)
+  final num quantity;
 
   @JsonKey(name: r'modifierIds', required: false, includeIfNull: false)
   final List<String>? modifierIds;
@@ -31,24 +34,21 @@ class VariationAddDto {
   @JsonKey(name: r'note', required: false, includeIfNull: false)
   final String? note;
 
-  @JsonKey(name: r'quantity', required: true, includeIfNull: false)
-  final num quantity;
-
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is VariationAddDto &&
           other.id == id &&
+          other.quantity == quantity &&
           other.modifierIds == modifierIds &&
-          other.note == note &&
-          other.quantity == quantity;
+          other.note == note;
 
   @override
   int get hashCode =>
       id.hashCode +
+      quantity.hashCode +
       (modifierIds == null ? 0 : modifierIds.hashCode) +
-      (note == null ? 0 : note.hashCode) +
-      quantity.hashCode;
+      (note == null ? 0 : note.hashCode);
 
   factory VariationAddDto.fromJson(Map<String, dynamic> json) =>
       _$VariationAddDtoFromJson(json);

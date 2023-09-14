@@ -16,8 +16,8 @@ AuthAppleLoginDto _$AuthAppleLoginDtoFromJson(Map<String, dynamic> json) =>
           requiredKeys: const ['idToken', 'role'],
         );
         final val = AuthAppleLoginDto(
-          firstName: $checkedConvert('firstName', (v) => v as String?),
           idToken: $checkedConvert('idToken', (v) => v as String),
+          firstName: $checkedConvert('firstName', (v) => v as String?),
           lastName: $checkedConvert('lastName', (v) => v as String?),
           role: $checkedConvert('role',
               (v) => $enumDecode(_$AuthAppleLoginDtoRoleEnumEnumMap, v)),
@@ -27,7 +27,9 @@ AuthAppleLoginDto _$AuthAppleLoginDtoFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$AuthAppleLoginDtoToJson(AuthAppleLoginDto instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'idToken': instance.idToken,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -36,7 +38,6 @@ Map<String, dynamic> _$AuthAppleLoginDtoToJson(AuthAppleLoginDto instance) {
   }
 
   writeNotNull('firstName', instance.firstName);
-  val['idToken'] = instance.idToken;
   writeNotNull('lastName', instance.lastName);
   val['role'] = _$AuthAppleLoginDtoRoleEnumEnumMap[instance.role]!;
   return val;

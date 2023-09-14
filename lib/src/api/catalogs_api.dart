@@ -3,11 +3,12 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:moa_customers_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:moa_customers_client/src/model/catalog_image.dart';
 import 'package:moa_customers_client/src/model/category.dart';
 import 'package:moa_customers_client/src/model/category_paginated_response.dart';

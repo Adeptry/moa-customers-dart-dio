@@ -13,11 +13,11 @@ LoginResponseType _$LoginResponseTypeFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['refreshToken', 'token', 'tokenExpires'],
+          requiredKeys: const ['token', 'refreshToken', 'tokenExpires'],
         );
         final val = LoginResponseType(
-          refreshToken: $checkedConvert('refreshToken', (v) => v as String),
           token: $checkedConvert('token', (v) => v as String),
+          refreshToken: $checkedConvert('refreshToken', (v) => v as String),
           tokenExpires: $checkedConvert('tokenExpires', (v) => v as num),
           user: $checkedConvert(
               'user',
@@ -30,8 +30,8 @@ LoginResponseType _$LoginResponseTypeFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$LoginResponseTypeToJson(LoginResponseType instance) {
   final val = <String, dynamic>{
-    'refreshToken': instance.refreshToken,
     'token': instance.token,
+    'refreshToken': instance.refreshToken,
     'tokenExpires': instance.tokenExpires,
   };
 
