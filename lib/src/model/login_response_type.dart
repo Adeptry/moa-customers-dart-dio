@@ -2,9 +2,9 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:json_annotation/json_annotation.dart';
 // ignore_for_file: unused_element
 import 'package:moa_customers_client/src/model/user.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'login_response_type.g.dart';
 
