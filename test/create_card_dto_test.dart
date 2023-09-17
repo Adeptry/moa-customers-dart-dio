@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the entity
 
   group(CreateCardDto, () {
-    // String idempotencyKey
-    test('to test the property `idempotencyKey`', () async {
-      // TODO
-    });
-
     // String postalCode
     test('to test the property `postalCode`', () async {
       // TODO

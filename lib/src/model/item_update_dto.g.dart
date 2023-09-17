@@ -12,8 +12,8 @@ ItemUpdateDto _$ItemUpdateDtoFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = ItemUpdateDto(
-          moaOrdinal: $checkedConvert('moaOrdinal', (v) => v as num?),
           moaEnabled: $checkedConvert('moaEnabled', (v) => v as bool?),
+          moaOrdinal: $checkedConvert('moaOrdinal', (v) => v as num?),
         );
         return val;
       },
@@ -28,7 +28,7 @@ Map<String, dynamic> _$ItemUpdateDtoToJson(ItemUpdateDto instance) {
     }
   }
 
-  writeNotNull('moaOrdinal', instance.moaOrdinal);
   writeNotNull('moaEnabled', instance.moaEnabled);
+  writeNotNull('moaOrdinal', instance.moaOrdinal);
   return val;
 }

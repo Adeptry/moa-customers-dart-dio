@@ -22,7 +22,12 @@ void main() {
       // TODO
     });
 
-    // User user
+    // String squareId
+    test('to test the property `squareId`', () async {
+      // TODO
+    });
+
+    // Object user
     test('to test the property `user`', () async {
       // TODO
     });

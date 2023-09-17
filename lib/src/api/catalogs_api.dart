@@ -18,6 +18,7 @@ import 'package:moa_customers_client/src/model/item.dart';
 import 'package:moa_customers_client/src/model/item_paginated_response.dart';
 import 'package:moa_customers_client/src/model/item_update_all_dto.dart';
 import 'package:moa_customers_client/src/model/item_update_dto.dart';
+import 'package:moa_customers_client/src/model/nest_error.dart';
 import 'package:moa_customers_client/src/model/variation.dart';
 import 'package:moa_customers_client/src/model/variation_update_dto.dart';
 

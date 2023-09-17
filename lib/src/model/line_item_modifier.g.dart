@@ -12,11 +12,11 @@ LineItemModifier _$LineItemModifierFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = LineItemModifier(
+          baseMoneyAmount: $checkedConvert('baseMoneyAmount', (v) => v as num?),
+          currency: $checkedConvert('currency', (v) => v as String?),
           id: $checkedConvert('id', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String?),
           quantity: $checkedConvert('quantity', (v) => v as String?),
-          currency: $checkedConvert('currency', (v) => v as String?),
-          baseMoneyAmount: $checkedConvert('baseMoneyAmount', (v) => v as num?),
           totalMoneyAmount:
               $checkedConvert('totalMoneyAmount', (v) => v as num?),
         );
@@ -33,11 +33,11 @@ Map<String, dynamic> _$LineItemModifierToJson(LineItemModifier instance) {
     }
   }
 
+  writeNotNull('baseMoneyAmount', instance.baseMoneyAmount);
+  writeNotNull('currency', instance.currency);
   writeNotNull('id', instance.id);
   writeNotNull('name', instance.name);
   writeNotNull('quantity', instance.quantity);
-  writeNotNull('currency', instance.currency);
-  writeNotNull('baseMoneyAmount', instance.baseMoneyAmount);
   writeNotNull('totalMoneyAmount', instance.totalMoneyAmount);
   return val;
 }

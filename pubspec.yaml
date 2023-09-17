@@ -1,5 +1,5 @@
 name: moa_customers_client
-version: 2.0.17
+version: 2.0.21
 description: A Dart client for MyOrderApp customer HTTP API
 homepage: https://api.myorderapp.dev/customers/
 

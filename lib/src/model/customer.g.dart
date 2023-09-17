@@ -12,18 +12,15 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) => $checkedCreate(
       ($checkedConvert) {
         final val = Customer(
           id: $checkedConvert('id', (v) => v as String?),
-          user: $checkedConvert(
-              'user',
-              (v) =>
-                  v == null ? null : User.fromJson(v as Map<String, dynamic>)),
-          squareId: $checkedConvert('squareId', (v) => v as String?),
-          preferredLocationId:
-              $checkedConvert('preferredLocationId', (v) => v as String?),
           preferredLocation: $checkedConvert(
               'preferredLocation',
               (v) => v == null
                   ? null
                   : Location.fromJson(v as Map<String, dynamic>)),
+          preferredLocationId:
+              $checkedConvert('preferredLocationId', (v) => v as String?),
+          squareId: $checkedConvert('squareId', (v) => v as String?),
+          user: $checkedConvert('user', (v) => v),
         );
         return val;
       },
@@ -39,9 +36,9 @@ Map<String, dynamic> _$CustomerToJson(Customer instance) {
   }
 
   writeNotNull('id', instance.id);
-  writeNotNull('user', instance.user?.toJson());
-  writeNotNull('squareId', instance.squareId);
-  writeNotNull('preferredLocationId', instance.preferredLocationId);
   writeNotNull('preferredLocation', instance.preferredLocation?.toJson());
+  writeNotNull('preferredLocationId', instance.preferredLocationId);
+  writeNotNull('squareId', instance.squareId);
+  writeNotNull('user', instance.user);
   return val;
 }

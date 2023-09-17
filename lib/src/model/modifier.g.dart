@@ -13,9 +13,9 @@ Modifier _$ModifierFromJson(Map<String, dynamic> json) => $checkedCreate(
         final val = Modifier(
           id: $checkedConvert('id', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String?),
+          ordinal: $checkedConvert('ordinal', (v) => v as num?),
           priceAmount: $checkedConvert('priceAmount', (v) => v as num?),
           priceCurrency: $checkedConvert('priceCurrency', (v) => v as String?),
-          ordinal: $checkedConvert('ordinal', (v) => v as num?),
         );
         return val;
       },
@@ -32,8 +32,8 @@ Map<String, dynamic> _$ModifierToJson(Modifier instance) {
 
   writeNotNull('id', instance.id);
   writeNotNull('name', instance.name);
+  writeNotNull('ordinal', instance.ordinal);
   writeNotNull('priceAmount', instance.priceAmount);
   writeNotNull('priceCurrency', instance.priceCurrency);
-  writeNotNull('ordinal', instance.ordinal);
   return val;
 }

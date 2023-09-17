@@ -14,11 +14,11 @@ AuthResetPasswordDto _$AuthResetPasswordDtoFromJson(
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['password', 'hash'],
+          requiredKeys: const ['hash', 'password'],
         );
         final val = AuthResetPasswordDto(
-          password: $checkedConvert('password', (v) => v as String),
           hash: $checkedConvert('hash', (v) => v as String),
+          password: $checkedConvert('password', (v) => v as String),
         );
         return val;
       },
@@ -27,6 +27,6 @@ AuthResetPasswordDto _$AuthResetPasswordDtoFromJson(
 Map<String, dynamic> _$AuthResetPasswordDtoToJson(
         AuthResetPasswordDto instance) =>
     <String, dynamic>{
-      'password': instance.password,
       'hash': instance.hash,
+      'password': instance.password,
     };
