@@ -7,73 +7,73 @@ void main() {
   final instance = MoaCustomersClient().getAuthApi();
 
   group(AuthApi, () {
-    // Get current Auth
-    //
-    //Future<User> currentAuth() async
-    test('test currentAuth', () async {
-      // TODO
-    });
-
-    // Forgot password
-    //
-    //Future forgotPassword(AuthForgotPasswordDto authForgotPasswordDto) async
-    test('test forgotPassword', () async {
-      // TODO
-    });
-
-    // Get access token
-    //
-    //Future<LoginResponseType> login(AuthEmailLoginDto authEmailLoginDto) async
-    test('test login', () async {
-      // TODO
-    });
-
-    // Apple login
-    //
-    //Future<LoginResponseType> loginApple(AuthAppleLoginDto authAppleLoginDto) async
-    test('test loginApple', () async {
-      // TODO
-    });
-
-    // Google login
-    //
-    //Future<LoginResponseType> loginGoogle(AuthGoogleLoginDto authGoogleLoginDto) async
-    test('test loginGoogle', () async {
-      // TODO
-    });
-
     // Delete Session
     //
-    //Future logout() async
-    test('test logout', () async {
-      // TODO
-    });
-
-    // Refresh token
-    //
-    //Future<LoginResponseType> refreshToken() async
-    test('test refreshToken', () async {
-      // TODO
-    });
-
-    // Create User and Authorize
-    //
-    //Future<LoginResponseType> register(AuthRegisterLoginDto authRegisterLoginDto) async
-    test('test register', () async {
-      // TODO
-    });
-
-    // Reset password
-    //
-    //Future resetPassword(AuthResetPasswordDto authResetPasswordDto) async
-    test('test resetPassword', () async {
+    //Future deleteMeAuth({ Object xCustomLang }) async
+    test('test deleteMeAuth', () async {
       // TODO
     });
 
     // Update password
     //
-    //Future<User> updateCurrentAuth(AuthUpdateDto authUpdateDto) async
-    test('test updateCurrentAuth', () async {
+    //Future<User> patchMeAuth(AuthUpdateDto authUpdateDto, { Object xCustomLang }) async
+    test('test patchMeAuth', () async {
+      // TODO
+    });
+
+    // Confirm email
+    //
+    //Future postEmailConfirm(AuthConfirmEmailDto authConfirmEmailDto, { Object xCustomLang }) async
+    test('test postEmailConfirm', () async {
+      // TODO
+    });
+
+    // Get access token
+    //
+    //Future<LoginResponseType> postEmailLogin(AuthEmailLoginDto authEmailLoginDto, { Object xCustomLang }) async
+    test('test postEmailLogin', () async {
+      // TODO
+    });
+
+    // Create User and Authorize
+    //
+    //Future<LoginResponseType> postEmailRegister(AuthRegisterLoginDto authRegisterLoginDto, { Object xCustomLang }) async
+    test('test postEmailRegister', () async {
+      // TODO
+    });
+
+    // Apple login
+    //
+    //Future<LoginResponseType> postLoginApple(AuthAppleLoginDto authAppleLoginDto, { Object xCustomLang }) async
+    test('test postLoginApple', () async {
+      // TODO
+    });
+
+    // Google login
+    //
+    //Future<LoginResponseType> postLoginGoogle(AuthGoogleLoginDto authGoogleLoginDto, { Object xCustomLang }) async
+    test('test postLoginGoogle', () async {
+      // TODO
+    });
+
+    // Forgot password
+    //
+    //Future postPasswordForgot(AuthForgotPasswordDto authForgotPasswordDto, { Object xCustomLang }) async
+    test('test postPasswordForgot', () async {
+      // TODO
+    });
+
+    // Reset password
+    //
+    //Future postPasswordReset(AuthResetPasswordDto authResetPasswordDto, { Object xCustomLang }) async
+    test('test postPasswordReset', () async {
+      // TODO
+    });
+
+    // Refresh token
+    //
+    //Future<LoginResponseType> postRefresh({ Object xCustomLang }) async
+    test('test postRefresh', () async {
       // TODO
     });
 

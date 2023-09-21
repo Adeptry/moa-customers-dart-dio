@@ -9,70 +9,19 @@ All URIs are relative to *https://api.myorderapp.dev*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCurrentOrder**](OrdersApi.md#createcurrentorder) | **POST** /v2/orders | Create Order
 [**deleteCurrentLineItem**](OrdersApi.md#deletecurrentlineitem) | **DELETE** /v2/orders/current/line-item/{id} | Remove Line Items from Order
 [**deleteCurrentOrder**](OrdersApi.md#deletecurrentorder) | **DELETE** /v2/orders/current | Delete Order
 [**getCurrentOrder**](OrdersApi.md#getcurrentorder) | **GET** /v2/orders/current | Get current Order
-[**getOrder**](OrdersApi.md#getorder) | **GET** /v2/orders/{id} | Get Order
-[**getOrders**](OrdersApi.md#getorders) | **GET** /v2/orders/me | Get my Orders
-[**patchUpdateCurrentOrder**](OrdersApi.md#patchupdatecurrentorder) | **PATCH** /v2/orders/current | Patch update Order, e.g. modify Location
-[**postPaymentForCurrentOrder**](OrdersApi.md#postpaymentforcurrentorder) | **POST** /v2/orders/current/payment/square | Pay for Order
-[**postUpdateCurrentOrder**](OrdersApi.md#postupdatecurrentorder) | **POST** /v2/orders/current | Post update Order, e.g. add Variations &amp; Modifiers in Line Items
+[**getManyOrders**](OrdersApi.md#getmanyorders) | **GET** /v2/orders/me | Get my Orders
+[**getOneOrder**](OrdersApi.md#getoneorder) | **GET** /v2/orders/{id} | Get Order
+[**patchCurrentOrder**](OrdersApi.md#patchcurrentorder) | **PATCH** /v2/orders/current | Patch update Order, e.g. modify Location
+[**postCurrentOrder**](OrdersApi.md#postcurrentorder) | **POST** /v2/orders/current | Post update Order, e.g. add Variations &amp; Modifiers in Line Items
+[**postCurrentOrderPaymentSquare**](OrdersApi.md#postcurrentorderpaymentsquare) | **POST** /v2/orders/current/payment/square | Pay for Order
+[**postOrder**](OrdersApi.md#postorder) | **POST** /v2/orders | Create Order
 
-
-# **createCurrentOrder**
-> Order createCurrentOrder(merchantId, orderCreateDto, lineItems, location)
-
-Create Order
-
-### Example
-```dart
-import 'package:moa_customers_client/api.dart';
-// TODO Configure API key authorization: Api-Key
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
-
-final api = MoaCustomersClient().getOrdersApi();
-final String merchantId = merchantId_example; // String | 
-final OrderCreateDto orderCreateDto = ; // OrderCreateDto | 
-final bool lineItems = true; // bool | 
-final bool location = true; // bool | 
-
-try {
-    final response = api.createCurrentOrder(merchantId, orderCreateDto, lineItems, location);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling OrdersApi->createCurrentOrder: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **merchantId** | **String**|  | 
- **orderCreateDto** | [**OrderCreateDto**](OrderCreateDto.md)|  | 
- **lineItems** | **bool**|  | [optional] 
- **location** | **bool**|  | [optional] 
-
-### Return type
-
-[**Order**](Order.md)
-
-### Authorization
-
-[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteCurrentLineItem**
-> Order deleteCurrentLineItem(id, merchantId, lineItems, location)
+> Order deleteCurrentLineItem(id, merchantIdOrPath, lineItems, location, xCustomLang)
 
 Remove Line Items from Order
 
@@ -86,12 +35,13 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getOrdersApi();
 final String id = id_example; // String | 
-final String merchantId = merchantId_example; // String | 
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final bool lineItems = true; // bool | 
 final bool location = true; // bool | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.deleteCurrentLineItem(id, merchantId, lineItems, location);
+    final response = api.deleteCurrentLineItem(id, merchantIdOrPath, lineItems, location, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling OrdersApi->deleteCurrentLineItem: $e\n');
@@ -103,9 +53,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **merchantId** | **String**|  | 
+ **merchantIdOrPath** | **String**|  | 
  **lineItems** | **bool**|  | [optional] 
  **location** | **bool**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -123,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteCurrentOrder**
-> deleteCurrentOrder(merchantId)
+> deleteCurrentOrder(merchantIdOrPath, xCustomLang)
 
 Delete Order
 
@@ -136,10 +87,11 @@ import 'package:moa_customers_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomersClient().getOrdersApi();
-final String merchantId = merchantId_example; // String | 
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    api.deleteCurrentOrder(merchantId);
+    api.deleteCurrentOrder(merchantIdOrPath, xCustomLang);
 } catch on DioException (e) {
     print('Exception when calling OrdersApi->deleteCurrentOrder: $e\n');
 }
@@ -149,7 +101,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **merchantId** | **String**|  | 
+ **merchantIdOrPath** | **String**|  | 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -167,7 +120,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCurrentOrder**
-> Order getCurrentOrder(merchantId, lineItems, location)
+> Order getCurrentOrder(merchantIdOrPath, lineItems, location, xCustomLang)
 
 Get current Order
 
@@ -180,12 +133,13 @@ import 'package:moa_customers_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomersClient().getOrdersApi();
-final String merchantId = merchantId_example; // String | 
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final bool lineItems = true; // bool | 
 final bool location = true; // bool | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.getCurrentOrder(merchantId, lineItems, location);
+    final response = api.getCurrentOrder(merchantIdOrPath, lineItems, location, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling OrdersApi->getCurrentOrder: $e\n');
@@ -196,9 +150,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **merchantId** | **String**|  | 
+ **merchantIdOrPath** | **String**|  | 
  **lineItems** | **bool**|  | [optional] 
  **location** | **bool**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -215,61 +170,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getOrder**
-> Order getOrder(id, lineItems, location, actingAs, merchantId)
-
-Get Order
-
-### Example
-```dart
-import 'package:moa_customers_client/api.dart';
-// TODO Configure API key authorization: Api-Key
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
-
-final api = MoaCustomersClient().getOrdersApi();
-final String id = id_example; // String | 
-final bool lineItems = true; // bool | 
-final bool location = true; // bool | 
-final String actingAs = actingAs_example; // String | 
-final String merchantId = merchantId_example; // String | 
-
-try {
-    final response = api.getOrder(id, lineItems, location, actingAs, merchantId);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling OrdersApi->getOrder: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
- **lineItems** | **bool**|  | [optional] 
- **location** | **bool**|  | [optional] 
- **actingAs** | **String**|  | [optional] 
- **merchantId** | **String**|  | [optional] 
-
-### Return type
-
-[**Order**](Order.md)
-
-### Authorization
-
-[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getOrders**
-> OrdersPaginatedReponse getOrders(page, limit, closed, lineItems, location, actingAs, merchantId)
+# **getManyOrders**
+> OrdersPaginatedReponse getManyOrders(page, limit, closed, lineItems, location, actingAs, merchantIdOrPath, xCustomLang)
 
 Get my Orders
 
@@ -288,13 +190,14 @@ final bool closed = true; // bool |
 final bool lineItems = true; // bool | 
 final bool location = true; // bool | 
 final String actingAs = actingAs_example; // String | 
-final String merchantId = merchantId_example; // String | 
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.getOrders(page, limit, closed, lineItems, location, actingAs, merchantId);
+    final response = api.getManyOrders(page, limit, closed, lineItems, location, actingAs, merchantIdOrPath, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling OrdersApi->getOrders: $e\n');
+    print('Exception when calling OrdersApi->getManyOrders: $e\n');
 }
 ```
 
@@ -308,7 +211,8 @@ Name | Type | Description  | Notes
  **lineItems** | **bool**|  | [optional] 
  **location** | **bool**|  | [optional] 
  **actingAs** | **String**|  | [optional] 
- **merchantId** | **String**|  | [optional] 
+ **merchantIdOrPath** | **String**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -325,8 +229,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patchUpdateCurrentOrder**
-> Order patchUpdateCurrentOrder(orderPatchDto, lineItems, location, idempotencyKey, merchantId)
+# **getOneOrder**
+> Order getOneOrder(id, lineItems, location, actingAs, merchantIdOrPath, xCustomLang)
+
+Get Order
+
+### Example
+```dart
+import 'package:moa_customers_client/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MoaCustomersClient().getOrdersApi();
+final String id = id_example; // String | 
+final bool lineItems = true; // bool | 
+final bool location = true; // bool | 
+final String actingAs = actingAs_example; // String | 
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
+final Object xCustomLang = ; // Object | 
+
+try {
+    final response = api.getOneOrder(id, lineItems, location, actingAs, merchantIdOrPath, xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling OrdersApi->getOneOrder: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **lineItems** | **bool**|  | [optional] 
+ **location** | **bool**|  | [optional] 
+ **actingAs** | **String**|  | [optional] 
+ **merchantIdOrPath** | **String**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchCurrentOrder**
+> Order patchCurrentOrder(orderPatchDto, lineItems, location, idempotencyKey, merchantIdOrPath, xCustomLang)
 
 Patch update Order, e.g. modify Location
 
@@ -343,13 +302,14 @@ final OrderPatchDto orderPatchDto = ; // OrderPatchDto |
 final bool lineItems = true; // bool | 
 final bool location = true; // bool | 
 final String idempotencyKey = idempotencyKey_example; // String | 
-final String merchantId = merchantId_example; // String | 
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.patchUpdateCurrentOrder(orderPatchDto, lineItems, location, idempotencyKey, merchantId);
+    final response = api.patchCurrentOrder(orderPatchDto, lineItems, location, idempotencyKey, merchantIdOrPath, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling OrdersApi->patchUpdateCurrentOrder: $e\n');
+    print('Exception when calling OrdersApi->patchCurrentOrder: $e\n');
 }
 ```
 
@@ -361,7 +321,8 @@ Name | Type | Description  | Notes
  **lineItems** | **bool**|  | [optional] 
  **location** | **bool**|  | [optional] 
  **idempotencyKey** | **String**|  | [optional] 
- **merchantId** | **String**|  | [optional] 
+ **merchantIdOrPath** | **String**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -378,59 +339,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **postPaymentForCurrentOrder**
-> Order postPaymentForCurrentOrder(merchantId, paymentCreateDto, lineItems, location)
-
-Pay for Order
-
-### Example
-```dart
-import 'package:moa_customers_client/api.dart';
-// TODO Configure API key authorization: Api-Key
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
-
-final api = MoaCustomersClient().getOrdersApi();
-final String merchantId = merchantId_example; // String | 
-final PaymentCreateDto paymentCreateDto = ; // PaymentCreateDto | 
-final bool lineItems = true; // bool | 
-final bool location = true; // bool | 
-
-try {
-    final response = api.postPaymentForCurrentOrder(merchantId, paymentCreateDto, lineItems, location);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling OrdersApi->postPaymentForCurrentOrder: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **merchantId** | **String**|  | 
- **paymentCreateDto** | [**PaymentCreateDto**](PaymentCreateDto.md)|  | 
- **lineItems** | **bool**|  | [optional] 
- **location** | **bool**|  | [optional] 
-
-### Return type
-
-[**Order**](Order.md)
-
-### Authorization
-
-[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **postUpdateCurrentOrder**
-> Order postUpdateCurrentOrder(merchantId, orderPostDto, lineItems, location, idempotencyKey)
+# **postCurrentOrder**
+> Order postCurrentOrder(merchantIdOrPath, orderPostDto, lineItems, location, idempotencyKey, xCustomLang)
 
 Post update Order, e.g. add Variations & Modifiers in Line Items
 
@@ -443,17 +353,18 @@ import 'package:moa_customers_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomersClient().getOrdersApi();
-final String merchantId = merchantId_example; // String | 
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final OrderPostDto orderPostDto = ; // OrderPostDto | 
 final bool lineItems = true; // bool | 
 final bool location = true; // bool | 
 final String idempotencyKey = idempotencyKey_example; // String | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.postUpdateCurrentOrder(merchantId, orderPostDto, lineItems, location, idempotencyKey);
+    final response = api.postCurrentOrder(merchantIdOrPath, orderPostDto, lineItems, location, idempotencyKey, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling OrdersApi->postUpdateCurrentOrder: $e\n');
+    print('Exception when calling OrdersApi->postCurrentOrder: $e\n');
 }
 ```
 
@@ -461,11 +372,118 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **merchantId** | **String**|  | 
+ **merchantIdOrPath** | **String**|  | 
  **orderPostDto** | [**OrderPostDto**](OrderPostDto.md)|  | 
  **lineItems** | **bool**|  | [optional] 
  **location** | **bool**|  | [optional] 
  **idempotencyKey** | **String**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postCurrentOrderPaymentSquare**
+> Order postCurrentOrderPaymentSquare(merchantIdOrPath, paymentCreateDto, lineItems, location, xCustomLang)
+
+Pay for Order
+
+### Example
+```dart
+import 'package:moa_customers_client/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MoaCustomersClient().getOrdersApi();
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
+final PaymentCreateDto paymentCreateDto = ; // PaymentCreateDto | 
+final bool lineItems = true; // bool | 
+final bool location = true; // bool | 
+final Object xCustomLang = ; // Object | 
+
+try {
+    final response = api.postCurrentOrderPaymentSquare(merchantIdOrPath, paymentCreateDto, lineItems, location, xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling OrdersApi->postCurrentOrderPaymentSquare: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchantIdOrPath** | **String**|  | 
+ **paymentCreateDto** | [**PaymentCreateDto**](PaymentCreateDto.md)|  | 
+ **lineItems** | **bool**|  | [optional] 
+ **location** | **bool**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postOrder**
+> Order postOrder(merchantIdOrPath, orderCreateDto, lineItems, location, xCustomLang)
+
+Create Order
+
+### Example
+```dart
+import 'package:moa_customers_client/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MoaCustomersClient().getOrdersApi();
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
+final OrderCreateDto orderCreateDto = ; // OrderCreateDto | 
+final bool lineItems = true; // bool | 
+final bool location = true; // bool | 
+final Object xCustomLang = ; // Object | 
+
+try {
+    final response = api.postOrder(merchantIdOrPath, orderCreateDto, lineItems, location, xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling OrdersApi->postOrder: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchantIdOrPath** | **String**|  | 
+ **orderCreateDto** | [**OrderCreateDto**](OrderCreateDto.md)|  | 
+ **lineItems** | **bool**|  | [optional] 
+ **location** | **bool**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 

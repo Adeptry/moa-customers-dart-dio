@@ -9,14 +9,14 @@ import 'package:moa_customers_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **blockingMessage** | **String** |  | [optional] 
+**enabled** | **bool** |  | [optional] 
 **fontFamily** | **String** |  | [optional] 
 **iconFile** | [**FileEntity**](FileEntity.md) |  | [optional] 
 **message** | **String** |  | [optional] 
 **minimumVersion** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
+**path** | **String** |  | [optional] 
 **seedColor** | **String** |  | [optional] 
-**showAds** | **bool** |  | [optional] 
-**showsAds** | **bool** |  | [optional] 
 **themeMode** | [**ThemeModeEnum**](ThemeModeEnum.md) |  | [optional] 
 **useMaterial3** | **bool** |  | [optional] 
 

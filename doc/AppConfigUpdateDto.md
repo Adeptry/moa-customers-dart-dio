@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **fontFamily** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **seedColor** | **String** |  | [optional] 
-**shortDescription** | **String** |  | [optional] 
 **themeMode** | **String** |  | [optional] 
 **useMaterial3** | **bool** |  | [optional] 
 

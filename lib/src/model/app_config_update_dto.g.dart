@@ -15,8 +15,6 @@ AppConfigUpdateDto _$AppConfigUpdateDtoFromJson(Map<String, dynamic> json) =>
           fontFamily: $checkedConvert('fontFamily', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String?),
           seedColor: $checkedConvert('seedColor', (v) => v as String?),
-          shortDescription:
-              $checkedConvert('shortDescription', (v) => v as String?),
           themeMode: $checkedConvert(
               'themeMode',
               (v) => $enumDecodeNullable(
@@ -39,7 +37,6 @@ Map<String, dynamic> _$AppConfigUpdateDtoToJson(AppConfigUpdateDto instance) {
   writeNotNull('fontFamily', instance.fontFamily);
   writeNotNull('name', instance.name);
   writeNotNull('seedColor', instance.seedColor);
-  writeNotNull('shortDescription', instance.shortDescription);
   writeNotNull('themeMode',
       _$AppConfigUpdateDtoThemeModeEnumEnumMap[instance.themeMode]);
   writeNotNull('useMaterial3', instance.useMaterial3);

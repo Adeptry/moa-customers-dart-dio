@@ -7,24 +7,24 @@ void main() {
   final instance = MoaCustomersClient().getCardsApi();
 
   group(CardsApi, () {
-    // Create my Square Card
-    //
-    //Future<SquareCard> createSquareCard(String merchantId, CreateCardDto createCardDto) async
-    test('test createSquareCard', () async {
-      // TODO
-    });
-
     // Disable my Square Card
     //
-    //Future<SquareDisableCardResponse> deleteSquareCard(String id, String merchantId) async
-    test('test deleteSquareCard', () async {
+    //Future<SquareDisableCardResponse> deleteMeCards(String id, String merchantIdOrPath, { Object xCustomLang }) async
+    test('test deleteMeCards', () async {
       // TODO
     });
 
     // List my Square Cards
     //
-    //Future<SquareListCardsResponse> getSquareCards(String merchantId, { String cursor }) async
-    test('test getSquareCards', () async {
+    //Future<SquareListCardsResponse> getMeCards(String merchantIdOrPath, { String cursor, Object xCustomLang }) async
+    test('test getMeCards', () async {
+      // TODO
+    });
+
+    // Create my Square Card
+    //
+    //Future<SquareCard> postMeCards(String merchantIdOrPath, CreateCardDto createCardDto, { Object xCustomLang }) async
+    test('test postMeCards', () async {
       // TODO
     });
 

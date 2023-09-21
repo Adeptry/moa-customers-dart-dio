@@ -14,6 +14,7 @@ UserUpdateDto _$UserUpdateDtoFromJson(Map<String, dynamic> json) =>
         final val = UserUpdateDto(
           email: $checkedConvert('email', (v) => v as String?),
           firstName: $checkedConvert('firstName', (v) => v as String?),
+          language: $checkedConvert('language', (v) => v as String?),
           lastName: $checkedConvert('lastName', (v) => v as String?),
         );
         return val;
@@ -31,6 +32,7 @@ Map<String, dynamic> _$UserUpdateDtoToJson(UserUpdateDto instance) {
 
   writeNotNull('email', instance.email);
   writeNotNull('firstName', instance.firstName);
+  writeNotNull('language', instance.language);
   writeNotNull('lastName', instance.lastName);
   return val;
 }

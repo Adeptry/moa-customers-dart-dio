@@ -9,21 +9,21 @@ All URIs are relative to *https://api.myorderapp.dev*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCatalog**](CatalogsApi.md#getcatalog) | **GET** /v2/catalog | Get Categories for Merchant ID with Items, Variations, and/or ModifierLists
+[**getCategories**](CatalogsApi.md#getcategories) | **GET** /v2/categories | Get Categories for Merchant ID with Items, Variations, and/or ModifierLists
+[**getCategoriesItems**](CatalogsApi.md#getcategoriesitems) | **GET** /v2/categories/{id}/items | Get Items in Category
+[**getCategoriesMe**](CatalogsApi.md#getcategoriesme) | **GET** /v2/categories/me | Get your Categories with Items, Variations, and/or ModifierLists
 [**getItem**](CatalogsApi.md#getitem) | **GET** /v2/items/{id} | Get Item with ID
-[**getItemsInCategory**](CatalogsApi.md#getitemsincategory) | **GET** /v2/categories/{id}/items | Get Items in Category
-[**getMyCatalog**](CatalogsApi.md#getmycatalog) | **GET** /v2/catalog/me | Get your Categories with Items, Variations, and/or ModifierLists
 [**getVariationsForItem**](CatalogsApi.md#getvariationsforitem) | **GET** /v2/items/{id}/variations | Get Item variations with ID
-[**updateCategories**](CatalogsApi.md#updatecategories) | **PATCH** /v2/categories | Update multiple Categories
-[**updateCategory**](CatalogsApi.md#updatecategory) | **PATCH** /v2/categories/{id} | Update a Category
-[**updateItem**](CatalogsApi.md#updateitem) | **PATCH** /v2/items/{id} | Update an Item
-[**updateItems**](CatalogsApi.md#updateitems) | **PATCH** /v2/items | Update multiple Items
+[**patchCategories**](CatalogsApi.md#patchcategories) | **PATCH** /v2/categories | Update multiple Categories
+[**patchCategory**](CatalogsApi.md#patchcategory) | **PATCH** /v2/categories/{id} | Update a Category
+[**patchItem**](CatalogsApi.md#patchitem) | **PATCH** /v2/items/{id} | Update an Item
+[**patchItems**](CatalogsApi.md#patchitems) | **PATCH** /v2/items | Update multiple Items
+[**postItemSquareImageUpload**](CatalogsApi.md#postitemsquareimageupload) | **POST** /v2/items/{id}/square/image/upload | Upload Square Catalog Image
 [**updateVariation**](CatalogsApi.md#updatevariation) | **PATCH** /v2/variations/{id} | Update an Variation
-[**uploadImageToSquareCatalog**](CatalogsApi.md#uploadimagetosquarecatalog) | **POST** /v2/items/{id}/square/image | Upload Square Catalog Image
 
 
-# **getCatalog**
-> CategoryPaginatedResponse getCatalog(merchantId, actingAs, page, limit, locationId, items, images, variations, modifierLists)
+# **getCategories**
+> CategoryPaginatedResponse getCategories(merchantIdOrPath, actingAs, page, limit, locationId, items, images, variations, modifierLists, xCustomLang)
 
 Get Categories for Merchant ID with Items, Variations, and/or ModifierLists
 
@@ -36,7 +36,7 @@ import 'package:moa_customers_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomersClient().getCatalogsApi();
-final String merchantId = merchantId_example; // String | 
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final String actingAs = actingAs_example; // String | 
 final num page = 8.14; // num | 
 final num limit = 8.14; // num | 
@@ -45,12 +45,13 @@ final bool items = true; // bool |
 final bool images = true; // bool | 
 final bool variations = true; // bool | 
 final bool modifierLists = true; // bool | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.getCatalog(merchantId, actingAs, page, limit, locationId, items, images, variations, modifierLists);
+    final response = api.getCategories(merchantIdOrPath, actingAs, page, limit, locationId, items, images, variations, modifierLists, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CatalogsApi->getCatalog: $e\n');
+    print('Exception when calling CatalogsApi->getCategories: $e\n');
 }
 ```
 
@@ -58,7 +59,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **merchantId** | **String**|  | 
+ **merchantIdOrPath** | **String**|  | 
  **actingAs** | **String**|  | 
  **page** | **num**|  | [optional] 
  **limit** | **num**|  | [optional] 
@@ -67,6 +68,7 @@ Name | Type | Description  | Notes
  **images** | **bool**|  | [optional] 
  **variations** | **bool**|  | [optional] 
  **modifierLists** | **bool**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -83,55 +85,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getItem**
-> Item getItem(id, locationId)
-
-Get Item with ID
-
-### Example
-```dart
-import 'package:moa_customers_client/api.dart';
-// TODO Configure API key authorization: Api-Key
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
-
-final api = MoaCustomersClient().getCatalogsApi();
-final String id = id_example; // String | 
-final String locationId = locationId_example; // String | 
-
-try {
-    final response = api.getItem(id, locationId);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling CatalogsApi->getItem: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
- **locationId** | **String**|  | [optional] 
-
-### Return type
-
-[**Item**](Item.md)
-
-### Authorization
-
-[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getItemsInCategory**
-> ItemPaginatedResponse getItemsInCategory(id, actingAs, page, limit, locationId, images, variations, modifierLists, merchantId)
+# **getCategoriesItems**
+> ItemPaginatedResponse getCategoriesItems(id, actingAs, page, limit, locationId, images, variations, modifierLists, merchantIdOrPath, xCustomLang)
 
 Get Items in Category
 
@@ -152,13 +107,14 @@ final String locationId = locationId_example; // String |
 final bool images = true; // bool | 
 final bool variations = true; // bool | 
 final bool modifierLists = true; // bool | 
-final String merchantId = merchantId_example; // String | 
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.getItemsInCategory(id, actingAs, page, limit, locationId, images, variations, modifierLists, merchantId);
+    final response = api.getCategoriesItems(id, actingAs, page, limit, locationId, images, variations, modifierLists, merchantIdOrPath, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CatalogsApi->getItemsInCategory: $e\n');
+    print('Exception when calling CatalogsApi->getCategoriesItems: $e\n');
 }
 ```
 
@@ -174,7 +130,8 @@ Name | Type | Description  | Notes
  **images** | **bool**|  | [optional] 
  **variations** | **bool**|  | [optional] 
  **modifierLists** | **bool**|  | [optional] 
- **merchantId** | **String**|  | [optional] 
+ **merchantIdOrPath** | **String**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -191,8 +148,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getMyCatalog**
-> CategoryPaginatedResponse getMyCatalog(page, limit, locationId, items, images, variations, modifierLists, actingAs, merchantId)
+# **getCategoriesMe**
+> CategoryPaginatedResponse getCategoriesMe(page, limit, locationId, items, images, variations, modifierLists, actingAs, merchantIdOrPath, xCustomLang)
 
 Get your Categories with Items, Variations, and/or ModifierLists
 
@@ -213,13 +170,14 @@ final bool images = true; // bool |
 final bool variations = true; // bool | 
 final bool modifierLists = true; // bool | 
 final String actingAs = actingAs_example; // String | 
-final String merchantId = merchantId_example; // String | 
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.getMyCatalog(page, limit, locationId, items, images, variations, modifierLists, actingAs, merchantId);
+    final response = api.getCategoriesMe(page, limit, locationId, items, images, variations, modifierLists, actingAs, merchantIdOrPath, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CatalogsApi->getMyCatalog: $e\n');
+    print('Exception when calling CatalogsApi->getCategoriesMe: $e\n');
 }
 ```
 
@@ -235,7 +193,8 @@ Name | Type | Description  | Notes
  **variations** | **bool**|  | [optional] 
  **modifierLists** | **bool**|  | [optional] 
  **actingAs** | **String**|  | [optional] 
- **merchantId** | **String**|  | [optional] 
+ **merchantIdOrPath** | **String**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -252,8 +211,57 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getItem**
+> Item getItem(id, locationId, xCustomLang)
+
+Get Item with ID
+
+### Example
+```dart
+import 'package:moa_customers_client/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MoaCustomersClient().getCatalogsApi();
+final String id = id_example; // String | 
+final String locationId = locationId_example; // String | 
+final Object xCustomLang = ; // Object | 
+
+try {
+    final response = api.getItem(id, locationId, xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling CatalogsApi->getItem: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **locationId** | **String**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
+
+### Return type
+
+[**Item**](Item.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getVariationsForItem**
-> List<Variation> getVariationsForItem(id, locationId)
+> List<Variation> getVariationsForItem(id, locationId, xCustomLang)
 
 Get Item variations with ID
 
@@ -268,9 +276,10 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final String locationId = locationId_example; // String | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.getVariationsForItem(id, locationId);
+    final response = api.getVariationsForItem(id, locationId, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CatalogsApi->getVariationsForItem: $e\n');
@@ -283,6 +292,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **locationId** | **String**|  | [optional] 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -299,8 +309,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateCategories**
-> List<Category> updateCategories(categoryUpdateAllDto)
+# **patchCategories**
+> List<Category> patchCategories(categoryUpdateAllDto, xCustomLang)
 
 Update multiple Categories
 
@@ -314,12 +324,13 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getCatalogsApi();
 final List<CategoryUpdateAllDto> categoryUpdateAllDto = ; // List<CategoryUpdateAllDto> | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.updateCategories(categoryUpdateAllDto);
+    final response = api.patchCategories(categoryUpdateAllDto, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CatalogsApi->updateCategories: $e\n');
+    print('Exception when calling CatalogsApi->patchCategories: $e\n');
 }
 ```
 
@@ -328,6 +339,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryUpdateAllDto** | [**List&lt;CategoryUpdateAllDto&gt;**](CategoryUpdateAllDto.md)|  | 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -344,8 +356,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateCategory**
-> Category updateCategory(id, categoryUpdateDto)
+# **patchCategory**
+> Category patchCategory(id, categoryUpdateDto, xCustomLang)
 
 Update a Category
 
@@ -360,12 +372,13 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final CategoryUpdateDto categoryUpdateDto = ; // CategoryUpdateDto | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.updateCategory(id, categoryUpdateDto);
+    final response = api.patchCategory(id, categoryUpdateDto, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CatalogsApi->updateCategory: $e\n');
+    print('Exception when calling CatalogsApi->patchCategory: $e\n');
 }
 ```
 
@@ -375,6 +388,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **categoryUpdateDto** | [**CategoryUpdateDto**](CategoryUpdateDto.md)|  | 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -391,8 +405,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateItem**
-> Item updateItem(id, itemUpdateDto)
+# **patchItem**
+> Item patchItem(id, itemUpdateDto, xCustomLang)
 
 Update an Item
 
@@ -407,12 +421,13 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final ItemUpdateDto itemUpdateDto = ; // ItemUpdateDto | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.updateItem(id, itemUpdateDto);
+    final response = api.patchItem(id, itemUpdateDto, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CatalogsApi->updateItem: $e\n');
+    print('Exception when calling CatalogsApi->patchItem: $e\n');
 }
 ```
 
@@ -422,6 +437,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **itemUpdateDto** | [**ItemUpdateDto**](ItemUpdateDto.md)|  | 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -438,8 +454,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateItems**
-> List<Item> updateItems(itemUpdateAllDto)
+# **patchItems**
+> List<Item> patchItems(itemUpdateAllDto, xCustomLang)
 
 Update multiple Items
 
@@ -453,12 +469,13 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getCatalogsApi();
 final List<ItemUpdateAllDto> itemUpdateAllDto = ; // List<ItemUpdateAllDto> | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.updateItems(itemUpdateAllDto);
+    final response = api.patchItems(itemUpdateAllDto, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CatalogsApi->updateItems: $e\n');
+    print('Exception when calling CatalogsApi->patchItems: $e\n');
 }
 ```
 
@@ -467,6 +484,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemUpdateAllDto** | [**List&lt;ItemUpdateAllDto&gt;**](ItemUpdateAllDto.md)|  | 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -483,8 +501,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **postItemSquareImageUpload**
+> CatalogImage postItemSquareImageUpload(idempotencyKey, id, xCustomLang, file)
+
+Upload Square Catalog Image
+
+### Example
+```dart
+import 'package:moa_customers_client/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MoaCustomersClient().getCatalogsApi();
+final String idempotencyKey = g8fFBDPIYvzU-loumES5S; // String | 
+final String id = id_example; // String | 
+final Object xCustomLang = ; // Object | 
+final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
+
+try {
+    final response = api.postItemSquareImageUpload(idempotencyKey, id, xCustomLang, file);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling CatalogsApi->postItemSquareImageUpload: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **idempotencyKey** | **String**|  | 
+ **id** | **String**|  | 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **file** | **MultipartFile**|  | [optional] 
+
+### Return type
+
+[**CatalogImage**](CatalogImage.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateVariation**
-> Variation updateVariation(id, variationUpdateDto)
+> Variation updateVariation(id, variationUpdateDto, xCustomLang)
 
 Update an Variation
 
@@ -499,9 +568,10 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final VariationUpdateDto variationUpdateDto = ; // VariationUpdateDto | 
+final Object xCustomLang = ; // Object | 
 
 try {
-    final response = api.updateVariation(id, variationUpdateDto);
+    final response = api.updateVariation(id, variationUpdateDto, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CatalogsApi->updateVariation: $e\n');
@@ -514,6 +584,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **variationUpdateDto** | [**VariationUpdateDto**](VariationUpdateDto.md)|  | 
+ **xCustomLang** | [**Object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -526,55 +597,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **uploadImageToSquareCatalog**
-> CatalogImage uploadImageToSquareCatalog(idempotencyKey, id, file)
-
-Upload Square Catalog Image
-
-### Example
-```dart
-import 'package:moa_customers_client/api.dart';
-// TODO Configure API key authorization: Api-Key
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
-
-final api = MoaCustomersClient().getCatalogsApi();
-final String idempotencyKey = cx9cGopQaqvJ0Q6TLf_4k; // String | 
-final String id = id_example; // String | 
-final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
-
-try {
-    final response = api.uploadImageToSquareCatalog(idempotencyKey, id, file);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling CatalogsApi->uploadImageToSquareCatalog: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idempotencyKey** | **String**|  | 
- **id** | **String**|  | 
- **file** | **MultipartFile**|  | [optional] 
-
-### Return type
-
-[**CatalogImage**](CatalogImage.md)
-
-### Authorization
-
-[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

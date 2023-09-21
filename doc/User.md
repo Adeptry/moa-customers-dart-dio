@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **email** | **String** |  | [optional] 
 **firstName** | **String** |  | [optional] 
 **id** | **String** |  | 
+**language** | **String** |  | [optional] 
 **lastName** | **String** |  | [optional] 
 **provider** | **String** |  | [optional] 
 **socialId** | **String** |  | [optional] 

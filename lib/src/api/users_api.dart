@@ -9,7 +9,6 @@ import 'dart:convert';
 import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/nest_error.dart';
 import 'package:moa_customers_client/src/model/user.dart';
 import 'package:moa_customers_client/src/model/user_update_dto.dart';
 
@@ -22,6 +21,7 @@ class UsersApi {
   ///
   ///
   /// Parameters:
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -31,7 +31,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> deleteCurrentUser({
+  Future<Response<User>> deleteMeUser({
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -43,6 +44,7 @@ class UsersApi {
     final _options = Options(
       method: r'DELETE',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -105,6 +107,7 @@ class UsersApi {
   ///
   ///
   /// Parameters:
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -114,7 +117,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> getCurrentUser({
+  Future<Response<User>> getMeUser({
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -126,6 +130,7 @@ class UsersApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -189,6 +194,7 @@ class UsersApi {
   ///
   /// Parameters:
   /// * [userUpdateDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -198,8 +204,9 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> patchCurrentUser({
+  Future<Response<User>> patchMeUser({
     required UserUpdateDto userUpdateDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -211,6 +218,7 @@ class UsersApi {
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{

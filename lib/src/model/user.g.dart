@@ -18,6 +18,7 @@ User _$UserFromJson(Map<String, dynamic> json) => $checkedCreate(
           email: $checkedConvert('email', (v) => v as String?),
           firstName: $checkedConvert('firstName', (v) => v as String?),
           id: $checkedConvert('id', (v) => v as String),
+          language: $checkedConvert('language', (v) => v as String?),
           lastName: $checkedConvert('lastName', (v) => v as String?),
           provider: $checkedConvert('provider',
               (v) => $enumDecodeNullable(_$UserProviderEnumEnumMap, v)),
@@ -39,6 +40,7 @@ Map<String, dynamic> _$UserToJson(User instance) {
   writeNotNull('email', instance.email);
   writeNotNull('firstName', instance.firstName);
   val['id'] = instance.id;
+  writeNotNull('language', instance.language);
   writeNotNull('lastName', instance.lastName);
   writeNotNull('provider', _$UserProviderEnumEnumMap[instance.provider]);
   writeNotNull('socialId', instance.socialId);

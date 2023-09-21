@@ -6,9 +6,11 @@ build.yaml
 doc/Address.md
 doc/AppConfig.md
 doc/AppConfigUpdateDto.md
+doc/AppConfigsApi.md
 doc/AppInstallUpdateDto.md
 doc/AuthApi.md
 doc/AuthAppleLoginDto.md
+doc/AuthConfirmEmailDto.md
 doc/AuthEmailLoginDto.md
 doc/AuthForgotPasswordDto.md
 doc/AuthGoogleLoginDto.md
@@ -23,7 +25,6 @@ doc/Category.md
 doc/CategoryPaginatedResponse.md
 doc/CategoryUpdateAllDto.md
 doc/CategoryUpdateDto.md
-doc/ConfigsApi.md
 doc/CreateCardDto.md
 doc/Customer.md
 doc/CustomerUpdateDto.md
@@ -67,10 +68,10 @@ doc/VariationAddDto.md
 doc/VariationUpdateDto.md
 lib/moa_customers_client.dart
 lib/src/api.dart
+lib/src/api/app_configs_api.dart
 lib/src/api/auth_api.dart
 lib/src/api/cards_api.dart
 lib/src/api/catalogs_api.dart
-lib/src/api/configs_api.dart
 lib/src/api/customers_api.dart
 lib/src/api/locations_api.dart
 lib/src/api/orders_api.dart
@@ -86,6 +87,7 @@ lib/src/model/app_config.dart
 lib/src/model/app_config_update_dto.dart
 lib/src/model/app_install_update_dto.dart
 lib/src/model/auth_apple_login_dto.dart
+lib/src/model/auth_confirm_email_dto.dart
 lib/src/model/auth_email_login_dto.dart
 lib/src/model/auth_forgot_password_dto.dart
 lib/src/model/auth_google_login_dto.dart
@@ -139,9 +141,11 @@ pubspec.yaml
 test/address_test.dart
 test/app_config_test.dart
 test/app_config_update_dto_test.dart
+test/app_configs_api_test.dart
 test/app_install_update_dto_test.dart
 test/auth_api_test.dart
 test/auth_apple_login_dto_test.dart
+test/auth_confirm_email_dto_test.dart
 test/auth_email_login_dto_test.dart
 test/auth_forgot_password_dto_test.dart
 test/auth_google_login_dto_test.dart
@@ -156,7 +160,6 @@ test/category_paginated_response_test.dart
 test/category_test.dart
 test/category_update_all_dto_test.dart
 test/category_update_dto_test.dart
-test/configs_api_test.dart
 test/create_card_dto_test.dart
 test/customer_test.dart
 test/customer_update_dto_test.dart

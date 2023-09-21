@@ -3,12 +3,14 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:moa_customers_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:moa_customers_client/src/model/auth_apple_login_dto.dart';
+import 'package:moa_customers_client/src/model/auth_confirm_email_dto.dart';
 import 'package:moa_customers_client/src/model/auth_email_login_dto.dart';
 import 'package:moa_customers_client/src/model/auth_forgot_password_dto.dart';
 import 'package:moa_customers_client/src/model/auth_google_login_dto.dart';
@@ -23,10 +25,11 @@ class AuthApi {
 
   const AuthApi(this._dio);
 
-  /// Get current Auth
+  /// Delete Session
   ///
   ///
   /// Parameters:
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -34,9 +37,10 @@ class AuthApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [User] as data
+  /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> currentAuth({
+  Future<Response<void>> deleteMeAuth({
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -46,8 +50,9 @@ class AuthApi {
   }) async {
     final _path = r'/v2/auth/me';
     final _options = Options(
-      method: r'GET',
+      method: r'DELETE',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -71,6 +76,86 @@ class AuthApi {
 
     final _response = await _dio.request<Object>(
       _path,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
+  }
+
+  /// Update password
+  ///
+  ///
+  /// Parameters:
+  /// * [authUpdateDto]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [User] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<User>> patchMeAuth({
+    required AuthUpdateDto authUpdateDto,
+    Object? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/auth/me';
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      _bodyData = jsonEncode(authUpdateDto);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
       options: _options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
@@ -106,11 +191,12 @@ class AuthApi {
     );
   }
 
-  /// Forgot password
+  /// Confirm email
   ///
   ///
   /// Parameters:
-  /// * [authForgotPasswordDto]
+  /// * [authConfirmEmailDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -120,8 +206,9 @@ class AuthApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> forgotPassword({
-    required AuthForgotPasswordDto authForgotPasswordDto,
+  Future<Response<void>> postEmailConfirm({
+    required AuthConfirmEmailDto authConfirmEmailDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -129,10 +216,11 @@ class AuthApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/auth/forgot/password';
+    final _path = r'/v2/auth/email/confirm';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -153,7 +241,7 @@ class AuthApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(authForgotPasswordDto);
+      _bodyData = jsonEncode(authConfirmEmailDto);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -183,6 +271,7 @@ class AuthApi {
   ///
   /// Parameters:
   /// * [authEmailLoginDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -192,8 +281,9 @@ class AuthApi {
   ///
   /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> login({
+  Future<Response<LoginResponseType>> postEmailLogin({
     required AuthEmailLoginDto authEmailLoginDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -205,6 +295,7 @@ class AuthApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -278,11 +369,12 @@ class AuthApi {
     );
   }
 
-  /// Apple login
+  /// Create User and Authorize
   ///
   ///
   /// Parameters:
-  /// * [authAppleLoginDto]
+  /// * [authRegisterLoginDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -292,8 +384,112 @@ class AuthApi {
   ///
   /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> loginApple({
+  Future<Response<LoginResponseType>> postEmailRegister({
+    required AuthRegisterLoginDto authRegisterLoginDto,
+    Object? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/auth/email/register';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      _bodyData = jsonEncode(authRegisterLoginDto);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    LoginResponseType? _responseData;
+
+    try {
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
+              growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<LoginResponseType>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Apple login
+  ///
+  ///
+  /// Parameters:
+  /// * [authAppleLoginDto]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<LoginResponseType>> postLoginApple({
     required AuthAppleLoginDto authAppleLoginDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -305,6 +501,7 @@ class AuthApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -383,6 +580,7 @@ class AuthApi {
   ///
   /// Parameters:
   /// * [authGoogleLoginDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -392,8 +590,9 @@ class AuthApi {
   ///
   /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> loginGoogle({
+  Future<Response<LoginResponseType>> postLoginGoogle({
     required AuthGoogleLoginDto authGoogleLoginDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -405,6 +604,7 @@ class AuthApi {
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -478,10 +678,12 @@ class AuthApi {
     );
   }
 
-  /// Delete Session
+  /// Forgot password
   ///
   ///
   /// Parameters:
+  /// * [authForgotPasswordDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -491,7 +693,9 @@ class AuthApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> logout({
+  Future<Response<void>> postPasswordForgot({
+    required AuthForgotPasswordDto authForgotPasswordDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -499,154 +703,11 @@ class AuthApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/auth/logout';
+    final _path = r'/v2/auth/password/forgot';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    return _response;
-  }
-
-  /// Refresh token
-  ///
-  ///
-  /// Parameters:
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> refreshToken({
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/v2/auth/refresh';
-    final _options = Options(
-      method: r'POST',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    LoginResponseType? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<LoginResponseType, LoginResponseType>(
-              rawData, 'LoginResponseType',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<LoginResponseType>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Create User and Authorize
-  ///
-  ///
-  /// Parameters:
-  /// * [authRegisterLoginDto]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> register({
-    required AuthRegisterLoginDto authRegisterLoginDto,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/v2/auth/email/register';
-    final _options = Options(
-      method: r'POST',
-      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -667,7 +728,7 @@ class AuthApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(authRegisterLoginDto);
+      _bodyData = jsonEncode(authForgotPasswordDto);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -689,35 +750,7 @@ class AuthApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LoginResponseType? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<LoginResponseType, LoginResponseType>(
-              rawData, 'LoginResponseType',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<LoginResponseType>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    return _response;
   }
 
   /// Reset password
@@ -725,6 +758,7 @@ class AuthApi {
   ///
   /// Parameters:
   /// * [authResetPasswordDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -734,8 +768,9 @@ class AuthApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> resetPassword({
+  Future<Response<void>> postPasswordReset({
     required AuthResetPasswordDto authResetPasswordDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -743,10 +778,11 @@ class AuthApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/auth/reset/password';
+    final _path = r'/v2/auth/password/reset';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -792,11 +828,11 @@ class AuthApi {
     return _response;
   }
 
-  /// Update password
+  /// Refresh token
   ///
   ///
   /// Parameters:
-  /// * [authUpdateDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -804,10 +840,10 @@ class AuthApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [User] as data
+  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> updateCurrentAuth({
-    required AuthUpdateDto authUpdateDto,
+  Future<Response<LoginResponseType>> postRefresh({
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -815,10 +851,11 @@ class AuthApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/auth/me';
+    final _path = r'/v2/auth/refresh';
     final _options = Options(
-      method: r'PATCH',
+      method: r'POST',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -837,42 +874,26 @@ class AuthApi {
         ],
         ...?extra,
       },
-      contentType: 'application/json',
       validateStatus: validateStatus,
     );
 
-    dynamic _bodyData;
-
-    try {
-      _bodyData = jsonEncode(authUpdateDto);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
     final _response = await _dio.request<Object>(
       _path,
-      data: _bodyData,
       options: _options,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    User? _responseData;
+    LoginResponseType? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<User, User>(rawData, 'User', growable: true);
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -883,7 +904,7 @@ class AuthApi {
       );
     }
 
-    return Response<User>(
+    return Response<LoginResponseType>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

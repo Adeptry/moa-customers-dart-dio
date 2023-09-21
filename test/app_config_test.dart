@@ -12,6 +12,11 @@ void main() {
       // TODO
     });
 
+    // bool enabled
+    test('to test the property `enabled`', () async {
+      // TODO
+    });
+
     // String fontFamily
     test('to test the property `fontFamily`', () async {
       // TODO
@@ -37,18 +42,13 @@ void main() {
       // TODO
     });
 
+    // String path
+    test('to test the property `path`', () async {
+      // TODO
+    });
+
     // String seedColor
     test('to test the property `seedColor`', () async {
-      // TODO
-    });
-
-    // bool showAds
-    test('to test the property `showAds`', () async {
-      // TODO
-    });
-
-    // bool showsAds
-    test('to test the property `showsAds`', () async {
       // TODO
     });
 

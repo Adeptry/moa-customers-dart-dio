@@ -3,11 +3,12 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:moa_customers_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:moa_customers_client/src/model/catalog_image.dart';
 import 'package:moa_customers_client/src/model/category.dart';
 import 'package:moa_customers_client/src/model/category_paginated_response.dart';
@@ -29,7 +30,7 @@ class CatalogsApi {
   ///
   ///
   /// Parameters:
-  /// * [merchantId]
+  /// * [merchantIdOrPath]
   /// * [actingAs]
   /// * [page]
   /// * [limit]
@@ -38,6 +39,7 @@ class CatalogsApi {
   /// * [images]
   /// * [variations]
   /// * [modifierLists]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -47,8 +49,8 @@ class CatalogsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [CategoryPaginatedResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CategoryPaginatedResponse>> getCatalog({
-    required String merchantId,
+  Future<Response<CategoryPaginatedResponse>> getCategories({
+    required String merchantIdOrPath,
     required String actingAs,
     num? page,
     num? limit,
@@ -57,6 +59,7 @@ class CatalogsApi {
     bool? images,
     bool? variations,
     bool? modifierLists,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -64,10 +67,11 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/catalog';
+    final _path = r'/v2/categories';
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -90,7 +94,7 @@ class CatalogsApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      r'merchantId': merchantId,
+      r'merchantIdOrPath': merchantIdOrPath,
       r'actingAs': actingAs,
       if (page != null) r'page': page,
       if (limit != null) r'limit': limit,
@@ -141,12 +145,251 @@ class CatalogsApi {
     );
   }
 
+  /// Get Items in Category
+  ///
+  ///
+  /// Parameters:
+  /// * [id]
+  /// * [actingAs]
+  /// * [page]
+  /// * [limit]
+  /// * [locationId]
+  /// * [images]
+  /// * [variations]
+  /// * [modifierLists]
+  /// * [merchantIdOrPath]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [ItemPaginatedResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<ItemPaginatedResponse>> getCategoriesItems({
+    required String id,
+    String? actingAs,
+    num? page,
+    num? limit,
+    String? locationId,
+    bool? images,
+    bool? variations,
+    bool? modifierLists,
+    String? merchantIdOrPath,
+    Object? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path =
+        r'/v2/categories/{id}/items'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (actingAs != null) r'actingAs': actingAs,
+      if (page != null) r'page': page,
+      if (limit != null) r'limit': limit,
+      if (locationId != null) r'locationId': locationId,
+      if (images != null) r'images': images,
+      if (variations != null) r'variations': variations,
+      if (modifierLists != null) r'modifierLists': modifierLists,
+      if (merchantIdOrPath != null) r'merchantIdOrPath': merchantIdOrPath,
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    ItemPaginatedResponse? _responseData;
+
+    try {
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<ItemPaginatedResponse, ItemPaginatedResponse>(
+              rawData, 'ItemPaginatedResponse',
+              growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<ItemPaginatedResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Get your Categories with Items, Variations, and/or ModifierLists
+  ///
+  ///
+  /// Parameters:
+  /// * [page]
+  /// * [limit]
+  /// * [locationId]
+  /// * [items]
+  /// * [images]
+  /// * [variations]
+  /// * [modifierLists]
+  /// * [actingAs]
+  /// * [merchantIdOrPath]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [CategoryPaginatedResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<CategoryPaginatedResponse>> getCategoriesMe({
+    num? page,
+    num? limit,
+    String? locationId,
+    bool? items,
+    bool? images,
+    bool? variations,
+    bool? modifierLists,
+    String? actingAs,
+    String? merchantIdOrPath,
+    Object? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/categories/me';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (page != null) r'page': page,
+      if (limit != null) r'limit': limit,
+      if (locationId != null) r'locationId': locationId,
+      if (items != null) r'items': items,
+      if (images != null) r'images': images,
+      if (variations != null) r'variations': variations,
+      if (modifierLists != null) r'modifierLists': modifierLists,
+      if (actingAs != null) r'actingAs': actingAs,
+      if (merchantIdOrPath != null) r'merchantIdOrPath': merchantIdOrPath,
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    CategoryPaginatedResponse? _responseData;
+
+    try {
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<CategoryPaginatedResponse, CategoryPaginatedResponse>(
+              rawData, 'CategoryPaginatedResponse',
+              growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<CategoryPaginatedResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Get Item with ID
   ///
   ///
   /// Parameters:
   /// * [id]
   /// * [locationId]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -159,6 +402,7 @@ class CatalogsApi {
   Future<Response<Item>> getItem({
     required String id,
     String? locationId,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -170,6 +414,7 @@ class CatalogsApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -233,244 +478,13 @@ class CatalogsApi {
     );
   }
 
-  /// Get Items in Category
-  ///
-  ///
-  /// Parameters:
-  /// * [id]
-  /// * [actingAs]
-  /// * [page]
-  /// * [limit]
-  /// * [locationId]
-  /// * [images]
-  /// * [variations]
-  /// * [modifierLists]
-  /// * [merchantId]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [ItemPaginatedResponse] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<ItemPaginatedResponse>> getItemsInCategory({
-    required String id,
-    String? actingAs,
-    num? page,
-    num? limit,
-    String? locationId,
-    bool? images,
-    bool? variations,
-    bool? modifierLists,
-    String? merchantId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path =
-        r'/v2/categories/{id}/items'.replaceAll('{' r'id' '}', id.toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      if (actingAs != null) r'actingAs': actingAs,
-      if (page != null) r'page': page,
-      if (limit != null) r'limit': limit,
-      if (locationId != null) r'locationId': locationId,
-      if (images != null) r'images': images,
-      if (variations != null) r'variations': variations,
-      if (modifierLists != null) r'modifierLists': modifierLists,
-      if (merchantId != null) r'merchantId': merchantId,
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    ItemPaginatedResponse? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<ItemPaginatedResponse, ItemPaginatedResponse>(
-              rawData, 'ItemPaginatedResponse',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<ItemPaginatedResponse>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Get your Categories with Items, Variations, and/or ModifierLists
-  ///
-  ///
-  /// Parameters:
-  /// * [page]
-  /// * [limit]
-  /// * [locationId]
-  /// * [items]
-  /// * [images]
-  /// * [variations]
-  /// * [modifierLists]
-  /// * [actingAs]
-  /// * [merchantId]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [CategoryPaginatedResponse] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<CategoryPaginatedResponse>> getMyCatalog({
-    num? page,
-    num? limit,
-    String? locationId,
-    bool? items,
-    bool? images,
-    bool? variations,
-    bool? modifierLists,
-    String? actingAs,
-    String? merchantId,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/v2/catalog/me';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      if (page != null) r'page': page,
-      if (limit != null) r'limit': limit,
-      if (locationId != null) r'locationId': locationId,
-      if (items != null) r'items': items,
-      if (images != null) r'images': images,
-      if (variations != null) r'variations': variations,
-      if (modifierLists != null) r'modifierLists': modifierLists,
-      if (actingAs != null) r'actingAs': actingAs,
-      if (merchantId != null) r'merchantId': merchantId,
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    CategoryPaginatedResponse? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<CategoryPaginatedResponse, CategoryPaginatedResponse>(
-              rawData, 'CategoryPaginatedResponse',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<CategoryPaginatedResponse>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
   /// Get Item variations with ID
   ///
   ///
   /// Parameters:
   /// * [id]
   /// * [locationId]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -483,6 +497,7 @@ class CatalogsApi {
   Future<Response<List<Variation>>> getVariationsForItem({
     required String id,
     String? locationId,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -495,6 +510,7 @@ class CatalogsApi {
     final _options = Options(
       method: r'GET',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -564,6 +580,7 @@ class CatalogsApi {
   ///
   /// Parameters:
   /// * [categoryUpdateAllDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -573,8 +590,9 @@ class CatalogsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<Category>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Category>>> updateCategories({
+  Future<Response<List<Category>>> patchCategories({
     required List<CategoryUpdateAllDto> categoryUpdateAllDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -586,6 +604,7 @@ class CatalogsApi {
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -669,6 +688,7 @@ class CatalogsApi {
   /// Parameters:
   /// * [id]
   /// * [categoryUpdateDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -678,9 +698,10 @@ class CatalogsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Category] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Category>> updateCategory({
+  Future<Response<Category>> patchCategory({
     required String id,
     required CategoryUpdateDto categoryUpdateDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -693,6 +714,7 @@ class CatalogsApi {
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -776,6 +798,7 @@ class CatalogsApi {
   /// Parameters:
   /// * [id]
   /// * [itemUpdateDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -785,9 +808,10 @@ class CatalogsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Item] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Item>> updateItem({
+  Future<Response<Item>> patchItem({
     required String id,
     required ItemUpdateDto itemUpdateDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -799,6 +823,7 @@ class CatalogsApi {
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -880,6 +905,7 @@ class CatalogsApi {
   ///
   /// Parameters:
   /// * [itemUpdateAllDto]
+  /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -889,8 +915,9 @@ class CatalogsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [List<Item>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Item>>> updateItems({
+  Future<Response<List<Item>>> patchItems({
     required List<ItemUpdateAllDto> itemUpdateAllDto,
+    Object? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -902,6 +929,7 @@ class CatalogsApi {
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -979,119 +1007,13 @@ class CatalogsApi {
     );
   }
 
-  /// Update an Variation
-  ///
-  ///
-  /// Parameters:
-  /// * [id]
-  /// * [variationUpdateDto]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [Variation] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<Variation>> updateVariation({
-    required String id,
-    required VariationUpdateDto variationUpdateDto,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path =
-        r'/v2/variations/{id}'.replaceAll('{' r'id' '}', id.toString());
-    final _options = Options(
-      method: r'PATCH',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
-    );
-
-    dynamic _bodyData;
-
-    try {
-      _bodyData = jsonEncode(variationUpdateDto);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    Variation? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<Variation, Variation>(rawData, 'Variation',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<Variation>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
   /// Upload Square Catalog Image
   ///
   ///
   /// Parameters:
   /// * [idempotencyKey]
   /// * [id]
+  /// * [xCustomLang]
   /// * [file]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -1102,9 +1024,10 @@ class CatalogsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [CatalogImage] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CatalogImage>> uploadImageToSquareCatalog({
+  Future<Response<CatalogImage>> postItemSquareImageUpload({
     required String idempotencyKey,
     required String id,
+    Object? xCustomLang,
     MultipartFile? file,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1113,11 +1036,12 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path =
-        r'/v2/items/{id}/square/image'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/v2/items/{id}/square/image/upload'
+        .replaceAll('{' r'id' '}', id.toString());
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
@@ -1188,6 +1112,116 @@ class CatalogsApi {
     }
 
     return Response<CatalogImage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Update an Variation
+  ///
+  ///
+  /// Parameters:
+  /// * [id]
+  /// * [variationUpdateDto]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [Variation] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<Variation>> updateVariation({
+    required String id,
+    required VariationUpdateDto variationUpdateDto,
+    Object? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path =
+        r'/v2/variations/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'PATCH',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      _bodyData = jsonEncode(variationUpdateDto);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    Variation? _responseData;
+
+    try {
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Variation, Variation>(rawData, 'Variation',
+              growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<Variation>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

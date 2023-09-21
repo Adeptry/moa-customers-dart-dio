@@ -3,22 +3,25 @@
 //
 
 export 'package:moa_customers_client/src/api.dart';
+export 'package:moa_customers_client/src/auth/api_key_auth.dart';
+export 'package:moa_customers_client/src/auth/basic_auth.dart';
+export 'package:moa_customers_client/src/auth/oauth.dart';
+
+export 'package:moa_customers_client/src/api/app_configs_api.dart';
 export 'package:moa_customers_client/src/api/auth_api.dart';
 export 'package:moa_customers_client/src/api/cards_api.dart';
 export 'package:moa_customers_client/src/api/catalogs_api.dart';
-export 'package:moa_customers_client/src/api/configs_api.dart';
 export 'package:moa_customers_client/src/api/customers_api.dart';
 export 'package:moa_customers_client/src/api/locations_api.dart';
 export 'package:moa_customers_client/src/api/orders_api.dart';
 export 'package:moa_customers_client/src/api/users_api.dart';
-export 'package:moa_customers_client/src/auth/api_key_auth.dart';
-export 'package:moa_customers_client/src/auth/basic_auth.dart';
-export 'package:moa_customers_client/src/auth/oauth.dart';
+
 export 'package:moa_customers_client/src/model/address.dart';
 export 'package:moa_customers_client/src/model/app_config.dart';
 export 'package:moa_customers_client/src/model/app_config_update_dto.dart';
 export 'package:moa_customers_client/src/model/app_install_update_dto.dart';
 export 'package:moa_customers_client/src/model/auth_apple_login_dto.dart';
+export 'package:moa_customers_client/src/model/auth_confirm_email_dto.dart';
 export 'package:moa_customers_client/src/model/auth_email_login_dto.dart';
 export 'package:moa_customers_client/src/model/auth_forgot_password_dto.dart';
 export 'package:moa_customers_client/src/model/auth_google_login_dto.dart';

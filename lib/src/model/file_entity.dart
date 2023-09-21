@@ -16,23 +16,18 @@ part 'file_entity.g.dart';
 class FileEntity {
   /// Returns a new [FileEntity] instance.
   FileEntity({
-    required this.id,
     required this.url,
   });
-
-  @JsonKey(name: r'id', required: true, includeIfNull: false)
-  final String id;
 
   @JsonKey(name: r'url', required: true, includeIfNull: false)
   final String url;
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is FileEntity && other.id == id && other.url == url;
+      identical(this, other) || other is FileEntity && other.url == url;
 
   @override
-  int get hashCode => id.hashCode + url.hashCode;
+  int get hashCode => url.hashCode;
 
   factory FileEntity.fromJson(Map<String, dynamic> json) =>
       _$FileEntityFromJson(json);

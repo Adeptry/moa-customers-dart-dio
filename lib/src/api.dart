@@ -7,10 +7,10 @@ import 'package:moa_customers_client/src/auth/api_key_auth.dart';
 import 'package:moa_customers_client/src/auth/basic_auth.dart';
 import 'package:moa_customers_client/src/auth/bearer_auth.dart';
 import 'package:moa_customers_client/src/auth/oauth.dart';
+import 'package:moa_customers_client/src/api/app_configs_api.dart';
 import 'package:moa_customers_client/src/api/auth_api.dart';
 import 'package:moa_customers_client/src/api/cards_api.dart';
 import 'package:moa_customers_client/src/api/catalogs_api.dart';
-import 'package:moa_customers_client/src/api/configs_api.dart';
 import 'package:moa_customers_client/src/api/customers_api.dart';
 import 'package:moa_customers_client/src/api/locations_api.dart';
 import 'package:moa_customers_client/src/api/orders_api.dart';
@@ -77,6 +77,12 @@ class MoaCustomersClient {
     }
   }
 
+  /// Get AppConfigsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  AppConfigsApi getAppConfigsApi() {
+    return AppConfigsApi(dio);
+  }
+
   /// Get AuthApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   AuthApi getAuthApi() {
@@ -93,12 +99,6 @@ class MoaCustomersClient {
   /// by doing that all interceptors will not be executed
   CatalogsApi getCatalogsApi() {
     return CatalogsApi(dio);
-  }
-
-  /// Get ConfigsApi instance, base route and serializer can be overridden by a given but be careful,
-  /// by doing that all interceptors will not be executed
-  ConfigsApi getConfigsApi() {
-    return ConfigsApi(dio);
   }
 
   /// Get CustomersApi instance, base route and serializer can be overridden by a given but be careful,

@@ -22,11 +22,6 @@ void main() {
       // TODO
     });
 
-    // String shortDescription
-    test('to test the property `shortDescription`', () async {
-      // TODO
-    });
-
     // String themeMode
     test('to test the property `themeMode`', () async {
       // TODO

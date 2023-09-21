@@ -19,6 +19,7 @@ class User {
     this.email,
     this.firstName,
     required this.id,
+    this.language,
     this.lastName,
     this.provider,
     this.socialId,
@@ -32,6 +33,9 @@ class User {
 
   @JsonKey(name: r'id', required: true, includeIfNull: false)
   final String id;
+
+  @JsonKey(name: r'language', required: false, includeIfNull: false)
+  final String? language;
 
   @JsonKey(name: r'lastName', required: false, includeIfNull: false)
   final String? lastName;
@@ -49,6 +53,7 @@ class User {
           other.email == email &&
           other.firstName == firstName &&
           other.id == id &&
+          other.language == language &&
           other.lastName == lastName &&
           other.provider == provider &&
           other.socialId == socialId;
@@ -58,6 +63,7 @@ class User {
       (email == null ? 0 : email.hashCode) +
       (firstName == null ? 0 : firstName.hashCode) +
       id.hashCode +
+      (language == null ? 0 : language.hashCode) +
       (lastName == null ? 0 : lastName.hashCode) +
       (provider == null ? 0 : provider.hashCode) +
       (socialId == null ? 0 : socialId.hashCode);

@@ -9,22 +9,22 @@ void main() {
   group(UsersApi, () {
     // Delete your User
     //
-    //Future<User> deleteCurrentUser() async
-    test('test deleteCurrentUser', () async {
+    //Future<User> deleteMeUser({ Object xCustomLang }) async
+    test('test deleteMeUser', () async {
       // TODO
     });
 
     // Get your User
     //
-    //Future<User> getCurrentUser() async
-    test('test getCurrentUser', () async {
+    //Future<User> getMeUser({ Object xCustomLang }) async
+    test('test getMeUser', () async {
       // TODO
     });
 
     // Update your User
     //
-    //Future<User> patchCurrentUser(UserUpdateDto userUpdateDto) async
-    test('test patchCurrentUser', () async {
+    //Future<User> patchMeUser(UserUpdateDto userUpdateDto, { Object xCustomLang }) async
+    test('test patchMeUser', () async {
       // TODO
     });
 

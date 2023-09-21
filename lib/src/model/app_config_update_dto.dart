@@ -19,7 +19,6 @@ class AppConfigUpdateDto {
     this.fontFamily,
     this.name,
     this.seedColor,
-    this.shortDescription,
     this.themeMode,
     this.useMaterial3,
   });
@@ -32,9 +31,6 @@ class AppConfigUpdateDto {
 
   @JsonKey(name: r'seedColor', required: false, includeIfNull: false)
   final String? seedColor;
-
-  @JsonKey(name: r'shortDescription', required: false, includeIfNull: false)
-  final String? shortDescription;
 
   @JsonKey(name: r'themeMode', required: false, includeIfNull: false)
   final AppConfigUpdateDtoThemeModeEnum? themeMode;
@@ -49,7 +45,6 @@ class AppConfigUpdateDto {
           other.fontFamily == fontFamily &&
           other.name == name &&
           other.seedColor == seedColor &&
-          other.shortDescription == shortDescription &&
           other.themeMode == themeMode &&
           other.useMaterial3 == useMaterial3;
 
@@ -58,7 +53,6 @@ class AppConfigUpdateDto {
       (fontFamily == null ? 0 : fontFamily.hashCode) +
       (name == null ? 0 : name.hashCode) +
       (seedColor == null ? 0 : seedColor.hashCode) +
-      (shortDescription == null ? 0 : shortDescription.hashCode) +
       (themeMode == null ? 0 : themeMode.hashCode) +
       (useMaterial3 == null ? 0 : useMaterial3.hashCode);
 

@@ -12,10 +12,9 @@ FileEntity _$FileEntityFromJson(Map<String, dynamic> json) => $checkedCreate(
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['id', 'url'],
+          requiredKeys: const ['url'],
         );
         final val = FileEntity(
-          id: $checkedConvert('id', (v) => v as String),
           url: $checkedConvert('url', (v) => v as String),
         );
         return val;
@@ -24,6 +23,5 @@ FileEntity _$FileEntityFromJson(Map<String, dynamic> json) => $checkedCreate(
 
 Map<String, dynamic> _$FileEntityToJson(FileEntity instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'url': instance.url,
     };

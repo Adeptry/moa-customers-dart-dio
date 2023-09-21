@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the entity
 
   group(FileEntity, () {
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
     // String url
     test('to test the property `url`', () async {
       // TODO

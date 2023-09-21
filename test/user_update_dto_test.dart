@@ -17,6 +17,11 @@ void main() {
       // TODO
     });
 
+    // String language
+    test('to test the property `language`', () async {
+      // TODO
+    });
+
     // String lastName
     test('to test the property `lastName`', () async {
       // TODO

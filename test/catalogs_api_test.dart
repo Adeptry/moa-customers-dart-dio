@@ -9,78 +9,78 @@ void main() {
   group(CatalogsApi, () {
     // Get Categories for Merchant ID with Items, Variations, and/or ModifierLists
     //
-    //Future<CategoryPaginatedResponse> getCatalog(String merchantId, String actingAs, { num page, num limit, String locationId, bool items, bool images, bool variations, bool modifierLists }) async
-    test('test getCatalog', () async {
-      // TODO
-    });
-
-    // Get Item with ID
-    //
-    //Future<Item> getItem(String id, { String locationId }) async
-    test('test getItem', () async {
+    //Future<CategoryPaginatedResponse> getCategories(String merchantIdOrPath, String actingAs, { num page, num limit, String locationId, bool items, bool images, bool variations, bool modifierLists, Object xCustomLang }) async
+    test('test getCategories', () async {
       // TODO
     });
 
     // Get Items in Category
     //
-    //Future<ItemPaginatedResponse> getItemsInCategory(String id, { String actingAs, num page, num limit, String locationId, bool images, bool variations, bool modifierLists, String merchantId }) async
-    test('test getItemsInCategory', () async {
+    //Future<ItemPaginatedResponse> getCategoriesItems(String id, { String actingAs, num page, num limit, String locationId, bool images, bool variations, bool modifierLists, String merchantIdOrPath, Object xCustomLang }) async
+    test('test getCategoriesItems', () async {
       // TODO
     });
 
     // Get your Categories with Items, Variations, and/or ModifierLists
     //
-    //Future<CategoryPaginatedResponse> getMyCatalog({ num page, num limit, String locationId, bool items, bool images, bool variations, bool modifierLists, String actingAs, String merchantId }) async
-    test('test getMyCatalog', () async {
+    //Future<CategoryPaginatedResponse> getCategoriesMe({ num page, num limit, String locationId, bool items, bool images, bool variations, bool modifierLists, String actingAs, String merchantIdOrPath, Object xCustomLang }) async
+    test('test getCategoriesMe', () async {
+      // TODO
+    });
+
+    // Get Item with ID
+    //
+    //Future<Item> getItem(String id, { String locationId, Object xCustomLang }) async
+    test('test getItem', () async {
       // TODO
     });
 
     // Get Item variations with ID
     //
-    //Future<List<Variation>> getVariationsForItem(String id, { String locationId }) async
+    //Future<List<Variation>> getVariationsForItem(String id, { String locationId, Object xCustomLang }) async
     test('test getVariationsForItem', () async {
       // TODO
     });
 
     // Update multiple Categories
     //
-    //Future<List<Category>> updateCategories(List<CategoryUpdateAllDto> categoryUpdateAllDto) async
-    test('test updateCategories', () async {
+    //Future<List<Category>> patchCategories(List<CategoryUpdateAllDto> categoryUpdateAllDto, { Object xCustomLang }) async
+    test('test patchCategories', () async {
       // TODO
     });
 
     // Update a Category
     //
-    //Future<Category> updateCategory(String id, CategoryUpdateDto categoryUpdateDto) async
-    test('test updateCategory', () async {
+    //Future<Category> patchCategory(String id, CategoryUpdateDto categoryUpdateDto, { Object xCustomLang }) async
+    test('test patchCategory', () async {
       // TODO
     });
 
     // Update an Item
     //
-    //Future<Item> updateItem(String id, ItemUpdateDto itemUpdateDto) async
-    test('test updateItem', () async {
+    //Future<Item> patchItem(String id, ItemUpdateDto itemUpdateDto, { Object xCustomLang }) async
+    test('test patchItem', () async {
       // TODO
     });
 
     // Update multiple Items
     //
-    //Future<List<Item>> updateItems(List<ItemUpdateAllDto> itemUpdateAllDto) async
-    test('test updateItems', () async {
-      // TODO
-    });
-
-    // Update an Variation
-    //
-    //Future<Variation> updateVariation(String id, VariationUpdateDto variationUpdateDto) async
-    test('test updateVariation', () async {
+    //Future<List<Item>> patchItems(List<ItemUpdateAllDto> itemUpdateAllDto, { Object xCustomLang }) async
+    test('test patchItems', () async {
       // TODO
     });
 
     // Upload Square Catalog Image
     //
-    //Future<CatalogImage> uploadImageToSquareCatalog(String idempotencyKey, String id, { MultipartFile file }) async
-    test('test uploadImageToSquareCatalog', () async {
+    //Future<CatalogImage> postItemSquareImageUpload(String idempotencyKey, String id, { Object xCustomLang, MultipartFile file }) async
+    test('test postItemSquareImageUpload', () async {
+      // TODO
+    });
+
+    // Update an Variation
+    //
+    //Future<Variation> updateVariation(String id, VariationUpdateDto variationUpdateDto, { Object xCustomLang }) async
+    test('test updateVariation', () async {
       // TODO
     });
 
