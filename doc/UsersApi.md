@@ -9,15 +9,15 @@ All URIs are relative to *https://api.myorderapp.dev*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteUserMe**](UsersApi.md#deleteuserme) | **DELETE** /v2/users/me | Delete your User
-[**getUserMe**](UsersApi.md#getuserme) | **GET** /v2/users/me | Get your User
-[**patchUserMe**](UsersApi.md#patchuserme) | **PATCH** /v2/users/me | Update your User
+[**deleteUserMe**](UsersApi.md#deleteuserme) | **DELETE** /v2/users/me | 
+[**getUserMe**](UsersApi.md#getuserme) | **GET** /v2/users/me | 
+[**patchUserMe**](UsersApi.md#patchuserme) | **PATCH** /v2/users/me | 
 
 
 # **deleteUserMe**
 > User deleteUserMe(xCustomLang)
 
-Delete your User
+
 
 ### Example
 ```dart
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 # **getUserMe**
 > User getUserMe(xCustomLang)
 
-Get your User
+
 
 ### Example
 ```dart
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 # **patchUserMe**
 > User patchUserMe(userUpdateDto, xCustomLang)
 
-Update your User
+
 
 ### Example
 ```dart

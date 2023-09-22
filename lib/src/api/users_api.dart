@@ -17,7 +17,7 @@ class UsersApi {
 
   const UsersApi(this._dio);
 
-  /// Delete your User
+  ///
   ///
   ///
   /// Parameters:
@@ -103,7 +103,7 @@ class UsersApi {
     );
   }
 
-  /// Get your User
+  ///
   ///
   ///
   /// Parameters:
@@ -189,7 +189,7 @@ class UsersApi {
     );
   }
 
-  /// Update your User
+  ///
   ///
   ///
   /// Parameters:

@@ -9,22 +9,22 @@ void main() {
   group(CardsApi, () {
     // Disable my Square Card
     //
-    //Future<SquareDisableCardResponse> deleteMeCards(String id, String merchantIdOrPath, { Object xCustomLang }) async
-    test('test deleteMeCards', () async {
+    //Future<SquareDisableCardResponse> deleteCardsMe(String id, String merchantIdOrPath, { String xCustomLang }) async
+    test('test deleteCardsMe', () async {
       // TODO
     });
 
     // List my Square Cards
     //
-    //Future<SquareListCardsResponse> getMeCards(String merchantIdOrPath, { String cursor, Object xCustomLang }) async
-    test('test getMeCards', () async {
+    //Future<SquareListCardsResponse> getCardsMe(String merchantIdOrPath, { String cursor, String xCustomLang }) async
+    test('test getCardsMe', () async {
       // TODO
     });
 
     // Create my Square Card
     //
-    //Future<SquareCard> postMeCards(String merchantIdOrPath, CreateCardDto createCardDto, { Object xCustomLang }) async
-    test('test postMeCards', () async {
+    //Future<SquareCard> postCardsMe(String merchantIdOrPath, CreateCardDto createCardDto, { String xCustomLang }) async
+    test('test postCardsMe', () async {
       // TODO
     });
 

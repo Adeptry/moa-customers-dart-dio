@@ -18,8 +18,8 @@ class UserUpdateDto {
   UserUpdateDto({
     this.email,
     this.firstName,
-    this.lastName,
     this.language,
+    this.lastName,
   });
 
   @JsonKey(name: r'email', required: false, includeIfNull: false)
@@ -28,11 +28,11 @@ class UserUpdateDto {
   @JsonKey(name: r'firstName', required: false, includeIfNull: false)
   final String? firstName;
 
-  @JsonKey(name: r'lastName', required: false, includeIfNull: false)
-  final String? lastName;
-
   @JsonKey(name: r'language', required: false, includeIfNull: false)
   final String? language;
+
+  @JsonKey(name: r'lastName', required: false, includeIfNull: false)
+  final String? lastName;
 
   @override
   bool operator ==(Object other) =>
@@ -40,15 +40,15 @@ class UserUpdateDto {
       other is UserUpdateDto &&
           other.email == email &&
           other.firstName == firstName &&
-          other.lastName == lastName &&
-          other.language == language;
+          other.language == language &&
+          other.lastName == lastName;
 
   @override
   int get hashCode =>
       (email == null ? 0 : email.hashCode) +
       (firstName == null ? 0 : firstName.hashCode) +
-      (lastName == null ? 0 : lastName.hashCode) +
-      (language == null ? 0 : language.hashCode);
+      (language == null ? 0 : language.hashCode) +
+      (lastName == null ? 0 : lastName.hashCode);
 
   factory UserUpdateDto.fromJson(Map<String, dynamic> json) =>
       _$UserUpdateDtoFromJson(json);

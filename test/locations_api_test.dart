@@ -7,30 +7,30 @@ void main() {
   final instance = MoaCustomersClient().getLocationsApi();
 
   group(LocationsApi, () {
-    // Get all your Locations
+    // Get a Location with ID
     //
-    //Future<LocationPaginatedResponse> getMeLocations({ num page, num limit, bool address, bool businessHours, String actingAs, String merchantIdOrPath, Object xCustomLang }) async
-    test('test getMeLocations', () async {
+    //Future<Location> getLocation(String id, String actingAs, { String merchantIdOrPath, String xCustomLang }) async
+    test('test getLocation', () async {
       // TODO
     });
 
-    // Get a Location with ID
+    // Get all your Locations
     //
-    //Future<Location> getOneLocation(String id, String actingAs, { String merchantIdOrPath, Object xCustomLang }) async
-    test('test getOneLocation', () async {
+    //Future<LocationPaginatedResponse> getLocationsMe({ num page, num limit, bool address, bool businessHours, String actingAs, String merchantIdOrPath, String xCustomLang }) async
+    test('test getLocationsMe', () async {
       // TODO
     });
 
     // Update Locations
     //
-    //Future<List<Location>> patchManyLocations(List<LocationUpdateAllDto> locationUpdateAllDto, { Object xCustomLang }) async
+    //Future<List<Location>> patchManyLocations(List<LocationUpdateAllDto> locationUpdateAllDto, { String xCustomLang }) async
     test('test patchManyLocations', () async {
       // TODO
     });
 
     // Update a Location
     //
-    //Future<Location> patchOneLocation(String id, LocationUpdateDto locationUpdateDto, { Object xCustomLang }) async
+    //Future<Location> patchOneLocation(String id, LocationUpdateDto locationUpdateDto, { String xCustomLang }) async
     test('test patchOneLocation', () async {
       // TODO
     });

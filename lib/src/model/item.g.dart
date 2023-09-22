@@ -11,11 +11,8 @@ Item _$ItemFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = Item(
-          id: $checkedConvert('id', (v) => v as String?),
-          moaOrdinal: $checkedConvert('moaOrdinal', (v) => v as num?),
-          moaEnabled: $checkedConvert('moaEnabled', (v) => v as bool?),
-          name: $checkedConvert('name', (v) => v as String?),
           description: $checkedConvert('description', (v) => v as String?),
+          id: $checkedConvert('id', (v) => v as String?),
           images: $checkedConvert(
               'images',
               (v) => (v as List<dynamic>?)
@@ -27,6 +24,9 @@ Item _$ItemFromJson(Map<String, dynamic> json) => $checkedCreate(
                   ?.map((e) =>
                       ItemModifierList.fromJson(e as Map<String, dynamic>))
                   .toList()),
+          moaEnabled: $checkedConvert('moaEnabled', (v) => v as bool?),
+          moaOrdinal: $checkedConvert('moaOrdinal', (v) => v as num?),
+          name: $checkedConvert('name', (v) => v as String?),
           variations: $checkedConvert(
               'variations',
               (v) => (v as List<dynamic>?)
@@ -46,14 +46,14 @@ Map<String, dynamic> _$ItemToJson(Item instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('moaOrdinal', instance.moaOrdinal);
-  writeNotNull('moaEnabled', instance.moaEnabled);
-  writeNotNull('name', instance.name);
   writeNotNull('description', instance.description);
+  writeNotNull('id', instance.id);
   writeNotNull('images', instance.images?.map((e) => e.toJson()).toList());
   writeNotNull('itemModifierLists',
       instance.itemModifierLists?.map((e) => e.toJson()).toList());
+  writeNotNull('moaEnabled', instance.moaEnabled);
+  writeNotNull('moaOrdinal', instance.moaOrdinal);
+  writeNotNull('name', instance.name);
   writeNotNull(
       'variations', instance.variations?.map((e) => e.toJson()).toList());
   return val;

@@ -18,27 +18,27 @@ part 'square_disable_card_response.g.dart';
 class SquareDisableCardResponse {
   /// Returns a new [SquareDisableCardResponse] instance.
   SquareDisableCardResponse({
-    this.errors,
     this.card,
+    this.errors,
   });
-
-  @JsonKey(name: r'errors', required: false, includeIfNull: false)
-  final List<SquareError>? errors;
 
   @JsonKey(name: r'card', required: false, includeIfNull: false)
   final SquareCard? card;
+
+  @JsonKey(name: r'errors', required: false, includeIfNull: false)
+  final List<SquareError>? errors;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is SquareDisableCardResponse &&
-          other.errors == errors &&
-          other.card == card;
+          other.card == card &&
+          other.errors == errors;
 
   @override
   int get hashCode =>
-      (errors == null ? 0 : errors.hashCode) +
-      (card == null ? 0 : card.hashCode);
+      (card == null ? 0 : card.hashCode) +
+      (errors == null ? 0 : errors.hashCode);
 
   factory SquareDisableCardResponse.fromJson(Map<String, dynamic> json) =>
       _$SquareDisableCardResponseFromJson(json);

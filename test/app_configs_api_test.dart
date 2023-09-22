@@ -9,36 +9,36 @@ void main() {
   group(AppConfigsApi, () {
     // Get Config for Merchant ID
     //
-    //Future<AppConfig> getAppConfig(String merchantIdOrPath, { Object xCustomLang }) async
+    //Future<AppConfig> getAppConfig(String merchantIdOrPath, { String xCustomLang }) async
     test('test getAppConfig', () async {
       // TODO
     });
 
     // Get your Config
     //
-    //Future<AppConfig> getMeAppConfig({ String merchantIdOrPath, String actingAs, Object xCustomLang }) async
-    test('test getMeAppConfig', () async {
+    //Future<AppConfig> getAppConfigMe({ String merchantIdOrPath, String actingAs, String xCustomLang }) async
+    test('test getAppConfigMe', () async {
       // TODO
     });
 
     // Update your Config
     //
-    //Future<AppConfig> patchMeAppConfig(AppConfigUpdateDto appConfigUpdateDto, { Object xCustomLang }) async
-    test('test patchMeAppConfig', () async {
+    //Future<AppConfig> patchAppConfigMe(AppConfigUpdateDto appConfigUpdateDto, { String xCustomLang }) async
+    test('test patchAppConfigMe', () async {
       // TODO
     });
 
     // Create your Config
     //
-    //Future<AppConfig> postMeAppConfig(AppConfigUpdateDto appConfigUpdateDto, { Object xCustomLang }) async
-    test('test postMeAppConfig', () async {
+    //Future<AppConfig> postAppConfigMe(AppConfigUpdateDto appConfigUpdateDto, { String xCustomLang }) async
+    test('test postAppConfigMe', () async {
       // TODO
     });
 
     // Upload icon
     //
-    //Future postMeIconUpload({ Object xCustomLang, MultipartFile file }) async
-    test('test postMeIconUpload', () async {
+    //Future postIconUploadMe({ String xCustomLang, MultipartFile file }) async
+    test('test postIconUploadMe', () async {
       // TODO
     });
 

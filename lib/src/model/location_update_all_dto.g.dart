@@ -18,8 +18,8 @@ LocationUpdateAllDto _$LocationUpdateAllDtoFromJson(
         );
         final val = LocationUpdateAllDto(
           id: $checkedConvert('id', (v) => v as String),
-          moaOrdinal: $checkedConvert('moaOrdinal', (v) => v as num?),
           moaEnabled: $checkedConvert('moaEnabled', (v) => v as bool?),
+          moaOrdinal: $checkedConvert('moaOrdinal', (v) => v as num?),
         );
         return val;
       },
@@ -37,7 +37,7 @@ Map<String, dynamic> _$LocationUpdateAllDtoToJson(
     }
   }
 
-  writeNotNull('moaOrdinal', instance.moaOrdinal);
   writeNotNull('moaEnabled', instance.moaEnabled);
+  writeNotNull('moaOrdinal', instance.moaOrdinal);
   return val;
 }

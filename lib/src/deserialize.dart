@@ -20,6 +20,7 @@ import 'package:moa_customers_client/src/model/create_card_dto.dart';
 import 'package:moa_customers_client/src/model/customer.dart';
 import 'package:moa_customers_client/src/model/customer_update_dto.dart';
 import 'package:moa_customers_client/src/model/customers_paginated_response.dart';
+import 'package:moa_customers_client/src/model/error_response.dart';
 import 'package:moa_customers_client/src/model/file_entity.dart';
 import 'package:moa_customers_client/src/model/item.dart';
 import 'package:moa_customers_client/src/model/item_modifier_list.dart';
@@ -35,7 +36,6 @@ import 'package:moa_customers_client/src/model/location_update_dto.dart';
 import 'package:moa_customers_client/src/model/login_response_type.dart';
 import 'package:moa_customers_client/src/model/modifier.dart';
 import 'package:moa_customers_client/src/model/modifier_list.dart';
-import 'package:moa_customers_client/src/model/nest_error.dart';
 import 'package:moa_customers_client/src/model/order.dart';
 import 'package:moa_customers_client/src/model/order_create_dto.dart';
 import 'package:moa_customers_client/src/model/order_patch_dto.dart';
@@ -132,6 +132,9 @@ ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
     case 'CustomersPaginatedResponse':
       return CustomersPaginatedResponse.fromJson(value as Map<String, dynamic>)
           as ReturnType;
+    case 'ErrorResponse':
+      return ErrorResponse.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
     case 'FileEntity':
       return FileEntity.fromJson(value as Map<String, dynamic>) as ReturnType;
     case 'Item':
@@ -172,8 +175,6 @@ ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
       return Modifier.fromJson(value as Map<String, dynamic>) as ReturnType;
     case 'ModifierList':
       return ModifierList.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'NestError':
-      return NestError.fromJson(value as Map<String, dynamic>) as ReturnType;
     case 'Order':
       return Order.fromJson(value as Map<String, dynamic>) as ReturnType;
     case 'OrderCreateDto':

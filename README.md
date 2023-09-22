@@ -113,9 +113,9 @@ Class | Method | HTTP request | Description
 [*OrdersApi*](doc/OrdersApi.md) | [**postOrder**](doc/OrdersApi.md#postorder) | **POST** /v2/orders | Create Order
 [*OrdersApi*](doc/OrdersApi.md) | [**postOrderCurrent**](doc/OrdersApi.md#postordercurrent) | **POST** /v2/orders/current | Post update Order, e.g. add Variations &amp; Modifiers in Line Items
 [*OrdersApi*](doc/OrdersApi.md) | [**postSquarePaymentOrderCurrent**](doc/OrdersApi.md#postsquarepaymentordercurrent) | **POST** /v2/orders/current/payment/square | Pay for Order
-[*UsersApi*](doc/UsersApi.md) | [**deleteUserMe**](doc/UsersApi.md#deleteuserme) | **DELETE** /v2/users/me | Delete your User
-[*UsersApi*](doc/UsersApi.md) | [**getUserMe**](doc/UsersApi.md#getuserme) | **GET** /v2/users/me | Get your User
-[*UsersApi*](doc/UsersApi.md) | [**patchUserMe**](doc/UsersApi.md#patchuserme) | **PATCH** /v2/users/me | Update your User
+[*UsersApi*](doc/UsersApi.md) | [**deleteUserMe**](doc/UsersApi.md#deleteuserme) | **DELETE** /v2/users/me | 
+[*UsersApi*](doc/UsersApi.md) | [**getUserMe**](doc/UsersApi.md#getuserme) | **GET** /v2/users/me | 
+[*UsersApi*](doc/UsersApi.md) | [**patchUserMe**](doc/UsersApi.md#patchuserme) | **PATCH** /v2/users/me | 
 
 
 ## Documentation For Models
@@ -142,6 +142,7 @@ Class | Method | HTTP request | Description
  - [Customer](doc/Customer.md)
  - [CustomerUpdateDto](doc/CustomerUpdateDto.md)
  - [CustomersPaginatedResponse](doc/CustomersPaginatedResponse.md)
+ - [ErrorResponse](doc/ErrorResponse.md)
  - [FileEntity](doc/FileEntity.md)
  - [Item](doc/Item.md)
  - [ItemModifierList](doc/ItemModifierList.md)
@@ -158,7 +159,6 @@ Class | Method | HTTP request | Description
  - [MoaSelectionType](doc/MoaSelectionType.md)
  - [Modifier](doc/Modifier.md)
  - [ModifierList](doc/ModifierList.md)
- - [NestError](doc/NestError.md)
  - [Order](doc/Order.md)
  - [OrderCreateDto](doc/OrderCreateDto.md)
  - [OrderPatchDto](doc/OrderPatchDto.md)
@@ -181,15 +181,15 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-### bearer
-
-- **Type**: HTTP Bearer Token authentication (JWT)
-
 ### Api-Key
 
 - **Type**: API key
 - **API key parameter name**: Api-Key
 - **Location**: HTTP header
+
+### bearer
+
+- **Type**: HTTP Bearer Token authentication (JWT)
 
 
 ## Author

@@ -17,33 +17,33 @@ part 'order_create_dto.g.dart';
 class OrderCreateDto {
   /// Returns a new [OrderCreateDto] instance.
   OrderCreateDto({
-    this.variations,
-    this.locationId,
     this.idempotencyKey,
+    this.locationId,
+    this.variations,
   });
 
-  @JsonKey(name: r'variations', required: false, includeIfNull: false)
-  final List<VariationAddDto>? variations;
+  @JsonKey(name: r'idempotencyKey', required: false, includeIfNull: false)
+  final String? idempotencyKey;
 
   @JsonKey(name: r'locationId', required: false, includeIfNull: false)
   final String? locationId;
 
-  @JsonKey(name: r'idempotencyKey', required: false, includeIfNull: false)
-  final String? idempotencyKey;
+  @JsonKey(name: r'variations', required: false, includeIfNull: false)
+  final List<VariationAddDto>? variations;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OrderCreateDto &&
-          other.variations == variations &&
+          other.idempotencyKey == idempotencyKey &&
           other.locationId == locationId &&
-          other.idempotencyKey == idempotencyKey;
+          other.variations == variations;
 
   @override
   int get hashCode =>
-      (variations == null ? 0 : variations.hashCode) +
+      (idempotencyKey == null ? 0 : idempotencyKey.hashCode) +
       (locationId == null ? 0 : locationId.hashCode) +
-      (idempotencyKey == null ? 0 : idempotencyKey.hashCode);
+      (variations == null ? 0 : variations.hashCode);
 
   factory OrderCreateDto.fromJson(Map<String, dynamic> json) =>
       _$OrderCreateDtoFromJson(json);

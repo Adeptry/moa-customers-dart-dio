@@ -22,13 +22,13 @@ void main() {
       // TODO
     });
 
-    // String cardType
-    test('to test the property `cardType`', () async {
+    // String cardholderName
+    test('to test the property `cardholderName`', () async {
       // TODO
     });
 
-    // String cardholderName
-    test('to test the property `cardholderName`', () async {
+    // String cardType
+    test('to test the property `cardType`', () async {
       // TODO
     });
 

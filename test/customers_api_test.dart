@@ -7,38 +7,38 @@ void main() {
   final instance = MoaCustomersClient().getCustomersApi();
 
   group(CustomersApi, () {
-    // Get my Customers
+    // Get current Customer
     //
-    //Future<CustomersPaginatedResponse> getManyCustomers({ num page, num limit, Object xCustomLang }) async
-    test('test getManyCustomers', () async {
+    //Future<Customer> getCustomerMe(String merchantIdOrPath, { bool user, bool merchant, bool currentOrder, bool preferredLocation, String xCustomLang }) async
+    test('test getCustomerMe', () async {
       // TODO
     });
 
-    // Get current Customer
+    // Get my Customers
     //
-    //Future<Customer> getMeCustomer(String merchantIdOrPath, { bool user, bool merchant, bool currentOrder, bool preferredLocation, Object xCustomLang }) async
-    test('test getMeCustomer', () async {
+    //Future<CustomersPaginatedResponse> getManyCustomers({ num page, num limit, String xCustomLang }) async
+    test('test getManyCustomers', () async {
       // TODO
     });
 
     // Update your Customer
     //
-    //Future<Customer> patchMeCustomer(String merchantIdOrPath, CustomerUpdateDto customerUpdateDto, { Object xCustomLang }) async
-    test('test patchMeCustomer', () async {
+    //Future<Customer> patchCustomerMe(String merchantIdOrPath, CustomerUpdateDto customerUpdateDto, { String xCustomLang }) async
+    test('test patchCustomerMe', () async {
       // TODO
     });
 
     // Create Customer for current User
     //
-    //Future<Customer> postMeCustomer(String merchantIdOrPath, { Object xCustomLang }) async
-    test('test postMeCustomer', () async {
+    //Future<Customer> postCustomerMe(String merchantIdOrPath, { String xCustomLang }) async
+    test('test postCustomerMe', () async {
       // TODO
     });
 
     // Create or update Customer App Install
     //
-    //Future updateAppInstall(String merchantIdOrPath, AppInstallUpdateDto appInstallUpdateDto, { Object xCustomLang }) async
-    test('test updateAppInstall', () async {
+    //Future updateAppInstallMe(String merchantIdOrPath, AppInstallUpdateDto appInstallUpdateDto, { String xCustomLang }) async
+    test('test updateAppInstallMe', () async {
       // TODO
     });
 

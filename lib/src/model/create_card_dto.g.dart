@@ -16,19 +16,17 @@ CreateCardDto _$CreateCardDtoFromJson(Map<String, dynamic> json) =>
           requiredKeys: const ['sourceId'],
         );
         final val = CreateCardDto(
+          postalCode: $checkedConvert('postalCode', (v) => v as String?),
           sourceId: $checkedConvert('sourceId', (v) => v as String),
           verificationToken:
               $checkedConvert('verificationToken', (v) => v as String?),
-          postalCode: $checkedConvert('postalCode', (v) => v as String?),
         );
         return val;
       },
     );
 
 Map<String, dynamic> _$CreateCardDtoToJson(CreateCardDto instance) {
-  final val = <String, dynamic>{
-    'sourceId': instance.sourceId,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -36,7 +34,8 @@ Map<String, dynamic> _$CreateCardDtoToJson(CreateCardDto instance) {
     }
   }
 
-  writeNotNull('verificationToken', instance.verificationToken);
   writeNotNull('postalCode', instance.postalCode);
+  val['sourceId'] = instance.sourceId;
+  writeNotNull('verificationToken', instance.verificationToken);
   return val;
 }

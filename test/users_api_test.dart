@@ -7,24 +7,24 @@ void main() {
   final instance = MoaCustomersClient().getUsersApi();
 
   group(UsersApi, () {
-    // Delete your User
+    // 
     //
-    //Future<User> deleteMeUser({ Object xCustomLang }) async
-    test('test deleteMeUser', () async {
+    //Future<User> deleteUserMe({ String xCustomLang }) async
+    test('test deleteUserMe', () async {
       // TODO
     });
 
-    // Get your User
+    // 
     //
-    //Future<User> getMeUser({ Object xCustomLang }) async
-    test('test getMeUser', () async {
+    //Future<User> getUserMe({ String xCustomLang }) async
+    test('test getUserMe', () async {
       // TODO
     });
 
-    // Update your User
+    // 
     //
-    //Future<User> patchMeUser(UserUpdateDto userUpdateDto, { Object xCustomLang }) async
-    test('test patchMeUser', () async {
+    //Future<User> patchUserMe(UserUpdateDto userUpdateDto, { String xCustomLang }) async
+    test('test patchUserMe', () async {
       // TODO
     });
 
