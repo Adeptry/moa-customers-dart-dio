@@ -16,30 +16,30 @@ part 'nest_error.g.dart';
 class NestError {
   /// Returns a new [NestError] instance.
   NestError({
-    required this.error,
-    required this.message,
     required this.statusCode,
+    required this.message,
+    required this.error,
   });
 
-  @JsonKey(name: r'error', required: true, includeIfNull: false)
-  final String error;
+  @JsonKey(name: r'statusCode', required: true, includeIfNull: false)
+  final num statusCode;
 
   @JsonKey(name: r'message', required: true, includeIfNull: false)
   final String message;
 
-  @JsonKey(name: r'statusCode', required: true, includeIfNull: false)
-  final num statusCode;
+  @JsonKey(name: r'error', required: true, includeIfNull: false)
+  final String error;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is NestError &&
-          other.error == error &&
+          other.statusCode == statusCode &&
           other.message == message &&
-          other.statusCode == statusCode;
+          other.error == error;
 
   @override
-  int get hashCode => error.hashCode + message.hashCode + statusCode.hashCode;
+  int get hashCode => statusCode.hashCode + message.hashCode + error.hashCode;
 
   factory NestError.fromJson(Map<String, dynamic> json) =>
       _$NestErrorFromJson(json);

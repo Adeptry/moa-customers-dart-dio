@@ -9,36 +9,26 @@ import 'dart:convert';
 import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/catalog_image.dart';
-import 'package:moa_customers_client/src/model/category.dart';
-import 'package:moa_customers_client/src/model/category_paginated_response.dart';
-import 'package:moa_customers_client/src/model/category_update_all_dto.dart';
-import 'package:moa_customers_client/src/model/category_update_dto.dart';
-import 'package:moa_customers_client/src/model/item.dart';
-import 'package:moa_customers_client/src/model/item_paginated_response.dart';
-import 'package:moa_customers_client/src/model/item_update_all_dto.dart';
-import 'package:moa_customers_client/src/model/item_update_dto.dart';
-import 'package:moa_customers_client/src/model/variation.dart';
-import 'package:moa_customers_client/src/model/variation_update_dto.dart';
+import 'package:moa_customers_client/src/model/auth_apple_login_dto.dart';
+import 'package:moa_customers_client/src/model/auth_confirm_email_dto.dart';
+import 'package:moa_customers_client/src/model/auth_email_login_dto.dart';
+import 'package:moa_customers_client/src/model/auth_forgot_password_dto.dart';
+import 'package:moa_customers_client/src/model/auth_google_login_dto.dart';
+import 'package:moa_customers_client/src/model/auth_register_login_dto.dart';
+import 'package:moa_customers_client/src/model/auth_reset_password_dto.dart';
+import 'package:moa_customers_client/src/model/auth_update_dto.dart';
+import 'package:moa_customers_client/src/model/login_response_type.dart';
+import 'package:moa_customers_client/src/model/user.dart';
 
-class CatalogsApi {
+class AuthenticationApi {
   final Dio _dio;
 
-  const CatalogsApi(this._dio);
+  const AuthenticationApi(this._dio);
 
-  /// Get Categories for Merchant ID with Items, Variations, and/or ModifierLists
+  /// Delete Session
   ///
   ///
   /// Parameters:
-  /// * [merchantIdOrPath]
-  /// * [actingAs]
-  /// * [page]
-  /// * [limit]
-  /// * [locationId]
-  /// * [items]
-  /// * [images]
-  /// * [variations]
-  /// * [modifierLists]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -47,18 +37,9 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [CategoryPaginatedResponse] as data
+  /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CategoryPaginatedResponse>> getCategories({
-    required String merchantIdOrPath,
-    required String actingAs,
-    num? page,
-    num? limit,
-    String? locationId,
-    bool? items,
-    bool? images,
-    bool? variations,
-    bool? modifierLists,
+  Future<Response<void>> deleteAuthMe({
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -67,9 +48,9 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/categories';
+    final _path = r'/v2/auth/me';
     final _options = Options(
-      method: r'GET',
+      method: r'DELETE',
       headers: <String, dynamic>{
         if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
@@ -93,71 +74,22 @@ class CatalogsApi {
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      r'merchantIdOrPath': merchantIdOrPath,
-      r'actingAs': actingAs,
-      if (page != null) r'page': page,
-      if (limit != null) r'limit': limit,
-      if (locationId != null) r'locationId': locationId,
-      if (items != null) r'items': items,
-      if (images != null) r'images': images,
-      if (variations != null) r'variations': variations,
-      if (modifierLists != null) r'modifierLists': modifierLists,
-    };
-
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
-      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    CategoryPaginatedResponse? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<CategoryPaginatedResponse, CategoryPaginatedResponse>(
-              rawData, 'CategoryPaginatedResponse',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<CategoryPaginatedResponse>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    return _response;
   }
 
-  /// Get Items in Category
+  /// Update password
   ///
   ///
   /// Parameters:
-  /// * [id]
-  /// * [actingAs]
-  /// * [page]
-  /// * [limit]
-  /// * [locationId]
-  /// * [images]
-  /// * [variations]
-  /// * [modifierLists]
-  /// * [merchantIdOrPath]
+  /// * [authUpdateDto]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -166,18 +98,10 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [ItemPaginatedResponse] as data
+  /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<ItemPaginatedResponse>> getCategoriesItems({
-    required String id,
-    String? actingAs,
-    num? page,
-    num? limit,
-    String? locationId,
-    bool? images,
-    bool? variations,
-    bool? modifierLists,
-    String? merchantIdOrPath,
+  Future<Response<User>> patchAuthMe({
+    required AuthUpdateDto authUpdateDto,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -186,421 +110,7 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path =
-        r'/v2/categories/{id}/items'.replaceAll('{' r'id' '}', id.toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      if (actingAs != null) r'actingAs': actingAs,
-      if (page != null) r'page': page,
-      if (limit != null) r'limit': limit,
-      if (locationId != null) r'locationId': locationId,
-      if (images != null) r'images': images,
-      if (variations != null) r'variations': variations,
-      if (modifierLists != null) r'modifierLists': modifierLists,
-      if (merchantIdOrPath != null) r'merchantIdOrPath': merchantIdOrPath,
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    ItemPaginatedResponse? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<ItemPaginatedResponse, ItemPaginatedResponse>(
-              rawData, 'ItemPaginatedResponse',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<ItemPaginatedResponse>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Get your Categories with Items, Variations, and/or ModifierLists
-  ///
-  ///
-  /// Parameters:
-  /// * [page]
-  /// * [limit]
-  /// * [locationId]
-  /// * [items]
-  /// * [images]
-  /// * [variations]
-  /// * [modifierLists]
-  /// * [actingAs]
-  /// * [merchantIdOrPath]
-  /// * [xCustomLang]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [CategoryPaginatedResponse] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<CategoryPaginatedResponse>> getCategoriesMe({
-    num? page,
-    num? limit,
-    String? locationId,
-    bool? items,
-    bool? images,
-    bool? variations,
-    bool? modifierLists,
-    String? actingAs,
-    String? merchantIdOrPath,
-    String? xCustomLang,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/v2/categories/me';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      if (page != null) r'page': page,
-      if (limit != null) r'limit': limit,
-      if (locationId != null) r'locationId': locationId,
-      if (items != null) r'items': items,
-      if (images != null) r'images': images,
-      if (variations != null) r'variations': variations,
-      if (modifierLists != null) r'modifierLists': modifierLists,
-      if (actingAs != null) r'actingAs': actingAs,
-      if (merchantIdOrPath != null) r'merchantIdOrPath': merchantIdOrPath,
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    CategoryPaginatedResponse? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<CategoryPaginatedResponse, CategoryPaginatedResponse>(
-              rawData, 'CategoryPaginatedResponse',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<CategoryPaginatedResponse>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Get Item with ID
-  ///
-  ///
-  /// Parameters:
-  /// * [id]
-  /// * [locationId]
-  /// * [xCustomLang]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [Item] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<Item>> getItem({
-    required String id,
-    String? locationId,
-    String? xCustomLang,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/v2/items/{id}'.replaceAll('{' r'id' '}', id.toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      if (locationId != null) r'locationId': locationId,
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    Item? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<Item, Item>(rawData, 'Item', growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<Item>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Get Item variations with ID
-  ///
-  ///
-  /// Parameters:
-  /// * [id]
-  /// * [locationId]
-  /// * [xCustomLang]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [List<Variation>] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Variation>>> getVariationsForItem({
-    required String id,
-    String? locationId,
-    String? xCustomLang,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path =
-        r'/v2/items/{id}/variations'.replaceAll('{' r'id' '}', id.toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      if (locationId != null) r'locationId': locationId,
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    List<Variation>? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<List<Variation>, Variation>(rawData, 'List<Variation>',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<List<Variation>>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Update multiple Categories
-  ///
-  ///
-  /// Parameters:
-  /// * [categoryUpdateAllDto]
-  /// * [xCustomLang]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [List<Category>] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Category>>> patchCategories({
-    required List<CategoryUpdateAllDto> categoryUpdateAllDto,
-    String? xCustomLang,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/v2/categories';
+    final _path = r'/v2/auth/me';
     final _options = Options(
       method: r'PATCH',
       headers: <String, dynamic>{
@@ -630,7 +140,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(categoryUpdateAllDto);
+      _bodyData = jsonEncode(authUpdateDto);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -652,14 +162,13 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    List<Category>? _responseData;
+    User? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<List<Category>, Category>(rawData, 'List<Category>',
-              growable: true);
+          : deserialize<User, User>(rawData, 'User', growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -670,7 +179,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<List<Category>>(
+    return Response<User>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -682,12 +191,11 @@ class CatalogsApi {
     );
   }
 
-  /// Update a Category
+  /// Confirm email
   ///
   ///
   /// Parameters:
-  /// * [id]
-  /// * [categoryUpdateDto]
+  /// * [authConfirmEmailDto]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -696,11 +204,10 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Category] as data
+  /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Category>> patchCategory({
-    required String id,
-    required CategoryUpdateDto categoryUpdateDto,
+  Future<Response<void>> postEmailConfirm({
+    required AuthConfirmEmailDto authConfirmEmailDto,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -709,21 +216,15 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path =
-        r'/v2/categories/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/v2/auth/email/confirm';
     final _options = Options(
-      method: r'PATCH',
+      method: r'POST',
       headers: <String, dynamic>{
         if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
         'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
           {
             'type': 'apiKey',
             'name': 'Api-Key',
@@ -740,7 +241,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(categoryUpdateDto);
+      _bodyData = jsonEncode(authConfirmEmailDto);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -762,42 +263,14 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Category? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<Category, Category>(rawData, 'Category',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<Category>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
+    return _response;
   }
 
-  /// Update an Item
+  /// Get access token
   ///
   ///
   /// Parameters:
-  /// * [id]
-  /// * [itemUpdateDto]
+  /// * [authEmailLoginDto]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -806,11 +279,10 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Item] as data
+  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Item>> patchItem({
-    required String id,
-    required ItemUpdateDto itemUpdateDto,
+  Future<Response<LoginResponseType>> postEmailLogin({
+    required AuthEmailLoginDto authEmailLoginDto,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -819,20 +291,15 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/items/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/v2/auth/email/login';
     final _options = Options(
-      method: r'PATCH',
+      method: r'POST',
       headers: <String, dynamic>{
         if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
         'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
           {
             'type': 'apiKey',
             'name': 'Api-Key',
@@ -849,7 +316,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(itemUpdateDto);
+      _bodyData = jsonEncode(authEmailLoginDto);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -871,13 +338,15 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Item? _responseData;
+    LoginResponseType? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Item, Item>(rawData, 'Item', growable: true);
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -888,7 +357,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<Item>(
+    return Response<LoginResponseType>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -900,11 +369,11 @@ class CatalogsApi {
     );
   }
 
-  /// Update multiple Items
+  /// Create User and Authorize, note: tries to login first
   ///
   ///
   /// Parameters:
-  /// * [itemUpdateAllDto]
+  /// * [authRegisterLoginDto]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -913,10 +382,10 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [List<Item>] as data
+  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Item>>> patchItems({
-    required List<ItemUpdateAllDto> itemUpdateAllDto,
+  Future<Response<LoginResponseType>> postEmailRegister({
+    required AuthRegisterLoginDto authRegisterLoginDto,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -925,20 +394,15 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/items';
+    final _path = r'/v2/auth/email/register';
     final _options = Options(
-      method: r'PATCH',
+      method: r'POST',
       headers: <String, dynamic>{
         if (xCustomLang != null) r'x-custom-lang': xCustomLang,
         ...?headers,
       },
       extra: <String, dynamic>{
         'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
           {
             'type': 'apiKey',
             'name': 'Api-Key',
@@ -955,7 +419,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(itemUpdateAllDto);
+      _bodyData = jsonEncode(authRegisterLoginDto);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -977,13 +441,14 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    List<Item>? _responseData;
+    LoginResponseType? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<List<Item>, Item>(rawData, 'List<Item>',
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -995,7 +460,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<List<Item>>(
+    return Response<LoginResponseType>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -1007,14 +472,12 @@ class CatalogsApi {
     );
   }
 
-  /// Upload Square Catalog Image
+  /// Apple login
   ///
   ///
   /// Parameters:
-  /// * [idempotencyKey]
-  /// * [id]
+  /// * [authAppleLoginDto]
   /// * [xCustomLang]
-  /// * [file]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -1022,13 +485,11 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [CatalogImage] as data
+  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CatalogImage>> postItemSquareImageUpload({
-    required String idempotencyKey,
-    required String id,
+  Future<Response<LoginResponseType>> postLoginApple({
+    required AuthAppleLoginDto authAppleLoginDto,
     String? xCustomLang,
-    MultipartFile? file,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -1036,8 +497,361 @@ class CatalogsApi {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    final _path = r'/v2/items/{id}/square/image/upload'
-        .replaceAll('{' r'id' '}', id.toString());
+    final _path = r'/v2/auth/apple/login';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      _bodyData = jsonEncode(authAppleLoginDto);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    LoginResponseType? _responseData;
+
+    try {
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
+              growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<LoginResponseType>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Google login
+  ///
+  ///
+  /// Parameters:
+  /// * [authGoogleLoginDto]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<LoginResponseType>> postLoginGoogle({
+    required AuthGoogleLoginDto authGoogleLoginDto,
+    String? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/auth/google/login';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      _bodyData = jsonEncode(authGoogleLoginDto);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    LoginResponseType? _responseData;
+
+    try {
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
+              growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<LoginResponseType>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Forgot password
+  ///
+  ///
+  /// Parameters:
+  /// * [authForgotPasswordDto]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future]
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<void>> postPasswordForgot({
+    required AuthForgotPasswordDto authForgotPasswordDto,
+    String? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/auth/password/forgot';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      _bodyData = jsonEncode(authForgotPasswordDto);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
+  }
+
+  /// Reset password
+  ///
+  ///
+  /// Parameters:
+  /// * [authResetPasswordDto]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future]
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<void>> postPasswordReset({
+    required AuthResetPasswordDto authResetPasswordDto,
+    String? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/auth/password/reset';
+    final _options = Options(
+      method: r'POST',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      contentType: 'application/json',
+      validateStatus: validateStatus,
+    );
+
+    dynamic _bodyData;
+
+    try {
+      _bodyData = jsonEncode(authResetPasswordDto);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _options.compose(
+          _dio.options,
+          _path,
+        ),
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    final _response = await _dio.request<Object>(
+      _path,
+      data: _bodyData,
+      options: _options,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    return _response;
+  }
+
+  /// Refresh token
+  ///
+  ///
+  /// Parameters:
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<LoginResponseType>> postRefresh({
+    String? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/auth/refresh';
     final _options = Options(
       method: r'POST',
       headers: <String, dynamic>{
@@ -1060,46 +874,25 @@ class CatalogsApi {
         ],
         ...?extra,
       },
-      contentType: 'multipart/form-data',
       validateStatus: validateStatus,
     );
 
-    final _queryParameters = <String, dynamic>{
-      r'idempotencyKey': idempotencyKey,
-    };
-
-    dynamic _bodyData;
-
-    try {} catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-          queryParameters: _queryParameters,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
     final _response = await _dio.request<Object>(
       _path,
-      data: _bodyData,
       options: _options,
-      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
     );
 
-    CatalogImage? _responseData;
+    LoginResponseType? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<CatalogImage, CatalogImage>(rawData, 'CatalogImage',
+          : deserialize<LoginResponseType, LoginResponseType>(
+              rawData, 'LoginResponseType',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -1111,117 +904,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<CatalogImage>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Update an Variation
-  ///
-  ///
-  /// Parameters:
-  /// * [id]
-  /// * [variationUpdateDto]
-  /// * [xCustomLang]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [Variation] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<Variation>> updateVariation({
-    required String id,
-    required VariationUpdateDto variationUpdateDto,
-    String? xCustomLang,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path =
-        r'/v2/variations/{id}'.replaceAll('{' r'id' '}', id.toString());
-    final _options = Options(
-      method: r'PATCH',
-      headers: <String, dynamic>{
-        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
-    );
-
-    dynamic _bodyData;
-
-    try {
-      _bodyData = jsonEncode(variationUpdateDto);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    Variation? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<Variation, Variation>(rawData, 'Variation',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<Variation>(
+    return Response<LoginResponseType>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

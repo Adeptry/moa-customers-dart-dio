@@ -9,64 +9,15 @@ All URIs are relative to *https://api.myorderapp.dev*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getCustomerMe**](CustomersApi.md#getcustomerme) | **GET** /v2/customers/me | Get current Customer
 [**getManyCustomers**](CustomersApi.md#getmanycustomers) | **GET** /v2/customers | Get my Customers
-[**getMeCustomer**](CustomersApi.md#getmecustomer) | **GET** /v2/customers/me | Get current Customer
-[**patchMeCustomer**](CustomersApi.md#patchmecustomer) | **PATCH** /v2/customers/me | Update your Customer
-[**postMeCustomer**](CustomersApi.md#postmecustomer) | **POST** /v2/customers/me | Create Customer for current User
-[**updateAppInstall**](CustomersApi.md#updateappinstall) | **POST** /v2/customers/me/app-install | Create or update Customer App Install
+[**patchCustomerMe**](CustomersApi.md#patchcustomerme) | **PATCH** /v2/customers/me | Update your Customer
+[**postCustomerMe**](CustomersApi.md#postcustomerme) | **POST** /v2/customers/me | Create Customer for current User
+[**updateAppInstallMe**](CustomersApi.md#updateappinstallme) | **POST** /v2/customers/me/app-install | Create or update Customer App Install
 
 
-# **getManyCustomers**
-> CustomersPaginatedResponse getManyCustomers(page, limit, xCustomLang)
-
-Get my Customers
-
-### Example
-```dart
-import 'package:moa_customers_client/api.dart';
-// TODO Configure API key authorization: Api-Key
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
-
-final api = MoaCustomersClient().getCustomersApi();
-final num page = 8.14; // num | 
-final num limit = 8.14; // num | 
-final Object xCustomLang = ; // Object | 
-
-try {
-    final response = api.getManyCustomers(page, limit, xCustomLang);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling CustomersApi->getManyCustomers: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **num**|  | [optional] 
- **limit** | **num**|  | [optional] 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
-
-### Return type
-
-[**CustomersPaginatedResponse**](CustomersPaginatedResponse.md)
-
-### Authorization
-
-[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getMeCustomer**
-> Customer getMeCustomer(merchantIdOrPath, user, merchant, currentOrder, preferredLocation, xCustomLang)
+# **getCustomerMe**
+> Customer getCustomerMe(merchantIdOrPath, user, merchant, currentOrder, preferredLocation, xCustomLang)
 
 Get current Customer
 
@@ -84,13 +35,13 @@ final bool user = true; // bool |
 final bool merchant = true; // bool | 
 final bool currentOrder = true; // bool | 
 final bool preferredLocation = true; // bool | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getMeCustomer(merchantIdOrPath, user, merchant, currentOrder, preferredLocation, xCustomLang);
+    final response = api.getCustomerMe(merchantIdOrPath, user, merchant, currentOrder, preferredLocation, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CustomersApi->getMeCustomer: $e\n');
+    print('Exception when calling CustomersApi->getCustomerMe: $e\n');
 }
 ```
 
@@ -103,7 +54,7 @@ Name | Type | Description  | Notes
  **merchant** | **bool**|  | [optional] 
  **currentOrder** | **bool**|  | [optional] 
  **preferredLocation** | **bool**|  | [optional] 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -120,8 +71,57 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patchMeCustomer**
-> Customer patchMeCustomer(merchantIdOrPath, customerUpdateDto, xCustomLang)
+# **getManyCustomers**
+> CustomersPaginatedResponse getManyCustomers(page, limit, xCustomLang)
+
+Get my Customers
+
+### Example
+```dart
+import 'package:moa_customers_client/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MoaCustomersClient().getCustomersApi();
+final num page = 8.14; // num | 
+final num limit = 8.14; // num | 
+final String xCustomLang = xCustomLang_example; // String | 
+
+try {
+    final response = api.getManyCustomers(page, limit, xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling CustomersApi->getManyCustomers: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **num**|  | [optional] 
+ **limit** | **num**|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
+
+### Return type
+
+[**CustomersPaginatedResponse**](CustomersPaginatedResponse.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patchCustomerMe**
+> Customer patchCustomerMe(merchantIdOrPath, customerUpdateDto, xCustomLang)
 
 Update your Customer
 
@@ -136,13 +136,13 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCustomersApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final CustomerUpdateDto customerUpdateDto = ; // CustomerUpdateDto | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchMeCustomer(merchantIdOrPath, customerUpdateDto, xCustomLang);
+    final response = api.patchCustomerMe(merchantIdOrPath, customerUpdateDto, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CustomersApi->patchMeCustomer: $e\n');
+    print('Exception when calling CustomersApi->patchCustomerMe: $e\n');
 }
 ```
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchantIdOrPath** | **String**|  | 
  **customerUpdateDto** | [**CustomerUpdateDto**](CustomerUpdateDto.md)|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -169,8 +169,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **postMeCustomer**
-> Customer postMeCustomer(merchantIdOrPath, xCustomLang)
+# **postCustomerMe**
+> Customer postCustomerMe(merchantIdOrPath, xCustomLang)
 
 Create Customer for current User
 
@@ -184,13 +184,13 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getCustomersApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.postMeCustomer(merchantIdOrPath, xCustomLang);
+    final response = api.postCustomerMe(merchantIdOrPath, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CustomersApi->postMeCustomer: $e\n');
+    print('Exception when calling CustomersApi->postCustomerMe: $e\n');
 }
 ```
 
@@ -199,7 +199,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchantIdOrPath** | **String**|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -216,8 +216,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **updateAppInstall**
-> updateAppInstall(merchantIdOrPath, appInstallUpdateDto, xCustomLang)
+# **updateAppInstallMe**
+> updateAppInstallMe(merchantIdOrPath, appInstallUpdateDto, xCustomLang)
 
 Create or update Customer App Install
 
@@ -232,12 +232,12 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCustomersApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final AppInstallUpdateDto appInstallUpdateDto = ; // AppInstallUpdateDto | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    api.updateAppInstall(merchantIdOrPath, appInstallUpdateDto, xCustomLang);
+    api.updateAppInstallMe(merchantIdOrPath, appInstallUpdateDto, xCustomLang);
 } catch on DioException (e) {
-    print('Exception when calling CustomersApi->updateAppInstall: $e\n');
+    print('Exception when calling CustomersApi->updateAppInstallMe: $e\n');
 }
 ```
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchantIdOrPath** | **String**|  | 
  **appInstallUpdateDto** | [**AppInstallUpdateDto**](AppInstallUpdateDto.md)|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 

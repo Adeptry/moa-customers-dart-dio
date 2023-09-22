@@ -12,15 +12,15 @@ OrderCreateDto _$OrderCreateDtoFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = OrderCreateDto(
-          idempotencyKey:
-              $checkedConvert('idempotencyKey', (v) => v as String?),
-          locationId: $checkedConvert('locationId', (v) => v as String?),
           variations: $checkedConvert(
               'variations',
               (v) => (v as List<dynamic>?)
                   ?.map((e) =>
                       VariationAddDto.fromJson(e as Map<String, dynamic>))
                   .toList()),
+          locationId: $checkedConvert('locationId', (v) => v as String?),
+          idempotencyKey:
+              $checkedConvert('idempotencyKey', (v) => v as String?),
         );
         return val;
       },
@@ -35,9 +35,9 @@ Map<String, dynamic> _$OrderCreateDtoToJson(OrderCreateDto instance) {
     }
   }
 
-  writeNotNull('idempotencyKey', instance.idempotencyKey);
-  writeNotNull('locationId', instance.locationId);
   writeNotNull(
       'variations', instance.variations?.map((e) => e.toJson()).toList());
+  writeNotNull('locationId', instance.locationId);
+  writeNotNull('idempotencyKey', instance.idempotencyKey);
   return val;
 }

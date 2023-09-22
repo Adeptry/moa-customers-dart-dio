@@ -12,11 +12,11 @@ CatalogImage _$CatalogImageFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = CatalogImage(
-          caption: $checkedConvert('caption', (v) => v as String?),
           id: $checkedConvert('id', (v) => v as String?),
-          name: $checkedConvert('name', (v) => v as String?),
           squareId: $checkedConvert('squareId', (v) => v as String?),
+          name: $checkedConvert('name', (v) => v as String?),
           url: $checkedConvert('url', (v) => v as String?),
+          caption: $checkedConvert('caption', (v) => v as String?),
         );
         return val;
       },
@@ -31,10 +31,10 @@ Map<String, dynamic> _$CatalogImageToJson(CatalogImage instance) {
     }
   }
 
-  writeNotNull('caption', instance.caption);
   writeNotNull('id', instance.id);
-  writeNotNull('name', instance.name);
   writeNotNull('squareId', instance.squareId);
+  writeNotNull('name', instance.name);
   writeNotNull('url', instance.url);
+  writeNotNull('caption', instance.caption);
   return val;
 }

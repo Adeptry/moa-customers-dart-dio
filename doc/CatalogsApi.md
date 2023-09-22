@@ -45,7 +45,7 @@ final bool items = true; // bool |
 final bool images = true; // bool | 
 final bool variations = true; // bool | 
 final bool modifierLists = true; // bool | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.getCategories(merchantIdOrPath, actingAs, page, limit, locationId, items, images, variations, modifierLists, xCustomLang);
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
  **images** | **bool**|  | [optional] 
  **variations** | **bool**|  | [optional] 
  **modifierLists** | **bool**|  | [optional] 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -108,7 +108,7 @@ final bool images = true; // bool |
 final bool variations = true; // bool | 
 final bool modifierLists = true; // bool | 
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.getCategoriesItems(id, actingAs, page, limit, locationId, images, variations, modifierLists, merchantIdOrPath, xCustomLang);
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
  **variations** | **bool**|  | [optional] 
  **modifierLists** | **bool**|  | [optional] 
  **merchantIdOrPath** | **String**|  | [optional] 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -171,7 +171,7 @@ final bool variations = true; // bool |
 final bool modifierLists = true; // bool | 
 final String actingAs = actingAs_example; // String | 
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.getCategoriesMe(page, limit, locationId, items, images, variations, modifierLists, actingAs, merchantIdOrPath, xCustomLang);
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
  **modifierLists** | **bool**|  | [optional] 
  **actingAs** | **String**|  | [optional] 
  **merchantIdOrPath** | **String**|  | [optional] 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -227,7 +227,7 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final String locationId = locationId_example; // String | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.getItem(id, locationId, xCustomLang);
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **locationId** | **String**|  | [optional] 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -276,7 +276,7 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final String locationId = locationId_example; // String | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.getVariationsForItem(id, locationId, xCustomLang);
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **locationId** | **String**|  | [optional] 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -324,7 +324,7 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getCatalogsApi();
 final List<CategoryUpdateAllDto> categoryUpdateAllDto = ; // List<CategoryUpdateAllDto> | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.patchCategories(categoryUpdateAllDto, xCustomLang);
@@ -339,7 +339,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **categoryUpdateAllDto** | [**List&lt;CategoryUpdateAllDto&gt;**](CategoryUpdateAllDto.md)|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -372,7 +372,7 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final CategoryUpdateDto categoryUpdateDto = ; // CategoryUpdateDto | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.patchCategory(id, categoryUpdateDto, xCustomLang);
@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **categoryUpdateDto** | [**CategoryUpdateDto**](CategoryUpdateDto.md)|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -421,7 +421,7 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final ItemUpdateDto itemUpdateDto = ; // ItemUpdateDto | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.patchItem(id, itemUpdateDto, xCustomLang);
@@ -437,7 +437,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **itemUpdateDto** | [**ItemUpdateDto**](ItemUpdateDto.md)|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -469,7 +469,7 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getCatalogsApi();
 final List<ItemUpdateAllDto> itemUpdateAllDto = ; // List<ItemUpdateAllDto> | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.patchItems(itemUpdateAllDto, xCustomLang);
@@ -484,7 +484,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **itemUpdateAllDto** | [**List&lt;ItemUpdateAllDto&gt;**](ItemUpdateAllDto.md)|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -515,9 +515,9 @@ import 'package:moa_customers_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomersClient().getCatalogsApi();
-final String idempotencyKey = g8fFBDPIYvzU-loumES5S; // String | 
+final String idempotencyKey = PFJRvWs9IkAV8x60UD8BN; // String | 
 final String id = id_example; // String | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
@@ -534,7 +534,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **idempotencyKey** | **String**|  | 
  **id** | **String**|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
  **file** | **MultipartFile**|  | [optional] 
 
 ### Return type
@@ -568,7 +568,7 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getCatalogsApi();
 final String id = id_example; // String | 
 final VariationUpdateDto variationUpdateDto = ; // VariationUpdateDto | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.updateVariation(id, variationUpdateDto, xCustomLang);
@@ -584,7 +584,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
  **variationUpdateDto** | [**VariationUpdateDto**](VariationUpdateDto.md)|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 

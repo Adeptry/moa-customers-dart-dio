@@ -34,7 +34,7 @@ class AppConfigsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<AppConfig>> getAppConfig({
     required String merchantIdOrPath,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -127,10 +127,10 @@ class AppConfigsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [AppConfig] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> getMeAppConfig({
+  Future<Response<AppConfig>> getAppConfigMe({
     String? merchantIdOrPath,
     String? actingAs,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -223,9 +223,9 @@ class AppConfigsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [AppConfig] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> patchMeAppConfig({
+  Future<Response<AppConfig>> patchAppConfigMe({
     required AppConfigUpdateDto appConfigUpdateDto,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -330,9 +330,9 @@ class AppConfigsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [AppConfig] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> postMeAppConfig({
+  Future<Response<AppConfig>> postAppConfigMe({
     required AppConfigUpdateDto appConfigUpdateDto,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -438,7 +438,7 @@ class AppConfigsApi {
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> postMeIconUpload({
-    Object? xCustomLang,
+    String? xCustomLang,
     MultipartFile? file,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,

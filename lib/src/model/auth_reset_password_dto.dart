@@ -16,25 +16,25 @@ part 'auth_reset_password_dto.g.dart';
 class AuthResetPasswordDto {
   /// Returns a new [AuthResetPasswordDto] instance.
   AuthResetPasswordDto({
-    required this.hash,
     required this.password,
+    required this.hash,
   });
-
-  @JsonKey(name: r'hash', required: true, includeIfNull: false)
-  final String hash;
 
   @JsonKey(name: r'password', required: true, includeIfNull: false)
   final String password;
+
+  @JsonKey(name: r'hash', required: true, includeIfNull: false)
+  final String hash;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AuthResetPasswordDto &&
-          other.hash == hash &&
-          other.password == password;
+          other.password == password &&
+          other.hash == hash;
 
   @override
-  int get hashCode => hash.hashCode + password.hashCode;
+  int get hashCode => password.hashCode + hash.hashCode;
 
   factory AuthResetPasswordDto.fromJson(Map<String, dynamic> json) =>
       _$AuthResetPasswordDtoFromJson(json);

@@ -3,18 +3,18 @@
 //
 
 import 'package:dio/dio.dart';
-import 'package:moa_customers_client/src/auth/api_key_auth.dart';
-import 'package:moa_customers_client/src/auth/basic_auth.dart';
-import 'package:moa_customers_client/src/auth/bearer_auth.dart';
-import 'package:moa_customers_client/src/auth/oauth.dart';
 import 'package:moa_customers_client/src/api/app_configs_api.dart';
-import 'package:moa_customers_client/src/api/auth_api.dart';
+import 'package:moa_customers_client/src/api/authentication_api.dart';
 import 'package:moa_customers_client/src/api/cards_api.dart';
 import 'package:moa_customers_client/src/api/catalogs_api.dart';
 import 'package:moa_customers_client/src/api/customers_api.dart';
 import 'package:moa_customers_client/src/api/locations_api.dart';
 import 'package:moa_customers_client/src/api/orders_api.dart';
 import 'package:moa_customers_client/src/api/users_api.dart';
+import 'package:moa_customers_client/src/auth/api_key_auth.dart';
+import 'package:moa_customers_client/src/auth/basic_auth.dart';
+import 'package:moa_customers_client/src/auth/bearer_auth.dart';
+import 'package:moa_customers_client/src/auth/oauth.dart';
 
 class MoaCustomersClient {
   static const String basePath = r'https://api.myorderapp.dev';
@@ -83,10 +83,10 @@ class MoaCustomersClient {
     return AppConfigsApi(dio);
   }
 
-  /// Get AuthApi instance, base route and serializer can be overridden by a given but be careful,
+  /// Get AuthenticationApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
-  AuthApi getAuthApi() {
-    return AuthApi(dio);
+  AuthenticationApi getAuthenticationApi() {
+    return AuthenticationApi(dio);
   }
 
   /// Get CardsApi instance, base route and serializer can be overridden by a given but be careful,

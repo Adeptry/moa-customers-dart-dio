@@ -3,12 +3,11 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:moa_customers_client/src/model/create_card_dto.dart';
 import 'package:moa_customers_client/src/model/square_card.dart';
 import 'package:moa_customers_client/src/model/square_disable_card_response.dart';
@@ -35,10 +34,10 @@ class CardsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [SquareDisableCardResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SquareDisableCardResponse>> deleteMeCards({
+  Future<Response<SquareDisableCardResponse>> deleteCardsMe({
     required String id,
     required String merchantIdOrPath,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -133,10 +132,10 @@ class CardsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [SquareListCardsResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SquareListCardsResponse>> getMeCards({
+  Future<Response<SquareListCardsResponse>> getCardsMe({
     required String merchantIdOrPath,
     String? cursor,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -231,10 +230,10 @@ class CardsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [SquareCard] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<SquareCard>> postMeCards({
+  Future<Response<SquareCard>> postCardsMe({
     required String merchantIdOrPath,
     required CreateCardDto createCardDto,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,

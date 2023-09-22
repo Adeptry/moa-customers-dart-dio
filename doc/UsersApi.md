@@ -9,13 +9,13 @@ All URIs are relative to *https://api.myorderapp.dev*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteMeUser**](UsersApi.md#deletemeuser) | **DELETE** /v2/users/me | Delete your User
-[**getMeUser**](UsersApi.md#getmeuser) | **GET** /v2/users/me | Get your User
-[**patchMeUser**](UsersApi.md#patchmeuser) | **PATCH** /v2/users/me | Update your User
+[**deleteUserMe**](UsersApi.md#deleteuserme) | **DELETE** /v2/users/me | Delete your User
+[**getUserMe**](UsersApi.md#getuserme) | **GET** /v2/users/me | Get your User
+[**patchUserMe**](UsersApi.md#patchuserme) | **PATCH** /v2/users/me | Update your User
 
 
-# **deleteMeUser**
-> User deleteMeUser(xCustomLang)
+# **deleteUserMe**
+> User deleteUserMe(xCustomLang)
 
 Delete your User
 
@@ -28,13 +28,13 @@ import 'package:moa_customers_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomersClient().getUsersApi();
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.deleteMeUser(xCustomLang);
+    final response = api.deleteUserMe(xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling UsersApi->deleteMeUser: $e\n');
+    print('Exception when calling UsersApi->deleteUserMe: $e\n');
 }
 ```
 
@@ -42,7 +42,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -59,8 +59,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getMeUser**
-> User getMeUser(xCustomLang)
+# **getUserMe**
+> User getUserMe(xCustomLang)
 
 Get your User
 
@@ -73,13 +73,13 @@ import 'package:moa_customers_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomersClient().getUsersApi();
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getMeUser(xCustomLang);
+    final response = api.getUserMe(xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling UsersApi->getMeUser: $e\n');
+    print('Exception when calling UsersApi->getUserMe: $e\n');
 }
 ```
 
@@ -87,7 +87,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -104,8 +104,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patchMeUser**
-> User patchMeUser(userUpdateDto, xCustomLang)
+# **patchUserMe**
+> User patchUserMe(userUpdateDto, xCustomLang)
 
 Update your User
 
@@ -119,13 +119,13 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getUsersApi();
 final UserUpdateDto userUpdateDto = ; // UserUpdateDto | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchMeUser(userUpdateDto, xCustomLang);
+    final response = api.patchUserMe(userUpdateDto, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling UsersApi->patchMeUser: $e\n');
+    print('Exception when calling UsersApi->patchUserMe: $e\n');
 }
 ```
 
@@ -134,7 +134,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userUpdateDto** | [**UserUpdateDto**](UserUpdateDto.md)|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 

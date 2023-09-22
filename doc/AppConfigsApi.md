@@ -10,9 +10,9 @@ All URIs are relative to *https://api.myorderapp.dev*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAppConfig**](AppConfigsApi.md#getappconfig) | **GET** /v2/app-config | Get Config for Merchant ID
-[**getMeAppConfig**](AppConfigsApi.md#getmeappconfig) | **GET** /v2/app-config/me | Get your Config
-[**patchMeAppConfig**](AppConfigsApi.md#patchmeappconfig) | **PATCH** /v2/app-config/me | Update your Config
-[**postMeAppConfig**](AppConfigsApi.md#postmeappconfig) | **POST** /v2/app-config/me | Create your Config
+[**getAppConfigMe**](AppConfigsApi.md#getappconfigme) | **GET** /v2/app-config/me | Get your Config
+[**patchAppConfigMe**](AppConfigsApi.md#patchappconfigme) | **PATCH** /v2/app-config/me | Update your Config
+[**postAppConfigMe**](AppConfigsApi.md#postappconfigme) | **POST** /v2/app-config/me | Create your Config
 [**postMeIconUpload**](AppConfigsApi.md#postmeiconupload) | **POST** /v2/app-config/me/icon/upload | Upload icon
 
 
@@ -31,7 +31,7 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getAppConfigsApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
     final response = api.getAppConfig(merchantIdOrPath, xCustomLang);
@@ -46,7 +46,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchantIdOrPath** | **String**|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -63,8 +63,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getMeAppConfig**
-> AppConfig getMeAppConfig(merchantIdOrPath, actingAs, xCustomLang)
+# **getAppConfigMe**
+> AppConfig getAppConfigMe(merchantIdOrPath, actingAs, xCustomLang)
 
 Get your Config
 
@@ -79,13 +79,13 @@ import 'package:moa_customers_client/api.dart';
 final api = MoaCustomersClient().getAppConfigsApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final String actingAs = actingAs_example; // String | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getMeAppConfig(merchantIdOrPath, actingAs, xCustomLang);
+    final response = api.getAppConfigMe(merchantIdOrPath, actingAs, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling AppConfigsApi->getMeAppConfig: $e\n');
+    print('Exception when calling AppConfigsApi->getAppConfigMe: $e\n');
 }
 ```
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchantIdOrPath** | **String**|  | [optional] 
  **actingAs** | **String**|  | [optional] 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -112,8 +112,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **patchMeAppConfig**
-> AppConfig patchMeAppConfig(appConfigUpdateDto, xCustomLang)
+# **patchAppConfigMe**
+> AppConfig patchAppConfigMe(appConfigUpdateDto, xCustomLang)
 
 Update your Config
 
@@ -127,13 +127,13 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getAppConfigsApi();
 final AppConfigUpdateDto appConfigUpdateDto = ; // AppConfigUpdateDto | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchMeAppConfig(appConfigUpdateDto, xCustomLang);
+    final response = api.patchAppConfigMe(appConfigUpdateDto, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling AppConfigsApi->patchMeAppConfig: $e\n');
+    print('Exception when calling AppConfigsApi->patchAppConfigMe: $e\n');
 }
 ```
 
@@ -142,7 +142,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appConfigUpdateDto** | [**AppConfigUpdateDto**](AppConfigUpdateDto.md)|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -159,8 +159,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **postMeAppConfig**
-> AppConfig postMeAppConfig(appConfigUpdateDto, xCustomLang)
+# **postAppConfigMe**
+> AppConfig postAppConfigMe(appConfigUpdateDto, xCustomLang)
 
 Create your Config
 
@@ -174,13 +174,13 @@ import 'package:moa_customers_client/api.dart';
 
 final api = MoaCustomersClient().getAppConfigsApi();
 final AppConfigUpdateDto appConfigUpdateDto = ; // AppConfigUpdateDto | 
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.postMeAppConfig(appConfigUpdateDto, xCustomLang);
+    final response = api.postAppConfigMe(appConfigUpdateDto, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling AppConfigsApi->postMeAppConfig: $e\n');
+    print('Exception when calling AppConfigsApi->postAppConfigMe: $e\n');
 }
 ```
 
@@ -189,7 +189,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appConfigUpdateDto** | [**AppConfigUpdateDto**](AppConfigUpdateDto.md)|  | 
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
@@ -220,7 +220,7 @@ import 'package:moa_customers_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomersClient().getAppConfigsApi();
-final Object xCustomLang = ; // Object | 
+final String xCustomLang = xCustomLang_example; // String | 
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
@@ -234,7 +234,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **xCustomLang** | [**Object**](.md)|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
  **file** | **MultipartFile**|  | [optional] 
 
 ### Return type

@@ -3,12 +3,11 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:moa_customers_client/src/model/app_install_update_dto.dart';
 import 'package:moa_customers_client/src/model/customer.dart';
 import 'package:moa_customers_client/src/model/customer_update_dto.dart';
@@ -18,104 +17,6 @@ class CustomersApi {
   final Dio _dio;
 
   const CustomersApi(this._dio);
-
-  /// Get my Customers
-  ///
-  ///
-  /// Parameters:
-  /// * [page]
-  /// * [limit]
-  /// * [xCustomLang]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [CustomersPaginatedResponse] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<CustomersPaginatedResponse>> getManyCustomers({
-    num? page,
-    num? limit,
-    Object? xCustomLang,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/v2/customers';
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      if (page != null) r'page': page,
-      if (limit != null) r'limit': limit,
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    CustomersPaginatedResponse? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<CustomersPaginatedResponse, CustomersPaginatedResponse>(
-              rawData, 'CustomersPaginatedResponse',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<CustomersPaginatedResponse>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
 
   /// Get current Customer
   ///
@@ -136,13 +37,13 @@ class CustomersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Customer] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Customer>> getMeCustomer({
+  Future<Response<Customer>> getCustomerMe({
     required String merchantIdOrPath,
     bool? user,
     bool? merchant,
     bool? currentOrder,
     bool? preferredLocation,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -223,6 +124,104 @@ class CustomersApi {
     );
   }
 
+  /// Get my Customers
+  ///
+  ///
+  /// Parameters:
+  /// * [page]
+  /// * [limit]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [CustomersPaginatedResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<CustomersPaginatedResponse>> getManyCustomers({
+    num? page,
+    num? limit,
+    String? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/customers';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (page != null) r'page': page,
+      if (limit != null) r'limit': limit,
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    CustomersPaginatedResponse? _responseData;
+
+    try {
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<CustomersPaginatedResponse, CustomersPaginatedResponse>(
+              rawData, 'CustomersPaginatedResponse',
+              growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<CustomersPaginatedResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Update your Customer
   ///
   ///
@@ -239,10 +238,10 @@ class CustomersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Customer] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Customer>> patchMeCustomer({
+  Future<Response<Customer>> patchCustomerMe({
     required String merchantIdOrPath,
     required CustomerUpdateDto customerUpdateDto,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -353,9 +352,9 @@ class CustomersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [Customer] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Customer>> postMeCustomer({
+  Future<Response<Customer>> postCustomerMe({
     required String merchantIdOrPath,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -448,10 +447,10 @@ class CustomersApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> updateAppInstall({
+  Future<Response<void>> updateAppInstallMe({
     required String merchantIdOrPath,
     required AppInstallUpdateDto appInstallUpdateDto,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,

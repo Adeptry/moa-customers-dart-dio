@@ -14,18 +14,18 @@ PaymentCreateDto _$PaymentCreateDtoFromJson(Map<String, dynamic> json) =>
         $checkKeys(
           json,
           requiredKeys: const [
-            'idempotencyKey',
-            'orderTipMoney',
+            'pickupAt',
             'paymentSquareId',
-            'pickupAt'
+            'idempotencyKey',
+            'orderTipMoney'
           ],
         );
         final val = PaymentCreateDto(
-          idempotencyKey: $checkedConvert('idempotencyKey', (v) => v as String),
-          orderTipMoney: $checkedConvert('orderTipMoney', (v) => v as num),
+          pickupAt: $checkedConvert('pickupAt', (v) => v as String),
           paymentSquareId:
               $checkedConvert('paymentSquareId', (v) => v as String),
-          pickupAt: $checkedConvert('pickupAt', (v) => v as String),
+          idempotencyKey: $checkedConvert('idempotencyKey', (v) => v as String),
+          orderTipMoney: $checkedConvert('orderTipMoney', (v) => v as num),
         );
         return val;
       },
@@ -33,8 +33,8 @@ PaymentCreateDto _$PaymentCreateDtoFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$PaymentCreateDtoToJson(PaymentCreateDto instance) =>
     <String, dynamic>{
+      'pickupAt': instance.pickupAt,
+      'paymentSquareId': instance.paymentSquareId,
       'idempotencyKey': instance.idempotencyKey,
       'orderTipMoney': instance.orderTipMoney,
-      'paymentSquareId': instance.paymentSquareId,
-      'pickupAt': instance.pickupAt,
     };

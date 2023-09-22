@@ -3,12 +3,11 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
+import 'package:moa_customers_client/src/deserialize.dart';
 import 'package:moa_customers_client/src/model/location.dart';
 import 'package:moa_customers_client/src/model/location_paginated_response.dart';
 import 'package:moa_customers_client/src/model/location_update_all_dto.dart';
@@ -18,6 +17,106 @@ class LocationsApi {
   final Dio _dio;
 
   const LocationsApi(this._dio);
+
+  /// Get a Location with ID
+  ///
+  ///
+  /// Parameters:
+  /// * [id]
+  /// * [actingAs]
+  /// * [merchantIdOrPath]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [Location] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<Location>> getLocation({
+    required String id,
+    required String actingAs,
+    String? merchantIdOrPath,
+    String? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path =
+        r'/v2/locations/{id}'.replaceAll('{' r'id' '}', id.toString());
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'actingAs': actingAs,
+      if (merchantIdOrPath != null) r'merchantIdOrPath': merchantIdOrPath,
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    Location? _responseData;
+
+    try {
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<Location, Location>(rawData, 'Location',
+              growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<Location>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
 
   /// Get all your Locations
   ///
@@ -39,14 +138,14 @@ class LocationsApi {
   ///
   /// Returns a [Future] containing a [Response] with a [LocationPaginatedResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LocationPaginatedResponse>> getMeLocations({
+  Future<Response<LocationPaginatedResponse>> getLocationsMe({
     num? page,
     num? limit,
     bool? address,
     bool? businessHours,
     String? actingAs,
     String? merchantIdOrPath,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -129,106 +228,6 @@ class LocationsApi {
     );
   }
 
-  /// Get a Location with ID
-  ///
-  ///
-  /// Parameters:
-  /// * [id]
-  /// * [actingAs]
-  /// * [merchantIdOrPath]
-  /// * [xCustomLang]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [Location] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<Location>> getOneLocation({
-    required String id,
-    required String actingAs,
-    String? merchantIdOrPath,
-    Object? xCustomLang,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path =
-        r'/v2/locations/{id}'.replaceAll('{' r'id' '}', id.toString());
-    final _options = Options(
-      method: r'GET',
-      headers: <String, dynamic>{
-        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'http',
-            'scheme': 'bearer',
-            'name': 'bearer',
-          },
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-    );
-
-    final _queryParameters = <String, dynamic>{
-      r'actingAs': actingAs,
-      if (merchantIdOrPath != null) r'merchantIdOrPath': merchantIdOrPath,
-    };
-
-    final _response = await _dio.request<Object>(
-      _path,
-      options: _options,
-      queryParameters: _queryParameters,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    Location? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<Location, Location>(rawData, 'Location',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<Location>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
   /// Update Locations
   ///
   ///
@@ -246,7 +245,7 @@ class LocationsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<List<Location>>> patchManyLocations({
     required List<LocationUpdateAllDto> locationUpdateAllDto,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -355,7 +354,7 @@ class LocationsApi {
   Future<Response<Location>> patchOneLocation({
     required String id,
     required LocationUpdateDto locationUpdateDto,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,

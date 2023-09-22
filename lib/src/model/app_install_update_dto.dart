@@ -16,9 +16,13 @@ part 'app_install_update_dto.g.dart';
 class AppInstallUpdateDto {
   /// Returns a new [AppInstallUpdateDto] instance.
   AppInstallUpdateDto({
-    this.firebaseCloudMessagingToken,
     this.firebaseInstallationId,
+    this.firebaseCloudMessagingToken,
   });
+
+  @JsonKey(
+      name: r'firebaseInstallationId', required: false, includeIfNull: false)
+  final String? firebaseInstallationId;
 
   @JsonKey(
       name: r'firebaseCloudMessagingToken',
@@ -26,23 +30,19 @@ class AppInstallUpdateDto {
       includeIfNull: false)
   final String? firebaseCloudMessagingToken;
 
-  @JsonKey(
-      name: r'firebaseInstallationId', required: false, includeIfNull: false)
-  final String? firebaseInstallationId;
-
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppInstallUpdateDto &&
-          other.firebaseCloudMessagingToken == firebaseCloudMessagingToken &&
-          other.firebaseInstallationId == firebaseInstallationId;
+          other.firebaseInstallationId == firebaseInstallationId &&
+          other.firebaseCloudMessagingToken == firebaseCloudMessagingToken;
 
   @override
   int get hashCode =>
+      (firebaseInstallationId == null ? 0 : firebaseInstallationId.hashCode) +
       (firebaseCloudMessagingToken == null
           ? 0
-          : firebaseCloudMessagingToken.hashCode) +
-      (firebaseInstallationId == null ? 0 : firebaseInstallationId.hashCode);
+          : firebaseCloudMessagingToken.hashCode);
 
   factory AppInstallUpdateDto.fromJson(Map<String, dynamic> json) =>
       _$AppInstallUpdateDtoFromJson(json);

@@ -31,8 +31,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> deleteMeUser({
-    Object? xCustomLang,
+  Future<Response<User>> deleteUserMe({
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -117,8 +117,8 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> getMeUser({
-    Object? xCustomLang,
+  Future<Response<User>> getUserMe({
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -204,9 +204,9 @@ class UsersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [User] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> patchMeUser({
+  Future<Response<User>> patchUserMe({
     required UserUpdateDto userUpdateDto,
-    Object? xCustomLang,
+    String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
