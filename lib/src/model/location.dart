@@ -2,10 +2,10 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-import 'package:json_annotation/json_annotation.dart';
-import 'package:moa_customers_client/src/model/address.dart';
 // ignore_for_file: unused_element
 import 'package:moa_customers_client/src/model/business_hours_period.dart';
+import 'package:moa_customers_client/src/model/address.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 part 'location.g.dart';
 

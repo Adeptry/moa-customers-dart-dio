@@ -137,4 +137,3 @@ lib/src/model/variation.dart
 lib/src/model/variation_add_dto.dart
 lib/src/model/variation_update_dto.dart
 pubspec.yaml
-test/authentication_api_test.dart

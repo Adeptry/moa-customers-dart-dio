@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**getAppConfigMe**](AppConfigsApi.md#getappconfigme) | **GET** /v2/app-config/me | Get your Config
 [**patchAppConfigMe**](AppConfigsApi.md#patchappconfigme) | **PATCH** /v2/app-config/me | Update your Config
 [**postAppConfigMe**](AppConfigsApi.md#postappconfigme) | **POST** /v2/app-config/me | Create your Config
-[**postMeIconUpload**](AppConfigsApi.md#postmeiconupload) | **POST** /v2/app-config/me/icon/upload | Upload icon
+[**postIconUploadMe**](AppConfigsApi.md#posticonuploadme) | **POST** /v2/app-config/me/icon/upload | Upload icon
 
 
 # **getAppConfig**
@@ -206,8 +206,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **postMeIconUpload**
-> postMeIconUpload(xCustomLang, file)
+# **postIconUploadMe**
+> postIconUploadMe(xCustomLang, file)
 
 Upload icon
 
@@ -224,9 +224,9 @@ final String xCustomLang = xCustomLang_example; // String |
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
 
 try {
-    api.postMeIconUpload(xCustomLang, file);
+    api.postIconUploadMe(xCustomLang, file);
 } catch on DioException (e) {
-    print('Exception when calling AppConfigsApi->postMeIconUpload: $e\n');
+    print('Exception when calling AppConfigsApi->postIconUploadMe: $e\n');
 }
 ```
 

@@ -515,7 +515,7 @@ import 'package:moa_customers_client/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MoaCustomersClient().getCatalogsApi();
-final String idempotencyKey = PFJRvWs9IkAV8x60UD8BN; // String | 
+final String idempotencyKey = P_vANLKStILpcvIxKAui4; // String | 
 final String id = id_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 

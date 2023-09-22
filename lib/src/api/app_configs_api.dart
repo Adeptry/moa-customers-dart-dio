@@ -437,7 +437,7 @@ class AppConfigsApi {
   ///
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<void>> postMeIconUpload({
+  Future<Response<void>> postIconUploadMe({
     String? xCustomLang,
     MultipartFile? file,
     CancelToken? cancelToken,

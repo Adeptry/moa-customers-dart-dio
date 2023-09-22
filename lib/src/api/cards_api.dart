@@ -3,11 +3,12 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:moa_customers_client/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:moa_customers_client/src/model/create_card_dto.dart';
 import 'package:moa_customers_client/src/model/square_card.dart';
 import 'package:moa_customers_client/src/model/square_disable_card_response.dart';

@@ -3,6 +3,10 @@
 //
 
 export 'package:moa_customers_client/src/api.dart';
+export 'package:moa_customers_client/src/auth/api_key_auth.dart';
+export 'package:moa_customers_client/src/auth/basic_auth.dart';
+export 'package:moa_customers_client/src/auth/oauth.dart';
+
 export 'package:moa_customers_client/src/api/app_configs_api.dart';
 export 'package:moa_customers_client/src/api/authentication_api.dart';
 export 'package:moa_customers_client/src/api/cards_api.dart';
@@ -11,9 +15,7 @@ export 'package:moa_customers_client/src/api/customers_api.dart';
 export 'package:moa_customers_client/src/api/locations_api.dart';
 export 'package:moa_customers_client/src/api/orders_api.dart';
 export 'package:moa_customers_client/src/api/users_api.dart';
-export 'package:moa_customers_client/src/auth/api_key_auth.dart';
-export 'package:moa_customers_client/src/auth/basic_auth.dart';
-export 'package:moa_customers_client/src/auth/oauth.dart';
+
 export 'package:moa_customers_client/src/model/address.dart';
 export 'package:moa_customers_client/src/model/app_config.dart';
 export 'package:moa_customers_client/src/model/app_config_update_dto.dart';

@@ -70,7 +70,7 @@ Class | Method | HTTP request | Description
 [*AppConfigsApi*](doc/AppConfigsApi.md) | [**getAppConfigMe**](doc/AppConfigsApi.md#getappconfigme) | **GET** /v2/app-config/me | Get your Config
 [*AppConfigsApi*](doc/AppConfigsApi.md) | [**patchAppConfigMe**](doc/AppConfigsApi.md#patchappconfigme) | **PATCH** /v2/app-config/me | Update your Config
 [*AppConfigsApi*](doc/AppConfigsApi.md) | [**postAppConfigMe**](doc/AppConfigsApi.md#postappconfigme) | **POST** /v2/app-config/me | Create your Config
-[*AppConfigsApi*](doc/AppConfigsApi.md) | [**postMeIconUpload**](doc/AppConfigsApi.md#postmeiconupload) | **POST** /v2/app-config/me/icon/upload | Upload icon
+[*AppConfigsApi*](doc/AppConfigsApi.md) | [**postIconUploadMe**](doc/AppConfigsApi.md#posticonuploadme) | **POST** /v2/app-config/me/icon/upload | Upload icon
 [*AuthenticationApi*](doc/AuthenticationApi.md) | [**deleteAuthMe**](doc/AuthenticationApi.md#deleteauthme) | **DELETE** /v2/auth/me | Delete Session
 [*AuthenticationApi*](doc/AuthenticationApi.md) | [**patchAuthMe**](doc/AuthenticationApi.md#patchauthme) | **PATCH** /v2/auth/me | Update password
 [*AuthenticationApi*](doc/AuthenticationApi.md) | [**postEmailConfirm**](doc/AuthenticationApi.md#postemailconfirm) | **POST** /v2/auth/email/confirm | Confirm email
