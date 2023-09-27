@@ -1,8 +1,8 @@
-# moa_customers_client.api.AppConfigsApi
+# myorderapp_square.api.AppConfigsApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -17,19 +17,19 @@ Method | HTTP request | Description
 
 
 # **getAppConfig**
-> AppConfig getAppConfig(merchantIdOrPath, xCustomLang)
+> AppConfigEntity getAppConfig(merchantIdOrPath, xCustomLang)
 
 Get Config for Merchant ID
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAppConfigsApi();
+final api = MyorderappSquare().getAppConfigsApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
 
@@ -50,7 +50,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AppConfig**](AppConfig.md)
+[**AppConfigEntity**](AppConfigEntity.md)
 
 ### Authorization
 
@@ -64,19 +64,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAppConfigMe**
-> AppConfig getAppConfigMe(merchantIdOrPath, actingAs, xCustomLang)
+> AppConfigEntity getAppConfigMe(merchantIdOrPath, actingAs, xCustomLang)
 
 Get your Config
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAppConfigsApi();
+final api = MyorderappSquare().getAppConfigsApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final String actingAs = actingAs_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AppConfig**](AppConfig.md)
+[**AppConfigEntity**](AppConfigEntity.md)
 
 ### Authorization
 
@@ -113,24 +113,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchAppConfigMe**
-> AppConfig patchAppConfigMe(appConfigUpdateDto, xCustomLang)
+> AppConfigEntity patchAppConfigMe(appConfigUpdateBody, xCustomLang)
 
 Update your Config
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAppConfigsApi();
-final AppConfigUpdateDto appConfigUpdateDto = ; // AppConfigUpdateDto | 
+final api = MyorderappSquare().getAppConfigsApi();
+final AppConfigUpdateBody appConfigUpdateBody = ; // AppConfigUpdateBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchAppConfigMe(appConfigUpdateDto, xCustomLang);
+    final response = api.patchAppConfigMe(appConfigUpdateBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AppConfigsApi->patchAppConfigMe: $e\n');
@@ -141,12 +141,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **appConfigUpdateDto** | [**AppConfigUpdateDto**](AppConfigUpdateDto.md)|  | 
+ **appConfigUpdateBody** | [**AppConfigUpdateBody**](AppConfigUpdateBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**AppConfig**](AppConfig.md)
+[**AppConfigEntity**](AppConfigEntity.md)
 
 ### Authorization
 
@@ -160,24 +160,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postAppConfigMe**
-> AppConfig postAppConfigMe(appConfigUpdateDto, xCustomLang)
+> AppConfigEntity postAppConfigMe(appConfigUpdateBody, xCustomLang)
 
 Create your Config
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAppConfigsApi();
-final AppConfigUpdateDto appConfigUpdateDto = ; // AppConfigUpdateDto | 
+final api = MyorderappSquare().getAppConfigsApi();
+final AppConfigUpdateBody appConfigUpdateBody = ; // AppConfigUpdateBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.postAppConfigMe(appConfigUpdateDto, xCustomLang);
+    final response = api.postAppConfigMe(appConfigUpdateBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AppConfigsApi->postAppConfigMe: $e\n');
@@ -188,12 +188,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **appConfigUpdateDto** | [**AppConfigUpdateDto**](AppConfigUpdateDto.md)|  | 
+ **appConfigUpdateBody** | [**AppConfigUpdateBody**](AppConfigUpdateBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**AppConfig**](AppConfig.md)
+[**AppConfigEntity**](AppConfigEntity.md)
 
 ### Authorization
 
@@ -213,13 +213,13 @@ Upload icon
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAppConfigsApi();
+final api = MyorderappSquare().getAppConfigsApi();
 final String xCustomLang = xCustomLang_example; // String | 
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
 

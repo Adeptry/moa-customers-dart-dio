@@ -21,7 +21,7 @@ OrdersPaginatedReponse _$OrdersPaginatedReponseFromJson(
           data: $checkedConvert(
               'data',
               (v) => (v as List<dynamic>?)
-                  ?.map((e) => Order.fromJson(e as Map<String, dynamic>))
+                  ?.map((e) => OrderEntity.fromJson(e as Map<String, dynamic>))
                   .toList()),
           pages: $checkedConvert('pages', (v) => v as num),
         );

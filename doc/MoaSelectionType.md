@@ -1,8 +1,8 @@
-# moa_customers_client.model.MoaSelectionType
+# myorderapp_square.model.MoaSelectionType
 
 ## Load the model package
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 ```
 
 ## Properties

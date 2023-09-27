@@ -3,18 +3,17 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/order.dart';
-import 'package:moa_customers_client/src/model/order_create_dto.dart';
-import 'package:moa_customers_client/src/model/order_patch_dto.dart';
-import 'package:moa_customers_client/src/model/order_post_dto.dart';
-import 'package:moa_customers_client/src/model/orders_paginated_reponse.dart';
-import 'package:moa_customers_client/src/model/payment_create_dto.dart';
+import 'package:dio/dio.dart';
+import 'package:myorderapp_square/src/deserialize.dart';
+import 'package:myorderapp_square/src/model/order_entity.dart';
+import 'package:myorderapp_square/src/model/order_patch_body.dart';
+import 'package:myorderapp_square/src/model/order_post_body.dart';
+import 'package:myorderapp_square/src/model/order_post_current_body.dart';
+import 'package:myorderapp_square/src/model/orders_paginated_reponse.dart';
+import 'package:myorderapp_square/src/model/orders_post_payment_body.dart';
 
 class OrdersApi {
   final Dio _dio;
@@ -37,9 +36,9 @@ class OrdersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Order] as data
+  /// Returns a [Future] containing a [Response] with a [OrderEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> deleteLineItemCurrent({
+  Future<Response<OrderEntity>> deleteLineItemCurrent({
     required String id,
     required String merchantIdOrPath,
     bool? lineItems,
@@ -94,13 +93,14 @@ class OrdersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Order? _responseData;
+    OrderEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Order, Order>(rawData, 'Order', growable: true);
+          : deserialize<OrderEntity, OrderEntity>(rawData, 'OrderEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -111,7 +111,7 @@ class OrdersApi {
       );
     }
 
-    return Response<Order>(
+    return Response<OrderEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -207,9 +207,9 @@ class OrdersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Order] as data
+  /// Returns a [Future] containing a [Response] with a [OrderEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> getOrder({
+  Future<Response<OrderEntity>> getOrder({
     required String id,
     bool? lineItems,
     bool? location,
@@ -265,13 +265,14 @@ class OrdersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Order? _responseData;
+    OrderEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Order, Order>(rawData, 'Order', growable: true);
+          : deserialize<OrderEntity, OrderEntity>(rawData, 'OrderEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -282,7 +283,7 @@ class OrdersApi {
       );
     }
 
-    return Response<Order>(
+    return Response<OrderEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -309,9 +310,9 @@ class OrdersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Order] as data
+  /// Returns a [Future] containing a [Response] with a [OrderEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> getOrderCurrent({
+  Future<Response<OrderEntity>> getOrderCurrent({
     required String merchantIdOrPath,
     bool? lineItems,
     bool? location,
@@ -364,13 +365,14 @@ class OrdersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Order? _responseData;
+    OrderEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Order, Order>(rawData, 'Order', growable: true);
+          : deserialize<OrderEntity, OrderEntity>(rawData, 'OrderEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -381,7 +383,7 @@ class OrdersApi {
       );
     }
 
-    return Response<Order>(
+    return Response<OrderEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -510,7 +512,7 @@ class OrdersApi {
   ///
   ///
   /// Parameters:
-  /// * [orderPatchDto]
+  /// * [orderPatchBody]
   /// * [lineItems]
   /// * [location]
   /// * [idempotencyKey]
@@ -523,10 +525,10 @@ class OrdersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Order] as data
+  /// Returns a [Future] containing a [Response] with a [OrderEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> patchOrderCurrent({
-    required OrderPatchDto orderPatchDto,
+  Future<Response<OrderEntity>> patchOrderCurrent({
+    required OrderPatchBody orderPatchBody,
     bool? lineItems,
     bool? location,
     String? idempotencyKey,
@@ -576,7 +578,7 @@ class OrdersApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(orderPatchDto);
+      _bodyData = jsonEncode(orderPatchBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -600,13 +602,14 @@ class OrdersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Order? _responseData;
+    OrderEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Order, Order>(rawData, 'Order', growable: true);
+          : deserialize<OrderEntity, OrderEntity>(rawData, 'OrderEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -617,7 +620,7 @@ class OrdersApi {
       );
     }
 
-    return Response<Order>(
+    return Response<OrderEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -634,7 +637,7 @@ class OrdersApi {
   ///
   /// Parameters:
   /// * [merchantIdOrPath]
-  /// * [orderCreateDto]
+  /// * [orderPostBody]
   /// * [lineItems]
   /// * [location]
   /// * [xCustomLang]
@@ -645,11 +648,11 @@ class OrdersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Order] as data
+  /// Returns a [Future] containing a [Response] with a [OrderEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> postOrder({
+  Future<Response<OrderEntity>> postOrder({
     required String merchantIdOrPath,
-    required OrderCreateDto orderCreateDto,
+    required OrderPostBody orderPostBody,
     bool? lineItems,
     bool? location,
     String? xCustomLang,
@@ -696,7 +699,7 @@ class OrdersApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(orderCreateDto);
+      _bodyData = jsonEncode(orderPostBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -720,13 +723,14 @@ class OrdersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Order? _responseData;
+    OrderEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Order, Order>(rawData, 'Order', growable: true);
+          : deserialize<OrderEntity, OrderEntity>(rawData, 'OrderEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -737,7 +741,7 @@ class OrdersApi {
       );
     }
 
-    return Response<Order>(
+    return Response<OrderEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -754,7 +758,7 @@ class OrdersApi {
   ///
   /// Parameters:
   /// * [merchantIdOrPath]
-  /// * [orderPostDto]
+  /// * [orderPostCurrentBody]
   /// * [lineItems]
   /// * [location]
   /// * [idempotencyKey]
@@ -766,11 +770,11 @@ class OrdersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Order] as data
+  /// Returns a [Future] containing a [Response] with a [OrderEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> postOrderCurrent({
+  Future<Response<OrderEntity>> postOrderCurrent({
     required String merchantIdOrPath,
-    required OrderPostDto orderPostDto,
+    required OrderPostCurrentBody orderPostCurrentBody,
     bool? lineItems,
     bool? location,
     String? idempotencyKey,
@@ -819,7 +823,7 @@ class OrdersApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(orderPostDto);
+      _bodyData = jsonEncode(orderPostCurrentBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -843,13 +847,14 @@ class OrdersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Order? _responseData;
+    OrderEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Order, Order>(rawData, 'Order', growable: true);
+          : deserialize<OrderEntity, OrderEntity>(rawData, 'OrderEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -860,7 +865,7 @@ class OrdersApi {
       );
     }
 
-    return Response<Order>(
+    return Response<OrderEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -877,7 +882,7 @@ class OrdersApi {
   ///
   /// Parameters:
   /// * [merchantIdOrPath]
-  /// * [paymentCreateDto]
+  /// * [ordersPostPaymentBody]
   /// * [lineItems]
   /// * [location]
   /// * [xCustomLang]
@@ -888,11 +893,11 @@ class OrdersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Order] as data
+  /// Returns a [Future] containing a [Response] with a [OrderEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Order>> postSquarePaymentOrderCurrent({
+  Future<Response<OrderEntity>> postSquarePaymentOrderCurrent({
     required String merchantIdOrPath,
-    required PaymentCreateDto paymentCreateDto,
+    required OrdersPostPaymentBody ordersPostPaymentBody,
     bool? lineItems,
     bool? location,
     String? xCustomLang,
@@ -939,7 +944,7 @@ class OrdersApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(paymentCreateDto);
+      _bodyData = jsonEncode(ordersPostPaymentBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -963,13 +968,14 @@ class OrdersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Order? _responseData;
+    OrderEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Order, Order>(rawData, 'Order', growable: true);
+          : deserialize<OrderEntity, OrderEntity>(rawData, 'OrderEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -980,7 +986,7 @@ class OrdersApi {
       );
     }
 
-    return Response<Order>(
+    return Response<OrderEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

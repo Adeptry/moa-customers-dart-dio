@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers_client/moa_customers_client.dart';
+import 'package:myorderapp_square/myorderapp_square.dart';
 
 // tests for SquareError
 void main() {

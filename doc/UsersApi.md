@@ -1,8 +1,8 @@
-# moa_customers_client.api.UsersApi
+# myorderapp_square.api.UsersApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -15,19 +15,19 @@ Method | HTTP request | Description
 
 
 # **deleteUserMe**
-> User deleteUserMe(xCustomLang)
+> UserEntity deleteUserMe(xCustomLang)
 
 
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getUsersApi();
+final api = MyorderappSquare().getUsersApi();
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserEntity**](UserEntity.md)
 
 ### Authorization
 
@@ -60,19 +60,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getUserMe**
-> User getUserMe(xCustomLang)
+> UserEntity getUserMe(xCustomLang)
 
 
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getUsersApi();
+final api = MyorderappSquare().getUsersApi();
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserEntity**](UserEntity.md)
 
 ### Authorization
 
@@ -105,24 +105,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchUserMe**
-> User patchUserMe(userUpdateDto, xCustomLang)
+> UserEntity patchUserMe(userPatchBody, xCustomLang)
 
 
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getUsersApi();
-final UserUpdateDto userUpdateDto = ; // UserUpdateDto | 
+final api = MyorderappSquare().getUsersApi();
+final UserPatchBody userPatchBody = ; // UserPatchBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchUserMe(userUpdateDto, xCustomLang);
+    final response = api.patchUserMe(userPatchBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling UsersApi->patchUserMe: $e\n');
@@ -133,12 +133,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **userUpdateDto** | [**UserUpdateDto**](UserUpdateDto.md)|  | 
+ **userPatchBody** | [**UserPatchBody**](UserPatchBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**User**](User.md)
+[**UserEntity**](UserEntity.md)
 
 ### Authorization
 

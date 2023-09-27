@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:moa_customers_client/moa_customers_client.dart';
+import 'package:myorderapp_square/myorderapp_square.dart';
 
 
 /// tests for CardsApi
 void main() {
-  final instance = MoaCustomersClient().getCardsApi();
+  final instance = MyorderappSquare().getCardsApi();
 
   group(CardsApi, () {
     // Disable my Square Card
@@ -23,7 +23,7 @@ void main() {
 
     // Create my Square Card
     //
-    //Future<SquareCard> postCardsMe(String merchantIdOrPath, CreateCardDto createCardDto, { String xCustomLang }) async
+    //Future<SquareCard> postCardsMe(String merchantIdOrPath, CardsPostBody cardsPostBody, { String xCustomLang }) async
     test('test postCardsMe', () async {
       // TODO
     });

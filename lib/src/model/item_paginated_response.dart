@@ -2,9 +2,9 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-// ignore_for_file: unused_element
-import 'package:moa_customers_client/src/model/item.dart';
 import 'package:json_annotation/json_annotation.dart';
+// ignore_for_file: unused_element
+import 'package:myorderapp_square/src/model/item_entity.dart';
 
 part 'item_paginated_response.g.dart';
 
@@ -26,7 +26,7 @@ class ItemPaginatedResponse {
   final num count;
 
   @JsonKey(name: r'data', required: false, includeIfNull: false)
-  final List<Item>? data;
+  final List<ItemEntity>? data;
 
   @JsonKey(name: r'pages', required: true, includeIfNull: false)
   final num pages;

@@ -1,29 +1,29 @@
 import 'package:test/test.dart';
-import 'package:moa_customers_client/moa_customers_client.dart';
+import 'package:myorderapp_square/myorderapp_square.dart';
 
 
 /// tests for UsersApi
 void main() {
-  final instance = MoaCustomersClient().getUsersApi();
+  final instance = MyorderappSquare().getUsersApi();
 
   group(UsersApi, () {
     // 
     //
-    //Future<User> deleteUserMe({ String xCustomLang }) async
+    //Future<UserEntity> deleteUserMe({ String xCustomLang }) async
     test('test deleteUserMe', () async {
       // TODO
     });
 
     // 
     //
-    //Future<User> getUserMe({ String xCustomLang }) async
+    //Future<UserEntity> getUserMe({ String xCustomLang }) async
     test('test getUserMe', () async {
       // TODO
     });
 
     // 
     //
-    //Future<User> patchUserMe(UserUpdateDto userUpdateDto, { String xCustomLang }) async
+    //Future<UserEntity> patchUserMe(UserPatchBody userPatchBody, { String xCustomLang }) async
     test('test patchUserMe', () async {
       // TODO
     });

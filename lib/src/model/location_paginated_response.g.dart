@@ -21,7 +21,8 @@ LocationPaginatedResponse _$LocationPaginatedResponseFromJson(
           data: $checkedConvert(
               'data',
               (v) => (v as List<dynamic>?)
-                  ?.map((e) => Location.fromJson(e as Map<String, dynamic>))
+                  ?.map(
+                      (e) => LocationEntity.fromJson(e as Map<String, dynamic>))
                   .toList()),
           pages: $checkedConvert('pages', (v) => v as num),
         );

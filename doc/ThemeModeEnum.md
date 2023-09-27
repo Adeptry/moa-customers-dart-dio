@@ -1,8 +1,8 @@
-# moa_customers_client.model.ThemeModeEnum
+# myorderapp_square.model.ThemeModeEnum
 
 ## Load the model package
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 ```
 
 ## Properties

@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers_client/moa_customers_client.dart';
+import 'package:myorderapp_square/myorderapp_square.dart';
 
 // tests for SquareCard
 void main() {
@@ -22,13 +22,13 @@ void main() {
       // TODO
     });
 
-    // String cardholderName
-    test('to test the property `cardholderName`', () async {
+    // String cardType
+    test('to test the property `cardType`', () async {
       // TODO
     });
 
-    // String cardType
-    test('to test the property `cardType`', () async {
+    // String cardholderName
+    test('to test the property `cardholderName`', () async {
       // TODO
     });
 

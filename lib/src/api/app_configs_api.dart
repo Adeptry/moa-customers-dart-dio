@@ -3,14 +3,13 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/app_config.dart';
-import 'package:moa_customers_client/src/model/app_config_update_dto.dart';
+import 'package:dio/dio.dart';
+import 'package:myorderapp_square/src/deserialize.dart';
+import 'package:myorderapp_square/src/model/app_config_entity.dart';
+import 'package:myorderapp_square/src/model/app_config_update_body.dart';
 
 class AppConfigsApi {
   final Dio _dio;
@@ -30,9 +29,9 @@ class AppConfigsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AppConfig] as data
+  /// Returns a [Future] containing a [Response] with a [AppConfigEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> getAppConfig({
+  Future<Response<AppConfigEntity>> getAppConfig({
     required String merchantIdOrPath,
     String? xCustomLang,
     CancelToken? cancelToken,
@@ -81,13 +80,14 @@ class AppConfigsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AppConfig? _responseData;
+    AppConfigEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig',
+          : deserialize<AppConfigEntity, AppConfigEntity>(
+              rawData, 'AppConfigEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -99,7 +99,7 @@ class AppConfigsApi {
       );
     }
 
-    return Response<AppConfig>(
+    return Response<AppConfigEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -125,9 +125,9 @@ class AppConfigsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AppConfig] as data
+  /// Returns a [Future] containing a [Response] with a [AppConfigEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> getAppConfigMe({
+  Future<Response<AppConfigEntity>> getAppConfigMe({
     String? merchantIdOrPath,
     String? actingAs,
     String? xCustomLang,
@@ -178,13 +178,14 @@ class AppConfigsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AppConfig? _responseData;
+    AppConfigEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig',
+          : deserialize<AppConfigEntity, AppConfigEntity>(
+              rawData, 'AppConfigEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -196,7 +197,7 @@ class AppConfigsApi {
       );
     }
 
-    return Response<AppConfig>(
+    return Response<AppConfigEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -212,7 +213,7 @@ class AppConfigsApi {
   ///
   ///
   /// Parameters:
-  /// * [appConfigUpdateDto]
+  /// * [appConfigUpdateBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -221,10 +222,10 @@ class AppConfigsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AppConfig] as data
+  /// Returns a [Future] containing a [Response] with a [AppConfigEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> patchAppConfigMe({
-    required AppConfigUpdateDto appConfigUpdateDto,
+  Future<Response<AppConfigEntity>> patchAppConfigMe({
+    required AppConfigUpdateBody appConfigUpdateBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -263,7 +264,7 @@ class AppConfigsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(appConfigUpdateDto);
+      _bodyData = jsonEncode(appConfigUpdateBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -285,13 +286,14 @@ class AppConfigsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AppConfig? _responseData;
+    AppConfigEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig',
+          : deserialize<AppConfigEntity, AppConfigEntity>(
+              rawData, 'AppConfigEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -303,7 +305,7 @@ class AppConfigsApi {
       );
     }
 
-    return Response<AppConfig>(
+    return Response<AppConfigEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -319,7 +321,7 @@ class AppConfigsApi {
   ///
   ///
   /// Parameters:
-  /// * [appConfigUpdateDto]
+  /// * [appConfigUpdateBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -328,10 +330,10 @@ class AppConfigsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [AppConfig] as data
+  /// Returns a [Future] containing a [Response] with a [AppConfigEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<AppConfig>> postAppConfigMe({
-    required AppConfigUpdateDto appConfigUpdateDto,
+  Future<Response<AppConfigEntity>> postAppConfigMe({
+    required AppConfigUpdateBody appConfigUpdateBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -370,7 +372,7 @@ class AppConfigsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(appConfigUpdateDto);
+      _bodyData = jsonEncode(appConfigUpdateBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -392,13 +394,14 @@ class AppConfigsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    AppConfig? _responseData;
+    AppConfigEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<AppConfig, AppConfig>(rawData, 'AppConfig',
+          : deserialize<AppConfigEntity, AppConfigEntity>(
+              rawData, 'AppConfigEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -410,7 +413,7 @@ class AppConfigsApi {
       );
     }
 
-    return Response<AppConfig>(
+    return Response<AppConfigEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

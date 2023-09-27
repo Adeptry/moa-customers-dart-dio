@@ -1,8 +1,8 @@
-# moa_customers_client.api.AuthenticationApi
+# myorderapp_square.api.AuthenticationApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -14,8 +14,6 @@ Method | HTTP request | Description
 [**postEmailConfirm**](AuthenticationApi.md#postemailconfirm) | **POST** /v2/auth/email/confirm | Confirm email
 [**postEmailLogin**](AuthenticationApi.md#postemaillogin) | **POST** /v2/auth/email/login | Get access token
 [**postEmailRegister**](AuthenticationApi.md#postemailregister) | **POST** /v2/auth/email/register | Create User and Authorize, note: tries to login first
-[**postLoginApple**](AuthenticationApi.md#postloginapple) | **POST** /v2/auth/apple/login | Apple login
-[**postLoginGoogle**](AuthenticationApi.md#postlogingoogle) | **POST** /v2/auth/google/login | Google login
 [**postPasswordForgot**](AuthenticationApi.md#postpasswordforgot) | **POST** /v2/auth/password/forgot | Forgot password
 [**postPasswordReset**](AuthenticationApi.md#postpasswordreset) | **POST** /v2/auth/password/reset | Reset password
 [**postRefresh**](AuthenticationApi.md#postrefresh) | **POST** /v2/auth/refresh | Refresh token
@@ -28,13 +26,13 @@ Delete Session
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAuthenticationApi();
+final api = MyorderappSquare().getAuthenticationApi();
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
@@ -66,24 +64,24 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchAuthMe**
-> User patchAuthMe(authUpdateDto, xCustomLang)
+> UserEntity patchAuthMe(authenticationUpdateRequestBody, xCustomLang)
 
 Update password
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAuthenticationApi();
-final AuthUpdateDto authUpdateDto = ; // AuthUpdateDto | 
+final api = MyorderappSquare().getAuthenticationApi();
+final AuthenticationUpdateRequestBody authenticationUpdateRequestBody = ; // AuthenticationUpdateRequestBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchAuthMe(authUpdateDto, xCustomLang);
+    final response = api.patchAuthMe(authenticationUpdateRequestBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AuthenticationApi->patchAuthMe: $e\n');
@@ -94,12 +92,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authUpdateDto** | [**AuthUpdateDto**](AuthUpdateDto.md)|  | 
+ **authenticationUpdateRequestBody** | [**AuthenticationUpdateRequestBody**](AuthenticationUpdateRequestBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**User**](User.md)
+[**UserEntity**](UserEntity.md)
 
 ### Authorization
 
@@ -113,24 +111,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postEmailConfirm**
-> postEmailConfirm(authConfirmEmailDto, xCustomLang)
+> postEmailConfirm(authenticationEmailConfirmRequestBody, xCustomLang)
 
 Confirm email
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAuthenticationApi();
-final AuthConfirmEmailDto authConfirmEmailDto = ; // AuthConfirmEmailDto | 
+final api = MyorderappSquare().getAuthenticationApi();
+final AuthenticationEmailConfirmRequestBody authenticationEmailConfirmRequestBody = ; // AuthenticationEmailConfirmRequestBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    api.postEmailConfirm(authConfirmEmailDto, xCustomLang);
+    api.postEmailConfirm(authenticationEmailConfirmRequestBody, xCustomLang);
 } catch on DioException (e) {
     print('Exception when calling AuthenticationApi->postEmailConfirm: $e\n');
 }
@@ -140,7 +138,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authConfirmEmailDto** | [**AuthConfirmEmailDto**](AuthConfirmEmailDto.md)|  | 
+ **authenticationEmailConfirmRequestBody** | [**AuthenticationEmailConfirmRequestBody**](AuthenticationEmailConfirmRequestBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
@@ -159,24 +157,24 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postEmailLogin**
-> LoginResponseType postEmailLogin(authEmailLoginDto, xCustomLang)
+> AuthenticationResponse postEmailLogin(authenticationEmailLoginRequestBody, xCustomLang)
 
 Get access token
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAuthenticationApi();
-final AuthEmailLoginDto authEmailLoginDto = ; // AuthEmailLoginDto | 
+final api = MyorderappSquare().getAuthenticationApi();
+final AuthenticationEmailLoginRequestBody authenticationEmailLoginRequestBody = ; // AuthenticationEmailLoginRequestBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.postEmailLogin(authEmailLoginDto, xCustomLang);
+    final response = api.postEmailLogin(authenticationEmailLoginRequestBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AuthenticationApi->postEmailLogin: $e\n');
@@ -187,12 +185,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authEmailLoginDto** | [**AuthEmailLoginDto**](AuthEmailLoginDto.md)|  | 
+ **authenticationEmailLoginRequestBody** | [**AuthenticationEmailLoginRequestBody**](AuthenticationEmailLoginRequestBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**LoginResponseType**](LoginResponseType.md)
+[**AuthenticationResponse**](AuthenticationResponse.md)
 
 ### Authorization
 
@@ -206,24 +204,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postEmailRegister**
-> LoginResponseType postEmailRegister(authRegisterLoginDto, xCustomLang)
+> AuthenticationResponse postEmailRegister(authenticationEmailRegisterRequestBody, xCustomLang)
 
 Create User and Authorize, note: tries to login first
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAuthenticationApi();
-final AuthRegisterLoginDto authRegisterLoginDto = ; // AuthRegisterLoginDto | 
+final api = MyorderappSquare().getAuthenticationApi();
+final AuthenticationEmailRegisterRequestBody authenticationEmailRegisterRequestBody = ; // AuthenticationEmailRegisterRequestBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.postEmailRegister(authRegisterLoginDto, xCustomLang);
+    final response = api.postEmailRegister(authenticationEmailRegisterRequestBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling AuthenticationApi->postEmailRegister: $e\n');
@@ -234,106 +232,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authRegisterLoginDto** | [**AuthRegisterLoginDto**](AuthRegisterLoginDto.md)|  | 
+ **authenticationEmailRegisterRequestBody** | [**AuthenticationEmailRegisterRequestBody**](AuthenticationEmailRegisterRequestBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**LoginResponseType**](LoginResponseType.md)
-
-### Authorization
-
-[Api-Key](../README.md#Api-Key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **postLoginApple**
-> LoginResponseType postLoginApple(authAppleLoginDto, xCustomLang)
-
-Apple login
-
-### Example
-```dart
-import 'package:moa_customers_client/api.dart';
-// TODO Configure API key authorization: Api-Key
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
-
-final api = MoaCustomersClient().getAuthenticationApi();
-final AuthAppleLoginDto authAppleLoginDto = ; // AuthAppleLoginDto | 
-final String xCustomLang = xCustomLang_example; // String | 
-
-try {
-    final response = api.postLoginApple(authAppleLoginDto, xCustomLang);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling AuthenticationApi->postLoginApple: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authAppleLoginDto** | [**AuthAppleLoginDto**](AuthAppleLoginDto.md)|  | 
- **xCustomLang** | **String**|  | [optional] 
-
-### Return type
-
-[**LoginResponseType**](LoginResponseType.md)
-
-### Authorization
-
-[Api-Key](../README.md#Api-Key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **postLoginGoogle**
-> LoginResponseType postLoginGoogle(authGoogleLoginDto, xCustomLang)
-
-Google login
-
-### Example
-```dart
-import 'package:moa_customers_client/api.dart';
-// TODO Configure API key authorization: Api-Key
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
-
-final api = MoaCustomersClient().getAuthenticationApi();
-final AuthGoogleLoginDto authGoogleLoginDto = ; // AuthGoogleLoginDto | 
-final String xCustomLang = xCustomLang_example; // String | 
-
-try {
-    final response = api.postLoginGoogle(authGoogleLoginDto, xCustomLang);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling AuthenticationApi->postLoginGoogle: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authGoogleLoginDto** | [**AuthGoogleLoginDto**](AuthGoogleLoginDto.md)|  | 
- **xCustomLang** | **String**|  | [optional] 
-
-### Return type
-
-[**LoginResponseType**](LoginResponseType.md)
+[**AuthenticationResponse**](AuthenticationResponse.md)
 
 ### Authorization
 
@@ -347,24 +251,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postPasswordForgot**
-> postPasswordForgot(authForgotPasswordDto, xCustomLang)
+> postPasswordForgot(authenticationPasswordForgotRequestBody, xCustomLang)
 
 Forgot password
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAuthenticationApi();
-final AuthForgotPasswordDto authForgotPasswordDto = ; // AuthForgotPasswordDto | 
+final api = MyorderappSquare().getAuthenticationApi();
+final AuthenticationPasswordForgotRequestBody authenticationPasswordForgotRequestBody = ; // AuthenticationPasswordForgotRequestBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    api.postPasswordForgot(authForgotPasswordDto, xCustomLang);
+    api.postPasswordForgot(authenticationPasswordForgotRequestBody, xCustomLang);
 } catch on DioException (e) {
     print('Exception when calling AuthenticationApi->postPasswordForgot: $e\n');
 }
@@ -374,7 +278,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authForgotPasswordDto** | [**AuthForgotPasswordDto**](AuthForgotPasswordDto.md)|  | 
+ **authenticationPasswordForgotRequestBody** | [**AuthenticationPasswordForgotRequestBody**](AuthenticationPasswordForgotRequestBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
@@ -393,24 +297,24 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postPasswordReset**
-> postPasswordReset(authResetPasswordDto, xCustomLang)
+> postPasswordReset(authenticationPasswordResetRequestBody, xCustomLang)
 
 Reset password
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAuthenticationApi();
-final AuthResetPasswordDto authResetPasswordDto = ; // AuthResetPasswordDto | 
+final api = MyorderappSquare().getAuthenticationApi();
+final AuthenticationPasswordResetRequestBody authenticationPasswordResetRequestBody = ; // AuthenticationPasswordResetRequestBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    api.postPasswordReset(authResetPasswordDto, xCustomLang);
+    api.postPasswordReset(authenticationPasswordResetRequestBody, xCustomLang);
 } catch on DioException (e) {
     print('Exception when calling AuthenticationApi->postPasswordReset: $e\n');
 }
@@ -420,7 +324,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authResetPasswordDto** | [**AuthResetPasswordDto**](AuthResetPasswordDto.md)|  | 
+ **authenticationPasswordResetRequestBody** | [**AuthenticationPasswordResetRequestBody**](AuthenticationPasswordResetRequestBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
@@ -439,19 +343,19 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postRefresh**
-> LoginResponseType postRefresh(xCustomLang)
+> AuthenticationResponse postRefresh(xCustomLang)
 
 Refresh token
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getAuthenticationApi();
+final api = MyorderappSquare().getAuthenticationApi();
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
@@ -470,7 +374,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LoginResponseType**](LoginResponseType.md)
+[**AuthenticationResponse**](AuthenticationResponse.md)
 
 ### Authorization
 

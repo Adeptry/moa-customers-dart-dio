@@ -2,10 +2,10 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
-// ignore_for_file: unused_element
-import 'package:moa_customers_client/src/model/square_card.dart';
-import 'package:moa_customers_client/src/model/square_error.dart';
 import 'package:json_annotation/json_annotation.dart';
+// ignore_for_file: unused_element
+import 'package:myorderapp_square/src/model/square_card.dart';
+import 'package:myorderapp_square/src/model/square_error.dart';
 
 part 'square_disable_card_response.g.dart';
 

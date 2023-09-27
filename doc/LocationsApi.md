@@ -1,8 +1,8 @@
-# moa_customers_client.api.LocationsApi
+# myorderapp_square.api.LocationsApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -16,19 +16,19 @@ Method | HTTP request | Description
 
 
 # **getLocation**
-> Location getLocation(id, actingAs, merchantIdOrPath, xCustomLang)
+> LocationEntity getLocation(id, actingAs, merchantIdOrPath, xCustomLang)
 
 Get a Location with ID
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getLocationsApi();
+final api = MyorderappSquare().getLocationsApi();
 final String id = id_example; // String | 
 final String actingAs = actingAs_example; // String | 
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Location**](Location.md)
+[**LocationEntity**](LocationEntity.md)
 
 ### Authorization
 
@@ -73,13 +73,13 @@ Get all your Locations
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getLocationsApi();
+final api = MyorderappSquare().getLocationsApi();
 final num page = 8.14; // num | 
 final num limit = 8.14; // num | 
 final bool address = true; // bool | 
@@ -124,24 +124,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchManyLocations**
-> List<Location> patchManyLocations(locationUpdateAllDto, xCustomLang)
+> List<LocationEntity> patchManyLocations(locationsPatchBody, xCustomLang)
 
 Update Locations
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getLocationsApi();
-final List<LocationUpdateAllDto> locationUpdateAllDto = ; // List<LocationUpdateAllDto> | 
+final api = MyorderappSquare().getLocationsApi();
+final List<LocationsPatchBody> locationsPatchBody = ; // List<LocationsPatchBody> | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchManyLocations(locationUpdateAllDto, xCustomLang);
+    final response = api.patchManyLocations(locationsPatchBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling LocationsApi->patchManyLocations: $e\n');
@@ -152,12 +152,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **locationUpdateAllDto** | [**List&lt;LocationUpdateAllDto&gt;**](LocationUpdateAllDto.md)|  | 
+ **locationsPatchBody** | [**List&lt;LocationsPatchBody&gt;**](LocationsPatchBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**List&lt;Location&gt;**](Location.md)
+[**List&lt;LocationEntity&gt;**](LocationEntity.md)
 
 ### Authorization
 
@@ -171,25 +171,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchOneLocation**
-> Location patchOneLocation(id, locationUpdateDto, xCustomLang)
+> LocationEntity patchOneLocation(id, locationPatchBody, xCustomLang)
 
 Update a Location
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getLocationsApi();
+final api = MyorderappSquare().getLocationsApi();
 final String id = id_example; // String | 
-final LocationUpdateDto locationUpdateDto = ; // LocationUpdateDto | 
+final LocationPatchBody locationPatchBody = ; // LocationPatchBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchOneLocation(id, locationUpdateDto, xCustomLang);
+    final response = api.patchOneLocation(id, locationPatchBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling LocationsApi->patchOneLocation: $e\n');
@@ -201,12 +201,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **locationUpdateDto** | [**LocationUpdateDto**](LocationUpdateDto.md)|  | 
+ **locationPatchBody** | [**LocationPatchBody**](LocationPatchBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**Location**](Location.md)
+[**LocationEntity**](LocationEntity.md)
 
 ### Authorization
 

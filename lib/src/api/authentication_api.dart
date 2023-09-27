@@ -3,22 +3,19 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/auth_apple_login_dto.dart';
-import 'package:moa_customers_client/src/model/auth_confirm_email_dto.dart';
-import 'package:moa_customers_client/src/model/auth_email_login_dto.dart';
-import 'package:moa_customers_client/src/model/auth_forgot_password_dto.dart';
-import 'package:moa_customers_client/src/model/auth_google_login_dto.dart';
-import 'package:moa_customers_client/src/model/auth_register_login_dto.dart';
-import 'package:moa_customers_client/src/model/auth_reset_password_dto.dart';
-import 'package:moa_customers_client/src/model/auth_update_dto.dart';
-import 'package:moa_customers_client/src/model/login_response_type.dart';
-import 'package:moa_customers_client/src/model/user.dart';
+import 'package:dio/dio.dart';
+import 'package:myorderapp_square/src/deserialize.dart';
+import 'package:myorderapp_square/src/model/authentication_email_confirm_request_body.dart';
+import 'package:myorderapp_square/src/model/authentication_email_login_request_body.dart';
+import 'package:myorderapp_square/src/model/authentication_email_register_request_body.dart';
+import 'package:myorderapp_square/src/model/authentication_password_forgot_request_body.dart';
+import 'package:myorderapp_square/src/model/authentication_password_reset_request_body.dart';
+import 'package:myorderapp_square/src/model/authentication_response.dart';
+import 'package:myorderapp_square/src/model/authentication_update_request_body.dart';
+import 'package:myorderapp_square/src/model/user_entity.dart';
 
 class AuthenticationApi {
   final Dio _dio;
@@ -89,7 +86,7 @@ class AuthenticationApi {
   ///
   ///
   /// Parameters:
-  /// * [authUpdateDto]
+  /// * [authenticationUpdateRequestBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -98,10 +95,10 @@ class AuthenticationApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [User] as data
+  /// Returns a [Future] containing a [Response] with a [UserEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> patchAuthMe({
-    required AuthUpdateDto authUpdateDto,
+  Future<Response<UserEntity>> patchAuthMe({
+    required AuthenticationUpdateRequestBody authenticationUpdateRequestBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -140,7 +137,7 @@ class AuthenticationApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(authUpdateDto);
+      _bodyData = jsonEncode(authenticationUpdateRequestBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -162,13 +159,14 @@ class AuthenticationApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    User? _responseData;
+    UserEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<User, User>(rawData, 'User', growable: true);
+          : deserialize<UserEntity, UserEntity>(rawData, 'UserEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -179,7 +177,7 @@ class AuthenticationApi {
       );
     }
 
-    return Response<User>(
+    return Response<UserEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -195,7 +193,7 @@ class AuthenticationApi {
   ///
   ///
   /// Parameters:
-  /// * [authConfirmEmailDto]
+  /// * [authenticationEmailConfirmRequestBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -207,7 +205,8 @@ class AuthenticationApi {
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> postEmailConfirm({
-    required AuthConfirmEmailDto authConfirmEmailDto,
+    required AuthenticationEmailConfirmRequestBody
+        authenticationEmailConfirmRequestBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -241,7 +240,7 @@ class AuthenticationApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(authConfirmEmailDto);
+      _bodyData = jsonEncode(authenticationEmailConfirmRequestBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -270,7 +269,7 @@ class AuthenticationApi {
   ///
   ///
   /// Parameters:
-  /// * [authEmailLoginDto]
+  /// * [authenticationEmailLoginRequestBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -279,10 +278,11 @@ class AuthenticationApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
+  /// Returns a [Future] containing a [Response] with a [AuthenticationResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> postEmailLogin({
-    required AuthEmailLoginDto authEmailLoginDto,
+  Future<Response<AuthenticationResponse>> postEmailLogin({
+    required AuthenticationEmailLoginRequestBody
+        authenticationEmailLoginRequestBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -316,7 +316,7 @@ class AuthenticationApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(authEmailLoginDto);
+      _bodyData = jsonEncode(authenticationEmailLoginRequestBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -338,14 +338,14 @@ class AuthenticationApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LoginResponseType? _responseData;
+    AuthenticationResponse? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<LoginResponseType, LoginResponseType>(
-              rawData, 'LoginResponseType',
+          : deserialize<AuthenticationResponse, AuthenticationResponse>(
+              rawData, 'AuthenticationResponse',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -357,7 +357,7 @@ class AuthenticationApi {
       );
     }
 
-    return Response<LoginResponseType>(
+    return Response<AuthenticationResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -373,7 +373,7 @@ class AuthenticationApi {
   ///
   ///
   /// Parameters:
-  /// * [authRegisterLoginDto]
+  /// * [authenticationEmailRegisterRequestBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -382,10 +382,11 @@ class AuthenticationApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
+  /// Returns a [Future] containing a [Response] with a [AuthenticationResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> postEmailRegister({
-    required AuthRegisterLoginDto authRegisterLoginDto,
+  Future<Response<AuthenticationResponse>> postEmailRegister({
+    required AuthenticationEmailRegisterRequestBody
+        authenticationEmailRegisterRequestBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -419,7 +420,7 @@ class AuthenticationApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(authRegisterLoginDto);
+      _bodyData = jsonEncode(authenticationEmailRegisterRequestBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -441,14 +442,14 @@ class AuthenticationApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LoginResponseType? _responseData;
+    AuthenticationResponse? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<LoginResponseType, LoginResponseType>(
-              rawData, 'LoginResponseType',
+          : deserialize<AuthenticationResponse, AuthenticationResponse>(
+              rawData, 'AuthenticationResponse',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -460,213 +461,7 @@ class AuthenticationApi {
       );
     }
 
-    return Response<LoginResponseType>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Apple login
-  ///
-  ///
-  /// Parameters:
-  /// * [authAppleLoginDto]
-  /// * [xCustomLang]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> postLoginApple({
-    required AuthAppleLoginDto authAppleLoginDto,
-    String? xCustomLang,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/v2/auth/apple/login';
-    final _options = Options(
-      method: r'POST',
-      headers: <String, dynamic>{
-        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
-    );
-
-    dynamic _bodyData;
-
-    try {
-      _bodyData = jsonEncode(authAppleLoginDto);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    LoginResponseType? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<LoginResponseType, LoginResponseType>(
-              rawData, 'LoginResponseType',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<LoginResponseType>(
-      data: _responseData,
-      headers: _response.headers,
-      isRedirect: _response.isRedirect,
-      requestOptions: _response.requestOptions,
-      redirects: _response.redirects,
-      statusCode: _response.statusCode,
-      statusMessage: _response.statusMessage,
-      extra: _response.extra,
-    );
-  }
-
-  /// Google login
-  ///
-  ///
-  /// Parameters:
-  /// * [authGoogleLoginDto]
-  /// * [xCustomLang]
-  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
-  /// * [headers] - Can be used to add additional headers to the request
-  /// * [extras] - Can be used to add flags to the request
-  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
-  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
-  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
-  ///
-  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
-  /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> postLoginGoogle({
-    required AuthGoogleLoginDto authGoogleLoginDto,
-    String? xCustomLang,
-    CancelToken? cancelToken,
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? extra,
-    ValidateStatus? validateStatus,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    final _path = r'/v2/auth/google/login';
-    final _options = Options(
-      method: r'POST',
-      headers: <String, dynamic>{
-        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[
-          {
-            'type': 'apiKey',
-            'name': 'Api-Key',
-            'keyName': 'Api-Key',
-            'where': 'header',
-          },
-        ],
-        ...?extra,
-      },
-      contentType: 'application/json',
-      validateStatus: validateStatus,
-    );
-
-    dynamic _bodyData;
-
-    try {
-      _bodyData = jsonEncode(authGoogleLoginDto);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _options.compose(
-          _dio.options,
-          _path,
-        ),
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    final _response = await _dio.request<Object>(
-      _path,
-      data: _bodyData,
-      options: _options,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    LoginResponseType? _responseData;
-
-    try {
-      final rawData = _response.data;
-      _responseData = rawData == null
-          ? null
-          : deserialize<LoginResponseType, LoginResponseType>(
-              rawData, 'LoginResponseType',
-              growable: true);
-    } catch (error, stackTrace) {
-      throw DioException(
-        requestOptions: _response.requestOptions,
-        response: _response,
-        type: DioExceptionType.unknown,
-        error: error,
-        stackTrace: stackTrace,
-      );
-    }
-
-    return Response<LoginResponseType>(
+    return Response<AuthenticationResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -682,7 +477,7 @@ class AuthenticationApi {
   ///
   ///
   /// Parameters:
-  /// * [authForgotPasswordDto]
+  /// * [authenticationPasswordForgotRequestBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -694,7 +489,8 @@ class AuthenticationApi {
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> postPasswordForgot({
-    required AuthForgotPasswordDto authForgotPasswordDto,
+    required AuthenticationPasswordForgotRequestBody
+        authenticationPasswordForgotRequestBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -728,7 +524,7 @@ class AuthenticationApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(authForgotPasswordDto);
+      _bodyData = jsonEncode(authenticationPasswordForgotRequestBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -757,7 +553,7 @@ class AuthenticationApi {
   ///
   ///
   /// Parameters:
-  /// * [authResetPasswordDto]
+  /// * [authenticationPasswordResetRequestBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -769,7 +565,8 @@ class AuthenticationApi {
   /// Returns a [Future]
   /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> postPasswordReset({
-    required AuthResetPasswordDto authResetPasswordDto,
+    required AuthenticationPasswordResetRequestBody
+        authenticationPasswordResetRequestBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -803,7 +600,7 @@ class AuthenticationApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(authResetPasswordDto);
+      _bodyData = jsonEncode(authenticationPasswordResetRequestBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -840,9 +637,9 @@ class AuthenticationApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [LoginResponseType] as data
+  /// Returns a [Future] containing a [Response] with a [AuthenticationResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<LoginResponseType>> postRefresh({
+  Future<Response<AuthenticationResponse>> postRefresh({
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -885,14 +682,14 @@ class AuthenticationApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    LoginResponseType? _responseData;
+    AuthenticationResponse? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<LoginResponseType, LoginResponseType>(
-              rawData, 'LoginResponseType',
+          : deserialize<AuthenticationResponse, AuthenticationResponse>(
+              rawData, 'AuthenticationResponse',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -904,7 +701,7 @@ class AuthenticationApi {
       );
     }
 
-    return Response<LoginResponseType>(
+    return Response<AuthenticationResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

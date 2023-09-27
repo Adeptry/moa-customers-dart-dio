@@ -1,8 +1,8 @@
-# moa_customers_client.api.CatalogsApi
+# myorderapp_square.api.CatalogsApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -29,13 +29,13 @@ Get Categories for Merchant ID with Items, Variations, and/or ModifierLists
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
+final api = MyorderappSquare().getCatalogsApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final String actingAs = actingAs_example; // String | 
 final num page = 8.14; // num | 
@@ -92,13 +92,13 @@ Get Items in Category
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
+final api = MyorderappSquare().getCatalogsApi();
 final String id = id_example; // String | 
 final String actingAs = actingAs_example; // String | 
 final num page = 8.14; // num | 
@@ -155,13 +155,13 @@ Get your Categories with Items, Variations, and/or ModifierLists
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
+final api = MyorderappSquare().getCatalogsApi();
 final num page = 8.14; // num | 
 final num limit = 8.14; // num | 
 final String locationId = locationId_example; // String | 
@@ -212,19 +212,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getItem**
-> Item getItem(id, locationId, xCustomLang)
+> ItemEntity getItem(id, locationId, xCustomLang)
 
 Get Item with ID
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
+final api = MyorderappSquare().getCatalogsApi();
 final String id = id_example; // String | 
 final String locationId = locationId_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Item**](Item.md)
+[**ItemEntity**](ItemEntity.md)
 
 ### Authorization
 
@@ -261,19 +261,19 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getVariationsForItem**
-> List<Variation> getVariationsForItem(id, locationId, xCustomLang)
+> List<VariationEntity> getVariationsForItem(id, locationId, xCustomLang)
 
 Get Item variations with ID
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
+final api = MyorderappSquare().getCatalogsApi();
 final String id = id_example; // String | 
 final String locationId = locationId_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
@@ -296,7 +296,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;Variation&gt;**](Variation.md)
+[**List&lt;VariationEntity&gt;**](VariationEntity.md)
 
 ### Authorization
 
@@ -310,24 +310,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchCategories**
-> List<Category> patchCategories(categoryUpdateAllDto, xCustomLang)
+> List<CategoryEntity> patchCategories(categoriesPatchBody, xCustomLang)
 
 Update multiple Categories
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
-final List<CategoryUpdateAllDto> categoryUpdateAllDto = ; // List<CategoryUpdateAllDto> | 
+final api = MyorderappSquare().getCatalogsApi();
+final List<CategoriesPatchBody> categoriesPatchBody = ; // List<CategoriesPatchBody> | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchCategories(categoryUpdateAllDto, xCustomLang);
+    final response = api.patchCategories(categoriesPatchBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CatalogsApi->patchCategories: $e\n');
@@ -338,12 +338,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **categoryUpdateAllDto** | [**List&lt;CategoryUpdateAllDto&gt;**](CategoryUpdateAllDto.md)|  | 
+ **categoriesPatchBody** | [**List&lt;CategoriesPatchBody&gt;**](CategoriesPatchBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**List&lt;Category&gt;**](Category.md)
+[**List&lt;CategoryEntity&gt;**](CategoryEntity.md)
 
 ### Authorization
 
@@ -357,25 +357,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchCategory**
-> Category patchCategory(id, categoryUpdateDto, xCustomLang)
+> CategoryEntity patchCategory(id, categoryPatchBody, xCustomLang)
 
 Update a Category
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
+final api = MyorderappSquare().getCatalogsApi();
 final String id = id_example; // String | 
-final CategoryUpdateDto categoryUpdateDto = ; // CategoryUpdateDto | 
+final CategoryPatchBody categoryPatchBody = ; // CategoryPatchBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchCategory(id, categoryUpdateDto, xCustomLang);
+    final response = api.patchCategory(id, categoryPatchBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CatalogsApi->patchCategory: $e\n');
@@ -387,12 +387,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **categoryUpdateDto** | [**CategoryUpdateDto**](CategoryUpdateDto.md)|  | 
+ **categoryPatchBody** | [**CategoryPatchBody**](CategoryPatchBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**Category**](Category.md)
+[**CategoryEntity**](CategoryEntity.md)
 
 ### Authorization
 
@@ -406,25 +406,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchItem**
-> Item patchItem(id, itemUpdateDto, xCustomLang)
+> ItemEntity patchItem(id, itemPatchBody, xCustomLang)
 
 Update an Item
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
+final api = MyorderappSquare().getCatalogsApi();
 final String id = id_example; // String | 
-final ItemUpdateDto itemUpdateDto = ; // ItemUpdateDto | 
+final ItemPatchBody itemPatchBody = ; // ItemPatchBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchItem(id, itemUpdateDto, xCustomLang);
+    final response = api.patchItem(id, itemPatchBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CatalogsApi->patchItem: $e\n');
@@ -436,12 +436,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **itemUpdateDto** | [**ItemUpdateDto**](ItemUpdateDto.md)|  | 
+ **itemPatchBody** | [**ItemPatchBody**](ItemPatchBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**Item**](Item.md)
+[**ItemEntity**](ItemEntity.md)
 
 ### Authorization
 
@@ -455,24 +455,24 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchItems**
-> List<Item> patchItems(itemUpdateAllDto, xCustomLang)
+> List<ItemEntity> patchItems(itemsPatchBody, xCustomLang)
 
 Update multiple Items
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
-final List<ItemUpdateAllDto> itemUpdateAllDto = ; // List<ItemUpdateAllDto> | 
+final api = MyorderappSquare().getCatalogsApi();
+final List<ItemsPatchBody> itemsPatchBody = ; // List<ItemsPatchBody> | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchItems(itemUpdateAllDto, xCustomLang);
+    final response = api.patchItems(itemsPatchBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CatalogsApi->patchItems: $e\n');
@@ -483,12 +483,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **itemUpdateAllDto** | [**List&lt;ItemUpdateAllDto&gt;**](ItemUpdateAllDto.md)|  | 
+ **itemsPatchBody** | [**List&lt;ItemsPatchBody&gt;**](ItemsPatchBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**List&lt;Item&gt;**](Item.md)
+[**List&lt;ItemEntity&gt;**](ItemEntity.md)
 
 ### Authorization
 
@@ -502,20 +502,20 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postItemSquareImageUpload**
-> CatalogImage postItemSquareImageUpload(idempotencyKey, id, xCustomLang, file)
+> CatalogImageEntity postItemSquareImageUpload(idempotencyKey, id, xCustomLang, file)
 
 Upload Square Catalog Image
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
-final String idempotencyKey = c7rwtQs-FrrHTqYgyAK0O; // String | 
+final api = MyorderappSquare().getCatalogsApi();
+final String idempotencyKey = 3Jr63ZwEc_uFrO7DmIDwd; // String | 
 final String id = id_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
@@ -539,7 +539,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CatalogImage**](CatalogImage.md)
+[**CatalogImageEntity**](CatalogImageEntity.md)
 
 ### Authorization
 
@@ -553,25 +553,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateVariation**
-> Variation updateVariation(id, variationUpdateDto, xCustomLang)
+> VariationEntity updateVariation(id, variationPatchBody, xCustomLang)
 
 Update an Variation
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCatalogsApi();
+final api = MyorderappSquare().getCatalogsApi();
 final String id = id_example; // String | 
-final VariationUpdateDto variationUpdateDto = ; // VariationUpdateDto | 
+final VariationPatchBody variationPatchBody = ; // VariationPatchBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.updateVariation(id, variationUpdateDto, xCustomLang);
+    final response = api.updateVariation(id, variationPatchBody, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CatalogsApi->updateVariation: $e\n');
@@ -583,12 +583,12 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**|  | 
- **variationUpdateDto** | [**VariationUpdateDto**](VariationUpdateDto.md)|  | 
+ **variationPatchBody** | [**VariationPatchBody**](VariationPatchBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**Variation**](Variation.md)
+[**VariationEntity**](VariationEntity.md)
 
 ### Authorization
 

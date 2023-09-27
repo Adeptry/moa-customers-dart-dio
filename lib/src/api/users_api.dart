@@ -6,11 +6,11 @@ import 'dart:async';
 
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
+import 'package:myorderapp_square/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/user.dart';
-import 'package:moa_customers_client/src/model/user_update_dto.dart';
+import 'package:myorderapp_square/src/model/user_entity.dart';
+import 'package:myorderapp_square/src/model/user_patch_body.dart';
 
 class UsersApi {
   final Dio _dio;
@@ -29,9 +29,9 @@ class UsersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [User] as data
+  /// Returns a [Future] containing a [Response] with a [UserEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> deleteUserMe({
+  Future<Response<UserEntity>> deleteUserMe({
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -74,13 +74,14 @@ class UsersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    User? _responseData;
+    UserEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<User, User>(rawData, 'User', growable: true);
+          : deserialize<UserEntity, UserEntity>(rawData, 'UserEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -91,7 +92,7 @@ class UsersApi {
       );
     }
 
-    return Response<User>(
+    return Response<UserEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -115,9 +116,9 @@ class UsersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [User] as data
+  /// Returns a [Future] containing a [Response] with a [UserEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> getUserMe({
+  Future<Response<UserEntity>> getUserMe({
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -160,13 +161,14 @@ class UsersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    User? _responseData;
+    UserEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<User, User>(rawData, 'User', growable: true);
+          : deserialize<UserEntity, UserEntity>(rawData, 'UserEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -177,7 +179,7 @@ class UsersApi {
       );
     }
 
-    return Response<User>(
+    return Response<UserEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -193,7 +195,7 @@ class UsersApi {
   ///
   ///
   /// Parameters:
-  /// * [userUpdateDto]
+  /// * [userPatchBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -202,10 +204,10 @@ class UsersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [User] as data
+  /// Returns a [Future] containing a [Response] with a [UserEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<User>> patchUserMe({
-    required UserUpdateDto userUpdateDto,
+  Future<Response<UserEntity>> patchUserMe({
+    required UserPatchBody userPatchBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -244,7 +246,7 @@ class UsersApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(userUpdateDto);
+      _bodyData = jsonEncode(userPatchBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -266,13 +268,14 @@ class UsersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    User? _responseData;
+    UserEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<User, User>(rawData, 'User', growable: true);
+          : deserialize<UserEntity, UserEntity>(rawData, 'UserEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -283,7 +286,7 @@ class UsersApi {
       );
     }
 
-    return Response<User>(
+    return Response<UserEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

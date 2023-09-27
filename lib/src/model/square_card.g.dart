@@ -14,9 +14,9 @@ SquareCard _$SquareCardFromJson(Map<String, dynamic> json) => $checkedCreate(
           bin: $checkedConvert('bin', (v) => v as String?),
           cardBrand: $checkedConvert('cardBrand', (v) => v as String?),
           cardCoBrand: $checkedConvert('cardCoBrand', (v) => v as String?),
+          cardType: $checkedConvert('cardType', (v) => v as String?),
           cardholderName:
               $checkedConvert('cardholderName', (v) => v as String?),
-          cardType: $checkedConvert('cardType', (v) => v as String?),
           enabled: $checkedConvert('enabled', (v) => v as bool?),
           expMonth: $checkedConvert('expMonth', (v) => v as String?),
           expYear: $checkedConvert('expYear', (v) => v as String?),
@@ -42,8 +42,8 @@ Map<String, dynamic> _$SquareCardToJson(SquareCard instance) {
   writeNotNull('bin', instance.bin);
   writeNotNull('cardBrand', instance.cardBrand);
   writeNotNull('cardCoBrand', instance.cardCoBrand);
-  writeNotNull('cardholderName', instance.cardholderName);
   writeNotNull('cardType', instance.cardType);
+  writeNotNull('cardholderName', instance.cardholderName);
   writeNotNull('enabled', instance.enabled);
   writeNotNull('expMonth', instance.expMonth);
   writeNotNull('expYear', instance.expYear);

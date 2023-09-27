@@ -1,8 +1,8 @@
-# moa_customers_client.api.CustomersApi
+# myorderapp_square.api.CustomersApi
 
 ## Load the API package
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 ```
 
 All URIs are relative to *https://api.myorderapp.dev*
@@ -17,28 +17,29 @@ Method | HTTP request | Description
 
 
 # **getCustomerMe**
-> Customer getCustomerMe(merchantIdOrPath, user, merchant, currentOrder, preferredLocation, xCustomLang)
+> CustomerEntity getCustomerMe(merchantIdOrPath, user, merchant, currentOrder, preferredLocation, preferredSquareCard, xCustomLang)
 
 Get current Customer
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCustomersApi();
+final api = MyorderappSquare().getCustomersApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final bool user = true; // bool | 
 final bool merchant = true; // bool | 
 final bool currentOrder = true; // bool | 
 final bool preferredLocation = true; // bool | 
+final bool preferredSquareCard = true; // bool | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getCustomerMe(merchantIdOrPath, user, merchant, currentOrder, preferredLocation, xCustomLang);
+    final response = api.getCustomerMe(merchantIdOrPath, user, merchant, currentOrder, preferredLocation, preferredSquareCard, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CustomersApi->getCustomerMe: $e\n');
@@ -54,11 +55,12 @@ Name | Type | Description  | Notes
  **merchant** | **bool**|  | [optional] 
  **currentOrder** | **bool**|  | [optional] 
  **preferredLocation** | **bool**|  | [optional] 
+ **preferredSquareCard** | **bool**|  | [optional] 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**Customer**](Customer.md)
+[**CustomerEntity**](CustomerEntity.md)
 
 ### Authorization
 
@@ -72,25 +74,29 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getManyCustomers**
-> CustomersPaginatedResponse getManyCustomers(page, limit, xCustomLang)
+> CustomersPaginatedResponse getManyCustomers(page, limit, user, merchant, currentOrder, preferredLocation, xCustomLang)
 
 Get my Customers
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCustomersApi();
+final api = MyorderappSquare().getCustomersApi();
 final num page = 8.14; // num | 
 final num limit = 8.14; // num | 
+final bool user = true; // bool | 
+final bool merchant = true; // bool | 
+final bool currentOrder = true; // bool | 
+final bool preferredLocation = true; // bool | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getManyCustomers(page, limit, xCustomLang);
+    final response = api.getManyCustomers(page, limit, user, merchant, currentOrder, preferredLocation, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CustomersApi->getManyCustomers: $e\n');
@@ -103,6 +109,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **num**|  | [optional] 
  **limit** | **num**|  | [optional] 
+ **user** | **bool**|  | [optional] 
+ **merchant** | **bool**|  | [optional] 
+ **currentOrder** | **bool**|  | [optional] 
+ **preferredLocation** | **bool**|  | [optional] 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
@@ -121,25 +131,30 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchCustomerMe**
-> Customer patchCustomerMe(merchantIdOrPath, customerUpdateDto, xCustomLang)
+> CustomerEntity patchCustomerMe(merchantIdOrPath, customerPatchBody, user, merchant, currentOrder, preferredLocation, preferredSquareCard, xCustomLang)
 
 Update your Customer
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCustomersApi();
+final api = MyorderappSquare().getCustomersApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
-final CustomerUpdateDto customerUpdateDto = ; // CustomerUpdateDto | 
+final CustomerPatchBody customerPatchBody = ; // CustomerPatchBody | 
+final bool user = true; // bool | 
+final bool merchant = true; // bool | 
+final bool currentOrder = true; // bool | 
+final bool preferredLocation = true; // bool | 
+final bool preferredSquareCard = true; // bool | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchCustomerMe(merchantIdOrPath, customerUpdateDto, xCustomLang);
+    final response = api.patchCustomerMe(merchantIdOrPath, customerPatchBody, user, merchant, currentOrder, preferredLocation, preferredSquareCard, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CustomersApi->patchCustomerMe: $e\n');
@@ -151,12 +166,17 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchantIdOrPath** | **String**|  | 
- **customerUpdateDto** | [**CustomerUpdateDto**](CustomerUpdateDto.md)|  | 
+ **customerPatchBody** | [**CustomerPatchBody**](CustomerPatchBody.md)|  | 
+ **user** | **bool**|  | [optional] 
+ **merchant** | **bool**|  | [optional] 
+ **currentOrder** | **bool**|  | [optional] 
+ **preferredLocation** | **bool**|  | [optional] 
+ **preferredSquareCard** | **bool**|  | [optional] 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**Customer**](Customer.md)
+[**CustomerEntity**](CustomerEntity.md)
 
 ### Authorization
 
@@ -170,24 +190,28 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **postCustomerMe**
-> Customer postCustomerMe(merchantIdOrPath, xCustomLang)
+> CustomerEntity postCustomerMe(merchantIdOrPath, user, merchant, currentOrder, preferredLocation, xCustomLang)
 
 Create Customer for current User
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCustomersApi();
+final api = MyorderappSquare().getCustomersApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
+final bool user = true; // bool | 
+final bool merchant = true; // bool | 
+final bool currentOrder = true; // bool | 
+final bool preferredLocation = true; // bool | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.postCustomerMe(merchantIdOrPath, xCustomLang);
+    final response = api.postCustomerMe(merchantIdOrPath, user, merchant, currentOrder, preferredLocation, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CustomersApi->postCustomerMe: $e\n');
@@ -199,11 +223,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchantIdOrPath** | **String**|  | 
+ **user** | **bool**|  | [optional] 
+ **merchant** | **bool**|  | [optional] 
+ **currentOrder** | **bool**|  | [optional] 
+ **preferredLocation** | **bool**|  | [optional] 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**Customer**](Customer.md)
+[**CustomerEntity**](CustomerEntity.md)
 
 ### Authorization
 
@@ -217,25 +245,25 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateAppInstallMe**
-> updateAppInstallMe(merchantIdOrPath, appInstallUpdateDto, xCustomLang)
+> updateAppInstallMe(merchantIdOrPath, appInstallPostBody, xCustomLang)
 
 Create or update Customer App Install
 
 ### Example
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 // TODO Configure API key authorization: Api-Key
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
 // uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
-final api = MoaCustomersClient().getCustomersApi();
+final api = MyorderappSquare().getCustomersApi();
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
-final AppInstallUpdateDto appInstallUpdateDto = ; // AppInstallUpdateDto | 
+final AppInstallPostBody appInstallPostBody = ; // AppInstallPostBody | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    api.updateAppInstallMe(merchantIdOrPath, appInstallUpdateDto, xCustomLang);
+    api.updateAppInstallMe(merchantIdOrPath, appInstallPostBody, xCustomLang);
 } catch on DioException (e) {
     print('Exception when calling CustomersApi->updateAppInstallMe: $e\n');
 }
@@ -246,7 +274,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchantIdOrPath** | **String**|  | 
- **appInstallUpdateDto** | [**AppInstallUpdateDto**](AppInstallUpdateDto.md)|  | 
+ **appInstallPostBody** | [**AppInstallPostBody**](AppInstallPostBody.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type

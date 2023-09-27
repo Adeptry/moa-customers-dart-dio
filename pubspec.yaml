@@ -1,7 +1,7 @@
-name: moa_customers_client
-version: 2.1.0
+name: myorderapp_square
+version: 2.2.0
 description: A Dart client for MyOrderApp customer HTTP API
-homepage: https://api.myorderapp.dev/customers/
+homepage: https://api.myorderapp.dev/
 
 environment:
   sdk: '>=2.15.0 <3.0.0'

@@ -3,23 +3,22 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/catalog_image.dart';
-import 'package:moa_customers_client/src/model/category.dart';
-import 'package:moa_customers_client/src/model/category_paginated_response.dart';
-import 'package:moa_customers_client/src/model/category_update_all_dto.dart';
-import 'package:moa_customers_client/src/model/category_update_dto.dart';
-import 'package:moa_customers_client/src/model/item.dart';
-import 'package:moa_customers_client/src/model/item_paginated_response.dart';
-import 'package:moa_customers_client/src/model/item_update_all_dto.dart';
-import 'package:moa_customers_client/src/model/item_update_dto.dart';
-import 'package:moa_customers_client/src/model/variation.dart';
-import 'package:moa_customers_client/src/model/variation_update_dto.dart';
+import 'package:dio/dio.dart';
+import 'package:myorderapp_square/src/deserialize.dart';
+import 'package:myorderapp_square/src/model/catalog_image_entity.dart';
+import 'package:myorderapp_square/src/model/categories_patch_body.dart';
+import 'package:myorderapp_square/src/model/category_entity.dart';
+import 'package:myorderapp_square/src/model/category_paginated_response.dart';
+import 'package:myorderapp_square/src/model/category_patch_body.dart';
+import 'package:myorderapp_square/src/model/item_entity.dart';
+import 'package:myorderapp_square/src/model/item_paginated_response.dart';
+import 'package:myorderapp_square/src/model/item_patch_body.dart';
+import 'package:myorderapp_square/src/model/items_patch_body.dart';
+import 'package:myorderapp_square/src/model/variation_entity.dart';
+import 'package:myorderapp_square/src/model/variation_patch_body.dart';
 
 class CatalogsApi {
   final Dio _dio;
@@ -397,9 +396,9 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Item] as data
+  /// Returns a [Future] containing a [Response] with a [ItemEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Item>> getItem({
+  Future<Response<ItemEntity>> getItem({
     required String id,
     String? locationId,
     String? xCustomLang,
@@ -449,13 +448,14 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Item? _responseData;
+    ItemEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Item, Item>(rawData, 'Item', growable: true);
+          : deserialize<ItemEntity, ItemEntity>(rawData, 'ItemEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -466,7 +466,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<Item>(
+    return Response<ItemEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -492,9 +492,9 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [List<Variation>] as data
+  /// Returns a [Future] containing a [Response] with a [List<VariationEntity>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Variation>>> getVariationsForItem({
+  Future<Response<List<VariationEntity>>> getVariationsForItem({
     required String id,
     String? locationId,
     String? xCustomLang,
@@ -545,13 +545,14 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    List<Variation>? _responseData;
+    List<VariationEntity>? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<List<Variation>, Variation>(rawData, 'List<Variation>',
+          : deserialize<List<VariationEntity>, VariationEntity>(
+              rawData, 'List<VariationEntity>',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -563,7 +564,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<List<Variation>>(
+    return Response<List<VariationEntity>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -579,7 +580,7 @@ class CatalogsApi {
   ///
   ///
   /// Parameters:
-  /// * [categoryUpdateAllDto]
+  /// * [categoriesPatchBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -588,10 +589,10 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [List<Category>] as data
+  /// Returns a [Future] containing a [Response] with a [List<CategoryEntity>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Category>>> patchCategories({
-    required List<CategoryUpdateAllDto> categoryUpdateAllDto,
+  Future<Response<List<CategoryEntity>>> patchCategories({
+    required List<CategoriesPatchBody> categoriesPatchBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -630,7 +631,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(categoryUpdateAllDto);
+      _bodyData = jsonEncode(categoriesPatchBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -652,13 +653,14 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    List<Category>? _responseData;
+    List<CategoryEntity>? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<List<Category>, Category>(rawData, 'List<Category>',
+          : deserialize<List<CategoryEntity>, CategoryEntity>(
+              rawData, 'List<CategoryEntity>',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -670,7 +672,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<List<Category>>(
+    return Response<List<CategoryEntity>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -687,7 +689,7 @@ class CatalogsApi {
   ///
   /// Parameters:
   /// * [id]
-  /// * [categoryUpdateDto]
+  /// * [categoryPatchBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -696,11 +698,11 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Category] as data
+  /// Returns a [Future] containing a [Response] with a [CategoryEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Category>> patchCategory({
+  Future<Response<CategoryEntity>> patchCategory({
     required String id,
-    required CategoryUpdateDto categoryUpdateDto,
+    required CategoryPatchBody categoryPatchBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -740,7 +742,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(categoryUpdateDto);
+      _bodyData = jsonEncode(categoryPatchBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -762,13 +764,14 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Category? _responseData;
+    CategoryEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Category, Category>(rawData, 'Category',
+          : deserialize<CategoryEntity, CategoryEntity>(
+              rawData, 'CategoryEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -780,7 +783,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<Category>(
+    return Response<CategoryEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -797,7 +800,7 @@ class CatalogsApi {
   ///
   /// Parameters:
   /// * [id]
-  /// * [itemUpdateDto]
+  /// * [itemPatchBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -806,11 +809,11 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Item] as data
+  /// Returns a [Future] containing a [Response] with a [ItemEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Item>> patchItem({
+  Future<Response<ItemEntity>> patchItem({
     required String id,
-    required ItemUpdateDto itemUpdateDto,
+    required ItemPatchBody itemPatchBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -849,7 +852,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(itemUpdateDto);
+      _bodyData = jsonEncode(itemPatchBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -871,13 +874,14 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Item? _responseData;
+    ItemEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Item, Item>(rawData, 'Item', growable: true);
+          : deserialize<ItemEntity, ItemEntity>(rawData, 'ItemEntity',
+              growable: true);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _response.requestOptions,
@@ -888,7 +892,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<Item>(
+    return Response<ItemEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -904,7 +908,7 @@ class CatalogsApi {
   ///
   ///
   /// Parameters:
-  /// * [itemUpdateAllDto]
+  /// * [itemsPatchBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -913,10 +917,10 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [List<Item>] as data
+  /// Returns a [Future] containing a [Response] with a [List<ItemEntity>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Item>>> patchItems({
-    required List<ItemUpdateAllDto> itemUpdateAllDto,
+  Future<Response<List<ItemEntity>>> patchItems({
+    required List<ItemsPatchBody> itemsPatchBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -955,7 +959,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(itemUpdateAllDto);
+      _bodyData = jsonEncode(itemsPatchBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -977,13 +981,14 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    List<Item>? _responseData;
+    List<ItemEntity>? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<List<Item>, Item>(rawData, 'List<Item>',
+          : deserialize<List<ItemEntity>, ItemEntity>(
+              rawData, 'List<ItemEntity>',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -995,7 +1000,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<List<Item>>(
+    return Response<List<ItemEntity>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -1022,9 +1027,9 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [CatalogImage] as data
+  /// Returns a [Future] containing a [Response] with a [CatalogImageEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CatalogImage>> postItemSquareImageUpload({
+  Future<Response<CatalogImageEntity>> postItemSquareImageUpload({
     required String idempotencyKey,
     required String id,
     String? xCustomLang,
@@ -1093,13 +1098,14 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    CatalogImage? _responseData;
+    CatalogImageEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<CatalogImage, CatalogImage>(rawData, 'CatalogImage',
+          : deserialize<CatalogImageEntity, CatalogImageEntity>(
+              rawData, 'CatalogImageEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -1111,7 +1117,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<CatalogImage>(
+    return Response<CatalogImageEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -1128,7 +1134,7 @@ class CatalogsApi {
   ///
   /// Parameters:
   /// * [id]
-  /// * [variationUpdateDto]
+  /// * [variationPatchBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -1137,11 +1143,11 @@ class CatalogsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Variation] as data
+  /// Returns a [Future] containing a [Response] with a [VariationEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Variation>> updateVariation({
+  Future<Response<VariationEntity>> updateVariation({
     required String id,
-    required VariationUpdateDto variationUpdateDto,
+    required VariationPatchBody variationPatchBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -1181,7 +1187,7 @@ class CatalogsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(variationUpdateDto);
+      _bodyData = jsonEncode(variationPatchBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -1203,13 +1209,14 @@ class CatalogsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Variation? _responseData;
+    VariationEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Variation, Variation>(rawData, 'Variation',
+          : deserialize<VariationEntity, VariationEntity>(
+              rawData, 'VariationEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -1221,7 +1228,7 @@ class CatalogsApi {
       );
     }
 
-    return Response<Variation>(
+    return Response<VariationEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

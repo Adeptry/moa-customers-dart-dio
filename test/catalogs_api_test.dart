@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:moa_customers_client/moa_customers_client.dart';
+import 'package:myorderapp_square/myorderapp_square.dart';
 
 
 /// tests for CatalogsApi
 void main() {
-  final instance = MoaCustomersClient().getCatalogsApi();
+  final instance = MyorderappSquare().getCatalogsApi();
 
   group(CatalogsApi, () {
     // Get Categories for Merchant ID with Items, Variations, and/or ModifierLists
@@ -30,56 +30,56 @@ void main() {
 
     // Get Item with ID
     //
-    //Future<Item> getItem(String id, { String locationId, String xCustomLang }) async
+    //Future<ItemEntity> getItem(String id, { String locationId, String xCustomLang }) async
     test('test getItem', () async {
       // TODO
     });
 
     // Get Item variations with ID
     //
-    //Future<List<Variation>> getVariationsForItem(String id, { String locationId, String xCustomLang }) async
+    //Future<List<VariationEntity>> getVariationsForItem(String id, { String locationId, String xCustomLang }) async
     test('test getVariationsForItem', () async {
       // TODO
     });
 
     // Update multiple Categories
     //
-    //Future<List<Category>> patchCategories(List<CategoryUpdateAllDto> categoryUpdateAllDto, { String xCustomLang }) async
+    //Future<List<CategoryEntity>> patchCategories(List<CategoriesPatchBody> categoriesPatchBody, { String xCustomLang }) async
     test('test patchCategories', () async {
       // TODO
     });
 
     // Update a Category
     //
-    //Future<Category> patchCategory(String id, CategoryUpdateDto categoryUpdateDto, { String xCustomLang }) async
+    //Future<CategoryEntity> patchCategory(String id, CategoryPatchBody categoryPatchBody, { String xCustomLang }) async
     test('test patchCategory', () async {
       // TODO
     });
 
     // Update an Item
     //
-    //Future<Item> patchItem(String id, ItemUpdateDto itemUpdateDto, { String xCustomLang }) async
+    //Future<ItemEntity> patchItem(String id, ItemPatchBody itemPatchBody, { String xCustomLang }) async
     test('test patchItem', () async {
       // TODO
     });
 
     // Update multiple Items
     //
-    //Future<List<Item>> patchItems(List<ItemUpdateAllDto> itemUpdateAllDto, { String xCustomLang }) async
+    //Future<List<ItemEntity>> patchItems(List<ItemsPatchBody> itemsPatchBody, { String xCustomLang }) async
     test('test patchItems', () async {
       // TODO
     });
 
     // Upload Square Catalog Image
     //
-    //Future<CatalogImage> postItemSquareImageUpload(String idempotencyKey, String id, { String xCustomLang, MultipartFile file }) async
+    //Future<CatalogImageEntity> postItemSquareImageUpload(String idempotencyKey, String id, { String xCustomLang, MultipartFile file }) async
     test('test postItemSquareImageUpload', () async {
       // TODO
     });
 
     // Update an Variation
     //
-    //Future<Variation> updateVariation(String id, VariationUpdateDto variationUpdateDto, { String xCustomLang }) async
+    //Future<VariationEntity> updateVariation(String id, VariationPatchBody variationPatchBody, { String xCustomLang }) async
     test('test updateVariation', () async {
       // TODO
     });

@@ -1,8 +1,8 @@
-# moa_customers_client.model.SquareError
+# myorderapp_square.model.SquareError
 
 ## Load the model package
 ```dart
-import 'package:moa_customers_client/api.dart';
+import 'package:myorderapp_square/api.dart';
 ```
 
 ## Properties

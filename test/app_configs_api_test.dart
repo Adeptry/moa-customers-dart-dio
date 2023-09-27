@@ -1,36 +1,36 @@
 import 'package:test/test.dart';
-import 'package:moa_customers_client/moa_customers_client.dart';
+import 'package:myorderapp_square/myorderapp_square.dart';
 
 
 /// tests for AppConfigsApi
 void main() {
-  final instance = MoaCustomersClient().getAppConfigsApi();
+  final instance = MyorderappSquare().getAppConfigsApi();
 
   group(AppConfigsApi, () {
     // Get Config for Merchant ID
     //
-    //Future<AppConfig> getAppConfig(String merchantIdOrPath, { String xCustomLang }) async
+    //Future<AppConfigEntity> getAppConfig(String merchantIdOrPath, { String xCustomLang }) async
     test('test getAppConfig', () async {
       // TODO
     });
 
     // Get your Config
     //
-    //Future<AppConfig> getAppConfigMe({ String merchantIdOrPath, String actingAs, String xCustomLang }) async
+    //Future<AppConfigEntity> getAppConfigMe({ String merchantIdOrPath, String actingAs, String xCustomLang }) async
     test('test getAppConfigMe', () async {
       // TODO
     });
 
     // Update your Config
     //
-    //Future<AppConfig> patchAppConfigMe(AppConfigUpdateDto appConfigUpdateDto, { String xCustomLang }) async
+    //Future<AppConfigEntity> patchAppConfigMe(AppConfigUpdateBody appConfigUpdateBody, { String xCustomLang }) async
     test('test patchAppConfigMe', () async {
       // TODO
     });
 
     // Create your Config
     //
-    //Future<AppConfig> postAppConfigMe(AppConfigUpdateDto appConfigUpdateDto, { String xCustomLang }) async
+    //Future<AppConfigEntity> postAppConfigMe(AppConfigUpdateBody appConfigUpdateBody, { String xCustomLang }) async
     test('test postAppConfigMe', () async {
       // TODO
     });

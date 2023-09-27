@@ -3,16 +3,15 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/app_install_update_dto.dart';
-import 'package:moa_customers_client/src/model/customer.dart';
-import 'package:moa_customers_client/src/model/customer_update_dto.dart';
-import 'package:moa_customers_client/src/model/customers_paginated_response.dart';
+import 'package:dio/dio.dart';
+import 'package:myorderapp_square/src/deserialize.dart';
+import 'package:myorderapp_square/src/model/app_install_post_body.dart';
+import 'package:myorderapp_square/src/model/customer_entity.dart';
+import 'package:myorderapp_square/src/model/customer_patch_body.dart';
+import 'package:myorderapp_square/src/model/customers_paginated_response.dart';
 
 class CustomersApi {
   final Dio _dio;
@@ -28,6 +27,7 @@ class CustomersApi {
   /// * [merchant]
   /// * [currentOrder]
   /// * [preferredLocation]
+  /// * [preferredSquareCard]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -36,14 +36,15 @@ class CustomersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Customer] as data
+  /// Returns a [Future] containing a [Response] with a [CustomerEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Customer>> getCustomerMe({
+  Future<Response<CustomerEntity>> getCustomerMe({
     required String merchantIdOrPath,
     bool? user,
     bool? merchant,
     bool? currentOrder,
     bool? preferredLocation,
+    bool? preferredSquareCard,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -83,6 +84,8 @@ class CustomersApi {
       if (merchant != null) r'merchant': merchant,
       if (currentOrder != null) r'currentOrder': currentOrder,
       if (preferredLocation != null) r'preferredLocation': preferredLocation,
+      if (preferredSquareCard != null)
+        r'preferredSquareCard': preferredSquareCard,
       r'merchantIdOrPath': merchantIdOrPath,
     };
 
@@ -95,13 +98,14 @@ class CustomersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Customer? _responseData;
+    CustomerEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Customer, Customer>(rawData, 'Customer',
+          : deserialize<CustomerEntity, CustomerEntity>(
+              rawData, 'CustomerEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -113,7 +117,7 @@ class CustomersApi {
       );
     }
 
-    return Response<Customer>(
+    return Response<CustomerEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -131,6 +135,10 @@ class CustomersApi {
   /// Parameters:
   /// * [page]
   /// * [limit]
+  /// * [user]
+  /// * [merchant]
+  /// * [currentOrder]
+  /// * [preferredLocation]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -144,6 +152,10 @@ class CustomersApi {
   Future<Response<CustomersPaginatedResponse>> getManyCustomers({
     num? page,
     num? limit,
+    bool? user,
+    bool? merchant,
+    bool? currentOrder,
+    bool? preferredLocation,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -181,6 +193,10 @@ class CustomersApi {
     final _queryParameters = <String, dynamic>{
       if (page != null) r'page': page,
       if (limit != null) r'limit': limit,
+      if (user != null) r'user': user,
+      if (merchant != null) r'merchant': merchant,
+      if (currentOrder != null) r'currentOrder': currentOrder,
+      if (preferredLocation != null) r'preferredLocation': preferredLocation,
     };
 
     final _response = await _dio.request<Object>(
@@ -228,7 +244,12 @@ class CustomersApi {
   ///
   /// Parameters:
   /// * [merchantIdOrPath]
-  /// * [customerUpdateDto]
+  /// * [customerPatchBody]
+  /// * [user]
+  /// * [merchant]
+  /// * [currentOrder]
+  /// * [preferredLocation]
+  /// * [preferredSquareCard]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -237,11 +258,16 @@ class CustomersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Customer] as data
+  /// Returns a [Future] containing a [Response] with a [CustomerEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Customer>> patchCustomerMe({
+  Future<Response<CustomerEntity>> patchCustomerMe({
     required String merchantIdOrPath,
-    required CustomerUpdateDto customerUpdateDto,
+    required CustomerPatchBody customerPatchBody,
+    bool? user,
+    bool? merchant,
+    bool? currentOrder,
+    bool? preferredLocation,
+    bool? preferredSquareCard,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -278,13 +304,19 @@ class CustomersApi {
     );
 
     final _queryParameters = <String, dynamic>{
+      if (user != null) r'user': user,
+      if (merchant != null) r'merchant': merchant,
+      if (currentOrder != null) r'currentOrder': currentOrder,
+      if (preferredLocation != null) r'preferredLocation': preferredLocation,
+      if (preferredSquareCard != null)
+        r'preferredSquareCard': preferredSquareCard,
       r'merchantIdOrPath': merchantIdOrPath,
     };
 
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(customerUpdateDto);
+      _bodyData = jsonEncode(customerPatchBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -308,13 +340,14 @@ class CustomersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Customer? _responseData;
+    CustomerEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Customer, Customer>(rawData, 'Customer',
+          : deserialize<CustomerEntity, CustomerEntity>(
+              rawData, 'CustomerEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -326,7 +359,7 @@ class CustomersApi {
       );
     }
 
-    return Response<Customer>(
+    return Response<CustomerEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -343,6 +376,10 @@ class CustomersApi {
   ///
   /// Parameters:
   /// * [merchantIdOrPath]
+  /// * [user]
+  /// * [merchant]
+  /// * [currentOrder]
+  /// * [preferredLocation]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -351,10 +388,14 @@ class CustomersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Customer] as data
+  /// Returns a [Future] containing a [Response] with a [CustomerEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Customer>> postCustomerMe({
+  Future<Response<CustomerEntity>> postCustomerMe({
     required String merchantIdOrPath,
+    bool? user,
+    bool? merchant,
+    bool? currentOrder,
+    bool? preferredLocation,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -391,6 +432,10 @@ class CustomersApi {
 
     final _queryParameters = <String, dynamic>{
       r'merchantIdOrPath': merchantIdOrPath,
+      if (user != null) r'user': user,
+      if (merchant != null) r'merchant': merchant,
+      if (currentOrder != null) r'currentOrder': currentOrder,
+      if (preferredLocation != null) r'preferredLocation': preferredLocation,
     };
 
     final _response = await _dio.request<Object>(
@@ -402,13 +447,14 @@ class CustomersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Customer? _responseData;
+    CustomerEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Customer, Customer>(rawData, 'Customer',
+          : deserialize<CustomerEntity, CustomerEntity>(
+              rawData, 'CustomerEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -420,7 +466,7 @@ class CustomersApi {
       );
     }
 
-    return Response<Customer>(
+    return Response<CustomerEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -437,7 +483,7 @@ class CustomersApi {
   ///
   /// Parameters:
   /// * [merchantIdOrPath]
-  /// * [appInstallUpdateDto]
+  /// * [appInstallPostBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -450,7 +496,7 @@ class CustomersApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<void>> updateAppInstallMe({
     required String merchantIdOrPath,
-    required AppInstallUpdateDto appInstallUpdateDto,
+    required AppInstallPostBody appInstallPostBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -493,7 +539,7 @@ class CustomersApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(appInstallUpdateDto);
+      _bodyData = jsonEncode(appInstallPostBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(

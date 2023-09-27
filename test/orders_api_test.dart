@@ -1,15 +1,15 @@
 import 'package:test/test.dart';
-import 'package:moa_customers_client/moa_customers_client.dart';
+import 'package:myorderapp_square/myorderapp_square.dart';
 
 
 /// tests for OrdersApi
 void main() {
-  final instance = MoaCustomersClient().getOrdersApi();
+  final instance = MyorderappSquare().getOrdersApi();
 
   group(OrdersApi, () {
     // Remove Line Items from Order
     //
-    //Future<Order> deleteLineItemCurrent(String id, String merchantIdOrPath, { bool lineItems, bool location, String xCustomLang }) async
+    //Future<OrderEntity> deleteLineItemCurrent(String id, String merchantIdOrPath, { bool lineItems, bool location, String xCustomLang }) async
     test('test deleteLineItemCurrent', () async {
       // TODO
     });
@@ -23,14 +23,14 @@ void main() {
 
     // Get Order
     //
-    //Future<Order> getOrder(String id, { bool lineItems, bool location, String actingAs, String merchantIdOrPath, String xCustomLang }) async
+    //Future<OrderEntity> getOrder(String id, { bool lineItems, bool location, String actingAs, String merchantIdOrPath, String xCustomLang }) async
     test('test getOrder', () async {
       // TODO
     });
 
     // Get current Order
     //
-    //Future<Order> getOrderCurrent(String merchantIdOrPath, { bool lineItems, bool location, String xCustomLang }) async
+    //Future<OrderEntity> getOrderCurrent(String merchantIdOrPath, { bool lineItems, bool location, String xCustomLang }) async
     test('test getOrderCurrent', () async {
       // TODO
     });
@@ -44,28 +44,28 @@ void main() {
 
     // Patch update Order, e.g. modify Location
     //
-    //Future<Order> patchOrderCurrent(OrderPatchDto orderPatchDto, { bool lineItems, bool location, String idempotencyKey, String merchantIdOrPath, String xCustomLang }) async
+    //Future<OrderEntity> patchOrderCurrent(OrderPatchBody orderPatchBody, { bool lineItems, bool location, String idempotencyKey, String merchantIdOrPath, String xCustomLang }) async
     test('test patchOrderCurrent', () async {
       // TODO
     });
 
     // Create Order
     //
-    //Future<Order> postOrder(String merchantIdOrPath, OrderCreateDto orderCreateDto, { bool lineItems, bool location, String xCustomLang }) async
+    //Future<OrderEntity> postOrder(String merchantIdOrPath, OrderPostBody orderPostBody, { bool lineItems, bool location, String xCustomLang }) async
     test('test postOrder', () async {
       // TODO
     });
 
     // Post update Order, e.g. add Variations & Modifiers in Line Items
     //
-    //Future<Order> postOrderCurrent(String merchantIdOrPath, OrderPostDto orderPostDto, { bool lineItems, bool location, String idempotencyKey, String xCustomLang }) async
+    //Future<OrderEntity> postOrderCurrent(String merchantIdOrPath, OrderPostCurrentBody orderPostCurrentBody, { bool lineItems, bool location, String idempotencyKey, String xCustomLang }) async
     test('test postOrderCurrent', () async {
       // TODO
     });
 
     // Pay for Order
     //
-    //Future<Order> postSquarePaymentOrderCurrent(String merchantIdOrPath, PaymentCreateDto paymentCreateDto, { bool lineItems, bool location, String xCustomLang }) async
+    //Future<OrderEntity> postSquarePaymentOrderCurrent(String merchantIdOrPath, OrdersPostPaymentBody ordersPostPaymentBody, { bool lineItems, bool location, String xCustomLang }) async
     test('test postSquarePaymentOrderCurrent', () async {
       // TODO
     });

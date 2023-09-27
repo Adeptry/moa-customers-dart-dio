@@ -3,16 +3,15 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/create_card_dto.dart';
-import 'package:moa_customers_client/src/model/square_card.dart';
-import 'package:moa_customers_client/src/model/square_disable_card_response.dart';
-import 'package:moa_customers_client/src/model/square_list_cards_response.dart';
+import 'package:dio/dio.dart';
+import 'package:myorderapp_square/src/deserialize.dart';
+import 'package:myorderapp_square/src/model/cards_post_body.dart';
+import 'package:myorderapp_square/src/model/square_card.dart';
+import 'package:myorderapp_square/src/model/square_disable_card_response.dart';
+import 'package:myorderapp_square/src/model/square_list_cards_response.dart';
 
 class CardsApi {
   final Dio _dio;
@@ -220,7 +219,7 @@ class CardsApi {
   ///
   /// Parameters:
   /// * [merchantIdOrPath]
-  /// * [createCardDto]
+  /// * [cardsPostBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -233,7 +232,7 @@ class CardsApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<SquareCard>> postCardsMe({
     required String merchantIdOrPath,
-    required CreateCardDto createCardDto,
+    required CardsPostBody cardsPostBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -276,7 +275,7 @@ class CardsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(createCardDto);
+      _bodyData = jsonEncode(cardsPostBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(

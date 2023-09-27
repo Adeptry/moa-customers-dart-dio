@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:moa_customers_client/moa_customers_client.dart';
+import 'package:myorderapp_square/myorderapp_square.dart';
 
 // tests for LocationPaginatedResponse
 void main() {
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // List<Location> data
+    // List<LocationEntity> data
     test('to test the property `data`', () async {
       // TODO
     });

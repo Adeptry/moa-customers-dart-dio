@@ -19,8 +19,8 @@ class SquareCard {
     this.bin,
     this.cardBrand,
     this.cardCoBrand,
-    this.cardholderName,
     this.cardType,
+    this.cardholderName,
     this.enabled,
     this.expMonth,
     this.expYear,
@@ -40,11 +40,11 @@ class SquareCard {
   @JsonKey(name: r'cardCoBrand', required: false, includeIfNull: false)
   final String? cardCoBrand;
 
-  @JsonKey(name: r'cardholderName', required: false, includeIfNull: false)
-  final String? cardholderName;
-
   @JsonKey(name: r'cardType', required: false, includeIfNull: false)
   final String? cardType;
+
+  @JsonKey(name: r'cardholderName', required: false, includeIfNull: false)
+  final String? cardholderName;
 
   @JsonKey(name: r'enabled', required: false, includeIfNull: false)
   final bool? enabled;
@@ -77,8 +77,8 @@ class SquareCard {
           other.bin == bin &&
           other.cardBrand == cardBrand &&
           other.cardCoBrand == cardCoBrand &&
-          other.cardholderName == cardholderName &&
           other.cardType == cardType &&
+          other.cardholderName == cardholderName &&
           other.enabled == enabled &&
           other.expMonth == expMonth &&
           other.expYear == expYear &&
@@ -93,8 +93,8 @@ class SquareCard {
       (bin == null ? 0 : bin.hashCode) +
       (cardBrand == null ? 0 : cardBrand.hashCode) +
       (cardCoBrand == null ? 0 : cardCoBrand.hashCode) +
-      (cardholderName == null ? 0 : cardholderName.hashCode) +
       (cardType == null ? 0 : cardType.hashCode) +
+      (cardholderName == null ? 0 : cardholderName.hashCode) +
       (enabled == null ? 0 : enabled.hashCode) +
       (expMonth == null ? 0 : expMonth.hashCode) +
       (expYear == null ? 0 : expYear.hashCode) +

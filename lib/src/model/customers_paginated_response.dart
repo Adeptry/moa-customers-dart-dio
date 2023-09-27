@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:moa_customers_client/src/model/customer.dart';
+import 'package:myorderapp_square/src/model/customer_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'customers_paginated_response.g.dart';
@@ -26,7 +26,7 @@ class CustomersPaginatedResponse {
   final num count;
 
   @JsonKey(name: r'data', required: false, includeIfNull: false)
-  final List<Customer>? data;
+  final List<CustomerEntity>? data;
 
   @JsonKey(name: r'pages', required: true, includeIfNull: false)
   final num pages;

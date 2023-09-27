@@ -3,24 +3,25 @@
 //
 
 import 'package:dio/dio.dart';
-import 'package:moa_customers_client/src/auth/api_key_auth.dart';
-import 'package:moa_customers_client/src/auth/basic_auth.dart';
-import 'package:moa_customers_client/src/auth/bearer_auth.dart';
-import 'package:moa_customers_client/src/auth/oauth.dart';
-import 'package:moa_customers_client/src/api/app_configs_api.dart';
-import 'package:moa_customers_client/src/api/authentication_api.dart';
-import 'package:moa_customers_client/src/api/cards_api.dart';
-import 'package:moa_customers_client/src/api/catalogs_api.dart';
-import 'package:moa_customers_client/src/api/customers_api.dart';
-import 'package:moa_customers_client/src/api/locations_api.dart';
-import 'package:moa_customers_client/src/api/orders_api.dart';
-import 'package:moa_customers_client/src/api/users_api.dart';
+import 'package:myorderapp_square/src/api/app_configs_api.dart';
+import 'package:myorderapp_square/src/api/authentication_api.dart';
+import 'package:myorderapp_square/src/api/cards_api.dart';
+import 'package:myorderapp_square/src/api/catalogs_api.dart';
+import 'package:myorderapp_square/src/api/customers_api.dart';
+import 'package:myorderapp_square/src/api/locations_api.dart';
+import 'package:myorderapp_square/src/api/merchants_api.dart';
+import 'package:myorderapp_square/src/api/orders_api.dart';
+import 'package:myorderapp_square/src/api/users_api.dart';
+import 'package:myorderapp_square/src/auth/api_key_auth.dart';
+import 'package:myorderapp_square/src/auth/basic_auth.dart';
+import 'package:myorderapp_square/src/auth/bearer_auth.dart';
+import 'package:myorderapp_square/src/auth/oauth.dart';
 
-class MoaCustomersClient {
+class MyorderappSquare {
   static const String basePath = r'https://api.myorderapp.dev';
 
   final Dio dio;
-  MoaCustomersClient({
+  MyorderappSquare({
     Dio? dio,
     String? basePathOverride,
     List<Interceptor>? interceptors,
@@ -111,6 +112,12 @@ class MoaCustomersClient {
   /// by doing that all interceptors will not be executed
   LocationsApi getLocationsApi() {
     return LocationsApi(dio);
+  }
+
+  /// Get MerchantsApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  MerchantsApi getMerchantsApi() {
+    return MerchantsApi(dio);
   }
 
   /// Get OrdersApi instance, base route and serializer can be overridden by a given but be careful,

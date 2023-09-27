@@ -6,13 +6,13 @@ import 'dart:async';
 
 // ignore: unused_import
 import 'dart:convert';
-import 'package:moa_customers_client/src/deserialize.dart';
+import 'package:myorderapp_square/src/deserialize.dart';
 import 'package:dio/dio.dart';
 
-import 'package:moa_customers_client/src/model/location.dart';
-import 'package:moa_customers_client/src/model/location_paginated_response.dart';
-import 'package:moa_customers_client/src/model/location_update_all_dto.dart';
-import 'package:moa_customers_client/src/model/location_update_dto.dart';
+import 'package:myorderapp_square/src/model/location_entity.dart';
+import 'package:myorderapp_square/src/model/location_paginated_response.dart';
+import 'package:myorderapp_square/src/model/location_patch_body.dart';
+import 'package:myorderapp_square/src/model/locations_patch_body.dart';
 
 class LocationsApi {
   final Dio _dio;
@@ -34,9 +34,9 @@ class LocationsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Location] as data
+  /// Returns a [Future] containing a [Response] with a [LocationEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Location>> getLocation({
+  Future<Response<LocationEntity>> getLocation({
     required String id,
     required String actingAs,
     String? merchantIdOrPath,
@@ -89,13 +89,14 @@ class LocationsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Location? _responseData;
+    LocationEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Location, Location>(rawData, 'Location',
+          : deserialize<LocationEntity, LocationEntity>(
+              rawData, 'LocationEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -107,7 +108,7 @@ class LocationsApi {
       );
     }
 
-    return Response<Location>(
+    return Response<LocationEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -233,7 +234,7 @@ class LocationsApi {
   ///
   ///
   /// Parameters:
-  /// * [locationUpdateAllDto]
+  /// * [locationsPatchBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -242,10 +243,10 @@ class LocationsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [List<Location>] as data
+  /// Returns a [Future] containing a [Response] with a [List<LocationEntity>] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<List<Location>>> patchManyLocations({
-    required List<LocationUpdateAllDto> locationUpdateAllDto,
+  Future<Response<List<LocationEntity>>> patchManyLocations({
+    required List<LocationsPatchBody> locationsPatchBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -284,7 +285,7 @@ class LocationsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(locationUpdateAllDto);
+      _bodyData = jsonEncode(locationsPatchBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -306,13 +307,14 @@ class LocationsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    List<Location>? _responseData;
+    List<LocationEntity>? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<List<Location>, Location>(rawData, 'List<Location>',
+          : deserialize<List<LocationEntity>, LocationEntity>(
+              rawData, 'List<LocationEntity>',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -324,7 +326,7 @@ class LocationsApi {
       );
     }
 
-    return Response<List<Location>>(
+    return Response<List<LocationEntity>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -341,7 +343,7 @@ class LocationsApi {
   ///
   /// Parameters:
   /// * [id]
-  /// * [locationUpdateDto]
+  /// * [locationPatchBody]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -350,11 +352,11 @@ class LocationsApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [Location] as data
+  /// Returns a [Future] containing a [Response] with a [LocationEntity] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<Location>> patchOneLocation({
+  Future<Response<LocationEntity>> patchOneLocation({
     required String id,
-    required LocationUpdateDto locationUpdateDto,
+    required LocationPatchBody locationPatchBody,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -394,7 +396,7 @@ class LocationsApi {
     dynamic _bodyData;
 
     try {
-      _bodyData = jsonEncode(locationUpdateDto);
+      _bodyData = jsonEncode(locationPatchBody);
     } catch (error, stackTrace) {
       throw DioException(
         requestOptions: _options.compose(
@@ -416,13 +418,14 @@ class LocationsApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    Location? _responseData;
+    LocationEntity? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<Location, Location>(rawData, 'Location',
+          : deserialize<LocationEntity, LocationEntity>(
+              rawData, 'LocationEntity',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -434,7 +437,7 @@ class LocationsApi {
       );
     }
 
-    return Response<Location>(
+    return Response<LocationEntity>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

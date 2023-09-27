@@ -1,56 +1,60 @@
-import 'package:moa_customers_client/src/model/address.dart';
-import 'package:moa_customers_client/src/model/app_config.dart';
-import 'package:moa_customers_client/src/model/app_config_update_dto.dart';
-import 'package:moa_customers_client/src/model/app_install_update_dto.dart';
-import 'package:moa_customers_client/src/model/auth_apple_login_dto.dart';
-import 'package:moa_customers_client/src/model/auth_confirm_email_dto.dart';
-import 'package:moa_customers_client/src/model/auth_email_login_dto.dart';
-import 'package:moa_customers_client/src/model/auth_forgot_password_dto.dart';
-import 'package:moa_customers_client/src/model/auth_google_login_dto.dart';
-import 'package:moa_customers_client/src/model/auth_register_login_dto.dart';
-import 'package:moa_customers_client/src/model/auth_reset_password_dto.dart';
-import 'package:moa_customers_client/src/model/auth_update_dto.dart';
-import 'package:moa_customers_client/src/model/business_hours_period.dart';
-import 'package:moa_customers_client/src/model/catalog_image.dart';
-import 'package:moa_customers_client/src/model/category.dart';
-import 'package:moa_customers_client/src/model/category_paginated_response.dart';
-import 'package:moa_customers_client/src/model/category_update_all_dto.dart';
-import 'package:moa_customers_client/src/model/category_update_dto.dart';
-import 'package:moa_customers_client/src/model/create_card_dto.dart';
-import 'package:moa_customers_client/src/model/customer.dart';
-import 'package:moa_customers_client/src/model/customer_update_dto.dart';
-import 'package:moa_customers_client/src/model/customers_paginated_response.dart';
-import 'package:moa_customers_client/src/model/error_response.dart';
-import 'package:moa_customers_client/src/model/file_entity.dart';
-import 'package:moa_customers_client/src/model/item.dart';
-import 'package:moa_customers_client/src/model/item_modifier_list.dart';
-import 'package:moa_customers_client/src/model/item_paginated_response.dart';
-import 'package:moa_customers_client/src/model/item_update_all_dto.dart';
-import 'package:moa_customers_client/src/model/item_update_dto.dart';
-import 'package:moa_customers_client/src/model/line_item.dart';
-import 'package:moa_customers_client/src/model/line_item_modifier.dart';
-import 'package:moa_customers_client/src/model/location.dart';
-import 'package:moa_customers_client/src/model/location_paginated_response.dart';
-import 'package:moa_customers_client/src/model/location_update_all_dto.dart';
-import 'package:moa_customers_client/src/model/location_update_dto.dart';
-import 'package:moa_customers_client/src/model/login_response_type.dart';
-import 'package:moa_customers_client/src/model/modifier.dart';
-import 'package:moa_customers_client/src/model/modifier_list.dart';
-import 'package:moa_customers_client/src/model/order.dart';
-import 'package:moa_customers_client/src/model/order_create_dto.dart';
-import 'package:moa_customers_client/src/model/order_patch_dto.dart';
-import 'package:moa_customers_client/src/model/order_post_dto.dart';
-import 'package:moa_customers_client/src/model/orders_paginated_reponse.dart';
-import 'package:moa_customers_client/src/model/payment_create_dto.dart';
-import 'package:moa_customers_client/src/model/square_card.dart';
-import 'package:moa_customers_client/src/model/square_disable_card_response.dart';
-import 'package:moa_customers_client/src/model/square_error.dart';
-import 'package:moa_customers_client/src/model/square_list_cards_response.dart';
-import 'package:moa_customers_client/src/model/user.dart';
-import 'package:moa_customers_client/src/model/user_update_dto.dart';
-import 'package:moa_customers_client/src/model/variation.dart';
-import 'package:moa_customers_client/src/model/variation_add_dto.dart';
-import 'package:moa_customers_client/src/model/variation_update_dto.dart';
+import 'model/address_entity.dart';
+import 'model/app_config_entity.dart';
+import 'model/app_config_update_body.dart';
+import 'model/app_install_post_body.dart';
+import 'model/authentication_email_confirm_request_body.dart';
+import 'model/authentication_email_login_request_body.dart';
+import 'model/authentication_email_register_request_body.dart';
+import 'model/authentication_password_forgot_request_body.dart';
+import 'model/authentication_password_reset_request_body.dart';
+import 'model/authentication_response.dart';
+import 'model/authentication_update_request_body.dart';
+import 'model/business_hours_period_entity.dart';
+import 'model/cards_post_body.dart';
+import 'model/catalog_entity.dart';
+import 'model/catalog_image_entity.dart';
+import 'model/categories_patch_body.dart';
+import 'model/category_entity.dart';
+import 'model/category_paginated_response.dart';
+import 'model/category_patch_body.dart';
+import 'model/customer_entity.dart';
+import 'model/customer_patch_body.dart';
+import 'model/customers_paginated_response.dart';
+import 'model/error_response.dart';
+import 'model/fulfillment_recipient_input.dart';
+import 'model/item_entity.dart';
+import 'model/item_modifier_list_entity.dart';
+import 'model/item_paginated_response.dart';
+import 'model/item_patch_body.dart';
+import 'model/items_patch_body.dart';
+import 'model/line_item_entity.dart';
+import 'model/line_item_modifier_entity.dart';
+import 'model/location_entity.dart';
+import 'model/location_paginated_response.dart';
+import 'model/location_patch_body.dart';
+import 'model/locations_patch_body.dart';
+import 'model/merchant_entity.dart';
+import 'model/modifier_entity.dart';
+import 'model/modifier_list_entity.dart';
+import 'model/order_entity.dart';
+import 'model/order_patch_body.dart';
+import 'model/order_post_body.dart';
+import 'model/order_post_current_body.dart';
+import 'model/orders_paginated_reponse.dart';
+import 'model/orders_post_payment_body.dart';
+import 'model/orders_variation_line_item_input.dart';
+import 'model/square_card.dart';
+import 'model/square_disable_card_response.dart';
+import 'model/square_error.dart';
+import 'model/square_list_cards_response.dart';
+import 'model/square_post_oauth_body.dart';
+import 'model/stripe_billing_session_response.dart';
+import 'model/stripe_post_checkout_body.dart';
+import 'model/stripe_post_checkout_response.dart';
+import 'model/user_entity.dart';
+import 'model/user_patch_body.dart';
+import 'model/variation_entity.dart';
+import 'model/variation_patch_body.dart';
 
 final _regList = RegExp(r'^List<(.*)>$');
 final _regSet = RegExp(r'^Set<(.*)>$');
@@ -71,63 +75,68 @@ ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
       return (valueString == 'true' || valueString == '1') as ReturnType;
     case 'double':
       return (value is double ? value : double.parse('$value')) as ReturnType;
-    case 'Address':
-      return Address.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'AppConfig':
-      return AppConfig.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'AppConfigUpdateDto':
-      return AppConfigUpdateDto.fromJson(value as Map<String, dynamic>)
+    case 'AddressEntity':
+      return AddressEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'AppInstallUpdateDto':
-      return AppInstallUpdateDto.fromJson(value as Map<String, dynamic>)
+    case 'AppConfigEntity':
+      return AppConfigEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'AuthAppleLoginDto':
-      return AuthAppleLoginDto.fromJson(value as Map<String, dynamic>)
+    case 'AppConfigUpdateBody':
+      return AppConfigUpdateBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'AuthConfirmEmailDto':
-      return AuthConfirmEmailDto.fromJson(value as Map<String, dynamic>)
+    case 'AppInstallPostBody':
+      return AppInstallPostBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'AuthEmailLoginDto':
-      return AuthEmailLoginDto.fromJson(value as Map<String, dynamic>)
+    case 'AuthenticationEmailConfirmRequestBody':
+      return AuthenticationEmailConfirmRequestBody.fromJson(
+          value as Map<String, dynamic>) as ReturnType;
+    case 'AuthenticationEmailLoginRequestBody':
+      return AuthenticationEmailLoginRequestBody.fromJson(
+          value as Map<String, dynamic>) as ReturnType;
+    case 'AuthenticationEmailRegisterRequestBody':
+      return AuthenticationEmailRegisterRequestBody.fromJson(
+          value as Map<String, dynamic>) as ReturnType;
+    case 'AuthenticationPasswordForgotRequestBody':
+      return AuthenticationPasswordForgotRequestBody.fromJson(
+          value as Map<String, dynamic>) as ReturnType;
+    case 'AuthenticationPasswordResetRequestBody':
+      return AuthenticationPasswordResetRequestBody.fromJson(
+          value as Map<String, dynamic>) as ReturnType;
+    case 'AuthenticationResponse':
+      return AuthenticationResponse.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'AuthForgotPasswordDto':
-      return AuthForgotPasswordDto.fromJson(value as Map<String, dynamic>)
+    case 'AuthenticationUpdateRequestBody':
+      return AuthenticationUpdateRequestBody.fromJson(
+          value as Map<String, dynamic>) as ReturnType;
+    case 'BusinessHoursPeriodEntity':
+      return BusinessHoursPeriodEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'AuthGoogleLoginDto':
-      return AuthGoogleLoginDto.fromJson(value as Map<String, dynamic>)
+    case 'CardsPostBody':
+      return CardsPostBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'AuthRegisterLoginDto':
-      return AuthRegisterLoginDto.fromJson(value as Map<String, dynamic>)
+    case 'CatalogEntity':
+      return CatalogEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'AuthResetPasswordDto':
-      return AuthResetPasswordDto.fromJson(value as Map<String, dynamic>)
+    case 'CatalogImageEntity':
+      return CatalogImageEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'AuthUpdateDto':
-      return AuthUpdateDto.fromJson(value as Map<String, dynamic>)
+    case 'CategoriesPatchBody':
+      return CategoriesPatchBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'BusinessHoursPeriod':
-      return BusinessHoursPeriod.fromJson(value as Map<String, dynamic>)
+    case 'CategoryEntity':
+      return CategoryEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'CatalogImage':
-      return CatalogImage.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'Category':
-      return Category.fromJson(value as Map<String, dynamic>) as ReturnType;
     case 'CategoryPaginatedResponse':
       return CategoryPaginatedResponse.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'CategoryUpdateAllDto':
-      return CategoryUpdateAllDto.fromJson(value as Map<String, dynamic>)
+    case 'CategoryPatchBody':
+      return CategoryPatchBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'CategoryUpdateDto':
-      return CategoryUpdateDto.fromJson(value as Map<String, dynamic>)
+    case 'CustomerEntity':
+      return CustomerEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'CreateCardDto':
-      return CreateCardDto.fromJson(value as Map<String, dynamic>)
-          as ReturnType;
-    case 'Customer':
-      return Customer.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'CustomerUpdateDto':
-      return CustomerUpdateDto.fromJson(value as Map<String, dynamic>)
+    case 'CustomerPatchBody':
+      return CustomerPatchBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'CustomersPaginatedResponse':
       return CustomersPaginatedResponse.fromJson(value as Map<String, dynamic>)
@@ -135,62 +144,71 @@ ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
     case 'ErrorResponse':
       return ErrorResponse.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'FileEntity':
-      return FileEntity.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'Item':
-      return Item.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'ItemModifierList':
-      return ItemModifierList.fromJson(value as Map<String, dynamic>)
+    case 'FulfillmentRecipientInput':
+      return FulfillmentRecipientInput.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'ItemEntity':
+      return ItemEntity.fromJson(value as Map<String, dynamic>) as ReturnType;
+    case 'ItemModifierListEntity':
+      return ItemModifierListEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'ItemPaginatedResponse':
       return ItemPaginatedResponse.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'ItemUpdateAllDto':
-      return ItemUpdateAllDto.fromJson(value as Map<String, dynamic>)
+    case 'ItemPatchBody':
+      return ItemPatchBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'ItemUpdateDto':
-      return ItemUpdateDto.fromJson(value as Map<String, dynamic>)
+    case 'ItemsPatchBody':
+      return ItemsPatchBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'LineItem':
-      return LineItem.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'LineItemModifier':
-      return LineItemModifier.fromJson(value as Map<String, dynamic>)
+    case 'LineItemEntity':
+      return LineItemEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'Location':
-      return Location.fromJson(value as Map<String, dynamic>) as ReturnType;
+    case 'LineItemModifierEntity':
+      return LineItemModifierEntity.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'LocationEntity':
+      return LocationEntity.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
     case 'LocationPaginatedResponse':
       return LocationPaginatedResponse.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'LocationUpdateAllDto':
-      return LocationUpdateAllDto.fromJson(value as Map<String, dynamic>)
+    case 'LocationPatchBody':
+      return LocationPatchBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'LocationUpdateDto':
-      return LocationUpdateDto.fromJson(value as Map<String, dynamic>)
+    case 'LocationsPatchBody':
+      return LocationsPatchBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'LoginResponseType':
-      return LoginResponseType.fromJson(value as Map<String, dynamic>)
+    case 'MerchantEntity':
+      return MerchantEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'MoaSelectionType':
-    case 'Modifier':
-      return Modifier.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'ModifierList':
-      return ModifierList.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'Order':
-      return Order.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'OrderCreateDto':
-      return OrderCreateDto.fromJson(value as Map<String, dynamic>)
+    case 'ModifierEntity':
+      return ModifierEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'OrderPatchDto':
-      return OrderPatchDto.fromJson(value as Map<String, dynamic>)
+    case 'ModifierListEntity':
+      return ModifierListEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'OrderPostDto':
-      return OrderPostDto.fromJson(value as Map<String, dynamic>) as ReturnType;
+    case 'OrderEntity':
+      return OrderEntity.fromJson(value as Map<String, dynamic>) as ReturnType;
+    case 'OrderPatchBody':
+      return OrderPatchBody.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'OrderPostBody':
+      return OrderPostBody.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'OrderPostCurrentBody':
+      return OrderPostCurrentBody.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
     case 'OrdersPaginatedReponse':
       return OrdersPaginatedReponse.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'PaymentCreateDto':
-      return PaymentCreateDto.fromJson(value as Map<String, dynamic>)
+    case 'OrdersPostPaymentBody':
+      return OrdersPostPaymentBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
+    case 'OrdersVariationLineItemInput':
+      return OrdersVariationLineItemInput.fromJson(
+          value as Map<String, dynamic>) as ReturnType;
     case 'SquareCard':
       return SquareCard.fromJson(value as Map<String, dynamic>) as ReturnType;
     case 'SquareDisableCardResponse':
@@ -201,19 +219,29 @@ ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
     case 'SquareListCardsResponse':
       return SquareListCardsResponse.fromJson(value as Map<String, dynamic>)
           as ReturnType;
+    case 'SquarePostOauthBody':
+      return SquarePostOauthBody.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'StripeBillingSessionResponse':
+      return StripeBillingSessionResponse.fromJson(
+          value as Map<String, dynamic>) as ReturnType;
+    case 'StripePostCheckoutBody':
+      return StripePostCheckoutBody.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'StripePostCheckoutResponse':
+      return StripePostCheckoutResponse.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
     case 'ThemeModeEnum':
-    case 'User':
-      return User.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'UserUpdateDto':
-      return UserUpdateDto.fromJson(value as Map<String, dynamic>)
+    case 'UserEntity':
+      return UserEntity.fromJson(value as Map<String, dynamic>) as ReturnType;
+    case 'UserPatchBody':
+      return UserPatchBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'Variation':
-      return Variation.fromJson(value as Map<String, dynamic>) as ReturnType;
-    case 'VariationAddDto':
-      return VariationAddDto.fromJson(value as Map<String, dynamic>)
+    case 'VariationEntity':
+      return VariationEntity.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'VariationUpdateDto':
-      return VariationUpdateDto.fromJson(value as Map<String, dynamic>)
+    case 'VariationPatchBody':
+      return VariationPatchBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     default:
       RegExpMatch? match;

@@ -3,7 +3,7 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:moa_customers_client/src/model/location.dart';
+import 'package:myorderapp_square/src/model/location_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'location_paginated_response.g.dart';
@@ -26,7 +26,7 @@ class LocationPaginatedResponse {
   final num count;
 
   @JsonKey(name: r'data', required: false, includeIfNull: false)
-  final List<Location>? data;
+  final List<LocationEntity>? data;
 
   @JsonKey(name: r'pages', required: true, includeIfNull: false)
   final num pages;

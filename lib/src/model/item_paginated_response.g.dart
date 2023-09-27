@@ -21,7 +21,7 @@ ItemPaginatedResponse _$ItemPaginatedResponseFromJson(
           data: $checkedConvert(
               'data',
               (v) => (v as List<dynamic>?)
-                  ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
+                  ?.map((e) => ItemEntity.fromJson(e as Map<String, dynamic>))
                   .toList()),
           pages: $checkedConvert('pages', (v) => v as num),
         );
