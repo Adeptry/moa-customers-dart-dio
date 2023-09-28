@@ -3,6 +3,10 @@
 //
 
 export 'package:myorderapp_square/src/api.dart';
+export 'package:myorderapp_square/src/auth/api_key_auth.dart';
+export 'package:myorderapp_square/src/auth/basic_auth.dart';
+export 'package:myorderapp_square/src/auth/oauth.dart';
+
 export 'package:myorderapp_square/src/api/app_configs_api.dart';
 export 'package:myorderapp_square/src/api/authentication_api.dart';
 export 'package:myorderapp_square/src/api/cards_api.dart';
@@ -12,9 +16,7 @@ export 'package:myorderapp_square/src/api/locations_api.dart';
 export 'package:myorderapp_square/src/api/merchants_api.dart';
 export 'package:myorderapp_square/src/api/orders_api.dart';
 export 'package:myorderapp_square/src/api/users_api.dart';
-export 'package:myorderapp_square/src/auth/api_key_auth.dart';
-export 'package:myorderapp_square/src/auth/basic_auth.dart';
-export 'package:myorderapp_square/src/auth/oauth.dart';
+
 export 'package:myorderapp_square/src/model/address_entity.dart';
 export 'package:myorderapp_square/src/model/app_config_entity.dart';
 export 'package:myorderapp_square/src/model/app_config_update_body.dart';

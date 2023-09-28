@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(ItemPatchBody, () {
-    // bool moaEnabled
-    test('to test the property `moaEnabled`', () async {
+    // num moaOrdinal
+    test('to test the property `moaOrdinal`', () async {
       // TODO
     });
 
-    // num moaOrdinal
-    test('to test the property `moaOrdinal`', () async {
+    // bool moaEnabled
+    test('to test the property `moaEnabled`', () async {
       // TODO
     });
 

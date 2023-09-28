@@ -3,11 +3,12 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:myorderapp_square/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:myorderapp_square/src/model/authentication_email_confirm_request_body.dart';
 import 'package:myorderapp_square/src/model/authentication_email_login_request_body.dart';
 import 'package:myorderapp_square/src/model/authentication_email_register_request_body.dart';

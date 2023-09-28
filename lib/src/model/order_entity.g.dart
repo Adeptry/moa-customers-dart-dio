@@ -11,36 +11,38 @@ OrderEntity _$OrderEntityFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = OrderEntity(
-          closedAt: $checkedConvert('closedAt',
-              (v) => v == null ? null : DateTime.parse(v as String)),
-          currency: $checkedConvert('currency', (v) => v as String?),
+          id: $checkedConvert('id', (v) => v as String?),
           customer: $checkedConvert(
               'customer',
               (v) => v == null
                   ? null
                   : CustomerEntity.fromJson(v as Map<String, dynamic>)),
-          id: $checkedConvert('id', (v) => v as String?),
+          location: $checkedConvert(
+              'location',
+              (v) => v == null
+                  ? null
+                  : LocationEntity.fromJson(v as Map<String, dynamic>)),
           lineItems: $checkedConvert(
               'lineItems',
               (v) => (v as List<dynamic>?)
                   ?.map(
                       (e) => LineItemEntity.fromJson(e as Map<String, dynamic>))
                   .toList()),
-          location: $checkedConvert(
-              'location',
-              (v) => v == null
-                  ? null
-                  : LocationEntity.fromJson(v as Map<String, dynamic>)),
+          closedDate: $checkedConvert('closedDate',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          pickupDate: $checkedConvert('pickupDate',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          currency: $checkedConvert('currency', (v) => v as String?),
           totalMoneyAmount:
               $checkedConvert('totalMoneyAmount', (v) => v as num?),
-          totalMoneyDiscountAmount:
-              $checkedConvert('totalMoneyDiscountAmount', (v) => v as num?),
-          totalMoneyServiceChargeAmount: $checkedConvert(
-              'totalMoneyServiceChargeAmount', (v) => v as num?),
           totalMoneyTaxAmount:
               $checkedConvert('totalMoneyTaxAmount', (v) => v as num?),
+          totalMoneyDiscountAmount:
+              $checkedConvert('totalMoneyDiscountAmount', (v) => v as num?),
           totalMoneyTipAmount:
               $checkedConvert('totalMoneyTipAmount', (v) => v as num?),
+          totalMoneyServiceChargeAmount: $checkedConvert(
+              'totalMoneyServiceChargeAmount', (v) => v as num?),
         );
         return val;
       },
@@ -55,18 +57,19 @@ Map<String, dynamic> _$OrderEntityToJson(OrderEntity instance) {
     }
   }
 
-  writeNotNull('closedAt', instance.closedAt?.toIso8601String());
-  writeNotNull('currency', instance.currency);
-  writeNotNull('customer', instance.customer?.toJson());
   writeNotNull('id', instance.id);
+  writeNotNull('customer', instance.customer?.toJson());
+  writeNotNull('location', instance.location?.toJson());
   writeNotNull(
       'lineItems', instance.lineItems?.map((e) => e.toJson()).toList());
-  writeNotNull('location', instance.location?.toJson());
+  writeNotNull('closedDate', instance.closedDate?.toIso8601String());
+  writeNotNull('pickupDate', instance.pickupDate?.toIso8601String());
+  writeNotNull('currency', instance.currency);
   writeNotNull('totalMoneyAmount', instance.totalMoneyAmount);
+  writeNotNull('totalMoneyTaxAmount', instance.totalMoneyTaxAmount);
   writeNotNull('totalMoneyDiscountAmount', instance.totalMoneyDiscountAmount);
+  writeNotNull('totalMoneyTipAmount', instance.totalMoneyTipAmount);
   writeNotNull(
       'totalMoneyServiceChargeAmount', instance.totalMoneyServiceChargeAmount);
-  writeNotNull('totalMoneyTaxAmount', instance.totalMoneyTaxAmount);
-  writeNotNull('totalMoneyTipAmount', instance.totalMoneyTipAmount);
   return val;
 }

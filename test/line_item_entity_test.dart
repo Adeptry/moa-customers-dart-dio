@@ -7,28 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(LineItemEntity, () {
-    // num basePriceMoney
-    test('to test the property `basePriceMoney`', () async {
-      // TODO
-    });
-
-    // String currency
-    test('to test the property `currency`', () async {
-      // TODO
-    });
-
-    // num grossSalesMoneyAmount
-    test('to test the property `grossSalesMoneyAmount`', () async {
-      // TODO
-    });
-
     // String id
     test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // List<LineItemModifierEntity> modifiers
-    test('to test the property `modifiers`', () async {
       // TODO
     });
 
@@ -37,13 +17,43 @@ void main() {
       // TODO
     });
 
+    // String quantity
+    test('to test the property `quantity`', () async {
+      // TODO
+    });
+
     // String note
     test('to test the property `note`', () async {
       // TODO
     });
 
-    // String quantity
-    test('to test the property `quantity`', () async {
+    // String variationName
+    test('to test the property `variationName`', () async {
+      // TODO
+    });
+
+    // String currency
+    test('to test the property `currency`', () async {
+      // TODO
+    });
+
+    // num basePriceMoney
+    test('to test the property `basePriceMoney`', () async {
+      // TODO
+    });
+
+    // num variationTotalMoneyAmount
+    test('to test the property `variationTotalMoneyAmount`', () async {
+      // TODO
+    });
+
+    // num grossSalesMoneyAmount
+    test('to test the property `grossSalesMoneyAmount`', () async {
+      // TODO
+    });
+
+    // num totalTaxMoneyAmount
+    test('to test the property `totalTaxMoneyAmount`', () async {
       // TODO
     });
 
@@ -62,18 +72,8 @@ void main() {
       // TODO
     });
 
-    // num totalTaxMoneyAmount
-    test('to test the property `totalTaxMoneyAmount`', () async {
-      // TODO
-    });
-
-    // String variationName
-    test('to test the property `variationName`', () async {
-      // TODO
-    });
-
-    // num variationTotalMoneyAmount
-    test('to test the property `variationTotalMoneyAmount`', () async {
+    // List<LineItemModifierEntity> modifiers
+    test('to test the property `modifiers`', () async {
       // TODO
     });
 

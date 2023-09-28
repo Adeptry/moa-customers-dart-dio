@@ -13,16 +13,16 @@ SquareDisableCardResponse _$SquareDisableCardResponseFromJson(
       json,
       ($checkedConvert) {
         final val = SquareDisableCardResponse(
-          card: $checkedConvert(
-              'card',
-              (v) => v == null
-                  ? null
-                  : SquareCard.fromJson(v as Map<String, dynamic>)),
           errors: $checkedConvert(
               'errors',
               (v) => (v as List<dynamic>?)
                   ?.map((e) => SquareError.fromJson(e as Map<String, dynamic>))
                   .toList()),
+          card: $checkedConvert(
+              'card',
+              (v) => v == null
+                  ? null
+                  : SquareCard.fromJson(v as Map<String, dynamic>)),
         );
         return val;
       },
@@ -38,7 +38,7 @@ Map<String, dynamic> _$SquareDisableCardResponseToJson(
     }
   }
 
-  writeNotNull('card', instance.card?.toJson());
   writeNotNull('errors', instance.errors?.map((e) => e.toJson()).toList());
+  writeNotNull('card', instance.card?.toJson());
   return val;
 }

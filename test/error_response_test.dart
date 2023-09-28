@@ -7,8 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(ErrorResponse, () {
-    // Map<String, String> fields
-    test('to test the property `fields`', () async {
+    // num statusCode
+    test('to test the property `statusCode`', () async {
       // TODO
     });
 
@@ -17,13 +17,13 @@ void main() {
       // TODO
     });
 
-    // String method
-    test('to test the property `method`', () async {
+    // String url
+    test('to test the property `url`', () async {
       // TODO
     });
 
-    // num statusCode
-    test('to test the property `statusCode`', () async {
+    // String method
+    test('to test the property `method`', () async {
       // TODO
     });
 
@@ -32,8 +32,8 @@ void main() {
       // TODO
     });
 
-    // String url
-    test('to test the property `url`', () async {
+    // Map<String, String> fields
+    test('to test the property `fields`', () async {
       // TODO
     });
 

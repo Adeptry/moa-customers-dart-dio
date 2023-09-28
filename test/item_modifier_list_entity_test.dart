@@ -7,18 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(ItemModifierListEntity, () {
-    // bool enabled
-    test('to test the property `enabled`', () async {
-      // TODO
-    });
-
     // String id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // ItemEntity item
-    test('to test the property `item`', () async {
+    // num minSelectedModifiers
+    test('to test the property `minSelectedModifiers`', () async {
       // TODO
     });
 
@@ -27,8 +22,13 @@ void main() {
       // TODO
     });
 
-    // num minSelectedModifiers
-    test('to test the property `minSelectedModifiers`', () async {
+    // bool enabled
+    test('to test the property `enabled`', () async {
+      // TODO
+    });
+
+    // ItemEntity item
+    test('to test the property `item`', () async {
       // TODO
     });
 

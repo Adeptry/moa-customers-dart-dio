@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(AuthenticationUpdateRequestBody, () {
-    // String oldPassword
-    test('to test the property `oldPassword`', () async {
+    // String password
+    test('to test the property `password`', () async {
       // TODO
     });
 
-    // String password
-    test('to test the property `password`', () async {
+    // String oldPassword
+    test('to test the property `oldPassword`', () async {
       // TODO
     });
 

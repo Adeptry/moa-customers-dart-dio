@@ -7,18 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(CatalogImageEntity, () {
-    // String caption
-    test('to test the property `caption`', () async {
-      // TODO
-    });
-
     // String id
     test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // String name
-    test('to test the property `name`', () async {
       // TODO
     });
 
@@ -27,8 +17,18 @@ void main() {
       // TODO
     });
 
+    // String name
+    test('to test the property `name`', () async {
+      // TODO
+    });
+
     // String url
     test('to test the property `url`', () async {
+      // TODO
+    });
+
+    // String caption
+    test('to test the property `caption`', () async {
       // TODO
     });
 

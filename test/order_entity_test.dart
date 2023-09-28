@@ -7,13 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(OrderEntity, () {
-    // DateTime closedAt
-    test('to test the property `closedAt`', () async {
-      // TODO
-    });
-
-    // String currency
-    test('to test the property `currency`', () async {
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 
@@ -22,8 +17,8 @@ void main() {
       // TODO
     });
 
-    // String id
-    test('to test the property `id`', () async {
+    // LocationEntity location
+    test('to test the property `location`', () async {
       // TODO
     });
 
@@ -32,8 +27,18 @@ void main() {
       // TODO
     });
 
-    // LocationEntity location
-    test('to test the property `location`', () async {
+    // DateTime closedDate
+    test('to test the property `closedDate`', () async {
+      // TODO
+    });
+
+    // DateTime pickupDate
+    test('to test the property `pickupDate`', () async {
+      // TODO
+    });
+
+    // String currency
+    test('to test the property `currency`', () async {
       // TODO
     });
 
@@ -42,23 +47,23 @@ void main() {
       // TODO
     });
 
-    // num totalMoneyDiscountAmount
-    test('to test the property `totalMoneyDiscountAmount`', () async {
-      // TODO
-    });
-
-    // num totalMoneyServiceChargeAmount
-    test('to test the property `totalMoneyServiceChargeAmount`', () async {
-      // TODO
-    });
-
     // num totalMoneyTaxAmount
     test('to test the property `totalMoneyTaxAmount`', () async {
       // TODO
     });
 
+    // num totalMoneyDiscountAmount
+    test('to test the property `totalMoneyDiscountAmount`', () async {
+      // TODO
+    });
+
     // num totalMoneyTipAmount
     test('to test the property `totalMoneyTipAmount`', () async {
+      // TODO
+    });
+
+    // num totalMoneyServiceChargeAmount
+    test('to test the property `totalMoneyServiceChargeAmount`', () async {
       // TODO
     });
 

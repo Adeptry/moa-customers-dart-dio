@@ -7,11 +7,6 @@ void main() {
   // TODO add properties to the entity
 
   group(LocationPaginatedResponse, () {
-    // num count
-    test('to test the property `count`', () async {
-      // TODO
-    });
-
     // List<LocationEntity> data
     test('to test the property `data`', () async {
       // TODO
@@ -19,6 +14,11 @@ void main() {
 
     // num pages
     test('to test the property `pages`', () async {
+      // TODO
+    });
+
+    // num count
+    test('to test the property `count`', () async {
       // TODO
     });
 

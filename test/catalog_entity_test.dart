@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(CatalogEntity, () {
-    // List<CategoryEntity> categories
-    test('to test the property `categories`', () async {
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 
-    // String id
-    test('to test the property `id`', () async {
+    // List<CategoryEntity> categories
+    test('to test the property `categories`', () async {
       // TODO
     });
 

@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(AuthenticationResponse, () {
-    // String refreshToken
-    test('to test the property `refreshToken`', () async {
+    // String token
+    test('to test the property `token`', () async {
       // TODO
     });
 
-    // String token
-    test('to test the property `token`', () async {
+    // String refreshToken
+    test('to test the property `refreshToken`', () async {
       // TODO
     });
 
