@@ -40,7 +40,7 @@ class OrdersPostPaymentBody {
 
   /// If not provided, prepare ASAP, else will validate it's within business hours and schedule. Represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
   @JsonKey(name: r'pickupDate', required: true, includeIfNull: false)
-  final String pickupDate;
+  final DateTime pickupDate;
 
   @JsonKey(name: r'recipient', required: false, includeIfNull: false)
   final FulfillmentRecipientInput? recipient;

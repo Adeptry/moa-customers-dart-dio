@@ -27,7 +27,8 @@ OrdersPostPaymentBody _$OrdersPostPaymentBodyFromJson(
           orderTipMoney: $checkedConvert('orderTipMoney', (v) => v as num),
           paymentSquareId:
               $checkedConvert('paymentSquareId', (v) => v as String),
-          pickupDate: $checkedConvert('pickupDate', (v) => v as String),
+          pickupDate:
+              $checkedConvert('pickupDate', (v) => DateTime.parse(v as String)),
           recipient: $checkedConvert(
               'recipient',
               (v) => v == null
@@ -54,7 +55,7 @@ Map<String, dynamic> _$OrdersPostPaymentBodyToJson(
   writeNotNull('note', instance.note);
   val['orderTipMoney'] = instance.orderTipMoney;
   val['paymentSquareId'] = instance.paymentSquareId;
-  val['pickupDate'] = instance.pickupDate;
+  val['pickupDate'] = instance.pickupDate.toIso8601String();
   writeNotNull('recipient', instance.recipient?.toJson());
   return val;
 }

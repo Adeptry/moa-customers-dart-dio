@@ -149,4 +149,3 @@ lib/src/model/user_patch_body.dart
 lib/src/model/variation_entity.dart
 lib/src/model/variation_patch_body.dart
 pubspec.yaml
-test/fulfillment_status_enum_test.dart
