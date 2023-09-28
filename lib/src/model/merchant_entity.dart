@@ -19,26 +19,23 @@ part 'merchant_entity.g.dart';
 class MerchantEntity {
   /// Returns a new [MerchantEntity] instance.
   MerchantEntity({
-    this.id,
-    this.tier,
-    this.user,
     this.appConfig,
+    this.catalog,
+    this.id,
     this.squareId,
     this.stripeId,
-    this.catalog,
+    this.tier,
+    this.user,
   });
-
-  @JsonKey(name: r'id', required: false, includeIfNull: false)
-  final String? id;
-
-  @JsonKey(name: r'tier', required: false, includeIfNull: false)
-  final num? tier;
-
-  @JsonKey(name: r'user', required: false, includeIfNull: false)
-  final UserEntity? user;
 
   @JsonKey(name: r'appConfig', required: false, includeIfNull: false)
   final AppConfigEntity? appConfig;
+
+  @JsonKey(name: r'catalog', required: false, includeIfNull: false)
+  final CatalogEntity? catalog;
+
+  @JsonKey(name: r'id', required: false, includeIfNull: false)
+  final String? id;
 
   @JsonKey(name: r'squareId', required: false, includeIfNull: false)
   final String? squareId;
@@ -46,30 +43,33 @@ class MerchantEntity {
   @JsonKey(name: r'stripeId', required: false, includeIfNull: false)
   final String? stripeId;
 
-  @JsonKey(name: r'catalog', required: false, includeIfNull: false)
-  final CatalogEntity? catalog;
+  @JsonKey(name: r'tier', required: false, includeIfNull: false)
+  final num? tier;
+
+  @JsonKey(name: r'user', required: false, includeIfNull: false)
+  final UserEntity? user;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is MerchantEntity &&
-          other.id == id &&
-          other.tier == tier &&
-          other.user == user &&
           other.appConfig == appConfig &&
+          other.catalog == catalog &&
+          other.id == id &&
           other.squareId == squareId &&
           other.stripeId == stripeId &&
-          other.catalog == catalog;
+          other.tier == tier &&
+          other.user == user;
 
   @override
   int get hashCode =>
-      (id == null ? 0 : id.hashCode) +
-      (tier == null ? 0 : tier.hashCode) +
-      (user == null ? 0 : user.hashCode) +
       (appConfig == null ? 0 : appConfig.hashCode) +
+      (catalog == null ? 0 : catalog.hashCode) +
+      (id == null ? 0 : id.hashCode) +
       (squareId == null ? 0 : squareId.hashCode) +
       (stripeId == null ? 0 : stripeId.hashCode) +
-      (catalog == null ? 0 : catalog.hashCode);
+      (tier == null ? 0 : tier.hashCode) +
+      (user == null ? 0 : user.hashCode);
 
   factory MerchantEntity.fromJson(Map<String, dynamic> json) =>
       _$MerchantEntityFromJson(json);

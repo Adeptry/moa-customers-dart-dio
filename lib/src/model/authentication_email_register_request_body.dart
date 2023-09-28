@@ -17,16 +17,13 @@ class AuthenticationEmailRegisterRequestBody {
   /// Returns a new [AuthenticationEmailRegisterRequestBody] instance.
   AuthenticationEmailRegisterRequestBody({
     required this.email,
-    required this.password,
     this.firstName,
     this.lastName,
+    required this.password,
   });
 
   @JsonKey(name: r'email', required: true, includeIfNull: false)
   final String email;
-
-  @JsonKey(name: r'password', required: true, includeIfNull: false)
-  final String password;
 
   @JsonKey(name: r'firstName', required: false, includeIfNull: false)
   final String? firstName;
@@ -34,21 +31,24 @@ class AuthenticationEmailRegisterRequestBody {
   @JsonKey(name: r'lastName', required: false, includeIfNull: false)
   final String? lastName;
 
+  @JsonKey(name: r'password', required: true, includeIfNull: false)
+  final String password;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AuthenticationEmailRegisterRequestBody &&
           other.email == email &&
-          other.password == password &&
           other.firstName == firstName &&
-          other.lastName == lastName;
+          other.lastName == lastName &&
+          other.password == password;
 
   @override
   int get hashCode =>
       email.hashCode +
-      password.hashCode +
       (firstName == null ? 0 : firstName.hashCode) +
-      (lastName == null ? 0 : lastName.hashCode);
+      (lastName == null ? 0 : lastName.hashCode) +
+      password.hashCode;
 
   factory AuthenticationEmailRegisterRequestBody.fromJson(
           Map<String, dynamic> json) =>

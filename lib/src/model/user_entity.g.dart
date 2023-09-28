@@ -15,25 +15,23 @@ UserEntity _$UserEntityFromJson(Map<String, dynamic> json) => $checkedCreate(
           requiredKeys: const ['id'],
         );
         final val = UserEntity(
-          id: $checkedConvert('id', (v) => v as String),
           email: $checkedConvert('email', (v) => v as String?),
+          firstName: $checkedConvert('firstName', (v) => v as String?),
+          fullName: $checkedConvert('fullName', (v) => v as String?),
+          id: $checkedConvert('id', (v) => v as String),
+          language: $checkedConvert('language', (v) => v as String?),
+          lastName: $checkedConvert('lastName', (v) => v as String?),
           phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
           provider: $checkedConvert('provider',
               (v) => $enumDecodeNullable(_$UserEntityProviderEnumEnumMap, v)),
           socialId: $checkedConvert('socialId', (v) => v as String?),
-          firstName: $checkedConvert('firstName', (v) => v as String?),
-          lastName: $checkedConvert('lastName', (v) => v as String?),
-          language: $checkedConvert('language', (v) => v as String?),
-          fullName: $checkedConvert('fullName', (v) => v as String?),
         );
         return val;
       },
     );
 
 Map<String, dynamic> _$UserEntityToJson(UserEntity instance) {
-  final val = <String, dynamic>{
-    'id': instance.id,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -42,13 +40,14 @@ Map<String, dynamic> _$UserEntityToJson(UserEntity instance) {
   }
 
   writeNotNull('email', instance.email);
+  writeNotNull('firstName', instance.firstName);
+  writeNotNull('fullName', instance.fullName);
+  val['id'] = instance.id;
+  writeNotNull('language', instance.language);
+  writeNotNull('lastName', instance.lastName);
   writeNotNull('phoneNumber', instance.phoneNumber);
   writeNotNull('provider', _$UserEntityProviderEnumEnumMap[instance.provider]);
   writeNotNull('socialId', instance.socialId);
-  writeNotNull('firstName', instance.firstName);
-  writeNotNull('lastName', instance.lastName);
-  writeNotNull('language', instance.language);
-  writeNotNull('fullName', instance.fullName);
   return val;
 }
 

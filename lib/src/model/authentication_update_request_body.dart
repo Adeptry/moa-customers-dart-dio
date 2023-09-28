@@ -16,25 +16,25 @@ part 'authentication_update_request_body.g.dart';
 class AuthenticationUpdateRequestBody {
   /// Returns a new [AuthenticationUpdateRequestBody] instance.
   AuthenticationUpdateRequestBody({
-    required this.password,
     required this.oldPassword,
+    required this.password,
   });
-
-  @JsonKey(name: r'password', required: true, includeIfNull: false)
-  final String password;
 
   @JsonKey(name: r'oldPassword', required: true, includeIfNull: false)
   final String oldPassword;
+
+  @JsonKey(name: r'password', required: true, includeIfNull: false)
+  final String password;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AuthenticationUpdateRequestBody &&
-          other.password == password &&
-          other.oldPassword == oldPassword;
+          other.oldPassword == oldPassword &&
+          other.password == password;
 
   @override
-  int get hashCode => password.hashCode + oldPassword.hashCode;
+  int get hashCode => oldPassword.hashCode + password.hashCode;
 
   factory AuthenticationUpdateRequestBody.fromJson(Map<String, dynamic> json) =>
       _$AuthenticationUpdateRequestBodyFromJson(json);

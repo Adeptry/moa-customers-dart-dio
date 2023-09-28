@@ -17,17 +17,17 @@ part 'authentication_response.g.dart';
 class AuthenticationResponse {
   /// Returns a new [AuthenticationResponse] instance.
   AuthenticationResponse({
-    required this.token,
     required this.refreshToken,
+    required this.token,
     required this.tokenExpires,
     this.user,
   });
 
-  @JsonKey(name: r'token', required: true, includeIfNull: false)
-  final String token;
-
   @JsonKey(name: r'refreshToken', required: true, includeIfNull: false)
   final String refreshToken;
+
+  @JsonKey(name: r'token', required: true, includeIfNull: false)
+  final String token;
 
   @JsonKey(name: r'tokenExpires', required: true, includeIfNull: false)
   final num tokenExpires;
@@ -39,15 +39,15 @@ class AuthenticationResponse {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AuthenticationResponse &&
-          other.token == token &&
           other.refreshToken == refreshToken &&
+          other.token == token &&
           other.tokenExpires == tokenExpires &&
           other.user == user;
 
   @override
   int get hashCode =>
-      token.hashCode +
       refreshToken.hashCode +
+      token.hashCode +
       tokenExpires.hashCode +
       (user == null ? 0 : user.hashCode);
 
