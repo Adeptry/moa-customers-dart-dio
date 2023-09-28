@@ -12,16 +12,16 @@ ErrorResponse _$ErrorResponseFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = ErrorResponse(
+          statusCode: $checkedConvert('statusCode', (v) => v as num?),
+          message: $checkedConvert('message', (v) => v as String?),
+          url: $checkedConvert('url', (v) => v as String?),
+          method: $checkedConvert('method', (v) => v as String?),
+          timestamp: $checkedConvert('timestamp', (v) => v as String?),
           fields: $checkedConvert(
               'fields',
               (v) => (v as Map<String, dynamic>?)?.map(
                     (k, e) => MapEntry(k, e as String),
                   )),
-          message: $checkedConvert('message', (v) => v as String?),
-          method: $checkedConvert('method', (v) => v as String?),
-          statusCode: $checkedConvert('statusCode', (v) => v as num?),
-          timestamp: $checkedConvert('timestamp', (v) => v as String?),
-          url: $checkedConvert('url', (v) => v as String?),
         );
         return val;
       },
@@ -36,11 +36,11 @@ Map<String, dynamic> _$ErrorResponseToJson(ErrorResponse instance) {
     }
   }
 
-  writeNotNull('fields', instance.fields);
-  writeNotNull('message', instance.message);
-  writeNotNull('method', instance.method);
   writeNotNull('statusCode', instance.statusCode);
-  writeNotNull('timestamp', instance.timestamp);
+  writeNotNull('message', instance.message);
   writeNotNull('url', instance.url);
+  writeNotNull('method', instance.method);
+  writeNotNull('timestamp', instance.timestamp);
+  writeNotNull('fields', instance.fields);
   return val;
 }

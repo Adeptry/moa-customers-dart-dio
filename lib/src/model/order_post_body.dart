@@ -17,33 +17,33 @@ part 'order_post_body.g.dart';
 class OrderPostBody {
   /// Returns a new [OrderPostBody] instance.
   OrderPostBody({
-    this.idempotencyKey,
-    this.locationId,
     this.variations,
+    this.locationId,
+    this.idempotencyKey,
   });
 
-  @JsonKey(name: r'idempotencyKey', required: false, includeIfNull: false)
-  final String? idempotencyKey;
+  @JsonKey(name: r'variations', required: false, includeIfNull: false)
+  final List<OrdersVariationLineItemInput>? variations;
 
   @JsonKey(name: r'locationId', required: false, includeIfNull: false)
   final String? locationId;
 
-  @JsonKey(name: r'variations', required: false, includeIfNull: false)
-  final List<OrdersVariationLineItemInput>? variations;
+  @JsonKey(name: r'idempotencyKey', required: false, includeIfNull: false)
+  final String? idempotencyKey;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OrderPostBody &&
-          other.idempotencyKey == idempotencyKey &&
+          other.variations == variations &&
           other.locationId == locationId &&
-          other.variations == variations;
+          other.idempotencyKey == idempotencyKey;
 
   @override
   int get hashCode =>
-      (idempotencyKey == null ? 0 : idempotencyKey.hashCode) +
+      (variations == null ? 0 : variations.hashCode) +
       (locationId == null ? 0 : locationId.hashCode) +
-      (variations == null ? 0 : variations.hashCode);
+      (idempotencyKey == null ? 0 : idempotencyKey.hashCode);
 
   factory OrderPostBody.fromJson(Map<String, dynamic> json) =>
       _$OrderPostBodyFromJson(json);

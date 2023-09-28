@@ -17,13 +17,10 @@ part 'customers_paginated_response.g.dart';
 class CustomersPaginatedResponse {
   /// Returns a new [CustomersPaginatedResponse] instance.
   CustomersPaginatedResponse({
-    required this.count,
     this.data,
     required this.pages,
+    required this.count,
   });
-
-  @JsonKey(name: r'count', required: true, includeIfNull: false)
-  final num count;
 
   @JsonKey(name: r'data', required: false, includeIfNull: false)
   final List<CustomerEntity>? data;
@@ -31,17 +28,20 @@ class CustomersPaginatedResponse {
   @JsonKey(name: r'pages', required: true, includeIfNull: false)
   final num pages;
 
+  @JsonKey(name: r'count', required: true, includeIfNull: false)
+  final num count;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CustomersPaginatedResponse &&
-          other.count == count &&
           other.data == data &&
-          other.pages == pages;
+          other.pages == pages &&
+          other.count == count;
 
   @override
   int get hashCode =>
-      count.hashCode + (data == null ? 0 : data.hashCode) + pages.hashCode;
+      (data == null ? 0 : data.hashCode) + pages.hashCode + count.hashCode;
 
   factory CustomersPaginatedResponse.fromJson(Map<String, dynamic> json) =>
       _$CustomersPaginatedResponseFromJson(json);

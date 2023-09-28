@@ -15,11 +15,11 @@ AuthenticationPasswordResetRequestBody
           ($checkedConvert) {
             $checkKeys(
               json,
-              requiredKeys: const ['hash', 'password'],
+              requiredKeys: const ['password', 'hash'],
             );
             final val = AuthenticationPasswordResetRequestBody(
-              hash: $checkedConvert('hash', (v) => v as String),
               password: $checkedConvert('password', (v) => v as String),
+              hash: $checkedConvert('hash', (v) => v as String),
             );
             return val;
           },
@@ -28,6 +28,6 @@ AuthenticationPasswordResetRequestBody
 Map<String, dynamic> _$AuthenticationPasswordResetRequestBodyToJson(
         AuthenticationPasswordResetRequestBody instance) =>
     <String, dynamic>{
-      'hash': instance.hash,
       'password': instance.password,
+      'hash': instance.hash,
     };

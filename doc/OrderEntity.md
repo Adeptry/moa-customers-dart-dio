@@ -8,20 +8,20 @@ import 'package:myorderapp_square/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**closedDate** | [**DateTime**](DateTime.md) |  | [optional] 
-**currency** | **String** |  | [optional] 
-**customer** | [**CustomerEntity**](CustomerEntity.md) |  | [optional] 
-**displayId** | **String** |  | [optional] 
 **id** | **String** |  | [optional] 
-**lineItems** | [**List&lt;LineItemEntity&gt;**](LineItemEntity.md) |  | [optional] 
+**customer** | [**CustomerEntity**](CustomerEntity.md) |  | [optional] 
 **location** | [**LocationEntity**](LocationEntity.md) |  | [optional] 
-**pickupDate** | [**DateTime**](DateTime.md) |  | [optional] 
+**lineItems** | [**List&lt;LineItemEntity&gt;**](LineItemEntity.md) |  | [optional] 
 **squareFulfillmentStatus** | [**FulfillmentStatusEnum**](FulfillmentStatusEnum.md) |  | [optional] 
+**closedDate** | [**DateTime**](DateTime.md) |  | [optional] 
+**pickupDate** | [**DateTime**](DateTime.md) |  | [optional] 
+**currency** | **String** |  | [optional] 
 **totalMoneyAmount** | **num** |  | [optional] 
-**totalMoneyDiscountAmount** | **num** |  | [optional] 
-**totalMoneyServiceChargeAmount** | **num** |  | [optional] 
 **totalMoneyTaxAmount** | **num** |  | [optional] 
+**totalMoneyDiscountAmount** | **num** |  | [optional] 
 **totalMoneyTipAmount** | **num** |  | [optional] 
+**totalMoneyServiceChargeAmount** | **num** |  | [optional] 
+**displayId** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

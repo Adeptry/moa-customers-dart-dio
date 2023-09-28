@@ -15,20 +15,19 @@ OrdersPostPaymentBody _$OrdersPostPaymentBodyFromJson(
         $checkKeys(
           json,
           requiredKeys: const [
-            'idempotencyKey',
-            'orderTipMoney',
             'paymentSquareId',
-            'pickupDate'
+            'idempotencyKey',
+            'orderTipMoney'
           ],
         );
         final val = OrdersPostPaymentBody(
-          idempotencyKey: $checkedConvert('idempotencyKey', (v) => v as String),
-          note: $checkedConvert('note', (v) => v as String?),
-          orderTipMoney: $checkedConvert('orderTipMoney', (v) => v as num),
+          pickupDate: $checkedConvert('pickupDate',
+              (v) => v == null ? null : DateTime.parse(v as String)),
           paymentSquareId:
               $checkedConvert('paymentSquareId', (v) => v as String),
-          pickupDate:
-              $checkedConvert('pickupDate', (v) => DateTime.parse(v as String)),
+          note: $checkedConvert('note', (v) => v as String?),
+          idempotencyKey: $checkedConvert('idempotencyKey', (v) => v as String),
+          orderTipMoney: $checkedConvert('orderTipMoney', (v) => v as num),
           recipient: $checkedConvert(
               'recipient',
               (v) => v == null
@@ -42,9 +41,7 @@ OrdersPostPaymentBody _$OrdersPostPaymentBodyFromJson(
 
 Map<String, dynamic> _$OrdersPostPaymentBodyToJson(
     OrdersPostPaymentBody instance) {
-  final val = <String, dynamic>{
-    'idempotencyKey': instance.idempotencyKey,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -52,10 +49,11 @@ Map<String, dynamic> _$OrdersPostPaymentBodyToJson(
     }
   }
 
-  writeNotNull('note', instance.note);
-  val['orderTipMoney'] = instance.orderTipMoney;
+  writeNotNull('pickupDate', instance.pickupDate?.toIso8601String());
   val['paymentSquareId'] = instance.paymentSquareId;
-  val['pickupDate'] = instance.pickupDate.toIso8601String();
+  writeNotNull('note', instance.note);
+  val['idempotencyKey'] = instance.idempotencyKey;
+  val['orderTipMoney'] = instance.orderTipMoney;
   writeNotNull('recipient', instance.recipient?.toJson());
   return val;
 }

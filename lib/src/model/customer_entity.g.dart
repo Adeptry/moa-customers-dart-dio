@@ -13,22 +13,22 @@ CustomerEntity _$CustomerEntityFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         final val = CustomerEntity(
           id: $checkedConvert('id', (v) => v as String?),
+          user: $checkedConvert('user', (v) => v),
+          squareId: $checkedConvert('squareId', (v) => v as String?),
+          preferredLocationId:
+              $checkedConvert('preferredLocationId', (v) => v as String?),
           preferredLocation: $checkedConvert(
               'preferredLocation',
               (v) => v == null
                   ? null
                   : LocationEntity.fromJson(v as Map<String, dynamic>)),
-          preferredLocationId:
-              $checkedConvert('preferredLocationId', (v) => v as String?),
+          preferredSquareCardId:
+              $checkedConvert('preferredSquareCardId', (v) => v as String?),
           preferredSquareCard: $checkedConvert(
               'preferredSquareCard',
               (v) => v == null
                   ? null
                   : SquareCard.fromJson(v as Map<String, dynamic>)),
-          preferredSquareCardId:
-              $checkedConvert('preferredSquareCardId', (v) => v as String?),
-          squareId: $checkedConvert('squareId', (v) => v as String?),
-          user: $checkedConvert('user', (v) => v),
         );
         return val;
       },
@@ -44,11 +44,11 @@ Map<String, dynamic> _$CustomerEntityToJson(CustomerEntity instance) {
   }
 
   writeNotNull('id', instance.id);
-  writeNotNull('preferredLocation', instance.preferredLocation?.toJson());
-  writeNotNull('preferredLocationId', instance.preferredLocationId);
-  writeNotNull('preferredSquareCard', instance.preferredSquareCard?.toJson());
-  writeNotNull('preferredSquareCardId', instance.preferredSquareCardId);
-  writeNotNull('squareId', instance.squareId);
   writeNotNull('user', instance.user);
+  writeNotNull('squareId', instance.squareId);
+  writeNotNull('preferredLocationId', instance.preferredLocationId);
+  writeNotNull('preferredLocation', instance.preferredLocation?.toJson());
+  writeNotNull('preferredSquareCardId', instance.preferredSquareCardId);
+  writeNotNull('preferredSquareCard', instance.preferredSquareCard?.toJson());
   return val;
 }

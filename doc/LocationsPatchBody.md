@@ -9,8 +9,8 @@ import 'package:myorderapp_square/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | 
-**moaEnabled** | **bool** |  | [optional] 
 **moaOrdinal** | **num** |  | [optional] 
+**moaEnabled** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
