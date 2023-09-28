@@ -17,8 +17,8 @@ ItemsPatchBody _$ItemsPatchBodyFromJson(Map<String, dynamic> json) =>
         );
         final val = ItemsPatchBody(
           id: $checkedConvert('id', (v) => v as String),
-          moaOrdinal: $checkedConvert('moaOrdinal', (v) => v as num?),
           moaEnabled: $checkedConvert('moaEnabled', (v) => v as bool?),
+          moaOrdinal: $checkedConvert('moaOrdinal', (v) => v as num?),
         );
         return val;
       },
@@ -35,7 +35,7 @@ Map<String, dynamic> _$ItemsPatchBodyToJson(ItemsPatchBody instance) {
     }
   }
 
-  writeNotNull('moaOrdinal', instance.moaOrdinal);
   writeNotNull('moaEnabled', instance.moaEnabled);
+  writeNotNull('moaOrdinal', instance.moaOrdinal);
   return val;
 }

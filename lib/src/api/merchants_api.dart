@@ -3,11 +3,12 @@
 //
 
 import 'dart:async';
+
 // ignore: unused_import
 import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:myorderapp_square/src/deserialize.dart';
+import 'package:dio/dio.dart';
+
 import 'package:myorderapp_square/src/model/merchant_entity.dart';
 import 'package:myorderapp_square/src/model/square_post_oauth_body.dart';
 import 'package:myorderapp_square/src/model/stripe_billing_session_response.dart';

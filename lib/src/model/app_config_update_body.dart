@@ -17,12 +17,15 @@ part 'app_config_update_body.g.dart';
 class AppConfigUpdateBody {
   /// Returns a new [AppConfigUpdateBody] instance.
   AppConfigUpdateBody({
+    this.fontFamily,
     this.name,
     this.seedColor,
-    this.fontFamily,
-    this.useMaterial3,
     this.themeMode,
+    this.useMaterial3,
   });
+
+  @JsonKey(name: r'fontFamily', required: false, includeIfNull: false)
+  final String? fontFamily;
 
   @JsonKey(name: r'name', required: false, includeIfNull: false)
   final String? name;
@@ -30,32 +33,29 @@ class AppConfigUpdateBody {
   @JsonKey(name: r'seedColor', required: false, includeIfNull: false)
   final String? seedColor;
 
-  @JsonKey(name: r'fontFamily', required: false, includeIfNull: false)
-  final String? fontFamily;
+  @JsonKey(name: r'themeMode', required: false, includeIfNull: false)
+  final ThemeModeEnum? themeMode;
 
   @JsonKey(name: r'useMaterial3', required: false, includeIfNull: false)
   final bool? useMaterial3;
-
-  @JsonKey(name: r'themeMode', required: false, includeIfNull: false)
-  final ThemeModeEnum? themeMode;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppConfigUpdateBody &&
+          other.fontFamily == fontFamily &&
           other.name == name &&
           other.seedColor == seedColor &&
-          other.fontFamily == fontFamily &&
-          other.useMaterial3 == useMaterial3 &&
-          other.themeMode == themeMode;
+          other.themeMode == themeMode &&
+          other.useMaterial3 == useMaterial3;
 
   @override
   int get hashCode =>
+      (fontFamily == null ? 0 : fontFamily.hashCode) +
       (name == null ? 0 : name.hashCode) +
       (seedColor == null ? 0 : seedColor.hashCode) +
-      (fontFamily == null ? 0 : fontFamily.hashCode) +
-      (useMaterial3 == null ? 0 : useMaterial3.hashCode) +
-      themeMode.hashCode;
+      themeMode.hashCode +
+      (useMaterial3 == null ? 0 : useMaterial3.hashCode);
 
   factory AppConfigUpdateBody.fromJson(Map<String, dynamic> json) =>
       _$AppConfigUpdateBodyFromJson(json);

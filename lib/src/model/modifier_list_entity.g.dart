@@ -13,16 +13,16 @@ ModifierListEntity _$ModifierListEntityFromJson(Map<String, dynamic> json) =>
       ($checkedConvert) {
         final val = ModifierListEntity(
           id: $checkedConvert('id', (v) => v as String?),
-          name: $checkedConvert('name', (v) => v as String?),
-          ordinal: $checkedConvert('ordinal', (v) => v as num?),
-          selectionType: $checkedConvert('selectionType',
-              (v) => $enumDecodeNullable(_$MoaSelectionTypeEnumMap, v)),
           modifiers: $checkedConvert(
               'modifiers',
               (v) => (v as List<dynamic>?)
                   ?.map(
                       (e) => ModifierEntity.fromJson(e as Map<String, dynamic>))
                   .toList()),
+          name: $checkedConvert('name', (v) => v as String?),
+          ordinal: $checkedConvert('ordinal', (v) => v as num?),
+          selectionType: $checkedConvert('selectionType',
+              (v) => $enumDecodeNullable(_$MoaSelectionTypeEnumMap, v)),
         );
         return val;
       },
@@ -38,12 +38,12 @@ Map<String, dynamic> _$ModifierListEntityToJson(ModifierListEntity instance) {
   }
 
   writeNotNull('id', instance.id);
+  writeNotNull(
+      'modifiers', instance.modifiers?.map((e) => e.toJson()).toList());
   writeNotNull('name', instance.name);
   writeNotNull('ordinal', instance.ordinal);
   writeNotNull(
       'selectionType', _$MoaSelectionTypeEnumMap[instance.selectionType]);
-  writeNotNull(
-      'modifiers', instance.modifiers?.map((e) => e.toJson()).toList());
   return val;
 }
 

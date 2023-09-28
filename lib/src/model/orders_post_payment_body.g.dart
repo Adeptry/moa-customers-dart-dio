@@ -15,19 +15,19 @@ OrdersPostPaymentBody _$OrdersPostPaymentBodyFromJson(
         $checkKeys(
           json,
           requiredKeys: const [
-            'pickupDate',
-            'paymentSquareId',
             'idempotencyKey',
-            'orderTipMoney'
+            'orderTipMoney',
+            'paymentSquareId',
+            'pickupDate'
           ],
         );
         final val = OrdersPostPaymentBody(
-          pickupDate: $checkedConvert('pickupDate', (v) => v as String),
+          idempotencyKey: $checkedConvert('idempotencyKey', (v) => v as String),
+          note: $checkedConvert('note', (v) => v as String?),
+          orderTipMoney: $checkedConvert('orderTipMoney', (v) => v as num),
           paymentSquareId:
               $checkedConvert('paymentSquareId', (v) => v as String),
-          note: $checkedConvert('note', (v) => v as String?),
-          idempotencyKey: $checkedConvert('idempotencyKey', (v) => v as String),
-          orderTipMoney: $checkedConvert('orderTipMoney', (v) => v as num),
+          pickupDate: $checkedConvert('pickupDate', (v) => v as String),
           recipient: $checkedConvert(
               'recipient',
               (v) => v == null
@@ -42,8 +42,7 @@ OrdersPostPaymentBody _$OrdersPostPaymentBodyFromJson(
 Map<String, dynamic> _$OrdersPostPaymentBodyToJson(
     OrdersPostPaymentBody instance) {
   final val = <String, dynamic>{
-    'pickupDate': instance.pickupDate,
-    'paymentSquareId': instance.paymentSquareId,
+    'idempotencyKey': instance.idempotencyKey,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -53,8 +52,9 @@ Map<String, dynamic> _$OrdersPostPaymentBodyToJson(
   }
 
   writeNotNull('note', instance.note);
-  val['idempotencyKey'] = instance.idempotencyKey;
   val['orderTipMoney'] = instance.orderTipMoney;
+  val['paymentSquareId'] = instance.paymentSquareId;
+  val['pickupDate'] = instance.pickupDate;
   writeNotNull('recipient', instance.recipient?.toJson());
   return val;
 }

@@ -18,9 +18,9 @@ class UserPatchBody {
   UserPatchBody({
     this.email,
     this.firstName,
+    this.language,
     this.lastName,
     this.phoneNumber,
-    this.language,
   });
 
   @JsonKey(name: r'email', required: false, includeIfNull: false)
@@ -29,14 +29,14 @@ class UserPatchBody {
   @JsonKey(name: r'firstName', required: false, includeIfNull: false)
   final String? firstName;
 
+  @JsonKey(name: r'language', required: false, includeIfNull: false)
+  final String? language;
+
   @JsonKey(name: r'lastName', required: false, includeIfNull: false)
   final String? lastName;
 
   @JsonKey(name: r'phoneNumber', required: false, includeIfNull: false)
   final String? phoneNumber;
-
-  @JsonKey(name: r'language', required: false, includeIfNull: false)
-  final String? language;
 
   @override
   bool operator ==(Object other) =>
@@ -44,17 +44,17 @@ class UserPatchBody {
       other is UserPatchBody &&
           other.email == email &&
           other.firstName == firstName &&
+          other.language == language &&
           other.lastName == lastName &&
-          other.phoneNumber == phoneNumber &&
-          other.language == language;
+          other.phoneNumber == phoneNumber;
 
   @override
   int get hashCode =>
       (email == null ? 0 : email.hashCode) +
       (firstName == null ? 0 : firstName.hashCode) +
+      (language == null ? 0 : language.hashCode) +
       (lastName == null ? 0 : lastName.hashCode) +
-      (phoneNumber == null ? 0 : phoneNumber.hashCode) +
-      (language == null ? 0 : language.hashCode);
+      (phoneNumber == null ? 0 : phoneNumber.hashCode);
 
   factory UserPatchBody.fromJson(Map<String, dynamic> json) =>
       _$UserPatchBodyFromJson(json);

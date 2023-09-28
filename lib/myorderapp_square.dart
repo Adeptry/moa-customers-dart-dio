@@ -41,6 +41,7 @@ export 'package:myorderapp_square/src/model/customer_patch_body.dart';
 export 'package:myorderapp_square/src/model/customers_paginated_response.dart';
 export 'package:myorderapp_square/src/model/error_response.dart';
 export 'package:myorderapp_square/src/model/fulfillment_recipient_input.dart';
+export 'package:myorderapp_square/src/model/fulfillment_status_enum.dart';
 export 'package:myorderapp_square/src/model/item_entity.dart';
 export 'package:myorderapp_square/src/model/item_modifier_list_entity.dart';
 export 'package:myorderapp_square/src/model/item_paginated_response.dart';

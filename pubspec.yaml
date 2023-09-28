@@ -1,5 +1,5 @@
 name: myorderapp_square
-version: 2.2.2
+version: 2.2.3
 description: A Dart client for MyOrderApp customer HTTP API
 homepage: https://api.myorderapp.dev/
 
