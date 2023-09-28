@@ -1,16 +1,16 @@
 name: myorderapp_square
-version: 2.2.0
+version: 2.2.2
 description: A Dart client for MyOrderApp customer HTTP API
 homepage: https://api.myorderapp.dev/
 
 environment:
-  sdk: '>=2.15.0 <3.0.0'
+  sdk: ">=2.15.0 <3.0.0"
 
 dependencies:
-  dio: '^5.2.0'
-  json_annotation: '^4.4.0'
+  dio: "^5.2.0"
+  json_annotation: "^4.4.0"
 
 dev_dependencies:
   build_runner: any
-  json_serializable: '^6.1.5'
+  json_serializable: "^6.1.5"
   test: ^1.16.0
