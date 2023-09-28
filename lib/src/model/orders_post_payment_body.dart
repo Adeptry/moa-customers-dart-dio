@@ -2,9 +2,9 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:json_annotation/json_annotation.dart';
 // ignore_for_file: unused_element
 import 'package:myorderapp_square/src/model/fulfillment_recipient_input.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'orders_post_payment_body.g.dart';
 

@@ -3,12 +3,11 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:myorderapp_square/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
+import 'package:myorderapp_square/src/deserialize.dart';
 import 'package:myorderapp_square/src/model/cards_post_body.dart';
 import 'package:myorderapp_square/src/model/square_card.dart';
 import 'package:myorderapp_square/src/model/square_disable_card_response.dart';

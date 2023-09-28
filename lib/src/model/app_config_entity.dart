@@ -2,9 +2,9 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:json_annotation/json_annotation.dart';
 // ignore_for_file: unused_element
 import 'package:myorderapp_square/src/model/theme_mode_enum.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'app_config_entity.g.dart';
 

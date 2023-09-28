@@ -2,9 +2,9 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:json_annotation/json_annotation.dart';
 // ignore_for_file: unused_element
 import 'package:myorderapp_square/src/model/customer_entity.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'customers_paginated_response.g.dart';
 

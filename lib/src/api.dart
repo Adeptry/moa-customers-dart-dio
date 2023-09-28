@@ -3,10 +3,6 @@
 //
 
 import 'package:dio/dio.dart';
-import 'package:myorderapp_square/src/auth/api_key_auth.dart';
-import 'package:myorderapp_square/src/auth/basic_auth.dart';
-import 'package:myorderapp_square/src/auth/bearer_auth.dart';
-import 'package:myorderapp_square/src/auth/oauth.dart';
 import 'package:myorderapp_square/src/api/app_configs_api.dart';
 import 'package:myorderapp_square/src/api/authentication_api.dart';
 import 'package:myorderapp_square/src/api/cards_api.dart';
@@ -16,6 +12,10 @@ import 'package:myorderapp_square/src/api/locations_api.dart';
 import 'package:myorderapp_square/src/api/merchants_api.dart';
 import 'package:myorderapp_square/src/api/orders_api.dart';
 import 'package:myorderapp_square/src/api/users_api.dart';
+import 'package:myorderapp_square/src/auth/api_key_auth.dart';
+import 'package:myorderapp_square/src/auth/basic_auth.dart';
+import 'package:myorderapp_square/src/auth/bearer_auth.dart';
+import 'package:myorderapp_square/src/auth/oauth.dart';
 
 class MyorderappSquare {
   static const String basePath = r'https://api.myorderapp.dev';

@@ -2,9 +2,9 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:json_annotation/json_annotation.dart';
 // ignore_for_file: unused_element
 import 'package:myorderapp_square/src/model/orders_variation_line_item_input.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'order_post_current_body.g.dart';
 

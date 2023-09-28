@@ -3,12 +3,11 @@
 //
 
 import 'dart:async';
-
 // ignore: unused_import
 import 'dart:convert';
-import 'package:myorderapp_square/src/deserialize.dart';
-import 'package:dio/dio.dart';
 
+import 'package:dio/dio.dart';
+import 'package:myorderapp_square/src/deserialize.dart';
 import 'package:myorderapp_square/src/model/app_install_post_body.dart';
 import 'package:myorderapp_square/src/model/customer_entity.dart';
 import 'package:myorderapp_square/src/model/customer_patch_body.dart';

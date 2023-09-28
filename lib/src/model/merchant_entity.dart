@@ -2,11 +2,11 @@
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
 
+import 'package:json_annotation/json_annotation.dart';
+import 'package:myorderapp_square/src/model/app_config_entity.dart';
 // ignore_for_file: unused_element
 import 'package:myorderapp_square/src/model/catalog_entity.dart';
-import 'package:myorderapp_square/src/model/app_config_entity.dart';
 import 'package:myorderapp_square/src/model/user_entity.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'merchant_entity.g.dart';
 
