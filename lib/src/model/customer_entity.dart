@@ -19,57 +19,45 @@ class CustomerEntity {
   /// Returns a new [CustomerEntity] instance.
   CustomerEntity({
     this.id,
-    this.preferredLocation,
-    this.preferredLocationId,
-    this.preferredSquareCard,
-    this.preferredSquareCardId,
-    this.squareId,
     this.user,
+    this.preferredLocation,
+    this.preferredSquareCardId,
+    this.preferredSquareCard,
   });
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
 
+  @JsonKey(name: r'user', required: false, includeIfNull: false)
+  final Object? user;
+
   @JsonKey(name: r'preferredLocation', required: false, includeIfNull: false)
   final LocationEntity? preferredLocation;
-
-  @JsonKey(name: r'preferredLocationId', required: false, includeIfNull: false)
-  final String? preferredLocationId;
-
-  @JsonKey(name: r'preferredSquareCard', required: false, includeIfNull: false)
-  final SquareCard? preferredSquareCard;
 
   @JsonKey(
       name: r'preferredSquareCardId', required: false, includeIfNull: false)
   final String? preferredSquareCardId;
 
-  @JsonKey(name: r'squareId', required: false, includeIfNull: false)
-  final String? squareId;
-
-  @JsonKey(name: r'user', required: false, includeIfNull: false)
-  final Object? user;
+  @JsonKey(name: r'preferredSquareCard', required: false, includeIfNull: false)
+  final SquareCard? preferredSquareCard;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CustomerEntity &&
           other.id == id &&
+          other.user == user &&
           other.preferredLocation == preferredLocation &&
-          other.preferredLocationId == preferredLocationId &&
-          other.preferredSquareCard == preferredSquareCard &&
           other.preferredSquareCardId == preferredSquareCardId &&
-          other.squareId == squareId &&
-          other.user == user;
+          other.preferredSquareCard == preferredSquareCard;
 
   @override
   int get hashCode =>
       (id == null ? 0 : id.hashCode) +
+      (user == null ? 0 : user.hashCode) +
       (preferredLocation == null ? 0 : preferredLocation.hashCode) +
-      (preferredLocationId == null ? 0 : preferredLocationId.hashCode) +
-      (preferredSquareCard == null ? 0 : preferredSquareCard.hashCode) +
       (preferredSquareCardId == null ? 0 : preferredSquareCardId.hashCode) +
-      (squareId == null ? 0 : squareId.hashCode) +
-      (user == null ? 0 : user.hashCode);
+      (preferredSquareCard == null ? 0 : preferredSquareCard.hashCode);
 
   factory CustomerEntity.fromJson(Map<String, dynamic> json) =>
       _$CustomerEntityFromJson(json);

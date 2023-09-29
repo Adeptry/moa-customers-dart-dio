@@ -12,6 +12,11 @@ void main() {
       // TODO
     });
 
+    // List<ModifierEntity> modifiers
+    test('to test the property `modifiers`', () async {
+      // TODO
+    });
+
     // String name
     test('to test the property `name`', () async {
       // TODO
@@ -24,11 +29,6 @@ void main() {
 
     // MoaSelectionType selectionType
     test('to test the property `selectionType`', () async {
-      // TODO
-    });
-
-    // List<ModifierEntity> modifiers
-    test('to test the property `modifiers`', () async {
       // TODO
     });
 

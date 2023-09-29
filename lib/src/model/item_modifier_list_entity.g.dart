@@ -13,17 +13,17 @@ ItemModifierListEntity _$ItemModifierListEntityFromJson(
       json,
       ($checkedConvert) {
         final val = ItemModifierListEntity(
-          enabled: $checkedConvert('enabled', (v) => v as bool?),
           id: $checkedConvert('id', (v) => v as String?),
+          minSelectedModifiers:
+              $checkedConvert('minSelectedModifiers', (v) => v as num?),
+          maxSelectedModifiers:
+              $checkedConvert('maxSelectedModifiers', (v) => v as num?),
+          enabled: $checkedConvert('enabled', (v) => v as bool?),
           item: $checkedConvert(
               'item',
               (v) => v == null
                   ? null
                   : ItemEntity.fromJson(v as Map<String, dynamic>)),
-          maxSelectedModifiers:
-              $checkedConvert('maxSelectedModifiers', (v) => v as num?),
-          minSelectedModifiers:
-              $checkedConvert('minSelectedModifiers', (v) => v as num?),
           modifierList: $checkedConvert(
               'modifierList',
               (v) => v == null
@@ -44,11 +44,11 @@ Map<String, dynamic> _$ItemModifierListEntityToJson(
     }
   }
 
-  writeNotNull('enabled', instance.enabled);
   writeNotNull('id', instance.id);
-  writeNotNull('item', instance.item?.toJson());
-  writeNotNull('maxSelectedModifiers', instance.maxSelectedModifiers);
   writeNotNull('minSelectedModifiers', instance.minSelectedModifiers);
+  writeNotNull('maxSelectedModifiers', instance.maxSelectedModifiers);
+  writeNotNull('enabled', instance.enabled);
+  writeNotNull('item', instance.item?.toJson());
   writeNotNull('modifierList', instance.modifierList?.toJson());
   return val;
 }

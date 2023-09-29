@@ -7,6 +7,36 @@ void main() {
   // TODO add properties to the entity
 
   group(AppConfigEntity, () {
+    // String blockingMessage
+    test('to test the property `blockingMessage`', () async {
+      // TODO
+    });
+
+    // bool enabled
+    test('to test the property `enabled`', () async {
+      // TODO
+    });
+
+    // String fontFamily
+    test('to test the property `fontFamily`', () async {
+      // TODO
+    });
+
+    // String iconFileUrl
+    test('to test the property `iconFileUrl`', () async {
+      // TODO
+    });
+
+    // String message
+    test('to test the property `message`', () async {
+      // TODO
+    });
+
+    // String minimumVersion
+    test('to test the property `minimumVersion`', () async {
+      // TODO
+    });
+
     // String name
     test('to test the property `name`', () async {
       // TODO
@@ -17,23 +47,8 @@ void main() {
       // TODO
     });
 
-    // bool enabled
-    test('to test the property `enabled`', () async {
-      // TODO
-    });
-
     // String seedColor
     test('to test the property `seedColor`', () async {
-      // TODO
-    });
-
-    // String fontFamily
-    test('to test the property `fontFamily`', () async {
-      // TODO
-    });
-
-    // bool useMaterial3
-    test('to test the property `useMaterial3`', () async {
       // TODO
     });
 
@@ -42,23 +57,8 @@ void main() {
       // TODO
     });
 
-    // String message
-    test('to test the property `message`', () async {
-      // TODO
-    });
-
-    // String blockingMessage
-    test('to test the property `blockingMessage`', () async {
-      // TODO
-    });
-
-    // String minimumVersion
-    test('to test the property `minimumVersion`', () async {
-      // TODO
-    });
-
-    // String iconFileUrl
-    test('to test the property `iconFileUrl`', () async {
+    // bool useMaterial3
+    test('to test the property `useMaterial3`', () async {
       // TODO
     });
 

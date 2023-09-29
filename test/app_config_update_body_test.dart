@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the entity
 
   group(AppConfigUpdateBody, () {
+    // String fontFamily
+    test('to test the property `fontFamily`', () async {
+      // TODO
+    });
+
     // String name
     test('to test the property `name`', () async {
       // TODO
@@ -17,18 +22,13 @@ void main() {
       // TODO
     });
 
-    // String fontFamily
-    test('to test the property `fontFamily`', () async {
+    // ThemeModeEnum themeMode
+    test('to test the property `themeMode`', () async {
       // TODO
     });
 
     // bool useMaterial3
     test('to test the property `useMaterial3`', () async {
-      // TODO
-    });
-
-    // ThemeModeEnum themeMode
-    test('to test the property `themeMode`', () async {
       // TODO
     });
 

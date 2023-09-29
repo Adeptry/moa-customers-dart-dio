@@ -12,13 +12,13 @@ void main() {
       // TODO
     });
 
-    // num moaOrdinal
-    test('to test the property `moaOrdinal`', () async {
+    // bool moaEnabled
+    test('to test the property `moaEnabled`', () async {
       // TODO
     });
 
-    // bool moaEnabled
-    test('to test the property `moaEnabled`', () async {
+    // num moaOrdinal
+    test('to test the property `moaOrdinal`', () async {
       // TODO
     });
 

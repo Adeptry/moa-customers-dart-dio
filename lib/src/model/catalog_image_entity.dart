@@ -16,45 +16,45 @@ part 'catalog_image_entity.g.dart';
 class CatalogImageEntity {
   /// Returns a new [CatalogImageEntity] instance.
   CatalogImageEntity({
-    this.caption,
     this.id,
-    this.name,
     this.squareId,
+    this.name,
     this.url,
+    this.caption,
   });
-
-  @JsonKey(name: r'caption', required: false, includeIfNull: false)
-  final String? caption;
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
 
-  @JsonKey(name: r'name', required: false, includeIfNull: false)
-  final String? name;
-
   @JsonKey(name: r'squareId', required: false, includeIfNull: false)
   final String? squareId;
 
+  @JsonKey(name: r'name', required: false, includeIfNull: false)
+  final String? name;
+
   @JsonKey(name: r'url', required: false, includeIfNull: false)
   final String? url;
+
+  @JsonKey(name: r'caption', required: false, includeIfNull: false)
+  final String? caption;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CatalogImageEntity &&
-          other.caption == caption &&
           other.id == id &&
-          other.name == name &&
           other.squareId == squareId &&
-          other.url == url;
+          other.name == name &&
+          other.url == url &&
+          other.caption == caption;
 
   @override
   int get hashCode =>
-      (caption == null ? 0 : caption.hashCode) +
       (id == null ? 0 : id.hashCode) +
-      (name == null ? 0 : name.hashCode) +
       (squareId == null ? 0 : squareId.hashCode) +
-      (url == null ? 0 : url.hashCode);
+      (name == null ? 0 : name.hashCode) +
+      (url == null ? 0 : url.hashCode) +
+      (caption == null ? 0 : caption.hashCode);
 
   factory CatalogImageEntity.fromJson(Map<String, dynamic> json) =>
       _$CatalogImageEntityFromJson(json);

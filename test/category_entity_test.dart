@@ -12,8 +12,8 @@ void main() {
       // TODO
     });
 
-    // num moaOrdinal
-    test('to test the property `moaOrdinal`', () async {
+    // List<ItemEntity> items
+    test('to test the property `items`', () async {
       // TODO
     });
 
@@ -22,13 +22,13 @@ void main() {
       // TODO
     });
 
-    // String name
-    test('to test the property `name`', () async {
+    // num moaOrdinal
+    test('to test the property `moaOrdinal`', () async {
       // TODO
     });
 
-    // List<ItemEntity> items
-    test('to test the property `items`', () async {
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

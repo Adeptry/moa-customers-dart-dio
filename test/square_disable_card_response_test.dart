@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(SquareDisableCardResponse, () {
-    // List<SquareError> errors
-    test('to test the property `errors`', () async {
+    // SquareCard card
+    test('to test the property `card`', () async {
       // TODO
     });
 
-    // SquareCard card
-    test('to test the property `card`', () async {
+    // List<SquareError> errors
+    test('to test the property `errors`', () async {
       // TODO
     });
 

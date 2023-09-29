@@ -7,6 +7,13 @@ void main() {
   final instance = MyorderappSquare().getMerchantsApi();
 
   group(MerchantsApi, () {
+    // Get Merchant
+    //
+    //Future<MerchantEntity> getMerchant(String idOrPath, { String xCustomLang }) async
+    test('test getMerchant', () async {
+      // TODO
+    });
+
     // Get current Merchant
     //
     //Future<MerchantEntity> getMerchantMe({ bool user, bool appConfig, bool locations, bool catalog, String xCustomLang }) async

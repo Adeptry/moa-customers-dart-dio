@@ -37,7 +37,7 @@ void main() {
 
     // Get my Orders
     //
-    //Future<OrdersPaginatedReponse> getOrders({ num page, num limit, bool closed, bool lineItems, bool location, String actingAs, String merchantIdOrPath, String xCustomLang }) async
+    //Future<OrdersPaginatedReponse> getOrders({ num page, num limit, bool closed, bool lineItems, bool location, String orderField, String orderSort, String actingAs, String merchantIdOrPath, String xCustomLang }) async
     test('test getOrders', () async {
       // TODO
     });

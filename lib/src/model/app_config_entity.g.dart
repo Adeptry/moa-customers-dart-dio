@@ -12,20 +12,20 @@ AppConfigEntity _$AppConfigEntityFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = AppConfigEntity(
-          blockingMessage:
-              $checkedConvert('blockingMessage', (v) => v as String?),
-          enabled: $checkedConvert('enabled', (v) => v as bool?),
-          fontFamily: $checkedConvert('fontFamily', (v) => v as String?),
-          iconFileUrl: $checkedConvert('iconFileUrl', (v) => v as String?),
-          message: $checkedConvert('message', (v) => v as String?),
-          minimumVersion:
-              $checkedConvert('minimumVersion', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String?),
           path: $checkedConvert('path', (v) => v as String?),
+          enabled: $checkedConvert('enabled', (v) => v as bool?),
           seedColor: $checkedConvert('seedColor', (v) => v as String?),
+          fontFamily: $checkedConvert('fontFamily', (v) => v as String?),
+          useMaterial3: $checkedConvert('useMaterial3', (v) => v as bool?),
           themeMode: $checkedConvert('themeMode',
               (v) => $enumDecodeNullable(_$ThemeModeEnumEnumMap, v)),
-          useMaterial3: $checkedConvert('useMaterial3', (v) => v as bool?),
+          message: $checkedConvert('message', (v) => v as String?),
+          blockingMessage:
+              $checkedConvert('blockingMessage', (v) => v as String?),
+          minimumVersion:
+              $checkedConvert('minimumVersion', (v) => v as String?),
+          iconFileUrl: $checkedConvert('iconFileUrl', (v) => v as String?),
         );
         return val;
       },
@@ -40,17 +40,17 @@ Map<String, dynamic> _$AppConfigEntityToJson(AppConfigEntity instance) {
     }
   }
 
-  writeNotNull('blockingMessage', instance.blockingMessage);
-  writeNotNull('enabled', instance.enabled);
-  writeNotNull('fontFamily', instance.fontFamily);
-  writeNotNull('iconFileUrl', instance.iconFileUrl);
-  writeNotNull('message', instance.message);
-  writeNotNull('minimumVersion', instance.minimumVersion);
   writeNotNull('name', instance.name);
   writeNotNull('path', instance.path);
+  writeNotNull('enabled', instance.enabled);
   writeNotNull('seedColor', instance.seedColor);
-  writeNotNull('themeMode', _$ThemeModeEnumEnumMap[instance.themeMode]);
+  writeNotNull('fontFamily', instance.fontFamily);
   writeNotNull('useMaterial3', instance.useMaterial3);
+  writeNotNull('themeMode', _$ThemeModeEnumEnumMap[instance.themeMode]);
+  writeNotNull('message', instance.message);
+  writeNotNull('blockingMessage', instance.blockingMessage);
+  writeNotNull('minimumVersion', instance.minimumVersion);
+  writeNotNull('iconFileUrl', instance.iconFileUrl);
   return val;
 }
 

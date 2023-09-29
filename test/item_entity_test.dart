@@ -7,28 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(ItemEntity, () {
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // num moaOrdinal
-    test('to test the property `moaOrdinal`', () async {
-      // TODO
-    });
-
-    // bool moaEnabled
-    test('to test the property `moaEnabled`', () async {
-      // TODO
-    });
-
-    // String name
-    test('to test the property `name`', () async {
-      // TODO
-    });
-
     // String description
     test('to test the property `description`', () async {
+      // TODO
+    });
+
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 
@@ -39,6 +24,21 @@ void main() {
 
     // List<ItemModifierListEntity> itemModifierLists
     test('to test the property `itemModifierLists`', () async {
+      // TODO
+    });
+
+    // bool moaEnabled
+    test('to test the property `moaEnabled`', () async {
+      // TODO
+    });
+
+    // num moaOrdinal
+    test('to test the property `moaOrdinal`', () async {
+      // TODO
+    });
+
+    // String name
+    test('to test the property `name`', () async {
       // TODO
     });
 

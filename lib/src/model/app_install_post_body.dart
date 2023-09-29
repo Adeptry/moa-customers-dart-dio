@@ -16,9 +16,13 @@ part 'app_install_post_body.g.dart';
 class AppInstallPostBody {
   /// Returns a new [AppInstallPostBody] instance.
   AppInstallPostBody({
-    this.firebaseCloudMessagingToken,
     this.firebaseInstallationId,
+    this.firebaseCloudMessagingToken,
   });
+
+  @JsonKey(
+      name: r'firebaseInstallationId', required: false, includeIfNull: false)
+  final String? firebaseInstallationId;
 
   @JsonKey(
       name: r'firebaseCloudMessagingToken',
@@ -26,23 +30,19 @@ class AppInstallPostBody {
       includeIfNull: false)
   final String? firebaseCloudMessagingToken;
 
-  @JsonKey(
-      name: r'firebaseInstallationId', required: false, includeIfNull: false)
-  final String? firebaseInstallationId;
-
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppInstallPostBody &&
-          other.firebaseCloudMessagingToken == firebaseCloudMessagingToken &&
-          other.firebaseInstallationId == firebaseInstallationId;
+          other.firebaseInstallationId == firebaseInstallationId &&
+          other.firebaseCloudMessagingToken == firebaseCloudMessagingToken;
 
   @override
   int get hashCode =>
+      (firebaseInstallationId == null ? 0 : firebaseInstallationId.hashCode) +
       (firebaseCloudMessagingToken == null
           ? 0
-          : firebaseCloudMessagingToken.hashCode) +
-      (firebaseInstallationId == null ? 0 : firebaseInstallationId.hashCode);
+          : firebaseCloudMessagingToken.hashCode);
 
   factory AppInstallPostBody.fromJson(Map<String, dynamic> json) =>
       _$AppInstallPostBodyFromJson(json);

@@ -12,25 +12,27 @@ MerchantEntity _$MerchantEntityFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = MerchantEntity(
-          appConfig: $checkedConvert(
-              'appConfig',
-              (v) => v == null
-                  ? null
-                  : AppConfigEntity.fromJson(v as Map<String, dynamic>)),
-          catalog: $checkedConvert(
-              'catalog',
-              (v) => v == null
-                  ? null
-                  : CatalogEntity.fromJson(v as Map<String, dynamic>)),
           id: $checkedConvert('id', (v) => v as String?),
-          squareId: $checkedConvert('squareId', (v) => v as String?),
-          stripeId: $checkedConvert('stripeId', (v) => v as String?),
           tier: $checkedConvert('tier', (v) => v as num?),
+          pickupLeadDurationMinutes:
+              $checkedConvert('pickupLeadDurationMinutes', (v) => v as num?),
           user: $checkedConvert(
               'user',
               (v) => v == null
                   ? null
                   : UserEntity.fromJson(v as Map<String, dynamic>)),
+          appConfig: $checkedConvert(
+              'appConfig',
+              (v) => v == null
+                  ? null
+                  : AppConfigEntity.fromJson(v as Map<String, dynamic>)),
+          squareId: $checkedConvert('squareId', (v) => v as String?),
+          stripeId: $checkedConvert('stripeId', (v) => v as String?),
+          catalog: $checkedConvert(
+              'catalog',
+              (v) => v == null
+                  ? null
+                  : CatalogEntity.fromJson(v as Map<String, dynamic>)),
         );
         return val;
       },
@@ -45,12 +47,13 @@ Map<String, dynamic> _$MerchantEntityToJson(MerchantEntity instance) {
     }
   }
 
-  writeNotNull('appConfig', instance.appConfig?.toJson());
-  writeNotNull('catalog', instance.catalog?.toJson());
   writeNotNull('id', instance.id);
+  writeNotNull('tier', instance.tier);
+  writeNotNull('pickupLeadDurationMinutes', instance.pickupLeadDurationMinutes);
+  writeNotNull('user', instance.user?.toJson());
+  writeNotNull('appConfig', instance.appConfig?.toJson());
   writeNotNull('squareId', instance.squareId);
   writeNotNull('stripeId', instance.stripeId);
-  writeNotNull('tier', instance.tier);
-  writeNotNull('user', instance.user?.toJson());
+  writeNotNull('catalog', instance.catalog?.toJson());
   return val;
 }

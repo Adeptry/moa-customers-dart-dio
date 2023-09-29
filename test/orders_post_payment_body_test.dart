@@ -7,14 +7,9 @@ void main() {
   // TODO add properties to the entity
 
   group(OrdersPostPaymentBody, () {
-    // If not provided, prepare ASAP, else will validate it's within business hours and schedule. Represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
-    // String pickupDate
-    test('to test the property `pickupDate`', () async {
-      // TODO
-    });
-
-    // String paymentSquareId
-    test('to test the property `paymentSquareId`', () async {
+    // Should be generated on checkout screen presentation.
+    // String idempotencyKey
+    test('to test the property `idempotencyKey`', () async {
       // TODO
     });
 
@@ -23,14 +18,19 @@ void main() {
       // TODO
     });
 
-    // Should be generated on checkout screen presentation.
-    // String idempotencyKey
-    test('to test the property `idempotencyKey`', () async {
+    // num orderTipMoney
+    test('to test the property `orderTipMoney`', () async {
       // TODO
     });
 
-    // num orderTipMoney
-    test('to test the property `orderTipMoney`', () async {
+    // String paymentSquareId
+    test('to test the property `paymentSquareId`', () async {
+      // TODO
+    });
+
+    // If not provided, prepare ASAP, else will validate it's within business hours and schedule. Represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
+    // String pickupDateString
+    test('to test the property `pickupDateString`', () async {
       // TODO
     });
 

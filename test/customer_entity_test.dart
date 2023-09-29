@@ -12,23 +12,13 @@ void main() {
       // TODO
     });
 
-    // Object user
-    test('to test the property `user`', () async {
-      // TODO
-    });
-
-    // String squareId
-    test('to test the property `squareId`', () async {
-      // TODO
-    });
-
-    // String preferredLocationId
-    test('to test the property `preferredLocationId`', () async {
-      // TODO
-    });
-
     // LocationEntity preferredLocation
     test('to test the property `preferredLocation`', () async {
+      // TODO
+    });
+
+    // SquareCard preferredSquareCard
+    test('to test the property `preferredSquareCard`', () async {
       // TODO
     });
 
@@ -37,8 +27,8 @@ void main() {
       // TODO
     });
 
-    // SquareCard preferredSquareCard
-    test('to test the property `preferredSquareCard`', () async {
+    // Object user
+    test('to test the property `user`', () async {
       // TODO
     });
 

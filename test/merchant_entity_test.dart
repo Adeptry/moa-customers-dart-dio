@@ -7,23 +7,23 @@ void main() {
   // TODO add properties to the entity
 
   group(MerchantEntity, () {
+    // AppConfigEntity appConfig
+    test('to test the property `appConfig`', () async {
+      // TODO
+    });
+
+    // CatalogEntity catalog
+    test('to test the property `catalog`', () async {
+      // TODO
+    });
+
     // String id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // num tier
-    test('to test the property `tier`', () async {
-      // TODO
-    });
-
-    // UserEntity user
-    test('to test the property `user`', () async {
-      // TODO
-    });
-
-    // AppConfigEntity appConfig
-    test('to test the property `appConfig`', () async {
+    // num pickupLeadDurationMinutes
+    test('to test the property `pickupLeadDurationMinutes`', () async {
       // TODO
     });
 
@@ -37,8 +37,13 @@ void main() {
       // TODO
     });
 
-    // CatalogEntity catalog
-    test('to test the property `catalog`', () async {
+    // num tier
+    test('to test the property `tier`', () async {
+      // TODO
+    });
+
+    // UserEntity user
+    test('to test the property `user`', () async {
       // TODO
     });
 

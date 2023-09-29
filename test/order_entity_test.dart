@@ -7,33 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(OrderEntity, () {
-    // String id
-    test('to test the property `id`', () async {
-      // TODO
-    });
-
-    // CustomerEntity customer
-    test('to test the property `customer`', () async {
-      // TODO
-    });
-
-    // LocationEntity location
-    test('to test the property `location`', () async {
-      // TODO
-    });
-
-    // List<LineItemEntity> lineItems
-    test('to test the property `lineItems`', () async {
-      // TODO
-    });
-
-    // DateTime closedDate
+    // OffsetDateTime closedDate
     test('to test the property `closedDate`', () async {
-      // TODO
-    });
-
-    // DateTime pickupDate
-    test('to test the property `pickupDate`', () async {
       // TODO
     });
 
@@ -42,13 +17,43 @@ void main() {
       // TODO
     });
 
-    // num totalMoneyAmount
-    test('to test the property `totalMoneyAmount`', () async {
+    // CustomerEntity customer
+    test('to test the property `customer`', () async {
       // TODO
     });
 
-    // num totalMoneyTaxAmount
-    test('to test the property `totalMoneyTaxAmount`', () async {
+    // String displayId
+    test('to test the property `displayId`', () async {
+      // TODO
+    });
+
+    // String id
+    test('to test the property `id`', () async {
+      // TODO
+    });
+
+    // List<LineItemEntity> lineItems
+    test('to test the property `lineItems`', () async {
+      // TODO
+    });
+
+    // LocationEntity location
+    test('to test the property `location`', () async {
+      // TODO
+    });
+
+    // OffsetDateTime pickupDate
+    test('to test the property `pickupDate`', () async {
+      // TODO
+    });
+
+    // FulfillmentStatusEnum squareFulfillmentStatus
+    test('to test the property `squareFulfillmentStatus`', () async {
+      // TODO
+    });
+
+    // num totalMoneyAmount
+    test('to test the property `totalMoneyAmount`', () async {
       // TODO
     });
 
@@ -57,13 +62,18 @@ void main() {
       // TODO
     });
 
-    // num totalMoneyTipAmount
-    test('to test the property `totalMoneyTipAmount`', () async {
+    // num totalMoneyServiceChargeAmount
+    test('to test the property `totalMoneyServiceChargeAmount`', () async {
       // TODO
     });
 
-    // num totalMoneyServiceChargeAmount
-    test('to test the property `totalMoneyServiceChargeAmount`', () async {
+    // num totalMoneyTaxAmount
+    test('to test the property `totalMoneyTaxAmount`', () async {
+      // TODO
+    });
+
+    // num totalMoneyTipAmount
+    test('to test the property `totalMoneyTipAmount`', () async {
       // TODO
     });
 

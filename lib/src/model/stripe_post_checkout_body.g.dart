@@ -14,12 +14,12 @@ StripePostCheckoutBody _$StripePostCheckoutBodyFromJson(
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['cancelUrl', 'stripePriceId', 'successUrl'],
+          requiredKeys: const ['successUrl', 'cancelUrl', 'stripePriceId'],
         );
         final val = StripePostCheckoutBody(
+          successUrl: $checkedConvert('successUrl', (v) => v as String),
           cancelUrl: $checkedConvert('cancelUrl', (v) => v as String),
           stripePriceId: $checkedConvert('stripePriceId', (v) => v as String),
-          successUrl: $checkedConvert('successUrl', (v) => v as String),
         );
         return val;
       },
@@ -28,7 +28,7 @@ StripePostCheckoutBody _$StripePostCheckoutBodyFromJson(
 Map<String, dynamic> _$StripePostCheckoutBodyToJson(
         StripePostCheckoutBody instance) =>
     <String, dynamic>{
+      'successUrl': instance.successUrl,
       'cancelUrl': instance.cancelUrl,
       'stripePriceId': instance.stripePriceId,
-      'successUrl': instance.successUrl,
     };

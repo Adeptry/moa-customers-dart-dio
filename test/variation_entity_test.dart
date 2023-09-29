@@ -12,11 +12,6 @@ void main() {
       // TODO
     });
 
-    // num ordinal
-    test('to test the property `ordinal`', () async {
-      // TODO
-    });
-
     // bool moaEnabled
     test('to test the property `moaEnabled`', () async {
       // TODO
@@ -24,6 +19,11 @@ void main() {
 
     // String name
     test('to test the property `name`', () async {
+      // TODO
+    });
+
+    // num ordinal
+    test('to test the property `ordinal`', () async {
       // TODO
     });
 
