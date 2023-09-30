@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getOrders**
-> OrdersPaginatedReponse getOrders(page, limit, closed, lineItems, location, orderField, orderSort, actingAs, merchantIdOrPath, xCustomLang)
+> OrdersPaginatedReponse getOrders(page, limit, closed, lineItems, location, customer, orderField, orderSort, actingAs, merchantIdOrPath, xCustomLang)
 
 Get my Orders
 
@@ -244,6 +244,7 @@ final num limit = 8.14; // num |
 final bool closed = true; // bool | 
 final bool lineItems = true; // bool | 
 final bool location = true; // bool | 
+final bool customer = true; // bool | 
 final String orderField = orderField_example; // String | 
 final String orderSort = orderSort_example; // String | 
 final String actingAs = actingAs_example; // String | 
@@ -251,7 +252,7 @@ final String merchantIdOrPath = merchantIdOrPath_example; // String |
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getOrders(page, limit, closed, lineItems, location, orderField, orderSort, actingAs, merchantIdOrPath, xCustomLang);
+    final response = api.getOrders(page, limit, closed, lineItems, location, customer, orderField, orderSort, actingAs, merchantIdOrPath, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling OrdersApi->getOrders: $e\n');
@@ -267,6 +268,7 @@ Name | Type | Description  | Notes
  **closed** | **bool**|  | [optional] 
  **lineItems** | **bool**|  | [optional] 
  **location** | **bool**|  | [optional] 
+ **customer** | **bool**|  | [optional] 
  **orderField** | **String**|  | [optional] 
  **orderSort** | **String**|  | [optional] 
  **actingAs** | **String**|  | [optional] 

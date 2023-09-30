@@ -5,6 +5,7 @@
 // ignore_for_file: unused_element
 import 'package:myorderapp_square/src/model/location_entity.dart';
 import 'package:myorderapp_square/src/model/square_card.dart';
+import 'package:myorderapp_square/src/model/user_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'customer_entity.g.dart';
@@ -38,7 +39,7 @@ class CustomerEntity {
   final SquareCard? preferredSquareCard;
 
   @JsonKey(name: r'user', required: false, includeIfNull: false)
-  final Object? user;
+  final UserEntity? user;
 
   @override
   bool operator ==(Object other) =>

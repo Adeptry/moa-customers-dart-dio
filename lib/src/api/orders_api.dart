@@ -405,6 +405,7 @@ class OrdersApi {
   /// * [closed]
   /// * [lineItems]
   /// * [location]
+  /// * [customer]
   /// * [orderField]
   /// * [orderSort]
   /// * [actingAs]
@@ -425,6 +426,7 @@ class OrdersApi {
     bool? closed,
     bool? lineItems,
     bool? location,
+    bool? customer,
     String? orderField,
     String? orderSort,
     String? actingAs,
@@ -469,6 +471,7 @@ class OrdersApi {
       if (closed != null) r'closed': closed,
       if (lineItems != null) r'lineItems': lineItems,
       if (location != null) r'location': location,
+      if (customer != null) r'customer': customer,
       if (orderField != null) r'orderField': orderField,
       if (orderSort != null) r'orderSort': orderSort,
       if (actingAs != null) r'actingAs': actingAs,
