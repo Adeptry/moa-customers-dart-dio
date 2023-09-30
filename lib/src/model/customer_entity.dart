@@ -18,46 +18,45 @@ part 'customer_entity.g.dart';
 class CustomerEntity {
   /// Returns a new [CustomerEntity] instance.
   CustomerEntity({
+    this.createDate,
     this.id,
-    this.user,
     this.preferredLocation,
-    this.preferredSquareCardId,
     this.preferredSquareCard,
+    this.user,
   });
+
+  @JsonKey(name: r'createDate', required: false, includeIfNull: false)
+  final DateTime? createDate;
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
 
-  @JsonKey(name: r'user', required: false, includeIfNull: false)
-  final Object? user;
-
   @JsonKey(name: r'preferredLocation', required: false, includeIfNull: false)
   final LocationEntity? preferredLocation;
 
-  @JsonKey(
-      name: r'preferredSquareCardId', required: false, includeIfNull: false)
-  final String? preferredSquareCardId;
-
   @JsonKey(name: r'preferredSquareCard', required: false, includeIfNull: false)
   final SquareCard? preferredSquareCard;
+
+  @JsonKey(name: r'user', required: false, includeIfNull: false)
+  final Object? user;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CustomerEntity &&
+          other.createDate == createDate &&
           other.id == id &&
-          other.user == user &&
           other.preferredLocation == preferredLocation &&
-          other.preferredSquareCardId == preferredSquareCardId &&
-          other.preferredSquareCard == preferredSquareCard;
+          other.preferredSquareCard == preferredSquareCard &&
+          other.user == user;
 
   @override
   int get hashCode =>
+      (createDate == null ? 0 : createDate.hashCode) +
       (id == null ? 0 : id.hashCode) +
-      (user == null ? 0 : user.hashCode) +
       (preferredLocation == null ? 0 : preferredLocation.hashCode) +
-      (preferredSquareCardId == null ? 0 : preferredSquareCardId.hashCode) +
-      (preferredSquareCard == null ? 0 : preferredSquareCard.hashCode);
+      (preferredSquareCard == null ? 0 : preferredSquareCard.hashCode) +
+      (user == null ? 0 : user.hashCode);
 
   factory CustomerEntity.fromJson(Map<String, dynamic> json) =>
       _$CustomerEntityFromJson(json);

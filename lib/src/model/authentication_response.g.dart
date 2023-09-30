@@ -14,11 +14,11 @@ AuthenticationResponse _$AuthenticationResponseFromJson(
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['token', 'refreshToken', 'tokenExpires'],
+          requiredKeys: const ['refreshToken', 'token', 'tokenExpires'],
         );
         final val = AuthenticationResponse(
-          token: $checkedConvert('token', (v) => v as String),
           refreshToken: $checkedConvert('refreshToken', (v) => v as String),
+          token: $checkedConvert('token', (v) => v as String),
           tokenExpires: $checkedConvert('tokenExpires', (v) => v as num),
           user: $checkedConvert(
               'user',
@@ -33,8 +33,8 @@ AuthenticationResponse _$AuthenticationResponseFromJson(
 Map<String, dynamic> _$AuthenticationResponseToJson(
     AuthenticationResponse instance) {
   final val = <String, dynamic>{
-    'token': instance.token,
     'refreshToken': instance.refreshToken,
+    'token': instance.token,
     'tokenExpires': instance.tokenExpires,
   };
 

@@ -12,20 +12,20 @@ CustomerEntity _$CustomerEntityFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = CustomerEntity(
+          createDate: $checkedConvert('createDate',
+              (v) => v == null ? null : DateTime.parse(v as String)),
           id: $checkedConvert('id', (v) => v as String?),
-          user: $checkedConvert('user', (v) => v),
           preferredLocation: $checkedConvert(
               'preferredLocation',
               (v) => v == null
                   ? null
                   : LocationEntity.fromJson(v as Map<String, dynamic>)),
-          preferredSquareCardId:
-              $checkedConvert('preferredSquareCardId', (v) => v as String?),
           preferredSquareCard: $checkedConvert(
               'preferredSquareCard',
               (v) => v == null
                   ? null
                   : SquareCard.fromJson(v as Map<String, dynamic>)),
+          user: $checkedConvert('user', (v) => v),
         );
         return val;
       },
@@ -40,10 +40,10 @@ Map<String, dynamic> _$CustomerEntityToJson(CustomerEntity instance) {
     }
   }
 
+  writeNotNull('createDate', instance.createDate?.toIso8601String());
   writeNotNull('id', instance.id);
-  writeNotNull('user', instance.user);
   writeNotNull('preferredLocation', instance.preferredLocation?.toJson());
-  writeNotNull('preferredSquareCardId', instance.preferredSquareCardId);
   writeNotNull('preferredSquareCard', instance.preferredSquareCard?.toJson());
+  writeNotNull('user', instance.user);
   return val;
 }

@@ -10,7 +10,7 @@ All URIs are relative to *https://api.myorderapp.dev*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getCustomerMe**](CustomersApi.md#getcustomerme) | **GET** /v2/customers/me | Get current Customer
-[**getManyCustomers**](CustomersApi.md#getmanycustomers) | **GET** /v2/customers | Get my Customers
+[**getCustomers**](CustomersApi.md#getcustomers) | **GET** /v2/customers | Get my Customers
 [**patchCustomerMe**](CustomersApi.md#patchcustomerme) | **PATCH** /v2/customers/me | Update your Customer
 [**postCustomerMe**](CustomersApi.md#postcustomerme) | **POST** /v2/customers/me | Create Customer for current User
 [**updateAppInstallMe**](CustomersApi.md#updateappinstallme) | **POST** /v2/customers/me/app-install | Create or update Customer App Install
@@ -73,8 +73,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **getManyCustomers**
-> CustomersPaginatedResponse getManyCustomers(page, limit, user, merchant, currentOrder, preferredLocation, xCustomLang)
+# **getCustomers**
+> CustomersPaginatedResponse getCustomers(page, limit, user, merchant, currentOrder, preferredLocation, orderField, orderSort, xCustomLang)
 
 Get my Customers
 
@@ -93,13 +93,15 @@ final bool user = true; // bool |
 final bool merchant = true; // bool | 
 final bool currentOrder = true; // bool | 
 final bool preferredLocation = true; // bool | 
+final String orderField = orderField_example; // String | 
+final String orderSort = orderSort_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getManyCustomers(page, limit, user, merchant, currentOrder, preferredLocation, xCustomLang);
+    final response = api.getCustomers(page, limit, user, merchant, currentOrder, preferredLocation, orderField, orderSort, xCustomLang);
     print(response);
 } catch on DioException (e) {
-    print('Exception when calling CustomersApi->getManyCustomers: $e\n');
+    print('Exception when calling CustomersApi->getCustomers: $e\n');
 }
 ```
 
@@ -113,6 +115,8 @@ Name | Type | Description  | Notes
  **merchant** | **bool**|  | [optional] 
  **currentOrder** | **bool**|  | [optional] 
  **preferredLocation** | **bool**|  | [optional] 
+ **orderField** | **String**|  | [optional] 
+ **orderSort** | **String**|  | [optional] 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type

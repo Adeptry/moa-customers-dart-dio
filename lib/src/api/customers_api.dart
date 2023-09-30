@@ -140,6 +140,8 @@ class CustomersApi {
   /// * [merchant]
   /// * [currentOrder]
   /// * [preferredLocation]
+  /// * [orderField]
+  /// * [orderSort]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -150,13 +152,15 @@ class CustomersApi {
   ///
   /// Returns a [Future] containing a [Response] with a [CustomersPaginatedResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<CustomersPaginatedResponse>> getManyCustomers({
+  Future<Response<CustomersPaginatedResponse>> getCustomers({
     num? page,
     num? limit,
     bool? user,
     bool? merchant,
     bool? currentOrder,
     bool? preferredLocation,
+    String? orderField,
+    String? orderSort,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -198,6 +202,8 @@ class CustomersApi {
       if (merchant != null) r'merchant': merchant,
       if (currentOrder != null) r'currentOrder': currentOrder,
       if (preferredLocation != null) r'preferredLocation': preferredLocation,
+      if (orderField != null) r'orderField': orderField,
+      if (orderSort != null) r'orderSort': orderSort,
     };
 
     final _response = await _dio.request<Object>(

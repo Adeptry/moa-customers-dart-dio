@@ -16,25 +16,22 @@ part 'address_entity.g.dart';
 class AddressEntity {
   /// Returns a new [AddressEntity] instance.
   AddressEntity({
-    this.id,
     this.addressLine1,
     this.addressLine2,
     this.addressLine3,
-    this.locality,
-    this.sublocality,
-    this.sublocality2,
-    this.sublocality3,
     this.administrativeDistrictLevel1,
     this.administrativeDistrictLevel2,
     this.administrativeDistrictLevel3,
-    this.postalCode,
     this.country,
     this.firstName,
+    this.id,
     this.lastName,
+    this.locality,
+    this.postalCode,
+    this.sublocality,
+    this.sublocality2,
+    this.sublocality3,
   });
-
-  @JsonKey(name: r'id', required: false, includeIfNull: false)
-  final String? id;
 
   /// The first line of the address.
   @JsonKey(name: r'addressLine1', required: false, includeIfNull: false)
@@ -47,22 +44,6 @@ class AddressEntity {
   /// The third line of the address, if any.
   @JsonKey(name: r'addressLine3', required: false, includeIfNull: false)
   final String? addressLine3;
-
-  /// The city or town of the address.
-  @JsonKey(name: r'locality', required: false, includeIfNull: false)
-  final String? locality;
-
-  /// A civil region within the address's `locality`, if any.
-  @JsonKey(name: r'sublocality', required: false, includeIfNull: false)
-  final String? sublocality;
-
-  /// A civil region within the address's `sublocality`, if any.
-  @JsonKey(name: r'sublocality2', required: false, includeIfNull: false)
-  final String? sublocality2;
-
-  /// A civil region within the address's `sublocality_2`, if any.
-  @JsonKey(name: r'sublocality3', required: false, includeIfNull: false)
-  final String? sublocality3;
 
   /// A civil entity within the address's country. In the US, this is the state.
   @JsonKey(
@@ -85,10 +66,6 @@ class AddressEntity {
       includeIfNull: false)
   final String? administrativeDistrictLevel3;
 
-  /// The address's postal code.
-  @JsonKey(name: r'postalCode', required: false, includeIfNull: false)
-  final String? postalCode;
-
   /// Indicates the country associated with another entity, such as a business. Values are in ISO 3166-1-alpha-2 format.
   @JsonKey(name: r'country', required: false, includeIfNull: false)
   final String? country;
@@ -97,40 +74,58 @@ class AddressEntity {
   @JsonKey(name: r'firstName', required: false, includeIfNull: false)
   final String? firstName;
 
+  @JsonKey(name: r'id', required: false, includeIfNull: false)
+  final String? id;
+
   /// Optional last name when it's representing recipient.
   @JsonKey(name: r'lastName', required: false, includeIfNull: false)
   final String? lastName;
+
+  /// The city or town of the address.
+  @JsonKey(name: r'locality', required: false, includeIfNull: false)
+  final String? locality;
+
+  /// The address's postal code.
+  @JsonKey(name: r'postalCode', required: false, includeIfNull: false)
+  final String? postalCode;
+
+  /// A civil region within the address's `locality`, if any.
+  @JsonKey(name: r'sublocality', required: false, includeIfNull: false)
+  final String? sublocality;
+
+  /// A civil region within the address's `sublocality`, if any.
+  @JsonKey(name: r'sublocality2', required: false, includeIfNull: false)
+  final String? sublocality2;
+
+  /// A civil region within the address's `sublocality_2`, if any.
+  @JsonKey(name: r'sublocality3', required: false, includeIfNull: false)
+  final String? sublocality3;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AddressEntity &&
-          other.id == id &&
           other.addressLine1 == addressLine1 &&
           other.addressLine2 == addressLine2 &&
           other.addressLine3 == addressLine3 &&
-          other.locality == locality &&
-          other.sublocality == sublocality &&
-          other.sublocality2 == sublocality2 &&
-          other.sublocality3 == sublocality3 &&
           other.administrativeDistrictLevel1 == administrativeDistrictLevel1 &&
           other.administrativeDistrictLevel2 == administrativeDistrictLevel2 &&
           other.administrativeDistrictLevel3 == administrativeDistrictLevel3 &&
-          other.postalCode == postalCode &&
           other.country == country &&
           other.firstName == firstName &&
-          other.lastName == lastName;
+          other.id == id &&
+          other.lastName == lastName &&
+          other.locality == locality &&
+          other.postalCode == postalCode &&
+          other.sublocality == sublocality &&
+          other.sublocality2 == sublocality2 &&
+          other.sublocality3 == sublocality3;
 
   @override
   int get hashCode =>
-      (id == null ? 0 : id.hashCode) +
       (addressLine1 == null ? 0 : addressLine1.hashCode) +
       (addressLine2 == null ? 0 : addressLine2.hashCode) +
       (addressLine3 == null ? 0 : addressLine3.hashCode) +
-      (locality == null ? 0 : locality.hashCode) +
-      (sublocality == null ? 0 : sublocality.hashCode) +
-      (sublocality2 == null ? 0 : sublocality2.hashCode) +
-      (sublocality3 == null ? 0 : sublocality3.hashCode) +
       (administrativeDistrictLevel1 == null
           ? 0
           : administrativeDistrictLevel1.hashCode) +
@@ -140,10 +135,15 @@ class AddressEntity {
       (administrativeDistrictLevel3 == null
           ? 0
           : administrativeDistrictLevel3.hashCode) +
-      (postalCode == null ? 0 : postalCode.hashCode) +
       (country == null ? 0 : country.hashCode) +
       (firstName == null ? 0 : firstName.hashCode) +
-      (lastName == null ? 0 : lastName.hashCode);
+      (id == null ? 0 : id.hashCode) +
+      (lastName == null ? 0 : lastName.hashCode) +
+      (locality == null ? 0 : locality.hashCode) +
+      (postalCode == null ? 0 : postalCode.hashCode) +
+      (sublocality == null ? 0 : sublocality.hashCode) +
+      (sublocality2 == null ? 0 : sublocality2.hashCode) +
+      (sublocality3 == null ? 0 : sublocality3.hashCode);
 
   factory AddressEntity.fromJson(Map<String, dynamic> json) =>
       _$AddressEntityFromJson(json);
