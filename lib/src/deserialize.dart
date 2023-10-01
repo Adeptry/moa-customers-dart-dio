@@ -51,6 +51,7 @@ import 'package:myorderapp_square/src/model/square_post_oauth_body.dart';
 import 'package:myorderapp_square/src/model/stripe_billing_session_response.dart';
 import 'package:myorderapp_square/src/model/stripe_post_checkout_body.dart';
 import 'package:myorderapp_square/src/model/stripe_post_checkout_response.dart';
+import 'package:myorderapp_square/src/model/support_request_post_body.dart';
 import 'package:myorderapp_square/src/model/user_entity.dart';
 import 'package:myorderapp_square/src/model/user_patch_body.dart';
 import 'package:myorderapp_square/src/model/variation_entity.dart';
@@ -231,6 +232,9 @@ ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
           as ReturnType;
     case 'StripePostCheckoutResponse':
       return StripePostCheckoutResponse.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'SupportRequestPostBody':
+      return SupportRequestPostBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'ThemeModeEnum':
     case 'UserEntity':

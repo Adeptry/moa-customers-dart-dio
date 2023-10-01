@@ -65,6 +65,7 @@ doc/SquarePostOauthBody.md
 doc/StripeBillingSessionResponse.md
 doc/StripePostCheckoutBody.md
 doc/StripePostCheckoutResponse.md
+doc/SupportRequestPostBody.md
 doc/ThemeModeEnum.md
 doc/UserEntity.md
 doc/UserPatchBody.md
@@ -143,6 +144,7 @@ lib/src/model/square_post_oauth_body.dart
 lib/src/model/stripe_billing_session_response.dart
 lib/src/model/stripe_post_checkout_body.dart
 lib/src/model/stripe_post_checkout_response.dart
+lib/src/model/support_request_post_body.dart
 lib/src/model/theme_mode_enum.dart
 lib/src/model/user_entity.dart
 lib/src/model/user_patch_body.dart

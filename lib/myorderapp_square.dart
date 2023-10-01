@@ -72,6 +72,7 @@ export 'package:myorderapp_square/src/model/square_post_oauth_body.dart';
 export 'package:myorderapp_square/src/model/stripe_billing_session_response.dart';
 export 'package:myorderapp_square/src/model/stripe_post_checkout_body.dart';
 export 'package:myorderapp_square/src/model/stripe_post_checkout_response.dart';
+export 'package:myorderapp_square/src/model/support_request_post_body.dart';
 export 'package:myorderapp_square/src/model/theme_mode_enum.dart';
 export 'package:myorderapp_square/src/model/user_entity.dart';
 export 'package:myorderapp_square/src/model/user_patch_body.dart';
