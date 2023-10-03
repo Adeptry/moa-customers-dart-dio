@@ -17,8 +17,7 @@ part 'line_item_entity.g.dart';
 class LineItemEntity {
   /// Returns a new [LineItemEntity] instance.
   LineItemEntity({
-    this.basePriceMoney,
-    this.currency,
+    this.basePriceMoneyAmount,
     this.grossSalesMoneyAmount,
     this.id,
     this.modifiers,
@@ -33,11 +32,8 @@ class LineItemEntity {
     this.variationTotalMoneyAmount,
   });
 
-  @JsonKey(name: r'basePriceMoney', required: false, includeIfNull: false)
-  final num? basePriceMoney;
-
-  @JsonKey(name: r'currency', required: false, includeIfNull: false)
-  final String? currency;
+  @JsonKey(name: r'basePriceMoneyAmount', required: false, includeIfNull: false)
+  final num? basePriceMoneyAmount;
 
   @JsonKey(
       name: r'grossSalesMoneyAmount', required: false, includeIfNull: false)
@@ -85,8 +81,7 @@ class LineItemEntity {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is LineItemEntity &&
-          other.basePriceMoney == basePriceMoney &&
-          other.currency == currency &&
+          other.basePriceMoneyAmount == basePriceMoneyAmount &&
           other.grossSalesMoneyAmount == grossSalesMoneyAmount &&
           other.id == id &&
           other.modifiers == modifiers &&
@@ -103,8 +98,7 @@ class LineItemEntity {
 
   @override
   int get hashCode =>
-      (basePriceMoney == null ? 0 : basePriceMoney.hashCode) +
-      (currency == null ? 0 : currency.hashCode) +
+      (basePriceMoneyAmount == null ? 0 : basePriceMoneyAmount.hashCode) +
       (grossSalesMoneyAmount == null ? 0 : grossSalesMoneyAmount.hashCode) +
       (id == null ? 0 : id.hashCode) +
       (modifiers == null ? 0 : modifiers.hashCode) +

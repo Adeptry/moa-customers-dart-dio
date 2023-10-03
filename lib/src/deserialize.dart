@@ -40,14 +40,16 @@ import 'package:myorderapp_square/src/model/order_entity.dart';
 import 'package:myorderapp_square/src/model/order_patch_body.dart';
 import 'package:myorderapp_square/src/model/order_post_body.dart';
 import 'package:myorderapp_square/src/model/order_post_current_body.dart';
-import 'package:myorderapp_square/src/model/orders_paginated_reponse.dart';
+import 'package:myorderapp_square/src/model/orders_paginated_response.dart';
 import 'package:myorderapp_square/src/model/orders_post_payment_body.dart';
+import 'package:myorderapp_square/src/model/orders_statistics_response.dart';
 import 'package:myorderapp_square/src/model/orders_variation_line_item_input.dart';
 import 'package:myorderapp_square/src/model/square_card.dart';
 import 'package:myorderapp_square/src/model/square_disable_card_response.dart';
 import 'package:myorderapp_square/src/model/square_error.dart';
 import 'package:myorderapp_square/src/model/square_list_cards_response.dart';
 import 'package:myorderapp_square/src/model/square_post_oauth_body.dart';
+import 'package:myorderapp_square/src/model/statistics_output.dart';
 import 'package:myorderapp_square/src/model/stripe_billing_session_response.dart';
 import 'package:myorderapp_square/src/model/stripe_post_checkout_body.dart';
 import 'package:myorderapp_square/src/model/stripe_post_checkout_response.dart';
@@ -202,11 +204,14 @@ ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
     case 'OrderPostCurrentBody':
       return OrderPostCurrentBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
-    case 'OrdersPaginatedReponse':
-      return OrdersPaginatedReponse.fromJson(value as Map<String, dynamic>)
+    case 'OrdersPaginatedResponse':
+      return OrdersPaginatedResponse.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'OrdersPostPaymentBody':
       return OrdersPostPaymentBody.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'OrdersStatisticsResponse':
+      return OrdersStatisticsResponse.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'OrdersVariationLineItemInput':
       return OrdersVariationLineItemInput.fromJson(
@@ -223,6 +228,9 @@ ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
           as ReturnType;
     case 'SquarePostOauthBody':
       return SquarePostOauthBody.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'StatisticsOutput':
+      return StatisticsOutput.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'StripeBillingSessionResponse':
       return StripeBillingSessionResponse.fromJson(

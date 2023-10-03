@@ -8,8 +8,8 @@ import 'package:myorderapp_square/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**appFeeMoneyAmount** | **num** |  | [optional] 
 **closedDate** | [**DateTime**](DateTime.md) |  | [optional] 
-**currency** | **String** |  | [optional] 
 **customer** | [**CustomerEntity**](CustomerEntity.md) |  | [optional] 
 **displayId** | **String** |  | [optional] 
 **id** | **String** |  | [optional] 

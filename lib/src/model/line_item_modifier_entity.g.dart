@@ -14,7 +14,6 @@ LineItemModifierEntity _$LineItemModifierEntityFromJson(
       ($checkedConvert) {
         final val = LineItemModifierEntity(
           baseMoneyAmount: $checkedConvert('baseMoneyAmount', (v) => v as num?),
-          currency: $checkedConvert('currency', (v) => v as String?),
           id: $checkedConvert('id', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String?),
           quantity: $checkedConvert('quantity', (v) => v as String?),
@@ -36,7 +35,6 @@ Map<String, dynamic> _$LineItemModifierEntityToJson(
   }
 
   writeNotNull('baseMoneyAmount', instance.baseMoneyAmount);
-  writeNotNull('currency', instance.currency);
   writeNotNull('id', instance.id);
   writeNotNull('name', instance.name);
   writeNotNull('quantity', instance.quantity);

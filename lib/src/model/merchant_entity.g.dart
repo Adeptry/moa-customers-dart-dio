@@ -22,9 +22,13 @@ MerchantEntity _$MerchantEntityFromJson(Map<String, dynamic> json) =>
               (v) => v == null
                   ? null
                   : CatalogEntity.fromJson(v as Map<String, dynamic>)),
+          countryCode: $checkedConvert('countryCode', (v) => v as String?),
+          currencyCode: $checkedConvert('currencyCode', (v) => v as String?),
           id: $checkedConvert('id', (v) => v as String?),
+          languageCode: $checkedConvert('languageCode', (v) => v),
           pickupLeadDurationMinutes:
               $checkedConvert('pickupLeadDurationMinutes', (v) => v as num?),
+          squareBusinessName: $checkedConvert('squareBusinessName', (v) => v),
           squareId: $checkedConvert('squareId', (v) => v as String?),
           stripeId: $checkedConvert('stripeId', (v) => v as String?),
           tier: $checkedConvert('tier', (v) => v as num?),
@@ -49,8 +53,12 @@ Map<String, dynamic> _$MerchantEntityToJson(MerchantEntity instance) {
 
   writeNotNull('appConfig', instance.appConfig?.toJson());
   writeNotNull('catalog', instance.catalog?.toJson());
+  writeNotNull('countryCode', instance.countryCode);
+  writeNotNull('currencyCode', instance.currencyCode);
   writeNotNull('id', instance.id);
+  writeNotNull('languageCode', instance.languageCode);
   writeNotNull('pickupLeadDurationMinutes', instance.pickupLeadDurationMinutes);
+  writeNotNull('squareBusinessName', instance.squareBusinessName);
   writeNotNull('squareId', instance.squareId);
   writeNotNull('stripeId', instance.stripeId);
   writeNotNull('tier', instance.tier);

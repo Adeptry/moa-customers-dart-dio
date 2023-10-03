@@ -8,6 +8,9 @@ import 'package:myorderapp_square/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**firstName** | **String** |  | [optional] 
+**lastName** | **String** |  | [optional] 
+**phoneNumber** | **String** |  | [optional] 
 **preferredLocationId** | **String** |  | [optional] 
 **preferredSquareCardId** | **String** |  | [optional] 
 

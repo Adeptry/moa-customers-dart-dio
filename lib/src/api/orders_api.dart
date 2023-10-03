@@ -13,8 +13,9 @@ import 'package:myorderapp_square/src/model/order_entity.dart';
 import 'package:myorderapp_square/src/model/order_patch_body.dart';
 import 'package:myorderapp_square/src/model/order_post_body.dart';
 import 'package:myorderapp_square/src/model/order_post_current_body.dart';
-import 'package:myorderapp_square/src/model/orders_paginated_reponse.dart';
+import 'package:myorderapp_square/src/model/orders_paginated_response.dart';
 import 'package:myorderapp_square/src/model/orders_post_payment_body.dart';
+import 'package:myorderapp_square/src/model/orders_statistics_response.dart';
 
 class OrdersApi {
   final Dio _dio;
@@ -396,6 +397,104 @@ class OrdersApi {
     );
   }
 
+  /// Get your statistics
+  ///
+  ///
+  /// Parameters:
+  /// * [startDate]
+  /// * [endDate]
+  /// * [xCustomLang]
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [OrdersStatisticsResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<OrdersStatisticsResponse>> getOrderStatisticsMe({
+    String? startDate,
+    String? endDate,
+    String? xCustomLang,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v2/orders/statistics/me';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        if (xCustomLang != null) r'x-custom-lang': xCustomLang,
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'bearer',
+          },
+          {
+            'type': 'apiKey',
+            'name': 'Api-Key',
+            'keyName': 'Api-Key',
+            'where': 'header',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    OrdersStatisticsResponse? _responseData;
+
+    try {
+      final rawData = _response.data;
+      _responseData = rawData == null
+          ? null
+          : deserialize<OrdersStatisticsResponse, OrdersStatisticsResponse>(
+              rawData, 'OrdersStatisticsResponse',
+              growable: true);
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<OrdersStatisticsResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Get my Orders
   ///
   ///
@@ -408,6 +507,8 @@ class OrdersApi {
   /// * [customer]
   /// * [orderField]
   /// * [orderSort]
+  /// * [startDate]
+  /// * [endDate]
   /// * [actingAs]
   /// * [merchantIdOrPath]
   /// * [xCustomLang]
@@ -418,9 +519,9 @@ class OrdersApi {
   /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
   /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
   ///
-  /// Returns a [Future] containing a [Response] with a [OrdersPaginatedReponse] as data
+  /// Returns a [Future] containing a [Response] with a [OrdersPaginatedResponse] as data
   /// Throws [DioException] if API call or serialization fails
-  Future<Response<OrdersPaginatedReponse>> getOrders({
+  Future<Response<OrdersPaginatedResponse>> getOrders({
     num? page,
     num? limit,
     bool? closed,
@@ -429,6 +530,8 @@ class OrdersApi {
     bool? customer,
     String? orderField,
     String? orderSort,
+    String? startDate,
+    String? endDate,
     String? actingAs,
     String? merchantIdOrPath,
     String? xCustomLang,
@@ -474,6 +577,8 @@ class OrdersApi {
       if (customer != null) r'customer': customer,
       if (orderField != null) r'orderField': orderField,
       if (orderSort != null) r'orderSort': orderSort,
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
       if (actingAs != null) r'actingAs': actingAs,
       if (merchantIdOrPath != null) r'merchantIdOrPath': merchantIdOrPath,
     };
@@ -487,14 +592,14 @@ class OrdersApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    OrdersPaginatedReponse? _responseData;
+    OrdersPaginatedResponse? _responseData;
 
     try {
       final rawData = _response.data;
       _responseData = rawData == null
           ? null
-          : deserialize<OrdersPaginatedReponse, OrdersPaginatedReponse>(
-              rawData, 'OrdersPaginatedReponse',
+          : deserialize<OrdersPaginatedResponse, OrdersPaginatedResponse>(
+              rawData, 'OrdersPaginatedResponse',
               growable: true);
     } catch (error, stackTrace) {
       throw DioException(
@@ -506,7 +611,7 @@ class OrdersApi {
       );
     }
 
-    return Response<OrdersPaginatedReponse>(
+    return Response<OrdersPaginatedResponse>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

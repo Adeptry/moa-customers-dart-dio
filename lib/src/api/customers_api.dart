@@ -142,6 +142,8 @@ class CustomersApi {
   /// * [preferredLocation]
   /// * [orderField]
   /// * [orderSort]
+  /// * [startDate]
+  /// * [endDate]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -161,6 +163,8 @@ class CustomersApi {
     bool? preferredLocation,
     String? orderField,
     String? orderSort,
+    String? startDate,
+    String? endDate,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -204,6 +208,8 @@ class CustomersApi {
       if (preferredLocation != null) r'preferredLocation': preferredLocation,
       if (orderField != null) r'orderField': orderField,
       if (orderSort != null) r'orderSort': orderSort,
+      if (startDate != null) r'startDate': startDate,
+      if (endDate != null) r'endDate': endDate,
     };
 
     final _response = await _dio.request<Object>(

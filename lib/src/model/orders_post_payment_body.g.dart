@@ -16,14 +16,13 @@ OrdersPostPaymentBody _$OrdersPostPaymentBodyFromJson(
           json,
           requiredKeys: const [
             'idempotencyKey',
-            'orderTipMoney',
-            'paymentSquareId'
+            'paymentSquareId',
+            'tipMoneyAmount'
           ],
         );
         final val = OrdersPostPaymentBody(
           idempotencyKey: $checkedConvert('idempotencyKey', (v) => v as String),
           note: $checkedConvert('note', (v) => v as String?),
-          orderTipMoney: $checkedConvert('orderTipMoney', (v) => v as num),
           paymentSquareId:
               $checkedConvert('paymentSquareId', (v) => v as String),
           pickupDateString:
@@ -34,6 +33,7 @@ OrdersPostPaymentBody _$OrdersPostPaymentBodyFromJson(
                   ? null
                   : FulfillmentRecipientInput.fromJson(
                       v as Map<String, dynamic>)),
+          tipMoneyAmount: $checkedConvert('tipMoneyAmount', (v) => v as num),
         );
         return val;
       },
@@ -52,9 +52,9 @@ Map<String, dynamic> _$OrdersPostPaymentBodyToJson(
   }
 
   writeNotNull('note', instance.note);
-  val['orderTipMoney'] = instance.orderTipMoney;
   val['paymentSquareId'] = instance.paymentSquareId;
   writeNotNull('pickupDateString', instance.pickupDateString);
   writeNotNull('recipient', instance.recipient?.toJson());
+  val['tipMoneyAmount'] = instance.tipMoneyAmount;
   return val;
 }

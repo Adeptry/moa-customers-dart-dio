@@ -1,4 +1,4 @@
-# myorderapp_square.model.LineItemModifierEntity
+# myorderapp_square.model.OrdersPaginatedResponse
 
 ## Load the model package
 ```dart
@@ -8,11 +8,9 @@ import 'package:myorderapp_square/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**baseMoneyAmount** | **num** |  | [optional] 
-**id** | **String** |  | [optional] 
-**name** | **String** |  | [optional] 
-**quantity** | **String** |  | [optional] 
-**totalMoneyAmount** | **num** |  | [optional] 
+**count** | **num** |  | 
+**data** | [**List&lt;OrderEntity&gt;**](OrderEntity.md) |  | [optional] 
+**pages** | **num** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,6 +12,9 @@ CustomerPatchBody _$CustomerPatchBodyFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = CustomerPatchBody(
+          firstName: $checkedConvert('firstName', (v) => v as String?),
+          lastName: $checkedConvert('lastName', (v) => v as String?),
+          phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
           preferredLocationId:
               $checkedConvert('preferredLocationId', (v) => v as String?),
           preferredSquareCardId:
@@ -30,6 +33,9 @@ Map<String, dynamic> _$CustomerPatchBodyToJson(CustomerPatchBody instance) {
     }
   }
 
+  writeNotNull('firstName', instance.firstName);
+  writeNotNull('lastName', instance.lastName);
+  writeNotNull('phoneNumber', instance.phoneNumber);
   writeNotNull('preferredLocationId', instance.preferredLocationId);
   writeNotNull('preferredSquareCardId', instance.preferredSquareCardId);
   return val;

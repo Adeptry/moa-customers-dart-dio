@@ -11,9 +11,10 @@ OrderEntity _$OrderEntityFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = OrderEntity(
+          appFeeMoneyAmount:
+              $checkedConvert('appFeeMoneyAmount', (v) => v as num?),
           closedDate: $checkedConvert('closedDate',
               (v) => v == null ? null : DateTime.parse(v as String)),
-          currency: $checkedConvert('currency', (v) => v as String?),
           customer: $checkedConvert(
               'customer',
               (v) => v == null
@@ -60,8 +61,8 @@ Map<String, dynamic> _$OrderEntityToJson(OrderEntity instance) {
     }
   }
 
+  writeNotNull('appFeeMoneyAmount', instance.appFeeMoneyAmount);
   writeNotNull('closedDate', instance.closedDate?.toIso8601String());
-  writeNotNull('currency', instance.currency);
   writeNotNull('customer', instance.customer?.toJson());
   writeNotNull('displayId', instance.displayId);
   writeNotNull('id', instance.id);

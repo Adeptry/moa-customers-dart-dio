@@ -8,8 +8,7 @@ import 'package:myorderapp_square/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**basePriceMoney** | **num** |  | [optional] 
-**currency** | **String** |  | [optional] 
+**basePriceMoneyAmount** | **num** |  | [optional] 
 **grossSalesMoneyAmount** | **num** |  | [optional] 
 **id** | **String** |  | [optional] 
 **modifiers** | [**List&lt;LineItemModifierEntity&gt;**](LineItemModifierEntity.md) |  | [optional] 

@@ -20,8 +20,7 @@ class VariationEntity {
     this.moaEnabled,
     this.name,
     this.ordinal,
-    this.priceAmount,
-    this.priceCurrency,
+    this.priceMoneyAmount,
   });
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
@@ -36,11 +35,8 @@ class VariationEntity {
   @JsonKey(name: r'ordinal', required: false, includeIfNull: false)
   final num? ordinal;
 
-  @JsonKey(name: r'priceAmount', required: false, includeIfNull: false)
-  final num? priceAmount;
-
-  @JsonKey(name: r'priceCurrency', required: false, includeIfNull: false)
-  final String? priceCurrency;
+  @JsonKey(name: r'priceMoneyAmount', required: false, includeIfNull: false)
+  final num? priceMoneyAmount;
 
   @override
   bool operator ==(Object other) =>
@@ -50,8 +46,7 @@ class VariationEntity {
           other.moaEnabled == moaEnabled &&
           other.name == name &&
           other.ordinal == ordinal &&
-          other.priceAmount == priceAmount &&
-          other.priceCurrency == priceCurrency;
+          other.priceMoneyAmount == priceMoneyAmount;
 
   @override
   int get hashCode =>
@@ -59,8 +54,7 @@ class VariationEntity {
       (moaEnabled == null ? 0 : moaEnabled.hashCode) +
       (name == null ? 0 : name.hashCode) +
       (ordinal == null ? 0 : ordinal.hashCode) +
-      (priceAmount == null ? 0 : priceAmount.hashCode) +
-      (priceCurrency == null ? 0 : priceCurrency.hashCode);
+      (priceMoneyAmount == null ? 0 : priceMoneyAmount.hashCode);
 
   factory VariationEntity.fromJson(Map<String, dynamic> json) =>
       _$VariationEntityFromJson(json);

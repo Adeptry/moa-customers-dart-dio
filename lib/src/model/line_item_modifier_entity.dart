@@ -17,7 +17,6 @@ class LineItemModifierEntity {
   /// Returns a new [LineItemModifierEntity] instance.
   LineItemModifierEntity({
     this.baseMoneyAmount,
-    this.currency,
     this.id,
     this.name,
     this.quantity,
@@ -26,9 +25,6 @@ class LineItemModifierEntity {
 
   @JsonKey(name: r'baseMoneyAmount', required: false, includeIfNull: false)
   final num? baseMoneyAmount;
-
-  @JsonKey(name: r'currency', required: false, includeIfNull: false)
-  final String? currency;
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
@@ -47,7 +43,6 @@ class LineItemModifierEntity {
       identical(this, other) ||
       other is LineItemModifierEntity &&
           other.baseMoneyAmount == baseMoneyAmount &&
-          other.currency == currency &&
           other.id == id &&
           other.name == name &&
           other.quantity == quantity &&
@@ -56,7 +51,6 @@ class LineItemModifierEntity {
   @override
   int get hashCode =>
       (baseMoneyAmount == null ? 0 : baseMoneyAmount.hashCode) +
-      (currency == null ? 0 : currency.hashCode) +
       (id == null ? 0 : id.hashCode) +
       (name == null ? 0 : name.hashCode) +
       (quantity == null ? 0 : quantity.hashCode) +

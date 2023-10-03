@@ -18,8 +18,8 @@ Method | HTTP request | Description
 [**patchCategory**](CatalogsApi.md#patchcategory) | **PATCH** /v2/categories/{id} | Update a Category
 [**patchItem**](CatalogsApi.md#patchitem) | **PATCH** /v2/items/{id} | Update an Item
 [**patchItems**](CatalogsApi.md#patchitems) | **PATCH** /v2/items | Update multiple Items
+[**patchVariation**](CatalogsApi.md#patchvariation) | **PATCH** /v2/variations/{id} | Update an Variation
 [**postItemSquareImageUpload**](CatalogsApi.md#postitemsquareimageupload) | **POST** /v2/items/{id}/square/image/upload | Upload Square Catalog Image
-[**updateVariation**](CatalogsApi.md#updatevariation) | **PATCH** /v2/variations/{id} | Update an Variation
 
 
 # **getCategories**
@@ -501,6 +501,55 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **patchVariation**
+> VariationEntity patchVariation(id, variationPatchBody, xCustomLang)
+
+Update an Variation
+
+### Example
+```dart
+import 'package:myorderapp_square/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MyorderappSquare().getCatalogsApi();
+final String id = id_example; // String | 
+final VariationPatchBody variationPatchBody = ; // VariationPatchBody | 
+final String xCustomLang = xCustomLang_example; // String | 
+
+try {
+    final response = api.patchVariation(id, variationPatchBody, xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling CatalogsApi->patchVariation: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **variationPatchBody** | [**VariationPatchBody**](VariationPatchBody.md)|  | 
+ **xCustomLang** | **String**|  | [optional] 
+
+### Return type
+
+[**VariationEntity**](VariationEntity.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **postItemSquareImageUpload**
 > CatalogImageEntity postItemSquareImageUpload(idempotencyKey, id, xCustomLang, file)
 
@@ -515,7 +564,7 @@ import 'package:myorderapp_square/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MyorderappSquare().getCatalogsApi();
-final String idempotencyKey = BanXUzI6fZNYLCiTHZO3_; // String | 
+final String idempotencyKey = fl3W7NSMZqwY2j1CFdSPv; // String | 
 final String id = id_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
@@ -548,55 +597,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **updateVariation**
-> VariationEntity updateVariation(id, variationPatchBody, xCustomLang)
-
-Update an Variation
-
-### Example
-```dart
-import 'package:myorderapp_square/api.dart';
-// TODO Configure API key authorization: Api-Key
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
-
-final api = MyorderappSquare().getCatalogsApi();
-final String id = id_example; // String | 
-final VariationPatchBody variationPatchBody = ; // VariationPatchBody | 
-final String xCustomLang = xCustomLang_example; // String | 
-
-try {
-    final response = api.updateVariation(id, variationPatchBody, xCustomLang);
-    print(response);
-} catch on DioException (e) {
-    print('Exception when calling CatalogsApi->updateVariation: $e\n');
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **String**|  | 
- **variationPatchBody** | [**VariationPatchBody**](VariationPatchBody.md)|  | 
- **xCustomLang** | **String**|  | [optional] 
-
-### Return type
-
-[**VariationEntity**](VariationEntity.md)
-
-### Authorization
-
-[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

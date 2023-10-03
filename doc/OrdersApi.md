@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**deleteOrderCurrent**](OrdersApi.md#deleteordercurrent) | **DELETE** /v2/orders/current | Delete Order
 [**getOrder**](OrdersApi.md#getorder) | **GET** /v2/orders/{id} | Get Order
 [**getOrderCurrent**](OrdersApi.md#getordercurrent) | **GET** /v2/orders/current | Get current Order
+[**getOrderStatisticsMe**](OrdersApi.md#getorderstatisticsme) | **GET** /v2/orders/statistics/me | Get your statistics
 [**getOrders**](OrdersApi.md#getorders) | **GET** /v2/orders/me | Get my Orders
 [**patchOrderCurrent**](OrdersApi.md#patchordercurrent) | **PATCH** /v2/orders/current | Patch update Order, e.g. modify Location
 [**postOrder**](OrdersApi.md#postorder) | **POST** /v2/orders | Create Order
@@ -225,8 +226,57 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getOrderStatisticsMe**
+> OrdersStatisticsResponse getOrderStatisticsMe(startDate, endDate, xCustomLang)
+
+Get your statistics
+
+### Example
+```dart
+import 'package:myorderapp_square/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MyorderappSquare().getOrdersApi();
+final String startDate = startDate_example; // String | 
+final String endDate = endDate_example; // String | 
+final String xCustomLang = xCustomLang_example; // String | 
+
+try {
+    final response = api.getOrderStatisticsMe(startDate, endDate, xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling OrdersApi->getOrderStatisticsMe: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **startDate** | **String**|  | [optional] 
+ **endDate** | **String**|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
+
+### Return type
+
+[**OrdersStatisticsResponse**](OrdersStatisticsResponse.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getOrders**
-> OrdersPaginatedReponse getOrders(page, limit, closed, lineItems, location, customer, orderField, orderSort, actingAs, merchantIdOrPath, xCustomLang)
+> OrdersPaginatedResponse getOrders(page, limit, closed, lineItems, location, customer, orderField, orderSort, startDate, endDate, actingAs, merchantIdOrPath, xCustomLang)
 
 Get my Orders
 
@@ -247,12 +297,14 @@ final bool location = true; // bool |
 final bool customer = true; // bool | 
 final String orderField = orderField_example; // String | 
 final String orderSort = orderSort_example; // String | 
+final String startDate = startDate_example; // String | 
+final String endDate = endDate_example; // String | 
 final String actingAs = actingAs_example; // String | 
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getOrders(page, limit, closed, lineItems, location, customer, orderField, orderSort, actingAs, merchantIdOrPath, xCustomLang);
+    final response = api.getOrders(page, limit, closed, lineItems, location, customer, orderField, orderSort, startDate, endDate, actingAs, merchantIdOrPath, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling OrdersApi->getOrders: $e\n');
@@ -271,13 +323,15 @@ Name | Type | Description  | Notes
  **customer** | **bool**|  | [optional] 
  **orderField** | **String**|  | [optional] 
  **orderSort** | **String**|  | [optional] 
+ **startDate** | **String**|  | [optional] 
+ **endDate** | **String**|  | [optional] 
  **actingAs** | **String**|  | [optional] 
  **merchantIdOrPath** | **String**|  | [optional] 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
 
-[**OrdersPaginatedReponse**](OrdersPaginatedReponse.md)
+[**OrdersPaginatedResponse**](OrdersPaginatedResponse.md)
 
 ### Authorization
 

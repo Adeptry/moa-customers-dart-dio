@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getCustomers**
-> CustomersPaginatedResponse getCustomers(page, limit, user, merchant, currentOrder, preferredLocation, orderField, orderSort, xCustomLang)
+> CustomersPaginatedResponse getCustomers(page, limit, user, merchant, currentOrder, preferredLocation, orderField, orderSort, startDate, endDate, xCustomLang)
 
 Get my Customers
 
@@ -95,10 +95,12 @@ final bool currentOrder = true; // bool |
 final bool preferredLocation = true; // bool | 
 final String orderField = orderField_example; // String | 
 final String orderSort = orderSort_example; // String | 
+final String startDate = startDate_example; // String | 
+final String endDate = endDate_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getCustomers(page, limit, user, merchant, currentOrder, preferredLocation, orderField, orderSort, xCustomLang);
+    final response = api.getCustomers(page, limit, user, merchant, currentOrder, preferredLocation, orderField, orderSort, startDate, endDate, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling CustomersApi->getCustomers: $e\n');
@@ -117,6 +119,8 @@ Name | Type | Description  | Notes
  **preferredLocation** | **bool**|  | [optional] 
  **orderField** | **String**|  | [optional] 
  **orderSort** | **String**|  | [optional] 
+ **startDate** | **String**|  | [optional] 
+ **endDate** | **String**|  | [optional] 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type

@@ -16,15 +16,15 @@ part 'support_request_post_body.g.dart';
 class SupportRequestPostBody {
   /// Returns a new [SupportRequestPostBody] instance.
   SupportRequestPostBody({
-    required this.subject,
-    required this.text,
+    this.subject,
+    this.text,
   });
 
-  @JsonKey(name: r'subject', required: true, includeIfNull: false)
-  final String subject;
+  @JsonKey(name: r'subject', required: false, includeIfNull: false)
+  final String? subject;
 
-  @JsonKey(name: r'text', required: true, includeIfNull: false)
-  final String text;
+  @JsonKey(name: r'text', required: false, includeIfNull: false)
+  final String? text;
 
   @override
   bool operator ==(Object other) =>
@@ -34,7 +34,9 @@ class SupportRequestPostBody {
           other.text == text;
 
   @override
-  int get hashCode => subject.hashCode + text.hashCode;
+  int get hashCode =>
+      (subject == null ? 0 : subject.hashCode) +
+      (text == null ? 0 : text.hashCode);
 
   factory SupportRequestPostBody.fromJson(Map<String, dynamic> json) =>
       _$SupportRequestPostBodyFromJson(json);

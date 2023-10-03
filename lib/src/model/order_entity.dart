@@ -20,8 +20,8 @@ part 'order_entity.g.dart';
 class OrderEntity {
   /// Returns a new [OrderEntity] instance.
   OrderEntity({
+    this.appFeeMoneyAmount,
     this.closedDate,
-    this.currency,
     this.customer,
     this.displayId,
     this.id,
@@ -36,11 +36,11 @@ class OrderEntity {
     this.totalMoneyTipAmount,
   });
 
+  @JsonKey(name: r'appFeeMoneyAmount', required: false, includeIfNull: false)
+  final num? appFeeMoneyAmount;
+
   @JsonKey(name: r'closedDate', required: false, includeIfNull: false)
   final DateTime? closedDate;
-
-  @JsonKey(name: r'currency', required: false, includeIfNull: false)
-  final String? currency;
 
   @JsonKey(name: r'customer', required: false, includeIfNull: false)
   final CustomerEntity? customer;
@@ -87,8 +87,8 @@ class OrderEntity {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OrderEntity &&
+          other.appFeeMoneyAmount == appFeeMoneyAmount &&
           other.closedDate == closedDate &&
-          other.currency == currency &&
           other.customer == customer &&
           other.displayId == displayId &&
           other.id == id &&
@@ -105,8 +105,8 @@ class OrderEntity {
 
   @override
   int get hashCode =>
+      (appFeeMoneyAmount == null ? 0 : appFeeMoneyAmount.hashCode) +
       (closedDate == null ? 0 : closedDate.hashCode) +
-      (currency == null ? 0 : currency.hashCode) +
       (customer == null ? 0 : customer.hashCode) +
       (displayId == null ? 0 : displayId.hashCode) +
       (id == null ? 0 : id.hashCode) +

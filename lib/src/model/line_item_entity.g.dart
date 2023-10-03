@@ -12,8 +12,8 @@ LineItemEntity _$LineItemEntityFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = LineItemEntity(
-          basePriceMoney: $checkedConvert('basePriceMoney', (v) => v as num?),
-          currency: $checkedConvert('currency', (v) => v as String?),
+          basePriceMoneyAmount:
+              $checkedConvert('basePriceMoneyAmount', (v) => v as num?),
           grossSalesMoneyAmount:
               $checkedConvert('grossSalesMoneyAmount', (v) => v as num?),
           id: $checkedConvert('id', (v) => v as String?),
@@ -51,8 +51,7 @@ Map<String, dynamic> _$LineItemEntityToJson(LineItemEntity instance) {
     }
   }
 
-  writeNotNull('basePriceMoney', instance.basePriceMoney);
-  writeNotNull('currency', instance.currency);
+  writeNotNull('basePriceMoneyAmount', instance.basePriceMoneyAmount);
   writeNotNull('grossSalesMoneyAmount', instance.grossSalesMoneyAmount);
   writeNotNull('id', instance.id);
   writeNotNull(
