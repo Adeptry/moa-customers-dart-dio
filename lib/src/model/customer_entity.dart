@@ -21,8 +21,11 @@ class CustomerEntity {
   CustomerEntity({
     this.createDate,
     this.id,
+    this.mailNotifications,
+    this.messageNotifications,
     this.preferredLocation,
     this.preferredSquareCard,
+    this.pushNotifications,
     this.user,
   });
 
@@ -32,11 +35,20 @@ class CustomerEntity {
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
 
+  @JsonKey(name: r'mailNotifications', required: false, includeIfNull: false)
+  final bool? mailNotifications;
+
+  @JsonKey(name: r'messageNotifications', required: false, includeIfNull: false)
+  final bool? messageNotifications;
+
   @JsonKey(name: r'preferredLocation', required: false, includeIfNull: false)
   final LocationEntity? preferredLocation;
 
   @JsonKey(name: r'preferredSquareCard', required: false, includeIfNull: false)
   final SquareCard? preferredSquareCard;
+
+  @JsonKey(name: r'pushNotifications', required: false, includeIfNull: false)
+  final bool? pushNotifications;
 
   @JsonKey(name: r'user', required: false, includeIfNull: false)
   final UserEntity? user;
@@ -47,16 +59,22 @@ class CustomerEntity {
       other is CustomerEntity &&
           other.createDate == createDate &&
           other.id == id &&
+          other.mailNotifications == mailNotifications &&
+          other.messageNotifications == messageNotifications &&
           other.preferredLocation == preferredLocation &&
           other.preferredSquareCard == preferredSquareCard &&
+          other.pushNotifications == pushNotifications &&
           other.user == user;
 
   @override
   int get hashCode =>
       (createDate == null ? 0 : createDate.hashCode) +
       (id == null ? 0 : id.hashCode) +
+      (mailNotifications == null ? 0 : mailNotifications.hashCode) +
+      (messageNotifications == null ? 0 : messageNotifications.hashCode) +
       (preferredLocation == null ? 0 : preferredLocation.hashCode) +
       (preferredSquareCard == null ? 0 : preferredSquareCard.hashCode) +
+      (pushNotifications == null ? 0 : pushNotifications.hashCode) +
       (user == null ? 0 : user.hashCode);
 
   factory CustomerEntity.fromJson(Map<String, dynamic> json) =>

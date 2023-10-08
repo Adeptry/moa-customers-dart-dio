@@ -12,6 +12,7 @@ AppConfigUpdateBody _$AppConfigUpdateBodyFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = AppConfigUpdateBody(
+          enabled: $checkedConvert('enabled', (v) => v as bool?),
           fontFamily: $checkedConvert('fontFamily', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String?),
           seedColor: $checkedConvert('seedColor', (v) => v as String?),
@@ -32,6 +33,7 @@ Map<String, dynamic> _$AppConfigUpdateBodyToJson(AppConfigUpdateBody instance) {
     }
   }
 
+  writeNotNull('enabled', instance.enabled);
   writeNotNull('fontFamily', instance.fontFamily);
   writeNotNull('name', instance.name);
   writeNotNull('seedColor', instance.seedColor);

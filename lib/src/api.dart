@@ -13,6 +13,7 @@ import 'package:myorderapp_square/src/api/cards_api.dart';
 import 'package:myorderapp_square/src/api/catalogs_api.dart';
 import 'package:myorderapp_square/src/api/customers_api.dart';
 import 'package:myorderapp_square/src/api/locations_api.dart';
+import 'package:myorderapp_square/src/api/mail_api.dart';
 import 'package:myorderapp_square/src/api/merchants_api.dart';
 import 'package:myorderapp_square/src/api/orders_api.dart';
 import 'package:myorderapp_square/src/api/users_api.dart';
@@ -112,6 +113,12 @@ class MyorderappSquare {
   /// by doing that all interceptors will not be executed
   LocationsApi getLocationsApi() {
     return LocationsApi(dio);
+  }
+
+  /// Get MailApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  MailApi getMailApi() {
+    return MailApi(dio);
   }
 
   /// Get MerchantsApi instance, base route and serializer can be overridden by a given but be careful,

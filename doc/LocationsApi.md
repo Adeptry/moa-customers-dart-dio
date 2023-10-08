@@ -10,6 +10,7 @@ All URIs are relative to *https://api.myorderapp.dev*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getLocation**](LocationsApi.md#getlocation) | **GET** /v2/locations/{id} | Get a Location with ID
+[**getLocations**](LocationsApi.md#getlocations) | **GET** /v2/locations | Get Locations for Merchant
 [**getLocationsMe**](LocationsApi.md#getlocationsme) | **GET** /v2/locations/me | Get all your Locations
 [**patchManyLocations**](LocationsApi.md#patchmanylocations) | **PATCH** /v2/locations | Update Locations
 [**patchOneLocation**](LocationsApi.md#patchonelocation) | **PATCH** /v2/locations/{id} | Update a Location
@@ -54,6 +55,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LocationEntity**](LocationEntity.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getLocations**
+> LocationPaginatedResponse getLocations(merchantIdOrPath, page, limit, address, businessHours, xCustomLang)
+
+Get Locations for Merchant
+
+### Example
+```dart
+import 'package:myorderapp_square/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MyorderappSquare().getLocationsApi();
+final String merchantIdOrPath = merchantIdOrPath_example; // String | 
+final num page = 8.14; // num | 
+final num limit = 8.14; // num | 
+final bool address = true; // bool | 
+final bool businessHours = true; // bool | 
+final String xCustomLang = xCustomLang_example; // String | 
+
+try {
+    final response = api.getLocations(merchantIdOrPath, page, limit, address, businessHours, xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling LocationsApi->getLocations: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchantIdOrPath** | **String**|  | 
+ **page** | **num**|  | [optional] 
+ **limit** | **num**|  | [optional] 
+ **address** | **bool**|  | [optional] 
+ **businessHours** | **bool**|  | [optional] 
+ **xCustomLang** | **String**|  | [optional] 
+
+### Return type
+
+[**LocationPaginatedResponse**](LocationPaginatedResponse.md)
 
 ### Authorization
 

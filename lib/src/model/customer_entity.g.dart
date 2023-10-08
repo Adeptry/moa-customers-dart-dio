@@ -15,6 +15,10 @@ CustomerEntity _$CustomerEntityFromJson(Map<String, dynamic> json) =>
           createDate: $checkedConvert('createDate',
               (v) => v == null ? null : DateTime.parse(v as String)),
           id: $checkedConvert('id', (v) => v as String?),
+          mailNotifications:
+              $checkedConvert('mailNotifications', (v) => v as bool?),
+          messageNotifications:
+              $checkedConvert('messageNotifications', (v) => v as bool?),
           preferredLocation: $checkedConvert(
               'preferredLocation',
               (v) => v == null
@@ -25,6 +29,8 @@ CustomerEntity _$CustomerEntityFromJson(Map<String, dynamic> json) =>
               (v) => v == null
                   ? null
                   : SquareCard.fromJson(v as Map<String, dynamic>)),
+          pushNotifications:
+              $checkedConvert('pushNotifications', (v) => v as bool?),
           user: $checkedConvert(
               'user',
               (v) => v == null
@@ -46,8 +52,11 @@ Map<String, dynamic> _$CustomerEntityToJson(CustomerEntity instance) {
 
   writeNotNull('createDate', instance.createDate?.toIso8601String());
   writeNotNull('id', instance.id);
+  writeNotNull('mailNotifications', instance.mailNotifications);
+  writeNotNull('messageNotifications', instance.messageNotifications);
   writeNotNull('preferredLocation', instance.preferredLocation?.toJson());
   writeNotNull('preferredSquareCard', instance.preferredSquareCard?.toJson());
+  writeNotNull('pushNotifications', instance.pushNotifications);
   writeNotNull('user', instance.user?.toJson());
   return val;
 }

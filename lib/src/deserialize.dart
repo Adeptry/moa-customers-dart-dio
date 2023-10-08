@@ -17,6 +17,7 @@ import 'package:myorderapp_square/src/model/categories_patch_body.dart';
 import 'package:myorderapp_square/src/model/category_entity.dart';
 import 'package:myorderapp_square/src/model/category_paginated_response.dart';
 import 'package:myorderapp_square/src/model/category_patch_body.dart';
+import 'package:myorderapp_square/src/model/contact_post_body.dart';
 import 'package:myorderapp_square/src/model/customer_entity.dart';
 import 'package:myorderapp_square/src/model/customer_patch_body.dart';
 import 'package:myorderapp_square/src/model/customers_paginated_response.dart';
@@ -134,6 +135,9 @@ ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
           as ReturnType;
     case 'CategoryPatchBody':
       return CategoryPatchBody.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'ContactPostBody':
+      return ContactPostBody.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'CustomerEntity':
       return CustomerEntity.fromJson(value as Map<String, dynamic>)

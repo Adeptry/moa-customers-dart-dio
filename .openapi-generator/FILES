@@ -25,6 +25,7 @@ doc/CategoriesPatchBody.md
 doc/CategoryEntity.md
 doc/CategoryPaginatedResponse.md
 doc/CategoryPatchBody.md
+doc/ContactPostBody.md
 doc/CustomerEntity.md
 doc/CustomerPatchBody.md
 doc/CustomersApi.md
@@ -44,6 +45,7 @@ doc/LocationPaginatedResponse.md
 doc/LocationPatchBody.md
 doc/LocationsApi.md
 doc/LocationsPatchBody.md
+doc/MailApi.md
 doc/MerchantEntity.md
 doc/MerchantsApi.md
 doc/MoaSelectionType.md
@@ -82,6 +84,7 @@ lib/src/api/cards_api.dart
 lib/src/api/catalogs_api.dart
 lib/src/api/customers_api.dart
 lib/src/api/locations_api.dart
+lib/src/api/mail_api.dart
 lib/src/api/merchants_api.dart
 lib/src/api/orders_api.dart
 lib/src/api/users_api.dart
@@ -110,6 +113,7 @@ lib/src/model/categories_patch_body.dart
 lib/src/model/category_entity.dart
 lib/src/model/category_paginated_response.dart
 lib/src/model/category_patch_body.dart
+lib/src/model/contact_post_body.dart
 lib/src/model/customer_entity.dart
 lib/src/model/customer_patch_body.dart
 lib/src/model/customers_paginated_response.dart

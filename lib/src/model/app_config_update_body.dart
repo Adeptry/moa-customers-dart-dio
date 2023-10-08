@@ -17,12 +17,16 @@ part 'app_config_update_body.g.dart';
 class AppConfigUpdateBody {
   /// Returns a new [AppConfigUpdateBody] instance.
   AppConfigUpdateBody({
+    this.enabled,
     this.fontFamily,
     this.name,
     this.seedColor,
     this.themeMode,
     this.useMaterial3,
   });
+
+  @JsonKey(name: r'enabled', required: false, includeIfNull: false)
+  final bool? enabled;
 
   @JsonKey(name: r'fontFamily', required: false, includeIfNull: false)
   final String? fontFamily;
@@ -43,6 +47,7 @@ class AppConfigUpdateBody {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppConfigUpdateBody &&
+          other.enabled == enabled &&
           other.fontFamily == fontFamily &&
           other.name == name &&
           other.seedColor == seedColor &&
@@ -51,6 +56,7 @@ class AppConfigUpdateBody {
 
   @override
   int get hashCode =>
+      (enabled == null ? 0 : enabled.hashCode) +
       (fontFamily == null ? 0 : fontFamily.hashCode) +
       (name == null ? 0 : name.hashCode) +
       (seedColor == null ? 0 : seedColor.hashCode) +
