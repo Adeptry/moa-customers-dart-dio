@@ -19,8 +19,13 @@ OrdersStatisticsResponse _$OrdersStatisticsResponseFromJson(
               (v) => v == null
                   ? null
                   : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
-          moneyAppFeeAmount: $checkedConvert(
-              'moneyAppFeeAmount',
+          moneyTaxAmount: $checkedConvert(
+              'moneyTaxAmount',
+              (v) => v == null
+                  ? null
+                  : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
+          moneyTipAmount: $checkedConvert(
+              'moneyTipAmount',
               (v) => v == null
                   ? null
                   : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
@@ -29,13 +34,8 @@ OrdersStatisticsResponse _$OrdersStatisticsResponseFromJson(
               (v) => v == null
                   ? null
                   : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
-          moneyTaxAmount: $checkedConvert(
-              'moneyTaxAmount',
-              (v) => v == null
-                  ? null
-                  : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
-          moneyTipAmount: $checkedConvert(
-              'moneyTipAmount',
+          moneyAppFeeAmount: $checkedConvert(
+              'moneyAppFeeAmount',
               (v) => v == null
                   ? null
                   : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
@@ -56,10 +56,10 @@ Map<String, dynamic> _$OrdersStatisticsResponseToJson(
 
   writeNotNull('count', instance.count);
   writeNotNull('moneyAmount', instance.moneyAmount?.toJson());
-  writeNotNull('moneyAppFeeAmount', instance.moneyAppFeeAmount?.toJson());
-  writeNotNull(
-      'moneyServiceChargeAmount', instance.moneyServiceChargeAmount?.toJson());
   writeNotNull('moneyTaxAmount', instance.moneyTaxAmount?.toJson());
   writeNotNull('moneyTipAmount', instance.moneyTipAmount?.toJson());
+  writeNotNull(
+      'moneyServiceChargeAmount', instance.moneyServiceChargeAmount?.toJson());
+  writeNotNull('moneyAppFeeAmount', instance.moneyAppFeeAmount?.toJson());
   return val;
 }

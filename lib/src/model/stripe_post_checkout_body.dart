@@ -16,10 +16,13 @@ part 'stripe_post_checkout_body.g.dart';
 class StripePostCheckoutBody {
   /// Returns a new [StripePostCheckoutBody] instance.
   StripePostCheckoutBody({
+    required this.successUrl,
     required this.cancelUrl,
     required this.stripePriceId,
-    required this.successUrl,
   });
+
+  @JsonKey(name: r'successUrl', required: true, includeIfNull: false)
+  final String successUrl;
 
   @JsonKey(name: r'cancelUrl', required: true, includeIfNull: false)
   final String cancelUrl;
@@ -27,20 +30,17 @@ class StripePostCheckoutBody {
   @JsonKey(name: r'stripePriceId', required: true, includeIfNull: false)
   final String stripePriceId;
 
-  @JsonKey(name: r'successUrl', required: true, includeIfNull: false)
-  final String successUrl;
-
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is StripePostCheckoutBody &&
+          other.successUrl == successUrl &&
           other.cancelUrl == cancelUrl &&
-          other.stripePriceId == stripePriceId &&
-          other.successUrl == successUrl;
+          other.stripePriceId == stripePriceId;
 
   @override
   int get hashCode =>
-      cancelUrl.hashCode + stripePriceId.hashCode + successUrl.hashCode;
+      successUrl.hashCode + cancelUrl.hashCode + stripePriceId.hashCode;
 
   factory StripePostCheckoutBody.fromJson(Map<String, dynamic> json) =>
       _$StripePostCheckoutBodyFromJson(json);

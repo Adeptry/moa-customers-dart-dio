@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getUserMe**
-> UserEntity getUserMe(xCustomLang)
+> UserEntity getUserMe(customers, merchants, xCustomLang)
 
 
 
@@ -73,10 +73,12 @@ import 'package:myorderapp_square/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MyorderappSquare().getUsersApi();
+final bool customers = true; // bool | 
+final bool merchants = true; // bool | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getUserMe(xCustomLang);
+    final response = api.getUserMe(customers, merchants, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling UsersApi->getUserMe: $e\n');
@@ -87,6 +89,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **customers** | **bool**|  | [optional] 
+ **merchants** | **bool**|  | [optional] 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type
@@ -105,7 +109,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patchUserMe**
-> UserEntity patchUserMe(userPatchBody, xCustomLang)
+> UserEntity patchUserMe(userPatchBody, customers, merchants, xCustomLang)
 
 
 
@@ -119,10 +123,12 @@ import 'package:myorderapp_square/api.dart';
 
 final api = MyorderappSquare().getUsersApi();
 final UserPatchBody userPatchBody = ; // UserPatchBody | 
+final bool customers = true; // bool | 
+final bool merchants = true; // bool | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.patchUserMe(userPatchBody, xCustomLang);
+    final response = api.patchUserMe(userPatchBody, customers, merchants, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling UsersApi->patchUserMe: $e\n');
@@ -134,6 +140,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userPatchBody** | [**UserPatchBody**](UserPatchBody.md)|  | 
+ **customers** | **bool**|  | [optional] 
+ **merchants** | **bool**|  | [optional] 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type

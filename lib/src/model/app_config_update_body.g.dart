@@ -12,13 +12,13 @@ AppConfigUpdateBody _$AppConfigUpdateBodyFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = AppConfigUpdateBody(
-          enabled: $checkedConvert('enabled', (v) => v as bool?),
-          fontFamily: $checkedConvert('fontFamily', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String?),
           seedColor: $checkedConvert('seedColor', (v) => v as String?),
+          fontFamily: $checkedConvert('fontFamily', (v) => v as String?),
+          useMaterial3: $checkedConvert('useMaterial3', (v) => v as bool?),
+          enabled: $checkedConvert('enabled', (v) => v as bool?),
           themeMode: $checkedConvert('themeMode',
               (v) => $enumDecodeNullable(_$ThemeModeEnumEnumMap, v)),
-          useMaterial3: $checkedConvert('useMaterial3', (v) => v as bool?),
         );
         return val;
       },
@@ -33,12 +33,12 @@ Map<String, dynamic> _$AppConfigUpdateBodyToJson(AppConfigUpdateBody instance) {
     }
   }
 
-  writeNotNull('enabled', instance.enabled);
-  writeNotNull('fontFamily', instance.fontFamily);
   writeNotNull('name', instance.name);
   writeNotNull('seedColor', instance.seedColor);
-  writeNotNull('themeMode', _$ThemeModeEnumEnumMap[instance.themeMode]);
+  writeNotNull('fontFamily', instance.fontFamily);
   writeNotNull('useMaterial3', instance.useMaterial3);
+  writeNotNull('enabled', instance.enabled);
+  writeNotNull('themeMode', _$ThemeModeEnumEnumMap[instance.themeMode]);
   return val;
 }
 

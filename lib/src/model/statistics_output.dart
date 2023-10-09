@@ -16,39 +16,39 @@ part 'statistics_output.g.dart';
 class StatisticsOutput {
   /// Returns a new [StatisticsOutput] instance.
   StatisticsOutput({
-    this.average,
-    this.maximum,
-    this.minimum,
     this.sum,
+    this.average,
+    this.minimum,
+    this.maximum,
   });
+
+  @JsonKey(name: r'sum', required: false, includeIfNull: false)
+  final num? sum;
 
   @JsonKey(name: r'average', required: false, includeIfNull: false)
   final num? average;
 
-  @JsonKey(name: r'maximum', required: false, includeIfNull: false)
-  final num? maximum;
-
   @JsonKey(name: r'minimum', required: false, includeIfNull: false)
   final num? minimum;
 
-  @JsonKey(name: r'sum', required: false, includeIfNull: false)
-  final num? sum;
+  @JsonKey(name: r'maximum', required: false, includeIfNull: false)
+  final num? maximum;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is StatisticsOutput &&
+          other.sum == sum &&
           other.average == average &&
-          other.maximum == maximum &&
           other.minimum == minimum &&
-          other.sum == sum;
+          other.maximum == maximum;
 
   @override
   int get hashCode =>
+      (sum == null ? 0 : sum.hashCode) +
       (average == null ? 0 : average.hashCode) +
-      (maximum == null ? 0 : maximum.hashCode) +
       (minimum == null ? 0 : minimum.hashCode) +
-      (sum == null ? 0 : sum.hashCode);
+      (maximum == null ? 0 : maximum.hashCode);
 
   factory StatisticsOutput.fromJson(Map<String, dynamic> json) =>
       _$StatisticsOutputFromJson(json);

@@ -12,13 +12,15 @@ CustomerEntity _$CustomerEntityFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = CustomerEntity(
+          id: $checkedConvert('id', (v) => v as String?),
           createDate: $checkedConvert('createDate',
               (v) => v == null ? null : DateTime.parse(v as String)),
-          id: $checkedConvert('id', (v) => v as String?),
-          mailNotifications:
-              $checkedConvert('mailNotifications', (v) => v as bool?),
-          messageNotifications:
-              $checkedConvert('messageNotifications', (v) => v as bool?),
+          user: $checkedConvert(
+              'user',
+              (v) => v == null
+                  ? null
+                  : UserEntity.fromJson(v as Map<String, dynamic>)),
+          merchantId: $checkedConvert('merchantId', (v) => v as String?),
           preferredLocation: $checkedConvert(
               'preferredLocation',
               (v) => v == null
@@ -29,13 +31,12 @@ CustomerEntity _$CustomerEntityFromJson(Map<String, dynamic> json) =>
               (v) => v == null
                   ? null
                   : SquareCard.fromJson(v as Map<String, dynamic>)),
+          mailNotifications:
+              $checkedConvert('mailNotifications', (v) => v as bool?),
+          messageNotifications:
+              $checkedConvert('messageNotifications', (v) => v as bool?),
           pushNotifications:
               $checkedConvert('pushNotifications', (v) => v as bool?),
-          user: $checkedConvert(
-              'user',
-              (v) => v == null
-                  ? null
-                  : UserEntity.fromJson(v as Map<String, dynamic>)),
         );
         return val;
       },
@@ -50,13 +51,14 @@ Map<String, dynamic> _$CustomerEntityToJson(CustomerEntity instance) {
     }
   }
 
-  writeNotNull('createDate', instance.createDate?.toIso8601String());
   writeNotNull('id', instance.id);
-  writeNotNull('mailNotifications', instance.mailNotifications);
-  writeNotNull('messageNotifications', instance.messageNotifications);
+  writeNotNull('createDate', instance.createDate?.toIso8601String());
+  writeNotNull('user', instance.user?.toJson());
+  writeNotNull('merchantId', instance.merchantId);
   writeNotNull('preferredLocation', instance.preferredLocation?.toJson());
   writeNotNull('preferredSquareCard', instance.preferredSquareCard?.toJson());
+  writeNotNull('mailNotifications', instance.mailNotifications);
+  writeNotNull('messageNotifications', instance.messageNotifications);
   writeNotNull('pushNotifications', instance.pushNotifications);
-  writeNotNull('user', instance.user?.toJson());
   return val;
 }

@@ -17,40 +17,19 @@ part 'app_config_entity.g.dart';
 class AppConfigEntity {
   /// Returns a new [AppConfigEntity] instance.
   AppConfigEntity({
-    this.blockingMessage,
-    this.enabled,
-    this.fontFamily,
-    this.iconFileDisplayName,
-    this.iconFileFullUrl,
-    this.message,
-    this.minimumVersion,
     this.name,
     this.path,
+    this.enabled,
     this.seedColor,
-    this.themeMode,
+    this.fontFamily,
     this.useMaterial3,
+    this.themeMode,
+    this.message,
+    this.blockingMessage,
+    this.minimumVersion,
+    this.iconFileDisplayName,
+    this.iconFileFullUrl,
   });
-
-  @JsonKey(name: r'blockingMessage', required: false, includeIfNull: false)
-  final String? blockingMessage;
-
-  @JsonKey(name: r'enabled', required: false, includeIfNull: false)
-  final bool? enabled;
-
-  @JsonKey(name: r'fontFamily', required: false, includeIfNull: false)
-  final String? fontFamily;
-
-  @JsonKey(name: r'iconFileDisplayName', required: false, includeIfNull: false)
-  final String? iconFileDisplayName;
-
-  @JsonKey(name: r'iconFileFullUrl', required: false, includeIfNull: false)
-  final String? iconFileFullUrl;
-
-  @JsonKey(name: r'message', required: false, includeIfNull: false)
-  final String? message;
-
-  @JsonKey(name: r'minimumVersion', required: false, includeIfNull: false)
-  final String? minimumVersion;
 
   @JsonKey(name: r'name', required: false, includeIfNull: false)
   final String? name;
@@ -58,46 +37,67 @@ class AppConfigEntity {
   @JsonKey(name: r'path', required: false, includeIfNull: false)
   final String? path;
 
+  @JsonKey(name: r'enabled', required: false, includeIfNull: false)
+  final bool? enabled;
+
   @JsonKey(name: r'seedColor', required: false, includeIfNull: false)
   final String? seedColor;
+
+  @JsonKey(name: r'fontFamily', required: false, includeIfNull: false)
+  final String? fontFamily;
+
+  @JsonKey(name: r'useMaterial3', required: false, includeIfNull: false)
+  final bool? useMaterial3;
 
   @JsonKey(name: r'themeMode', required: false, includeIfNull: false)
   final ThemeModeEnum? themeMode;
 
-  @JsonKey(name: r'useMaterial3', required: false, includeIfNull: false)
-  final bool? useMaterial3;
+  @JsonKey(name: r'message', required: false, includeIfNull: false)
+  final String? message;
+
+  @JsonKey(name: r'blockingMessage', required: false, includeIfNull: false)
+  final String? blockingMessage;
+
+  @JsonKey(name: r'minimumVersion', required: false, includeIfNull: false)
+  final String? minimumVersion;
+
+  @JsonKey(name: r'iconFileDisplayName', required: false, includeIfNull: false)
+  final String? iconFileDisplayName;
+
+  @JsonKey(name: r'iconFileFullUrl', required: false, includeIfNull: false)
+  final String? iconFileFullUrl;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppConfigEntity &&
-          other.blockingMessage == blockingMessage &&
-          other.enabled == enabled &&
-          other.fontFamily == fontFamily &&
-          other.iconFileDisplayName == iconFileDisplayName &&
-          other.iconFileFullUrl == iconFileFullUrl &&
-          other.message == message &&
-          other.minimumVersion == minimumVersion &&
           other.name == name &&
           other.path == path &&
+          other.enabled == enabled &&
           other.seedColor == seedColor &&
+          other.fontFamily == fontFamily &&
+          other.useMaterial3 == useMaterial3 &&
           other.themeMode == themeMode &&
-          other.useMaterial3 == useMaterial3;
+          other.message == message &&
+          other.blockingMessage == blockingMessage &&
+          other.minimumVersion == minimumVersion &&
+          other.iconFileDisplayName == iconFileDisplayName &&
+          other.iconFileFullUrl == iconFileFullUrl;
 
   @override
   int get hashCode =>
-      (blockingMessage == null ? 0 : blockingMessage.hashCode) +
-      (enabled == null ? 0 : enabled.hashCode) +
-      (fontFamily == null ? 0 : fontFamily.hashCode) +
-      (iconFileDisplayName == null ? 0 : iconFileDisplayName.hashCode) +
-      (iconFileFullUrl == null ? 0 : iconFileFullUrl.hashCode) +
-      (message == null ? 0 : message.hashCode) +
-      (minimumVersion == null ? 0 : minimumVersion.hashCode) +
       (name == null ? 0 : name.hashCode) +
       (path == null ? 0 : path.hashCode) +
+      (enabled == null ? 0 : enabled.hashCode) +
       (seedColor == null ? 0 : seedColor.hashCode) +
+      (fontFamily == null ? 0 : fontFamily.hashCode) +
+      (useMaterial3 == null ? 0 : useMaterial3.hashCode) +
       themeMode.hashCode +
-      (useMaterial3 == null ? 0 : useMaterial3.hashCode);
+      (message == null ? 0 : message.hashCode) +
+      (blockingMessage == null ? 0 : blockingMessage.hashCode) +
+      (minimumVersion == null ? 0 : minimumVersion.hashCode) +
+      (iconFileDisplayName == null ? 0 : iconFileDisplayName.hashCode) +
+      (iconFileFullUrl == null ? 0 : iconFileFullUrl.hashCode);
 
   factory AppConfigEntity.fromJson(Map<String, dynamic> json) =>
       _$AppConfigEntityFromJson(json);

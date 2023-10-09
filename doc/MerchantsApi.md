@@ -9,6 +9,7 @@ All URIs are relative to *https://api.myorderapp.dev*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**deleteMerchantMe**](MerchantsApi.md#deletemerchantme) | **DELETE** /v2/merchants/me | Delete current Merchant
 [**getMerchant**](MerchantsApi.md#getmerchant) | **GET** /v2/merchants/{idOrPath} | Get Merchant
 [**getMerchantMe**](MerchantsApi.md#getmerchantme) | **GET** /v2/merchants/me | Get current Merchant
 [**getSquareSyncMe**](MerchantsApi.md#getsquaresyncme) | **GET** /v2/merchants/me/square/sync | Sync your Square Catalog
@@ -17,6 +18,51 @@ Method | HTTP request | Description
 [**postSquareOauthMe**](MerchantsApi.md#postsquareoauthme) | **POST** /v2/merchants/me/square/login | Confirm Square Oauth
 [**postStripeCheckoutMe**](MerchantsApi.md#poststripecheckoutme) | **POST** /v2/merchants/me/stripe/checkout | Start Stripe checkout
 
+
+# **deleteMerchantMe**
+> MerchantEntity deleteMerchantMe(xCustomLang)
+
+Delete current Merchant
+
+### Example
+```dart
+import 'package:myorderapp_square/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MyorderappSquare().getMerchantsApi();
+final String xCustomLang = xCustomLang_example; // String | 
+
+try {
+    final response = api.deleteMerchantMe(xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling MerchantsApi->deleteMerchantMe: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xCustomLang** | **String**|  | [optional] 
+
+### Return type
+
+[**MerchantEntity**](MerchantEntity.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getMerchant**
 > MerchantEntity getMerchant(idOrPath, xCustomLang)

@@ -8,8 +8,8 @@ import 'package:myorderapp_square/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**refreshToken** | **String** |  | 
 **token** | **String** |  | 
+**refreshToken** | **String** |  | 
 **tokenExpires** | **num** |  | 
 **user** | [**UserEntity**](UserEntity.md) |  | [optional] 
 

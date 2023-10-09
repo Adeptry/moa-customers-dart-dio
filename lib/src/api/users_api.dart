@@ -108,6 +108,8 @@ class UsersApi {
   ///
   ///
   /// Parameters:
+  /// * [customers]
+  /// * [merchants]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -119,6 +121,8 @@ class UsersApi {
   /// Returns a [Future] containing a [Response] with a [UserEntity] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<UserEntity>> getUserMe({
+    bool? customers,
+    bool? merchants,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -153,9 +157,15 @@ class UsersApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (customers != null) r'customers': customers,
+      if (merchants != null) r'merchants': merchants,
+    };
+
     final _response = await _dio.request<Object>(
       _path,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
@@ -196,6 +206,8 @@ class UsersApi {
   ///
   /// Parameters:
   /// * [userPatchBody]
+  /// * [customers]
+  /// * [merchants]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -208,6 +220,8 @@ class UsersApi {
   /// Throws [DioException] if API call or serialization fails
   Future<Response<UserEntity>> patchUserMe({
     required UserPatchBody userPatchBody,
+    bool? customers,
+    bool? merchants,
     String? xCustomLang,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -243,6 +257,11 @@ class UsersApi {
       validateStatus: validateStatus,
     );
 
+    final _queryParameters = <String, dynamic>{
+      if (customers != null) r'customers': customers,
+      if (merchants != null) r'merchants': merchants,
+    };
+
     dynamic _bodyData;
 
     try {
@@ -252,6 +271,7 @@ class UsersApi {
         requestOptions: _options.compose(
           _dio.options,
           _path,
+          queryParameters: _queryParameters,
         ),
         type: DioExceptionType.unknown,
         error: error,
@@ -263,6 +283,7 @@ class UsersApi {
       _path,
       data: _bodyData,
       options: _options,
+      queryParameters: _queryParameters,
       cancelToken: cancelToken,
       onSendProgress: onSendProgress,
       onReceiveProgress: onReceiveProgress,
