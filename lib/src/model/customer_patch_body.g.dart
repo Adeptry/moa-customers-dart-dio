@@ -12,19 +12,19 @@ CustomerPatchBody _$CustomerPatchBodyFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = CustomerPatchBody(
-          preferredLocationId:
-              $checkedConvert('preferredLocationId', (v) => v as String?),
-          preferredSquareCardId:
-              $checkedConvert('preferredSquareCardId', (v) => v as String?),
+          firstName: $checkedConvert('firstName', (v) => v as String?),
+          lastName: $checkedConvert('lastName', (v) => v as String?),
           mailNotifications:
               $checkedConvert('mailNotifications', (v) => v as bool?),
           messageNotifications:
               $checkedConvert('messageNotifications', (v) => v as bool?),
+          phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
+          preferredLocationId:
+              $checkedConvert('preferredLocationId', (v) => v as String?),
+          preferredSquareCardId:
+              $checkedConvert('preferredSquareCardId', (v) => v as String?),
           pushNotifications:
               $checkedConvert('pushNotifications', (v) => v as bool?),
-          firstName: $checkedConvert('firstName', (v) => v as String?),
-          lastName: $checkedConvert('lastName', (v) => v as String?),
-          phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
         );
         return val;
       },
@@ -39,13 +39,13 @@ Map<String, dynamic> _$CustomerPatchBodyToJson(CustomerPatchBody instance) {
     }
   }
 
-  writeNotNull('preferredLocationId', instance.preferredLocationId);
-  writeNotNull('preferredSquareCardId', instance.preferredSquareCardId);
-  writeNotNull('mailNotifications', instance.mailNotifications);
-  writeNotNull('messageNotifications', instance.messageNotifications);
-  writeNotNull('pushNotifications', instance.pushNotifications);
   writeNotNull('firstName', instance.firstName);
   writeNotNull('lastName', instance.lastName);
+  writeNotNull('mailNotifications', instance.mailNotifications);
+  writeNotNull('messageNotifications', instance.messageNotifications);
   writeNotNull('phoneNumber', instance.phoneNumber);
+  writeNotNull('preferredLocationId', instance.preferredLocationId);
+  writeNotNull('preferredSquareCardId', instance.preferredSquareCardId);
+  writeNotNull('pushNotifications', instance.pushNotifications);
   return val;
 }

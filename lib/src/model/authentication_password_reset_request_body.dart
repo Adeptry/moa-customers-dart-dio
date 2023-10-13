@@ -16,25 +16,25 @@ part 'authentication_password_reset_request_body.g.dart';
 class AuthenticationPasswordResetRequestBody {
   /// Returns a new [AuthenticationPasswordResetRequestBody] instance.
   AuthenticationPasswordResetRequestBody({
-    required this.password,
     required this.hash,
+    required this.password,
   });
-
-  @JsonKey(name: r'password', required: true, includeIfNull: false)
-  final String password;
 
   @JsonKey(name: r'hash', required: true, includeIfNull: false)
   final String hash;
+
+  @JsonKey(name: r'password', required: true, includeIfNull: false)
+  final String password;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AuthenticationPasswordResetRequestBody &&
-          other.password == password &&
-          other.hash == hash;
+          other.hash == hash &&
+          other.password == password;
 
   @override
-  int get hashCode => password.hashCode + hash.hashCode;
+  int get hashCode => hash.hashCode + password.hashCode;
 
   factory AuthenticationPasswordResetRequestBody.fromJson(
           Map<String, dynamic> json) =>

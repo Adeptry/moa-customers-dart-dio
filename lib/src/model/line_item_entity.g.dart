@@ -12,31 +12,31 @@ LineItemEntity _$LineItemEntityFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = LineItemEntity(
-          id: $checkedConvert('id', (v) => v as String?),
-          name: $checkedConvert('name', (v) => v as String?),
-          quantity: $checkedConvert('quantity', (v) => v as String?),
-          note: $checkedConvert('note', (v) => v as String?),
-          variationName: $checkedConvert('variationName', (v) => v as String?),
           basePriceMoneyAmount:
               $checkedConvert('basePriceMoneyAmount', (v) => v as num?),
-          variationTotalMoneyAmount:
-              $checkedConvert('variationTotalMoneyAmount', (v) => v as num?),
           grossSalesMoneyAmount:
               $checkedConvert('grossSalesMoneyAmount', (v) => v as num?),
-          totalTaxMoneyAmount:
-              $checkedConvert('totalTaxMoneyAmount', (v) => v as num?),
-          totalDiscountMoneyAmount:
-              $checkedConvert('totalDiscountMoneyAmount', (v) => v as num?),
-          totalMoneyAmount:
-              $checkedConvert('totalMoneyAmount', (v) => v as num?),
-          totalServiceChargeMoneyAmount: $checkedConvert(
-              'totalServiceChargeMoneyAmount', (v) => v as num?),
+          id: $checkedConvert('id', (v) => v as String?),
           modifiers: $checkedConvert(
               'modifiers',
               (v) => (v as List<dynamic>?)
                   ?.map((e) => LineItemModifierEntity.fromJson(
                       e as Map<String, dynamic>))
                   .toList()),
+          name: $checkedConvert('name', (v) => v as String?),
+          note: $checkedConvert('note', (v) => v as String?),
+          quantity: $checkedConvert('quantity', (v) => v as String?),
+          totalDiscountMoneyAmount:
+              $checkedConvert('totalDiscountMoneyAmount', (v) => v as num?),
+          totalMoneyAmount:
+              $checkedConvert('totalMoneyAmount', (v) => v as num?),
+          totalServiceChargeMoneyAmount: $checkedConvert(
+              'totalServiceChargeMoneyAmount', (v) => v as num?),
+          totalTaxMoneyAmount:
+              $checkedConvert('totalTaxMoneyAmount', (v) => v as num?),
+          variationName: $checkedConvert('variationName', (v) => v as String?),
+          variationTotalMoneyAmount:
+              $checkedConvert('variationTotalMoneyAmount', (v) => v as num?),
         );
         return val;
       },
@@ -51,20 +51,20 @@ Map<String, dynamic> _$LineItemEntityToJson(LineItemEntity instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
-  writeNotNull('name', instance.name);
-  writeNotNull('quantity', instance.quantity);
-  writeNotNull('note', instance.note);
-  writeNotNull('variationName', instance.variationName);
   writeNotNull('basePriceMoneyAmount', instance.basePriceMoneyAmount);
-  writeNotNull('variationTotalMoneyAmount', instance.variationTotalMoneyAmount);
   writeNotNull('grossSalesMoneyAmount', instance.grossSalesMoneyAmount);
-  writeNotNull('totalTaxMoneyAmount', instance.totalTaxMoneyAmount);
+  writeNotNull('id', instance.id);
+  writeNotNull(
+      'modifiers', instance.modifiers?.map((e) => e.toJson()).toList());
+  writeNotNull('name', instance.name);
+  writeNotNull('note', instance.note);
+  writeNotNull('quantity', instance.quantity);
   writeNotNull('totalDiscountMoneyAmount', instance.totalDiscountMoneyAmount);
   writeNotNull('totalMoneyAmount', instance.totalMoneyAmount);
   writeNotNull(
       'totalServiceChargeMoneyAmount', instance.totalServiceChargeMoneyAmount);
-  writeNotNull(
-      'modifiers', instance.modifiers?.map((e) => e.toJson()).toList());
+  writeNotNull('totalTaxMoneyAmount', instance.totalTaxMoneyAmount);
+  writeNotNull('variationName', instance.variationName);
+  writeNotNull('variationTotalMoneyAmount', instance.variationTotalMoneyAmount);
   return val;
 }

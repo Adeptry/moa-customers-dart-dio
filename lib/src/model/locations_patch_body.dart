@@ -17,32 +17,32 @@ class LocationsPatchBody {
   /// Returns a new [LocationsPatchBody] instance.
   LocationsPatchBody({
     required this.id,
-    this.moaOrdinal,
     this.moaEnabled,
+    this.moaOrdinal,
   });
 
   @JsonKey(name: r'id', required: true, includeIfNull: false)
   final String id;
 
-  @JsonKey(name: r'moaOrdinal', required: false, includeIfNull: false)
-  final num? moaOrdinal;
-
   @JsonKey(name: r'moaEnabled', required: false, includeIfNull: false)
   final bool? moaEnabled;
+
+  @JsonKey(name: r'moaOrdinal', required: false, includeIfNull: false)
+  final num? moaOrdinal;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is LocationsPatchBody &&
           other.id == id &&
-          other.moaOrdinal == moaOrdinal &&
-          other.moaEnabled == moaEnabled;
+          other.moaEnabled == moaEnabled &&
+          other.moaOrdinal == moaOrdinal;
 
   @override
   int get hashCode =>
       id.hashCode +
-      (moaOrdinal == null ? 0 : moaOrdinal.hashCode) +
-      (moaEnabled == null ? 0 : moaEnabled.hashCode);
+      (moaEnabled == null ? 0 : moaEnabled.hashCode) +
+      (moaOrdinal == null ? 0 : moaOrdinal.hashCode);
 
   factory LocationsPatchBody.fromJson(Map<String, dynamic> json) =>
       _$LocationsPatchBodyFromJson(json);

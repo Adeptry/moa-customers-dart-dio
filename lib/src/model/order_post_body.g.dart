@@ -12,15 +12,15 @@ OrderPostBody _$OrderPostBodyFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = OrderPostBody(
+          idempotencyKey:
+              $checkedConvert('idempotencyKey', (v) => v as String?),
+          locationId: $checkedConvert('locationId', (v) => v as String?),
           variations: $checkedConvert(
               'variations',
               (v) => (v as List<dynamic>?)
                   ?.map((e) => OrdersVariationLineItemInput.fromJson(
                       e as Map<String, dynamic>))
                   .toList()),
-          locationId: $checkedConvert('locationId', (v) => v as String?),
-          idempotencyKey:
-              $checkedConvert('idempotencyKey', (v) => v as String?),
         );
         return val;
       },
@@ -35,9 +35,9 @@ Map<String, dynamic> _$OrderPostBodyToJson(OrderPostBody instance) {
     }
   }
 
+  writeNotNull('idempotencyKey', instance.idempotencyKey);
+  writeNotNull('locationId', instance.locationId);
   writeNotNull(
       'variations', instance.variations?.map((e) => e.toJson()).toList());
-  writeNotNull('locationId', instance.locationId);
-  writeNotNull('idempotencyKey', instance.idempotencyKey);
   return val;
 }

@@ -12,10 +12,10 @@ AppInstallPostBody _$AppInstallPostBodyFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = AppInstallPostBody(
-          firebaseInstallationId:
-              $checkedConvert('firebaseInstallationId', (v) => v as String?),
           firebaseCloudMessagingToken: $checkedConvert(
               'firebaseCloudMessagingToken', (v) => v as String?),
+          firebaseInstallationId:
+              $checkedConvert('firebaseInstallationId', (v) => v as String?),
         );
         return val;
       },
@@ -30,8 +30,8 @@ Map<String, dynamic> _$AppInstallPostBodyToJson(AppInstallPostBody instance) {
     }
   }
 
-  writeNotNull('firebaseInstallationId', instance.firebaseInstallationId);
   writeNotNull(
       'firebaseCloudMessagingToken', instance.firebaseCloudMessagingToken);
+  writeNotNull('firebaseInstallationId', instance.firebaseInstallationId);
   return val;
 }

@@ -14,9 +14,9 @@ ModifierEntity _$ModifierEntityFromJson(Map<String, dynamic> json) =>
         final val = ModifierEntity(
           id: $checkedConvert('id', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String?),
+          ordinal: $checkedConvert('ordinal', (v) => v as num?),
           priceMoneyAmount:
               $checkedConvert('priceMoneyAmount', (v) => v as num?),
-          ordinal: $checkedConvert('ordinal', (v) => v as num?),
         );
         return val;
       },
@@ -33,7 +33,7 @@ Map<String, dynamic> _$ModifierEntityToJson(ModifierEntity instance) {
 
   writeNotNull('id', instance.id);
   writeNotNull('name', instance.name);
-  writeNotNull('priceMoneyAmount', instance.priceMoneyAmount);
   writeNotNull('ordinal', instance.ordinal);
+  writeNotNull('priceMoneyAmount', instance.priceMoneyAmount);
   return val;
 }

@@ -17,16 +17,16 @@ part 'catalog_entity.g.dart';
 class CatalogEntity {
   /// Returns a new [CatalogEntity] instance.
   CatalogEntity({
-    this.id,
     this.categories,
+    this.id,
     this.merchantId,
   });
 
-  @JsonKey(name: r'id', required: false, includeIfNull: false)
-  final String? id;
-
   @JsonKey(name: r'categories', required: false, includeIfNull: false)
   final List<CategoryEntity>? categories;
+
+  @JsonKey(name: r'id', required: false, includeIfNull: false)
+  final String? id;
 
   @JsonKey(name: r'merchantId', required: false, includeIfNull: false)
   final String? merchantId;
@@ -35,14 +35,14 @@ class CatalogEntity {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is CatalogEntity &&
-          other.id == id &&
           other.categories == categories &&
+          other.id == id &&
           other.merchantId == merchantId;
 
   @override
   int get hashCode =>
-      (id == null ? 0 : id.hashCode) +
       (categories == null ? 0 : categories.hashCode) +
+      (id == null ? 0 : id.hashCode) +
       (merchantId == null ? 0 : merchantId.hashCode);
 
   factory CatalogEntity.fromJson(Map<String, dynamic> json) =>

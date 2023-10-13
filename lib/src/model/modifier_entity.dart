@@ -18,8 +18,8 @@ class ModifierEntity {
   ModifierEntity({
     this.id,
     this.name,
-    this.priceMoneyAmount,
     this.ordinal,
+    this.priceMoneyAmount,
   });
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
@@ -28,11 +28,11 @@ class ModifierEntity {
   @JsonKey(name: r'name', required: false, includeIfNull: false)
   final String? name;
 
-  @JsonKey(name: r'priceMoneyAmount', required: false, includeIfNull: false)
-  final num? priceMoneyAmount;
-
   @JsonKey(name: r'ordinal', required: false, includeIfNull: false)
   final num? ordinal;
+
+  @JsonKey(name: r'priceMoneyAmount', required: false, includeIfNull: false)
+  final num? priceMoneyAmount;
 
   @override
   bool operator ==(Object other) =>
@@ -40,15 +40,15 @@ class ModifierEntity {
       other is ModifierEntity &&
           other.id == id &&
           other.name == name &&
-          other.priceMoneyAmount == priceMoneyAmount &&
-          other.ordinal == ordinal;
+          other.ordinal == ordinal &&
+          other.priceMoneyAmount == priceMoneyAmount;
 
   @override
   int get hashCode =>
       (id == null ? 0 : id.hashCode) +
       (name == null ? 0 : name.hashCode) +
-      (priceMoneyAmount == null ? 0 : priceMoneyAmount.hashCode) +
-      (ordinal == null ? 0 : ordinal.hashCode);
+      (ordinal == null ? 0 : ordinal.hashCode) +
+      (priceMoneyAmount == null ? 0 : priceMoneyAmount.hashCode);
 
   factory ModifierEntity.fromJson(Map<String, dynamic> json) =>
       _$ModifierEntityFromJson(json);

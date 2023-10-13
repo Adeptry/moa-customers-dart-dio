@@ -12,23 +12,22 @@ AppConfigEntity _$AppConfigEntityFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = AppConfigEntity(
-          name: $checkedConvert('name', (v) => v as String?),
-          path: $checkedConvert('path', (v) => v as String?),
-          enabled: $checkedConvert('enabled', (v) => v as bool?),
-          seedColor: $checkedConvert('seedColor', (v) => v as String?),
-          fontFamily: $checkedConvert('fontFamily', (v) => v as String?),
-          useMaterial3: $checkedConvert('useMaterial3', (v) => v as bool?),
-          themeMode: $checkedConvert('themeMode',
-              (v) => $enumDecodeNullable(_$ThemeModeEnumEnumMap, v)),
           description: $checkedConvert('description', (v) => v as String?),
+          enabled: $checkedConvert('enabled', (v) => v as bool?),
+          fontFamily: $checkedConvert('fontFamily', (v) => v as String?),
+          iconFileContentType:
+              $checkedConvert('iconFileContentType', (v) => v as String?),
           iconFileDisplayName:
               $checkedConvert('iconFileDisplayName', (v) => v as String?),
           iconFileFullUrl:
               $checkedConvert('iconFileFullUrl', (v) => v as String?),
-          faviconFileDisplayName:
-              $checkedConvert('faviconFileDisplayName', (v) => v as String?),
-          faviconFileFullUrl:
-              $checkedConvert('faviconFileFullUrl', (v) => v as String?),
+          name: $checkedConvert('name', (v) => v as String?),
+          path: $checkedConvert('path', (v) => v as String?),
+          seedColor: $checkedConvert('seedColor', (v) => v as String?),
+          themeMode: $checkedConvert('themeMode',
+              (v) => $enumDecodeNullable(_$ThemeModeEnumEnumMap, v)),
+          title: $checkedConvert('title', (v) => v as String?),
+          useMaterial3: $checkedConvert('useMaterial3', (v) => v as bool?),
         );
         return val;
       },
@@ -43,18 +42,18 @@ Map<String, dynamic> _$AppConfigEntityToJson(AppConfigEntity instance) {
     }
   }
 
-  writeNotNull('name', instance.name);
-  writeNotNull('path', instance.path);
-  writeNotNull('enabled', instance.enabled);
-  writeNotNull('seedColor', instance.seedColor);
-  writeNotNull('fontFamily', instance.fontFamily);
-  writeNotNull('useMaterial3', instance.useMaterial3);
-  writeNotNull('themeMode', _$ThemeModeEnumEnumMap[instance.themeMode]);
   writeNotNull('description', instance.description);
+  writeNotNull('enabled', instance.enabled);
+  writeNotNull('fontFamily', instance.fontFamily);
+  writeNotNull('iconFileContentType', instance.iconFileContentType);
   writeNotNull('iconFileDisplayName', instance.iconFileDisplayName);
   writeNotNull('iconFileFullUrl', instance.iconFileFullUrl);
-  writeNotNull('faviconFileDisplayName', instance.faviconFileDisplayName);
-  writeNotNull('faviconFileFullUrl', instance.faviconFileFullUrl);
+  writeNotNull('name', instance.name);
+  writeNotNull('path', instance.path);
+  writeNotNull('seedColor', instance.seedColor);
+  writeNotNull('themeMode', _$ThemeModeEnumEnumMap[instance.themeMode]);
+  writeNotNull('title', instance.title);
+  writeNotNull('useMaterial3', instance.useMaterial3);
   return val;
 }
 
