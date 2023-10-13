@@ -15,6 +15,7 @@ AppConfigUpdateBody _$AppConfigUpdateBodyFromJson(Map<String, dynamic> json) =>
           name: $checkedConvert('name', (v) => v as String?),
           seedColor: $checkedConvert('seedColor', (v) => v as String?),
           fontFamily: $checkedConvert('fontFamily', (v) => v as String?),
+          description: $checkedConvert('description', (v) => v as String?),
           useMaterial3: $checkedConvert('useMaterial3', (v) => v as bool?),
           enabled: $checkedConvert('enabled', (v) => v as bool?),
           themeMode: $checkedConvert('themeMode',
@@ -36,6 +37,7 @@ Map<String, dynamic> _$AppConfigUpdateBodyToJson(AppConfigUpdateBody instance) {
   writeNotNull('name', instance.name);
   writeNotNull('seedColor', instance.seedColor);
   writeNotNull('fontFamily', instance.fontFamily);
+  writeNotNull('description', instance.description);
   writeNotNull('useMaterial3', instance.useMaterial3);
   writeNotNull('enabled', instance.enabled);
   writeNotNull('themeMode', _$ThemeModeEnumEnumMap[instance.themeMode]);

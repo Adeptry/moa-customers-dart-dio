@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | [optional] 
 **seedColor** | **String** |  | [optional] 
 **fontFamily** | **String** |  | [optional] 
+**description** | **String** |  | [optional] 
 **useMaterial3** | **bool** |  | [optional] 
 **enabled** | **bool** |  | [optional] 
 **themeMode** | [**ThemeModeEnum**](ThemeModeEnum.md) |  | [optional] 

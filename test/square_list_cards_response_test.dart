@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the entity
 
   group(SquareListCardsResponse, () {
+    // List<SquareError> errors
+    test('to test the property `errors`', () async {
+      // TODO
+    });
+
     // List<SquareCard> cards
     test('to test the property `cards`', () async {
       // TODO
@@ -14,11 +19,6 @@ void main() {
 
     // String cursor
     test('to test the property `cursor`', () async {
-      // TODO
-    });
-
-    // List<SquareError> errors
-    test('to test the property `errors`', () async {
       // TODO
     });
 

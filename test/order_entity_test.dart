@@ -7,13 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(OrderEntity, () {
-    // OffsetDateTime closedDate
-    test('to test the property `closedDate`', () async {
-      // TODO
-    });
-
-    // String currency
-    test('to test the property `currency`', () async {
+    // String id
+    test('to test the property `id`', () async {
       // TODO
     });
 
@@ -22,13 +17,8 @@ void main() {
       // TODO
     });
 
-    // String displayId
-    test('to test the property `displayId`', () async {
-      // TODO
-    });
-
-    // String id
-    test('to test the property `id`', () async {
+    // LocationEntity location
+    test('to test the property `location`', () async {
       // TODO
     });
 
@@ -37,18 +27,18 @@ void main() {
       // TODO
     });
 
-    // LocationEntity location
-    test('to test the property `location`', () async {
-      // TODO
-    });
-
-    // OffsetDateTime pickupDate
-    test('to test the property `pickupDate`', () async {
-      // TODO
-    });
-
     // FulfillmentStatusEnum squareFulfillmentStatus
     test('to test the property `squareFulfillmentStatus`', () async {
+      // TODO
+    });
+
+    // DateTime closedDate
+    test('to test the property `closedDate`', () async {
+      // TODO
+    });
+
+    // DateTime pickupDate
+    test('to test the property `pickupDate`', () async {
       // TODO
     });
 
@@ -57,8 +47,18 @@ void main() {
       // TODO
     });
 
+    // num totalMoneyTaxAmount
+    test('to test the property `totalMoneyTaxAmount`', () async {
+      // TODO
+    });
+
     // num totalMoneyDiscountAmount
     test('to test the property `totalMoneyDiscountAmount`', () async {
+      // TODO
+    });
+
+    // num totalMoneyTipAmount
+    test('to test the property `totalMoneyTipAmount`', () async {
       // TODO
     });
 
@@ -67,13 +67,13 @@ void main() {
       // TODO
     });
 
-    // num totalMoneyTaxAmount
-    test('to test the property `totalMoneyTaxAmount`', () async {
+    // num appFeeMoneyAmount
+    test('to test the property `appFeeMoneyAmount`', () async {
       // TODO
     });
 
-    // num totalMoneyTipAmount
-    test('to test the property `totalMoneyTipAmount`', () async {
+    // String displayId
+    test('to test the property `displayId`', () async {
       // TODO
     });
 

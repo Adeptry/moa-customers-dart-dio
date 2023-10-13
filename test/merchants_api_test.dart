@@ -7,6 +7,13 @@ void main() {
   final instance = MyorderappSquare().getMerchantsApi();
 
   group(MerchantsApi, () {
+    // Delete current Merchant
+    //
+    //Future<MerchantEntity> deleteMerchantMe({ String xCustomLang }) async
+    test('test deleteMerchantMe', () async {
+      // TODO
+    });
+
     // Get Merchant
     //
     //Future<MerchantEntity> getMerchant(String idOrPath, { String xCustomLang }) async

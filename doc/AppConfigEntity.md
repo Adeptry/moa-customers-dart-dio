@@ -15,11 +15,11 @@ Name | Type | Description | Notes
 **fontFamily** | **String** |  | [optional] 
 **useMaterial3** | **bool** |  | [optional] 
 **themeMode** | [**ThemeModeEnum**](ThemeModeEnum.md) |  | [optional] 
-**message** | **String** |  | [optional] 
-**blockingMessage** | **String** |  | [optional] 
-**minimumVersion** | **String** |  | [optional] 
+**description** | **String** |  | [optional] 
 **iconFileDisplayName** | **String** |  | [optional] 
 **iconFileFullUrl** | **String** |  | [optional] 
+**faviconFileDisplayName** | **String** |  | [optional] 
+**faviconFileFullUrl** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

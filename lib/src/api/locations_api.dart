@@ -231,11 +231,11 @@ class LocationsApi {
   ///
   ///
   /// Parameters:
+  /// * [actingAs]
   /// * [page]
   /// * [limit]
   /// * [address]
   /// * [businessHours]
-  /// * [actingAs]
   /// * [merchantIdOrPath]
   /// * [xCustomLang]
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
@@ -248,11 +248,11 @@ class LocationsApi {
   /// Returns a [Future] containing a [Response] with a [LocationPaginatedResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<LocationPaginatedResponse>> getLocationsMe({
+    String? actingAs,
     num? page,
     num? limit,
     bool? address,
     bool? businessHours,
-    String? actingAs,
     String? merchantIdOrPath,
     String? xCustomLang,
     CancelToken? cancelToken,
@@ -289,11 +289,11 @@ class LocationsApi {
     );
 
     final _queryParameters = <String, dynamic>{
+      if (actingAs != null) r'actingAs': actingAs,
       if (page != null) r'page': page,
       if (limit != null) r'limit': limit,
       if (address != null) r'address': address,
       if (businessHours != null) r'businessHours': businessHours,
-      if (actingAs != null) r'actingAs': actingAs,
       if (merchantIdOrPath != null) r'merchantIdOrPath': merchantIdOrPath,
     };
 

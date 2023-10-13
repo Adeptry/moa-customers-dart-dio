@@ -17,5 +17,35 @@ void main() {
       // TODO
     });
 
+    // bool mailNotifications
+    test('to test the property `mailNotifications`', () async {
+      // TODO
+    });
+
+    // bool messageNotifications
+    test('to test the property `messageNotifications`', () async {
+      // TODO
+    });
+
+    // bool pushNotifications
+    test('to test the property `pushNotifications`', () async {
+      // TODO
+    });
+
+    // String firstName
+    test('to test the property `firstName`', () async {
+      // TODO
+    });
+
+    // String lastName
+    test('to test the property `lastName`', () async {
+      // TODO
+    });
+
+    // String phoneNumber
+    test('to test the property `phoneNumber`', () async {
+      // TODO
+    });
+
   });
 }

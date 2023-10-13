@@ -20,6 +20,7 @@ class AppConfigUpdateBody {
     this.name,
     this.seedColor,
     this.fontFamily,
+    this.description,
     this.useMaterial3,
     this.enabled,
     this.themeMode,
@@ -33,6 +34,9 @@ class AppConfigUpdateBody {
 
   @JsonKey(name: r'fontFamily', required: false, includeIfNull: false)
   final String? fontFamily;
+
+  @JsonKey(name: r'description', required: false, includeIfNull: false)
+  final String? description;
 
   @JsonKey(name: r'useMaterial3', required: false, includeIfNull: false)
   final bool? useMaterial3;
@@ -50,6 +54,7 @@ class AppConfigUpdateBody {
           other.name == name &&
           other.seedColor == seedColor &&
           other.fontFamily == fontFamily &&
+          other.description == description &&
           other.useMaterial3 == useMaterial3 &&
           other.enabled == enabled &&
           other.themeMode == themeMode;
@@ -59,6 +64,7 @@ class AppConfigUpdateBody {
       (name == null ? 0 : name.hashCode) +
       (seedColor == null ? 0 : seedColor.hashCode) +
       (fontFamily == null ? 0 : fontFamily.hashCode) +
+      (description == null ? 0 : description.hashCode) +
       (useMaterial3 == null ? 0 : useMaterial3.hashCode) +
       (enabled == null ? 0 : enabled.hashCode) +
       themeMode.hashCode;

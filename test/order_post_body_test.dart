@@ -7,8 +7,8 @@ void main() {
   // TODO add properties to the entity
 
   group(OrderPostBody, () {
-    // String idempotencyKey
-    test('to test the property `idempotencyKey`', () async {
+    // List<OrdersVariationLineItemInput> variations
+    test('to test the property `variations`', () async {
       // TODO
     });
 
@@ -17,8 +17,8 @@ void main() {
       // TODO
     });
 
-    // List<OrdersVariationLineItemInput> variations
-    test('to test the property `variations`', () async {
+    // String idempotencyKey
+    test('to test the property `idempotencyKey`', () async {
       // TODO
     });
 

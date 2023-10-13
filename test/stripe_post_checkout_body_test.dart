@@ -7,6 +7,11 @@ void main() {
   // TODO add properties to the entity
 
   group(StripePostCheckoutBody, () {
+    // String successUrl
+    test('to test the property `successUrl`', () async {
+      // TODO
+    });
+
     // String cancelUrl
     test('to test the property `cancelUrl`', () async {
       // TODO
@@ -14,11 +19,6 @@ void main() {
 
     // String stripePriceId
     test('to test the property `stripePriceId`', () async {
-      // TODO
-    });
-
-    // String successUrl
-    test('to test the property `successUrl`', () async {
       // TODO
     });
 

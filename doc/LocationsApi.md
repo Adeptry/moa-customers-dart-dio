@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getLocationsMe**
-> LocationPaginatedResponse getLocationsMe(page, limit, address, businessHours, actingAs, merchantIdOrPath, xCustomLang)
+> LocationPaginatedResponse getLocationsMe(actingAs, page, limit, address, businessHours, merchantIdOrPath, xCustomLang)
 
 Get all your Locations
 
@@ -136,16 +136,16 @@ import 'package:myorderapp_square/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MyorderappSquare().getLocationsApi();
+final String actingAs = actingAs_example; // String | 
 final num page = 8.14; // num | 
 final num limit = 8.14; // num | 
 final bool address = true; // bool | 
 final bool businessHours = true; // bool | 
-final String actingAs = actingAs_example; // String | 
 final String merchantIdOrPath = merchantIdOrPath_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
 
 try {
-    final response = api.getLocationsMe(page, limit, address, businessHours, actingAs, merchantIdOrPath, xCustomLang);
+    final response = api.getLocationsMe(actingAs, page, limit, address, businessHours, merchantIdOrPath, xCustomLang);
     print(response);
 } catch on DioException (e) {
     print('Exception when calling LocationsApi->getLocationsMe: $e\n');
@@ -156,11 +156,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **actingAs** | **String**|  | [optional] 
  **page** | **num**|  | [optional] 
  **limit** | **num**|  | [optional] 
  **address** | **bool**|  | [optional] 
  **businessHours** | **bool**|  | [optional] 
- **actingAs** | **String**|  | [optional] 
  **merchantIdOrPath** | **String**|  | [optional] 
  **xCustomLang** | **String**|  | [optional] 
 

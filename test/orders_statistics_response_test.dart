@@ -17,8 +17,13 @@ void main() {
       // TODO
     });
 
-    // StatisticsOutput moneyAppFeeAmount
-    test('to test the property `moneyAppFeeAmount`', () async {
+    // StatisticsOutput moneyTaxAmount
+    test('to test the property `moneyTaxAmount`', () async {
+      // TODO
+    });
+
+    // StatisticsOutput moneyTipAmount
+    test('to test the property `moneyTipAmount`', () async {
       // TODO
     });
 
@@ -27,13 +32,8 @@ void main() {
       // TODO
     });
 
-    // StatisticsOutput moneyTaxAmount
-    test('to test the property `moneyTaxAmount`', () async {
-      // TODO
-    });
-
-    // StatisticsOutput moneyTipAmount
-    test('to test the property `moneyTipAmount`', () async {
+    // StatisticsOutput moneyAppFeeAmount
+    test('to test the property `moneyAppFeeAmount`', () async {
       // TODO
     });
 

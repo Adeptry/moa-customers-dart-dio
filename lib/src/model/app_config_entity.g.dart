@@ -20,15 +20,15 @@ AppConfigEntity _$AppConfigEntityFromJson(Map<String, dynamic> json) =>
           useMaterial3: $checkedConvert('useMaterial3', (v) => v as bool?),
           themeMode: $checkedConvert('themeMode',
               (v) => $enumDecodeNullable(_$ThemeModeEnumEnumMap, v)),
-          message: $checkedConvert('message', (v) => v as String?),
-          blockingMessage:
-              $checkedConvert('blockingMessage', (v) => v as String?),
-          minimumVersion:
-              $checkedConvert('minimumVersion', (v) => v as String?),
+          description: $checkedConvert('description', (v) => v as String?),
           iconFileDisplayName:
               $checkedConvert('iconFileDisplayName', (v) => v as String?),
           iconFileFullUrl:
               $checkedConvert('iconFileFullUrl', (v) => v as String?),
+          faviconFileDisplayName:
+              $checkedConvert('faviconFileDisplayName', (v) => v as String?),
+          faviconFileFullUrl:
+              $checkedConvert('faviconFileFullUrl', (v) => v as String?),
         );
         return val;
       },
@@ -50,11 +50,11 @@ Map<String, dynamic> _$AppConfigEntityToJson(AppConfigEntity instance) {
   writeNotNull('fontFamily', instance.fontFamily);
   writeNotNull('useMaterial3', instance.useMaterial3);
   writeNotNull('themeMode', _$ThemeModeEnumEnumMap[instance.themeMode]);
-  writeNotNull('message', instance.message);
-  writeNotNull('blockingMessage', instance.blockingMessage);
-  writeNotNull('minimumVersion', instance.minimumVersion);
+  writeNotNull('description', instance.description);
   writeNotNull('iconFileDisplayName', instance.iconFileDisplayName);
   writeNotNull('iconFileFullUrl', instance.iconFileFullUrl);
+  writeNotNull('faviconFileDisplayName', instance.faviconFileDisplayName);
+  writeNotNull('faviconFileFullUrl', instance.faviconFileFullUrl);
   return val;
 }
 

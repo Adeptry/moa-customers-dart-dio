@@ -7,6 +7,13 @@ void main() {
   final instance = MyorderappSquare().getCustomersApi();
 
   group(CustomersApi, () {
+    // Delete current Customer
+    //
+    //Future<CustomerEntity> deleteCustomerMe(String merchantIdOrPath, { String xCustomLang }) async
+    test('test deleteCustomerMe', () async {
+      // TODO
+    });
+
     // Get current Customer
     //
     //Future<CustomerEntity> getCustomerMe(String merchantIdOrPath, { bool user, bool merchant, bool currentOrder, bool preferredLocation, bool preferredSquareCard, String xCustomLang }) async
@@ -16,8 +23,8 @@ void main() {
 
     // Get my Customers
     //
-    //Future<CustomersPaginatedResponse> getManyCustomers({ num page, num limit, bool user, bool merchant, bool currentOrder, bool preferredLocation, String xCustomLang }) async
-    test('test getManyCustomers', () async {
+    //Future<CustomersPaginatedResponse> getCustomers({ num page, num limit, bool user, bool merchant, bool currentOrder, bool preferredLocation, String orderField, String orderSort, String startDate, String endDate, String xCustomLang }) async
+    test('test getCustomers', () async {
       // TODO
     });
 

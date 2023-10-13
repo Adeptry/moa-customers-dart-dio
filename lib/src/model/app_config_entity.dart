@@ -24,11 +24,11 @@ class AppConfigEntity {
     this.fontFamily,
     this.useMaterial3,
     this.themeMode,
-    this.message,
-    this.blockingMessage,
-    this.minimumVersion,
+    this.description,
     this.iconFileDisplayName,
     this.iconFileFullUrl,
+    this.faviconFileDisplayName,
+    this.faviconFileFullUrl,
   });
 
   @JsonKey(name: r'name', required: false, includeIfNull: false)
@@ -52,20 +52,21 @@ class AppConfigEntity {
   @JsonKey(name: r'themeMode', required: false, includeIfNull: false)
   final ThemeModeEnum? themeMode;
 
-  @JsonKey(name: r'message', required: false, includeIfNull: false)
-  final String? message;
-
-  @JsonKey(name: r'blockingMessage', required: false, includeIfNull: false)
-  final String? blockingMessage;
-
-  @JsonKey(name: r'minimumVersion', required: false, includeIfNull: false)
-  final String? minimumVersion;
+  @JsonKey(name: r'description', required: false, includeIfNull: false)
+  final String? description;
 
   @JsonKey(name: r'iconFileDisplayName', required: false, includeIfNull: false)
   final String? iconFileDisplayName;
 
   @JsonKey(name: r'iconFileFullUrl', required: false, includeIfNull: false)
   final String? iconFileFullUrl;
+
+  @JsonKey(
+      name: r'faviconFileDisplayName', required: false, includeIfNull: false)
+  final String? faviconFileDisplayName;
+
+  @JsonKey(name: r'faviconFileFullUrl', required: false, includeIfNull: false)
+  final String? faviconFileFullUrl;
 
   @override
   bool operator ==(Object other) =>
@@ -78,11 +79,11 @@ class AppConfigEntity {
           other.fontFamily == fontFamily &&
           other.useMaterial3 == useMaterial3 &&
           other.themeMode == themeMode &&
-          other.message == message &&
-          other.blockingMessage == blockingMessage &&
-          other.minimumVersion == minimumVersion &&
+          other.description == description &&
           other.iconFileDisplayName == iconFileDisplayName &&
-          other.iconFileFullUrl == iconFileFullUrl;
+          other.iconFileFullUrl == iconFileFullUrl &&
+          other.faviconFileDisplayName == faviconFileDisplayName &&
+          other.faviconFileFullUrl == faviconFileFullUrl;
 
   @override
   int get hashCode =>
@@ -93,11 +94,11 @@ class AppConfigEntity {
       (fontFamily == null ? 0 : fontFamily.hashCode) +
       (useMaterial3 == null ? 0 : useMaterial3.hashCode) +
       themeMode.hashCode +
-      (message == null ? 0 : message.hashCode) +
-      (blockingMessage == null ? 0 : blockingMessage.hashCode) +
-      (minimumVersion == null ? 0 : minimumVersion.hashCode) +
+      (description == null ? 0 : description.hashCode) +
       (iconFileDisplayName == null ? 0 : iconFileDisplayName.hashCode) +
-      (iconFileFullUrl == null ? 0 : iconFileFullUrl.hashCode);
+      (iconFileFullUrl == null ? 0 : iconFileFullUrl.hashCode) +
+      (faviconFileDisplayName == null ? 0 : faviconFileDisplayName.hashCode) +
+      (faviconFileFullUrl == null ? 0 : faviconFileFullUrl.hashCode);
 
   factory AppConfigEntity.fromJson(Map<String, dynamic> json) =>
       _$AppConfigEntityFromJson(json);

@@ -7,16 +7,6 @@ void main() {
   // TODO add properties to the entity
 
   group(LineItemModifierEntity, () {
-    // num baseMoneyAmount
-    test('to test the property `baseMoneyAmount`', () async {
-      // TODO
-    });
-
-    // String currency
-    test('to test the property `currency`', () async {
-      // TODO
-    });
-
     // String id
     test('to test the property `id`', () async {
       // TODO
@@ -29,6 +19,11 @@ void main() {
 
     // String quantity
     test('to test the property `quantity`', () async {
+      // TODO
+    });
+
+    // num baseMoneyAmount
+    test('to test the property `baseMoneyAmount`', () async {
       // TODO
     });
 

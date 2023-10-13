@@ -12,6 +12,21 @@ void main() {
       // TODO
     });
 
+    // DateTime createDate
+    test('to test the property `createDate`', () async {
+      // TODO
+    });
+
+    // UserEntity user
+    test('to test the property `user`', () async {
+      // TODO
+    });
+
+    // String merchantId
+    test('to test the property `merchantId`', () async {
+      // TODO
+    });
+
     // LocationEntity preferredLocation
     test('to test the property `preferredLocation`', () async {
       // TODO
@@ -22,13 +37,18 @@ void main() {
       // TODO
     });
 
-    // String preferredSquareCardId
-    test('to test the property `preferredSquareCardId`', () async {
+    // bool mailNotifications
+    test('to test the property `mailNotifications`', () async {
       // TODO
     });
 
-    // Object user
-    test('to test the property `user`', () async {
+    // bool messageNotifications
+    test('to test the property `messageNotifications`', () async {
+      // TODO
+    });
+
+    // bool pushNotifications
+    test('to test the property `pushNotifications`', () async {
       // TODO
     });
 

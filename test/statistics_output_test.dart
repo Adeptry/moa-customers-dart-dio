@@ -7,13 +7,13 @@ void main() {
   // TODO add properties to the entity
 
   group(StatisticsOutput, () {
-    // num average
-    test('to test the property `average`', () async {
+    // num sum
+    test('to test the property `sum`', () async {
       // TODO
     });
 
-    // num maximum
-    test('to test the property `maximum`', () async {
+    // num average
+    test('to test the property `average`', () async {
       // TODO
     });
 
@@ -22,8 +22,8 @@ void main() {
       // TODO
     });
 
-    // num sum
-    test('to test the property `sum`', () async {
+    // num maximum
+    test('to test the property `maximum`', () async {
       // TODO
     });
 

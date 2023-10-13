@@ -14,9 +14,16 @@ void main() {
       // TODO
     });
 
+    // Get Locations for Merchant
+    //
+    //Future<LocationPaginatedResponse> getLocations(String merchantIdOrPath, { num page, num limit, bool address, bool businessHours, String xCustomLang }) async
+    test('test getLocations', () async {
+      // TODO
+    });
+
     // Get all your Locations
     //
-    //Future<LocationPaginatedResponse> getLocationsMe({ num page, num limit, bool address, bool businessHours, String actingAs, String merchantIdOrPath, String xCustomLang }) async
+    //Future<LocationPaginatedResponse> getLocationsMe({ String actingAs, num page, num limit, bool address, bool businessHours, String merchantIdOrPath, String xCustomLang }) async
     test('test getLocationsMe', () async {
       // TODO
     });

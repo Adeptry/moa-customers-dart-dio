@@ -70,17 +70,17 @@ void main() {
       // TODO
     });
 
+    // Update an Variation
+    //
+    //Future<VariationEntity> patchVariation(String id, VariationPatchBody variationPatchBody, { String xCustomLang }) async
+    test('test patchVariation', () async {
+      // TODO
+    });
+
     // Upload Square Catalog Image
     //
     //Future<CatalogImageEntity> postItemSquareImageUpload(String idempotencyKey, String id, { String xCustomLang, MultipartFile file }) async
     test('test postItemSquareImageUpload', () async {
-      // TODO
-    });
-
-    // Update an Variation
-    //
-    //Future<VariationEntity> updateVariation(String id, VariationPatchBody variationPatchBody, { String xCustomLang }) async
-    test('test updateVariation', () async {
       // TODO
     });
 

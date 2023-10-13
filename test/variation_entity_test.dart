@@ -12,6 +12,11 @@ void main() {
       // TODO
     });
 
+    // num ordinal
+    test('to test the property `ordinal`', () async {
+      // TODO
+    });
+
     // bool moaEnabled
     test('to test the property `moaEnabled`', () async {
       // TODO
@@ -22,18 +27,8 @@ void main() {
       // TODO
     });
 
-    // num ordinal
-    test('to test the property `ordinal`', () async {
-      // TODO
-    });
-
-    // num priceAmount
-    test('to test the property `priceAmount`', () async {
-      // TODO
-    });
-
-    // String priceCurrency
-    test('to test the property `priceCurrency`', () async {
+    // num priceMoneyAmount
+    test('to test the property `priceMoneyAmount`', () async {
       // TODO
     });
 

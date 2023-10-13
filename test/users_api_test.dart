@@ -16,14 +16,14 @@ void main() {
 
     // 
     //
-    //Future<UserEntity> getUserMe({ String xCustomLang }) async
+    //Future<UserEntity> getUserMe({ bool customers, bool merchants, String xCustomLang }) async
     test('test getUserMe', () async {
       // TODO
     });
 
     // 
     //
-    //Future<UserEntity> patchUserMe(UserPatchBody userPatchBody, { String xCustomLang }) async
+    //Future<UserEntity> patchUserMe(UserPatchBody userPatchBody, { bool customers, bool merchants, String xCustomLang }) async
     test('test patchUserMe', () async {
       // TODO
     });
