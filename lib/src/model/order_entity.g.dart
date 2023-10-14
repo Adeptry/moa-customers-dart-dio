@@ -37,16 +37,16 @@ OrderEntity _$OrderEntityFromJson(Map<String, dynamic> json) => $checkedCreate(
               (v) => v == null ? null : DateTime.parse(v as String)),
           squareFulfillmentStatus: $checkedConvert('squareFulfillmentStatus',
               (v) => $enumDecodeNullable(_$FulfillmentStatusEnumEnumMap, v)),
+          totalDiscountMoneyAmount:
+              $checkedConvert('totalDiscountMoneyAmount', (v) => v as num?),
           totalMoneyAmount:
               $checkedConvert('totalMoneyAmount', (v) => v as num?),
-          totalMoneyDiscountAmount:
-              $checkedConvert('totalMoneyDiscountAmount', (v) => v as num?),
-          totalMoneyServiceChargeAmount: $checkedConvert(
-              'totalMoneyServiceChargeAmount', (v) => v as num?),
-          totalMoneyTaxAmount:
-              $checkedConvert('totalMoneyTaxAmount', (v) => v as num?),
-          totalMoneyTipAmount:
-              $checkedConvert('totalMoneyTipAmount', (v) => v as num?),
+          totalServiceChargeMoneyAmount: $checkedConvert(
+              'totalServiceChargeMoneyAmount', (v) => v as num?),
+          totalTaxMoneyAmount:
+              $checkedConvert('totalTaxMoneyAmount', (v) => v as num?),
+          totalTipMoneyAmount:
+              $checkedConvert('totalTipMoneyAmount', (v) => v as num?),
         );
         return val;
       },
@@ -72,12 +72,12 @@ Map<String, dynamic> _$OrderEntityToJson(OrderEntity instance) {
   writeNotNull('pickupDate', instance.pickupDate?.toIso8601String());
   writeNotNull('squareFulfillmentStatus',
       _$FulfillmentStatusEnumEnumMap[instance.squareFulfillmentStatus]);
+  writeNotNull('totalDiscountMoneyAmount', instance.totalDiscountMoneyAmount);
   writeNotNull('totalMoneyAmount', instance.totalMoneyAmount);
-  writeNotNull('totalMoneyDiscountAmount', instance.totalMoneyDiscountAmount);
   writeNotNull(
-      'totalMoneyServiceChargeAmount', instance.totalMoneyServiceChargeAmount);
-  writeNotNull('totalMoneyTaxAmount', instance.totalMoneyTaxAmount);
-  writeNotNull('totalMoneyTipAmount', instance.totalMoneyTipAmount);
+      'totalServiceChargeMoneyAmount', instance.totalServiceChargeMoneyAmount);
+  writeNotNull('totalTaxMoneyAmount', instance.totalTaxMoneyAmount);
+  writeNotNull('totalTipMoneyAmount', instance.totalTipMoneyAmount);
   return val;
 }
 

@@ -564,7 +564,7 @@ import 'package:myorderapp_square/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MyorderappSquare().getCatalogsApi();
-final String idempotencyKey = E-OdrO-WHfjzjT9ZRG0GX; // String | 
+final String idempotencyKey = 3L4goITVL95hb7Wm--peo; // String | 
 final String id = id_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 

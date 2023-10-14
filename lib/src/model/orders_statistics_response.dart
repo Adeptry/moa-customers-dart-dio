@@ -17,13 +17,16 @@ part 'orders_statistics_response.g.dart';
 class OrdersStatisticsResponse {
   /// Returns a new [OrdersStatisticsResponse] instance.
   OrdersStatisticsResponse({
+    this.appFeeMoneyAmount,
     this.count,
     this.moneyAmount,
-    this.moneyAppFeeAmount,
-    this.moneyServiceChargeAmount,
-    this.moneyTaxAmount,
-    this.moneyTipAmount,
+    this.serviceChargeMoneyAmount,
+    this.taxMoneyAmount,
+    this.tipMoneyAmount,
   });
+
+  @JsonKey(name: r'appFeeMoneyAmount', required: false, includeIfNull: false)
+  final StatisticsOutput? appFeeMoneyAmount;
 
   @JsonKey(name: r'count', required: false, includeIfNull: false)
   final num? count;
@@ -31,40 +34,37 @@ class OrdersStatisticsResponse {
   @JsonKey(name: r'moneyAmount', required: false, includeIfNull: false)
   final StatisticsOutput? moneyAmount;
 
-  @JsonKey(name: r'moneyAppFeeAmount', required: false, includeIfNull: false)
-  final StatisticsOutput? moneyAppFeeAmount;
-
   @JsonKey(
-      name: r'moneyServiceChargeAmount', required: false, includeIfNull: false)
-  final StatisticsOutput? moneyServiceChargeAmount;
+      name: r'serviceChargeMoneyAmount', required: false, includeIfNull: false)
+  final StatisticsOutput? serviceChargeMoneyAmount;
 
-  @JsonKey(name: r'moneyTaxAmount', required: false, includeIfNull: false)
-  final StatisticsOutput? moneyTaxAmount;
+  @JsonKey(name: r'taxMoneyAmount', required: false, includeIfNull: false)
+  final StatisticsOutput? taxMoneyAmount;
 
-  @JsonKey(name: r'moneyTipAmount', required: false, includeIfNull: false)
-  final StatisticsOutput? moneyTipAmount;
+  @JsonKey(name: r'tipMoneyAmount', required: false, includeIfNull: false)
+  final StatisticsOutput? tipMoneyAmount;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OrdersStatisticsResponse &&
+          other.appFeeMoneyAmount == appFeeMoneyAmount &&
           other.count == count &&
           other.moneyAmount == moneyAmount &&
-          other.moneyAppFeeAmount == moneyAppFeeAmount &&
-          other.moneyServiceChargeAmount == moneyServiceChargeAmount &&
-          other.moneyTaxAmount == moneyTaxAmount &&
-          other.moneyTipAmount == moneyTipAmount;
+          other.serviceChargeMoneyAmount == serviceChargeMoneyAmount &&
+          other.taxMoneyAmount == taxMoneyAmount &&
+          other.tipMoneyAmount == tipMoneyAmount;
 
   @override
   int get hashCode =>
+      (appFeeMoneyAmount == null ? 0 : appFeeMoneyAmount.hashCode) +
       (count == null ? 0 : count.hashCode) +
       (moneyAmount == null ? 0 : moneyAmount.hashCode) +
-      (moneyAppFeeAmount == null ? 0 : moneyAppFeeAmount.hashCode) +
-      (moneyServiceChargeAmount == null
+      (serviceChargeMoneyAmount == null
           ? 0
-          : moneyServiceChargeAmount.hashCode) +
-      (moneyTaxAmount == null ? 0 : moneyTaxAmount.hashCode) +
-      (moneyTipAmount == null ? 0 : moneyTipAmount.hashCode);
+          : serviceChargeMoneyAmount.hashCode) +
+      (taxMoneyAmount == null ? 0 : taxMoneyAmount.hashCode) +
+      (tipMoneyAmount == null ? 0 : tipMoneyAmount.hashCode);
 
   factory OrdersStatisticsResponse.fromJson(Map<String, dynamic> json) =>
       _$OrdersStatisticsResponseFromJson(json);

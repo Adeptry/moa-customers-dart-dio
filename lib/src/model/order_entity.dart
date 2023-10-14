@@ -29,11 +29,11 @@ class OrderEntity {
     this.location,
     this.pickupDate,
     this.squareFulfillmentStatus,
+    this.totalDiscountMoneyAmount,
     this.totalMoneyAmount,
-    this.totalMoneyDiscountAmount,
-    this.totalMoneyServiceChargeAmount,
-    this.totalMoneyTaxAmount,
-    this.totalMoneyTipAmount,
+    this.totalServiceChargeMoneyAmount,
+    this.totalTaxMoneyAmount,
+    this.totalTipMoneyAmount,
   });
 
   @JsonKey(name: r'appFeeMoneyAmount', required: false, includeIfNull: false)
@@ -64,24 +64,24 @@ class OrderEntity {
       name: r'squareFulfillmentStatus', required: false, includeIfNull: false)
   final FulfillmentStatusEnum? squareFulfillmentStatus;
 
+  @JsonKey(
+      name: r'totalDiscountMoneyAmount', required: false, includeIfNull: false)
+  final num? totalDiscountMoneyAmount;
+
   @JsonKey(name: r'totalMoneyAmount', required: false, includeIfNull: false)
   final num? totalMoneyAmount;
 
   @JsonKey(
-      name: r'totalMoneyDiscountAmount', required: false, includeIfNull: false)
-  final num? totalMoneyDiscountAmount;
-
-  @JsonKey(
-      name: r'totalMoneyServiceChargeAmount',
+      name: r'totalServiceChargeMoneyAmount',
       required: false,
       includeIfNull: false)
-  final num? totalMoneyServiceChargeAmount;
+  final num? totalServiceChargeMoneyAmount;
 
-  @JsonKey(name: r'totalMoneyTaxAmount', required: false, includeIfNull: false)
-  final num? totalMoneyTaxAmount;
+  @JsonKey(name: r'totalTaxMoneyAmount', required: false, includeIfNull: false)
+  final num? totalTaxMoneyAmount;
 
-  @JsonKey(name: r'totalMoneyTipAmount', required: false, includeIfNull: false)
-  final num? totalMoneyTipAmount;
+  @JsonKey(name: r'totalTipMoneyAmount', required: false, includeIfNull: false)
+  final num? totalTipMoneyAmount;
 
   @override
   bool operator ==(Object other) =>
@@ -96,12 +96,12 @@ class OrderEntity {
           other.location == location &&
           other.pickupDate == pickupDate &&
           other.squareFulfillmentStatus == squareFulfillmentStatus &&
+          other.totalDiscountMoneyAmount == totalDiscountMoneyAmount &&
           other.totalMoneyAmount == totalMoneyAmount &&
-          other.totalMoneyDiscountAmount == totalMoneyDiscountAmount &&
-          other.totalMoneyServiceChargeAmount ==
-              totalMoneyServiceChargeAmount &&
-          other.totalMoneyTaxAmount == totalMoneyTaxAmount &&
-          other.totalMoneyTipAmount == totalMoneyTipAmount;
+          other.totalServiceChargeMoneyAmount ==
+              totalServiceChargeMoneyAmount &&
+          other.totalTaxMoneyAmount == totalTaxMoneyAmount &&
+          other.totalTipMoneyAmount == totalTipMoneyAmount;
 
   @override
   int get hashCode =>
@@ -114,15 +114,15 @@ class OrderEntity {
       (location == null ? 0 : location.hashCode) +
       (pickupDate == null ? 0 : pickupDate.hashCode) +
       squareFulfillmentStatus.hashCode +
+      (totalDiscountMoneyAmount == null
+          ? 0
+          : totalDiscountMoneyAmount.hashCode) +
       (totalMoneyAmount == null ? 0 : totalMoneyAmount.hashCode) +
-      (totalMoneyDiscountAmount == null
+      (totalServiceChargeMoneyAmount == null
           ? 0
-          : totalMoneyDiscountAmount.hashCode) +
-      (totalMoneyServiceChargeAmount == null
-          ? 0
-          : totalMoneyServiceChargeAmount.hashCode) +
-      (totalMoneyTaxAmount == null ? 0 : totalMoneyTaxAmount.hashCode) +
-      (totalMoneyTipAmount == null ? 0 : totalMoneyTipAmount.hashCode);
+          : totalServiceChargeMoneyAmount.hashCode) +
+      (totalTaxMoneyAmount == null ? 0 : totalTaxMoneyAmount.hashCode) +
+      (totalTipMoneyAmount == null ? 0 : totalTipMoneyAmount.hashCode);
 
   factory OrderEntity.fromJson(Map<String, dynamic> json) =>
       _$OrderEntityFromJson(json);
