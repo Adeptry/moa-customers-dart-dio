@@ -17,6 +17,9 @@ part 'app_config_entity.g.dart';
 class AppConfigEntity {
   /// Returns a new [AppConfigEntity] instance.
   AppConfigEntity({
+    this.bannerFileContentType,
+    this.bannerFileDisplayName,
+    this.bannerFileFullUrl,
     this.description,
     this.enabled,
     this.fontFamily,
@@ -30,6 +33,17 @@ class AppConfigEntity {
     this.title,
     this.useMaterial3,
   });
+
+  @JsonKey(
+      name: r'bannerFileContentType', required: false, includeIfNull: false)
+  final String? bannerFileContentType;
+
+  @JsonKey(
+      name: r'bannerFileDisplayName', required: false, includeIfNull: false)
+  final String? bannerFileDisplayName;
+
+  @JsonKey(name: r'bannerFileFullUrl', required: false, includeIfNull: false)
+  final String? bannerFileFullUrl;
 
   @JsonKey(name: r'description', required: false, includeIfNull: false)
   final String? description;
@@ -71,6 +85,9 @@ class AppConfigEntity {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is AppConfigEntity &&
+          other.bannerFileContentType == bannerFileContentType &&
+          other.bannerFileDisplayName == bannerFileDisplayName &&
+          other.bannerFileFullUrl == bannerFileFullUrl &&
           other.description == description &&
           other.enabled == enabled &&
           other.fontFamily == fontFamily &&
@@ -86,6 +103,9 @@ class AppConfigEntity {
 
   @override
   int get hashCode =>
+      (bannerFileContentType == null ? 0 : bannerFileContentType.hashCode) +
+      (bannerFileDisplayName == null ? 0 : bannerFileDisplayName.hashCode) +
+      (bannerFileFullUrl == null ? 0 : bannerFileFullUrl.hashCode) +
       (description == null ? 0 : description.hashCode) +
       (enabled == null ? 0 : enabled.hashCode) +
       (fontFamily == null ? 0 : fontFamily.hashCode) +

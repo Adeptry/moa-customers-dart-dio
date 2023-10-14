@@ -12,6 +12,12 @@ AppConfigEntity _$AppConfigEntityFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = AppConfigEntity(
+          bannerFileContentType:
+              $checkedConvert('bannerFileContentType', (v) => v as String?),
+          bannerFileDisplayName:
+              $checkedConvert('bannerFileDisplayName', (v) => v as String?),
+          bannerFileFullUrl:
+              $checkedConvert('bannerFileFullUrl', (v) => v as String?),
           description: $checkedConvert('description', (v) => v as String?),
           enabled: $checkedConvert('enabled', (v) => v as bool?),
           fontFamily: $checkedConvert('fontFamily', (v) => v as String?),
@@ -42,6 +48,9 @@ Map<String, dynamic> _$AppConfigEntityToJson(AppConfigEntity instance) {
     }
   }
 
+  writeNotNull('bannerFileContentType', instance.bannerFileContentType);
+  writeNotNull('bannerFileDisplayName', instance.bannerFileDisplayName);
+  writeNotNull('bannerFileFullUrl', instance.bannerFileFullUrl);
   writeNotNull('description', instance.description);
   writeNotNull('enabled', instance.enabled);
   writeNotNull('fontFamily', instance.fontFamily);

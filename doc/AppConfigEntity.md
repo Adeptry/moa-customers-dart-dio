@@ -8,6 +8,9 @@ import 'package:myorderapp_square/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**bannerFileContentType** | **String** |  | [optional] 
+**bannerFileDisplayName** | **String** |  | [optional] 
+**bannerFileFullUrl** | **String** |  | [optional] 
 **description** | **String** |  | [optional] 
 **enabled** | **bool** |  | [optional] 
 **fontFamily** | **String** |  | [optional] 
