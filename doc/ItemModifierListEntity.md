@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **maxSelectedModifiers** | **num** |  | [optional] 
 **minSelectedModifiers** | **num** |  | [optional] 
 **modifierList** | [**ModifierListEntity**](ModifierListEntity.md) |  | [optional] 
+**onByDefaultModifierIds** | **List&lt;String&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

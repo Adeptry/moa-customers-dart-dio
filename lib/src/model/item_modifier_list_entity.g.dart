@@ -29,6 +29,8 @@ ItemModifierListEntity _$ItemModifierListEntityFromJson(
               (v) => v == null
                   ? null
                   : ModifierListEntity.fromJson(v as Map<String, dynamic>)),
+          onByDefaultModifierIds: $checkedConvert('onByDefaultModifierIds',
+              (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
         );
         return val;
       },
@@ -50,5 +52,6 @@ Map<String, dynamic> _$ItemModifierListEntityToJson(
   writeNotNull('maxSelectedModifiers', instance.maxSelectedModifiers);
   writeNotNull('minSelectedModifiers', instance.minSelectedModifiers);
   writeNotNull('modifierList', instance.modifierList?.toJson());
+  writeNotNull('onByDefaultModifierIds', instance.onByDefaultModifierIds);
   return val;
 }

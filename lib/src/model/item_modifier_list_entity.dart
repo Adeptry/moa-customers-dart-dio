@@ -24,6 +24,7 @@ class ItemModifierListEntity {
     this.maxSelectedModifiers,
     this.minSelectedModifiers,
     this.modifierList,
+    this.onByDefaultModifierIds,
   });
 
   @JsonKey(name: r'enabled', required: false, includeIfNull: false)
@@ -44,6 +45,10 @@ class ItemModifierListEntity {
   @JsonKey(name: r'modifierList', required: false, includeIfNull: false)
   final ModifierListEntity? modifierList;
 
+  @JsonKey(
+      name: r'onByDefaultModifierIds', required: false, includeIfNull: false)
+  final List<String>? onByDefaultModifierIds;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -53,7 +58,8 @@ class ItemModifierListEntity {
           other.item == item &&
           other.maxSelectedModifiers == maxSelectedModifiers &&
           other.minSelectedModifiers == minSelectedModifiers &&
-          other.modifierList == modifierList;
+          other.modifierList == modifierList &&
+          other.onByDefaultModifierIds == onByDefaultModifierIds;
 
   @override
   int get hashCode =>
@@ -62,7 +68,8 @@ class ItemModifierListEntity {
       (item == null ? 0 : item.hashCode) +
       (maxSelectedModifiers == null ? 0 : maxSelectedModifiers.hashCode) +
       (minSelectedModifiers == null ? 0 : minSelectedModifiers.hashCode) +
-      (modifierList == null ? 0 : modifierList.hashCode);
+      (modifierList == null ? 0 : modifierList.hashCode) +
+      (onByDefaultModifierIds == null ? 0 : onByDefaultModifierIds.hashCode);
 
   factory ItemModifierListEntity.fromJson(Map<String, dynamic> json) =>
       _$ItemModifierListEntityFromJson(json);
