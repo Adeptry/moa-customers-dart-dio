@@ -18,10 +18,10 @@ OrdersVariationLineItemInput _$OrdersVariationLineItemInputFromJson(
         );
         final val = OrdersVariationLineItemInput(
           id: $checkedConvert('id', (v) => v as String),
+          quantity: $checkedConvert('quantity', (v) => v as num),
           modifierIds: $checkedConvert('modifierIds',
               (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
           note: $checkedConvert('note', (v) => v as String?),
-          quantity: $checkedConvert('quantity', (v) => v as num),
         );
         return val;
       },
@@ -31,6 +31,7 @@ Map<String, dynamic> _$OrdersVariationLineItemInputToJson(
     OrdersVariationLineItemInput instance) {
   final val = <String, dynamic>{
     'id': instance.id,
+    'quantity': instance.quantity,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -41,6 +42,5 @@ Map<String, dynamic> _$OrdersVariationLineItemInputToJson(
 
   writeNotNull('modifierIds', instance.modifierIds);
   writeNotNull('note', instance.note);
-  val['quantity'] = instance.quantity;
   return val;
 }

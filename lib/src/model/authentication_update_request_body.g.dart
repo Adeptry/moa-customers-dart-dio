@@ -14,11 +14,11 @@ AuthenticationUpdateRequestBody _$AuthenticationUpdateRequestBodyFromJson(
       ($checkedConvert) {
         $checkKeys(
           json,
-          requiredKeys: const ['oldPassword', 'password'],
+          requiredKeys: const ['password', 'oldPassword'],
         );
         final val = AuthenticationUpdateRequestBody(
-          oldPassword: $checkedConvert('oldPassword', (v) => v as String),
           password: $checkedConvert('password', (v) => v as String),
+          oldPassword: $checkedConvert('oldPassword', (v) => v as String),
         );
         return val;
       },
@@ -27,6 +27,6 @@ AuthenticationUpdateRequestBody _$AuthenticationUpdateRequestBodyFromJson(
 Map<String, dynamic> _$AuthenticationUpdateRequestBodyToJson(
         AuthenticationUpdateRequestBody instance) =>
     <String, dynamic>{
-      'oldPassword': instance.oldPassword,
       'password': instance.password,
+      'oldPassword': instance.oldPassword,
     };

@@ -17,8 +17,8 @@ LocationsPatchBody _$LocationsPatchBodyFromJson(Map<String, dynamic> json) =>
         );
         final val = LocationsPatchBody(
           id: $checkedConvert('id', (v) => v as String),
-          moaEnabled: $checkedConvert('moaEnabled', (v) => v as bool?),
           moaOrdinal: $checkedConvert('moaOrdinal', (v) => v as num?),
+          moaEnabled: $checkedConvert('moaEnabled', (v) => v as bool?),
         );
         return val;
       },
@@ -35,7 +35,7 @@ Map<String, dynamic> _$LocationsPatchBodyToJson(LocationsPatchBody instance) {
     }
   }
 
-  writeNotNull('moaEnabled', instance.moaEnabled);
   writeNotNull('moaOrdinal', instance.moaOrdinal);
+  writeNotNull('moaEnabled', instance.moaEnabled);
   return val;
 }

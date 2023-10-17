@@ -20,56 +20,57 @@ part 'order_entity.g.dart';
 class OrderEntity {
   /// Returns a new [OrderEntity] instance.
   OrderEntity({
-    this.appFeeMoneyAmount,
-    this.closedDate,
-    this.customer,
-    this.displayId,
     this.id,
-    this.lineItems,
+    this.customer,
     this.location,
-    this.pickupDate,
+    this.lineItems,
     this.squareFulfillmentStatus,
-    this.totalDiscountMoneyAmount,
+    this.closedDate,
+    this.pickupDate,
     this.totalMoneyAmount,
-    this.totalServiceChargeMoneyAmount,
     this.totalTaxMoneyAmount,
+    this.totalDiscountMoneyAmount,
     this.totalTipMoneyAmount,
+    this.totalServiceChargeMoneyAmount,
+    this.appFeeMoneyAmount,
+    this.subtotalMoneyAmount,
+    this.displayId,
   });
-
-  @JsonKey(name: r'appFeeMoneyAmount', required: false, includeIfNull: false)
-  final num? appFeeMoneyAmount;
-
-  @JsonKey(name: r'closedDate', required: false, includeIfNull: false)
-  final DateTime? closedDate;
-
-  @JsonKey(name: r'customer', required: false, includeIfNull: false)
-  final CustomerEntity? customer;
-
-  @JsonKey(name: r'displayId', required: false, includeIfNull: false)
-  final String? displayId;
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
 
-  @JsonKey(name: r'lineItems', required: false, includeIfNull: false)
-  final List<LineItemEntity>? lineItems;
+  @JsonKey(name: r'customer', required: false, includeIfNull: false)
+  final CustomerEntity? customer;
 
   @JsonKey(name: r'location', required: false, includeIfNull: false)
   final LocationEntity? location;
 
-  @JsonKey(name: r'pickupDate', required: false, includeIfNull: false)
-  final DateTime? pickupDate;
+  @JsonKey(name: r'lineItems', required: false, includeIfNull: false)
+  final List<LineItemEntity>? lineItems;
 
   @JsonKey(
       name: r'squareFulfillmentStatus', required: false, includeIfNull: false)
   final FulfillmentStatusEnum? squareFulfillmentStatus;
 
+  @JsonKey(name: r'closedDate', required: false, includeIfNull: false)
+  final DateTime? closedDate;
+
+  @JsonKey(name: r'pickupDate', required: false, includeIfNull: false)
+  final DateTime? pickupDate;
+
+  @JsonKey(name: r'totalMoneyAmount', required: false, includeIfNull: false)
+  final num? totalMoneyAmount;
+
+  @JsonKey(name: r'totalTaxMoneyAmount', required: false, includeIfNull: false)
+  final num? totalTaxMoneyAmount;
+
   @JsonKey(
       name: r'totalDiscountMoneyAmount', required: false, includeIfNull: false)
   final num? totalDiscountMoneyAmount;
 
-  @JsonKey(name: r'totalMoneyAmount', required: false, includeIfNull: false)
-  final num? totalMoneyAmount;
+  @JsonKey(name: r'totalTipMoneyAmount', required: false, includeIfNull: false)
+  final num? totalTipMoneyAmount;
 
   @JsonKey(
       name: r'totalServiceChargeMoneyAmount',
@@ -77,52 +78,57 @@ class OrderEntity {
       includeIfNull: false)
   final num? totalServiceChargeMoneyAmount;
 
-  @JsonKey(name: r'totalTaxMoneyAmount', required: false, includeIfNull: false)
-  final num? totalTaxMoneyAmount;
+  @JsonKey(name: r'appFeeMoneyAmount', required: false, includeIfNull: false)
+  final num? appFeeMoneyAmount;
 
-  @JsonKey(name: r'totalTipMoneyAmount', required: false, includeIfNull: false)
-  final num? totalTipMoneyAmount;
+  @JsonKey(name: r'subtotalMoneyAmount', required: false, includeIfNull: false)
+  final num? subtotalMoneyAmount;
+
+  @JsonKey(name: r'displayId', required: false, includeIfNull: false)
+  final String? displayId;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OrderEntity &&
-          other.appFeeMoneyAmount == appFeeMoneyAmount &&
-          other.closedDate == closedDate &&
-          other.customer == customer &&
-          other.displayId == displayId &&
           other.id == id &&
-          other.lineItems == lineItems &&
+          other.customer == customer &&
           other.location == location &&
-          other.pickupDate == pickupDate &&
+          other.lineItems == lineItems &&
           other.squareFulfillmentStatus == squareFulfillmentStatus &&
-          other.totalDiscountMoneyAmount == totalDiscountMoneyAmount &&
+          other.closedDate == closedDate &&
+          other.pickupDate == pickupDate &&
           other.totalMoneyAmount == totalMoneyAmount &&
+          other.totalTaxMoneyAmount == totalTaxMoneyAmount &&
+          other.totalDiscountMoneyAmount == totalDiscountMoneyAmount &&
+          other.totalTipMoneyAmount == totalTipMoneyAmount &&
           other.totalServiceChargeMoneyAmount ==
               totalServiceChargeMoneyAmount &&
-          other.totalTaxMoneyAmount == totalTaxMoneyAmount &&
-          other.totalTipMoneyAmount == totalTipMoneyAmount;
+          other.appFeeMoneyAmount == appFeeMoneyAmount &&
+          other.subtotalMoneyAmount == subtotalMoneyAmount &&
+          other.displayId == displayId;
 
   @override
   int get hashCode =>
-      (appFeeMoneyAmount == null ? 0 : appFeeMoneyAmount.hashCode) +
-      (closedDate == null ? 0 : closedDate.hashCode) +
-      (customer == null ? 0 : customer.hashCode) +
-      (displayId == null ? 0 : displayId.hashCode) +
       (id == null ? 0 : id.hashCode) +
-      (lineItems == null ? 0 : lineItems.hashCode) +
+      (customer == null ? 0 : customer.hashCode) +
       (location == null ? 0 : location.hashCode) +
-      (pickupDate == null ? 0 : pickupDate.hashCode) +
+      (lineItems == null ? 0 : lineItems.hashCode) +
       squareFulfillmentStatus.hashCode +
+      (closedDate == null ? 0 : closedDate.hashCode) +
+      (pickupDate == null ? 0 : pickupDate.hashCode) +
+      (totalMoneyAmount == null ? 0 : totalMoneyAmount.hashCode) +
+      (totalTaxMoneyAmount == null ? 0 : totalTaxMoneyAmount.hashCode) +
       (totalDiscountMoneyAmount == null
           ? 0
           : totalDiscountMoneyAmount.hashCode) +
-      (totalMoneyAmount == null ? 0 : totalMoneyAmount.hashCode) +
+      (totalTipMoneyAmount == null ? 0 : totalTipMoneyAmount.hashCode) +
       (totalServiceChargeMoneyAmount == null
           ? 0
           : totalServiceChargeMoneyAmount.hashCode) +
-      (totalTaxMoneyAmount == null ? 0 : totalTaxMoneyAmount.hashCode) +
-      (totalTipMoneyAmount == null ? 0 : totalTipMoneyAmount.hashCode);
+      (appFeeMoneyAmount == null ? 0 : appFeeMoneyAmount.hashCode) +
+      (subtotalMoneyAmount == null ? 0 : subtotalMoneyAmount.hashCode) +
+      (displayId == null ? 0 : displayId.hashCode);
 
   factory OrderEntity.fromJson(Map<String, dynamic> json) =>
       _$OrderEntityFromJson(json);

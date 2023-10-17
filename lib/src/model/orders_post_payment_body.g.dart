@@ -15,29 +15,29 @@ OrdersPostPaymentBody _$OrdersPostPaymentBodyFromJson(
         $checkKeys(
           json,
           requiredKeys: const [
-            'idempotencyKey',
             'paymentSquareId',
+            'idempotencyKey',
             'tipMoneyAmount'
           ],
         );
         final val = OrdersPostPaymentBody(
-          idempotencyKey: $checkedConvert('idempotencyKey', (v) => v as String),
-          note: $checkedConvert('note', (v) => v as String?),
-          paymentSquareId:
-              $checkedConvert('paymentSquareId', (v) => v as String),
           pickupDateString:
               $checkedConvert('pickupDateString', (v) => v as String?),
-          platformIsAndroid:
-              $checkedConvert('platformIsAndroid', (v) => v as bool?),
-          platformIsIos: $checkedConvert('platformIsIos', (v) => v as bool?),
-          platformIsWeb: $checkedConvert('platformIsWeb', (v) => v as bool?),
+          paymentSquareId:
+              $checkedConvert('paymentSquareId', (v) => v as String),
+          note: $checkedConvert('note', (v) => v as String?),
+          idempotencyKey: $checkedConvert('idempotencyKey', (v) => v as String),
+          tipMoneyAmount: $checkedConvert('tipMoneyAmount', (v) => v as num),
           recipient: $checkedConvert(
               'recipient',
               (v) => v == null
                   ? null
                   : FulfillmentRecipientInput.fromJson(
                       v as Map<String, dynamic>)),
-          tipMoneyAmount: $checkedConvert('tipMoneyAmount', (v) => v as num),
+          platformIsAndroid:
+              $checkedConvert('platformIsAndroid', (v) => v as bool?),
+          platformIsIos: $checkedConvert('platformIsIos', (v) => v as bool?),
+          platformIsWeb: $checkedConvert('platformIsWeb', (v) => v as bool?),
         );
         return val;
       },
@@ -45,9 +45,7 @@ OrdersPostPaymentBody _$OrdersPostPaymentBodyFromJson(
 
 Map<String, dynamic> _$OrdersPostPaymentBodyToJson(
     OrdersPostPaymentBody instance) {
-  final val = <String, dynamic>{
-    'idempotencyKey': instance.idempotencyKey,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -55,13 +53,14 @@ Map<String, dynamic> _$OrdersPostPaymentBodyToJson(
     }
   }
 
-  writeNotNull('note', instance.note);
-  val['paymentSquareId'] = instance.paymentSquareId;
   writeNotNull('pickupDateString', instance.pickupDateString);
+  val['paymentSquareId'] = instance.paymentSquareId;
+  writeNotNull('note', instance.note);
+  val['idempotencyKey'] = instance.idempotencyKey;
+  val['tipMoneyAmount'] = instance.tipMoneyAmount;
+  writeNotNull('recipient', instance.recipient?.toJson());
   writeNotNull('platformIsAndroid', instance.platformIsAndroid);
   writeNotNull('platformIsIos', instance.platformIsIos);
   writeNotNull('platformIsWeb', instance.platformIsWeb);
-  writeNotNull('recipient', instance.recipient?.toJson());
-  val['tipMoneyAmount'] = instance.tipMoneyAmount;
   return val;
 }

@@ -19,94 +19,94 @@ part 'merchant_entity.g.dart';
 class MerchantEntity {
   /// Returns a new [MerchantEntity] instance.
   MerchantEntity({
-    this.appConfig,
-    this.catalog,
-    this.countryCode,
-    this.currencyCode,
     this.id,
-    this.languageCode,
-    this.pickupLeadDurationMinutes,
-    this.squareBusinessName,
-    this.squareId,
-    this.stripeId,
     this.tier,
+    this.pickupLeadDurationMinutes,
     this.user,
+    this.appConfig,
+    this.squareId,
+    this.squareBusinessName,
+    this.countryCode,
+    this.languageCode,
+    this.currencyCode,
+    this.stripeId,
+    this.catalog,
   });
-
-  @JsonKey(name: r'appConfig', required: false, includeIfNull: false)
-  final AppConfigEntity? appConfig;
-
-  @JsonKey(name: r'catalog', required: false, includeIfNull: false)
-  final CatalogEntity? catalog;
-
-  /// Indicates the country associated with another entity, such as a business. Values are in ISO 3166-1-alpha-2 format.
-  @JsonKey(name: r'countryCode', required: false, includeIfNull: false)
-  final String? countryCode;
-
-  /// Indicates the associated currency for an amount of money. Values correspond to ISO 4217.
-  @JsonKey(name: r'currencyCode', required: false, includeIfNull: false)
-  final String? currencyCode;
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
 
-  /// The code indicating the language preferences of the merchant, in [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A). For example, `en-US` or `fr-CA`.
-  @JsonKey(name: r'languageCode', required: false, includeIfNull: false)
-  final Object? languageCode;
+  @JsonKey(name: r'tier', required: false, includeIfNull: false)
+  final num? tier;
 
   @JsonKey(
       name: r'pickupLeadDurationMinutes', required: false, includeIfNull: false)
   final num? pickupLeadDurationMinutes;
 
-  /// The name of the merchant's overall business.
-  @JsonKey(name: r'squareBusinessName', required: false, includeIfNull: false)
-  final Object? squareBusinessName;
+  @JsonKey(name: r'user', required: false, includeIfNull: false)
+  final UserEntity? user;
+
+  @JsonKey(name: r'appConfig', required: false, includeIfNull: false)
+  final AppConfigEntity? appConfig;
 
   @JsonKey(name: r'squareId', required: false, includeIfNull: false)
   final String? squareId;
 
+  /// The name of the merchant's overall business.
+  @JsonKey(name: r'squareBusinessName', required: false, includeIfNull: false)
+  final Object? squareBusinessName;
+
+  /// Indicates the country associated with another entity, such as a business. Values are in ISO 3166-1-alpha-2 format.
+  @JsonKey(name: r'countryCode', required: false, includeIfNull: false)
+  final String? countryCode;
+
+  /// The code indicating the language preferences of the merchant, in [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A). For example, `en-US` or `fr-CA`.
+  @JsonKey(name: r'languageCode', required: false, includeIfNull: false)
+  final Object? languageCode;
+
+  /// Indicates the associated currency for an amount of money. Values correspond to ISO 4217.
+  @JsonKey(name: r'currencyCode', required: false, includeIfNull: false)
+  final String? currencyCode;
+
   @JsonKey(name: r'stripeId', required: false, includeIfNull: false)
   final String? stripeId;
 
-  @JsonKey(name: r'tier', required: false, includeIfNull: false)
-  final num? tier;
-
-  @JsonKey(name: r'user', required: false, includeIfNull: false)
-  final UserEntity? user;
+  @JsonKey(name: r'catalog', required: false, includeIfNull: false)
+  final CatalogEntity? catalog;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is MerchantEntity &&
-          other.appConfig == appConfig &&
-          other.catalog == catalog &&
-          other.countryCode == countryCode &&
-          other.currencyCode == currencyCode &&
           other.id == id &&
-          other.languageCode == languageCode &&
-          other.pickupLeadDurationMinutes == pickupLeadDurationMinutes &&
-          other.squareBusinessName == squareBusinessName &&
-          other.squareId == squareId &&
-          other.stripeId == stripeId &&
           other.tier == tier &&
-          other.user == user;
+          other.pickupLeadDurationMinutes == pickupLeadDurationMinutes &&
+          other.user == user &&
+          other.appConfig == appConfig &&
+          other.squareId == squareId &&
+          other.squareBusinessName == squareBusinessName &&
+          other.countryCode == countryCode &&
+          other.languageCode == languageCode &&
+          other.currencyCode == currencyCode &&
+          other.stripeId == stripeId &&
+          other.catalog == catalog;
 
   @override
   int get hashCode =>
-      (appConfig == null ? 0 : appConfig.hashCode) +
-      (catalog == null ? 0 : catalog.hashCode) +
-      (countryCode == null ? 0 : countryCode.hashCode) +
-      (currencyCode == null ? 0 : currencyCode.hashCode) +
       (id == null ? 0 : id.hashCode) +
-      (languageCode == null ? 0 : languageCode.hashCode) +
+      (tier == null ? 0 : tier.hashCode) +
       (pickupLeadDurationMinutes == null
           ? 0
           : pickupLeadDurationMinutes.hashCode) +
-      (squareBusinessName == null ? 0 : squareBusinessName.hashCode) +
+      (user == null ? 0 : user.hashCode) +
+      (appConfig == null ? 0 : appConfig.hashCode) +
       (squareId == null ? 0 : squareId.hashCode) +
+      (squareBusinessName == null ? 0 : squareBusinessName.hashCode) +
+      (countryCode == null ? 0 : countryCode.hashCode) +
+      (languageCode == null ? 0 : languageCode.hashCode) +
+      (currencyCode == null ? 0 : currencyCode.hashCode) +
       (stripeId == null ? 0 : stripeId.hashCode) +
-      (tier == null ? 0 : tier.hashCode) +
-      (user == null ? 0 : user.hashCode);
+      (catalog == null ? 0 : catalog.hashCode);
 
   factory MerchantEntity.fromJson(Map<String, dynamic> json) =>
       _$MerchantEntityFromJson(json);

@@ -13,19 +13,9 @@ OrdersStatisticsResponse _$OrdersStatisticsResponseFromJson(
       json,
       ($checkedConvert) {
         final val = OrdersStatisticsResponse(
-          appFeeMoneyAmount: $checkedConvert(
-              'appFeeMoneyAmount',
-              (v) => v == null
-                  ? null
-                  : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
           count: $checkedConvert('count', (v) => v as num?),
           moneyAmount: $checkedConvert(
               'moneyAmount',
-              (v) => v == null
-                  ? null
-                  : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
-          serviceChargeMoneyAmount: $checkedConvert(
-              'serviceChargeMoneyAmount',
               (v) => v == null
                   ? null
                   : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
@@ -36,6 +26,16 @@ OrdersStatisticsResponse _$OrdersStatisticsResponseFromJson(
                   : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
           tipMoneyAmount: $checkedConvert(
               'tipMoneyAmount',
+              (v) => v == null
+                  ? null
+                  : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
+          serviceChargeMoneyAmount: $checkedConvert(
+              'serviceChargeMoneyAmount',
+              (v) => v == null
+                  ? null
+                  : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
+          appFeeMoneyAmount: $checkedConvert(
+              'appFeeMoneyAmount',
               (v) => v == null
                   ? null
                   : StatisticsOutput.fromJson(v as Map<String, dynamic>)),
@@ -54,12 +54,12 @@ Map<String, dynamic> _$OrdersStatisticsResponseToJson(
     }
   }
 
-  writeNotNull('appFeeMoneyAmount', instance.appFeeMoneyAmount?.toJson());
   writeNotNull('count', instance.count);
   writeNotNull('moneyAmount', instance.moneyAmount?.toJson());
-  writeNotNull(
-      'serviceChargeMoneyAmount', instance.serviceChargeMoneyAmount?.toJson());
   writeNotNull('taxMoneyAmount', instance.taxMoneyAmount?.toJson());
   writeNotNull('tipMoneyAmount', instance.tipMoneyAmount?.toJson());
+  writeNotNull(
+      'serviceChargeMoneyAmount', instance.serviceChargeMoneyAmount?.toJson());
+  writeNotNull('appFeeMoneyAmount', instance.appFeeMoneyAmount?.toJson());
   return val;
 }

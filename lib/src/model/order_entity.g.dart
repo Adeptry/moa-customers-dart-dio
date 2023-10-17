@@ -11,42 +11,44 @@ OrderEntity _$OrderEntityFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = OrderEntity(
-          appFeeMoneyAmount:
-              $checkedConvert('appFeeMoneyAmount', (v) => v as num?),
-          closedDate: $checkedConvert('closedDate',
-              (v) => v == null ? null : DateTime.parse(v as String)),
+          id: $checkedConvert('id', (v) => v as String?),
           customer: $checkedConvert(
               'customer',
               (v) => v == null
                   ? null
                   : CustomerEntity.fromJson(v as Map<String, dynamic>)),
-          displayId: $checkedConvert('displayId', (v) => v as String?),
-          id: $checkedConvert('id', (v) => v as String?),
+          location: $checkedConvert(
+              'location',
+              (v) => v == null
+                  ? null
+                  : LocationEntity.fromJson(v as Map<String, dynamic>)),
           lineItems: $checkedConvert(
               'lineItems',
               (v) => (v as List<dynamic>?)
                   ?.map(
                       (e) => LineItemEntity.fromJson(e as Map<String, dynamic>))
                   .toList()),
-          location: $checkedConvert(
-              'location',
-              (v) => v == null
-                  ? null
-                  : LocationEntity.fromJson(v as Map<String, dynamic>)),
-          pickupDate: $checkedConvert('pickupDate',
-              (v) => v == null ? null : DateTime.parse(v as String)),
           squareFulfillmentStatus: $checkedConvert('squareFulfillmentStatus',
               (v) => $enumDecodeNullable(_$FulfillmentStatusEnumEnumMap, v)),
-          totalDiscountMoneyAmount:
-              $checkedConvert('totalDiscountMoneyAmount', (v) => v as num?),
+          closedDate: $checkedConvert('closedDate',
+              (v) => v == null ? null : DateTime.parse(v as String)),
+          pickupDate: $checkedConvert('pickupDate',
+              (v) => v == null ? null : DateTime.parse(v as String)),
           totalMoneyAmount:
               $checkedConvert('totalMoneyAmount', (v) => v as num?),
-          totalServiceChargeMoneyAmount: $checkedConvert(
-              'totalServiceChargeMoneyAmount', (v) => v as num?),
           totalTaxMoneyAmount:
               $checkedConvert('totalTaxMoneyAmount', (v) => v as num?),
+          totalDiscountMoneyAmount:
+              $checkedConvert('totalDiscountMoneyAmount', (v) => v as num?),
           totalTipMoneyAmount:
               $checkedConvert('totalTipMoneyAmount', (v) => v as num?),
+          totalServiceChargeMoneyAmount: $checkedConvert(
+              'totalServiceChargeMoneyAmount', (v) => v as num?),
+          appFeeMoneyAmount:
+              $checkedConvert('appFeeMoneyAmount', (v) => v as num?),
+          subtotalMoneyAmount:
+              $checkedConvert('subtotalMoneyAmount', (v) => v as num?),
+          displayId: $checkedConvert('displayId', (v) => v as String?),
         );
         return val;
       },
@@ -61,23 +63,24 @@ Map<String, dynamic> _$OrderEntityToJson(OrderEntity instance) {
     }
   }
 
-  writeNotNull('appFeeMoneyAmount', instance.appFeeMoneyAmount);
-  writeNotNull('closedDate', instance.closedDate?.toIso8601String());
-  writeNotNull('customer', instance.customer?.toJson());
-  writeNotNull('displayId', instance.displayId);
   writeNotNull('id', instance.id);
+  writeNotNull('customer', instance.customer?.toJson());
+  writeNotNull('location', instance.location?.toJson());
   writeNotNull(
       'lineItems', instance.lineItems?.map((e) => e.toJson()).toList());
-  writeNotNull('location', instance.location?.toJson());
-  writeNotNull('pickupDate', instance.pickupDate?.toIso8601String());
   writeNotNull('squareFulfillmentStatus',
       _$FulfillmentStatusEnumEnumMap[instance.squareFulfillmentStatus]);
-  writeNotNull('totalDiscountMoneyAmount', instance.totalDiscountMoneyAmount);
+  writeNotNull('closedDate', instance.closedDate?.toIso8601String());
+  writeNotNull('pickupDate', instance.pickupDate?.toIso8601String());
   writeNotNull('totalMoneyAmount', instance.totalMoneyAmount);
+  writeNotNull('totalTaxMoneyAmount', instance.totalTaxMoneyAmount);
+  writeNotNull('totalDiscountMoneyAmount', instance.totalDiscountMoneyAmount);
+  writeNotNull('totalTipMoneyAmount', instance.totalTipMoneyAmount);
   writeNotNull(
       'totalServiceChargeMoneyAmount', instance.totalServiceChargeMoneyAmount);
-  writeNotNull('totalTaxMoneyAmount', instance.totalTaxMoneyAmount);
-  writeNotNull('totalTipMoneyAmount', instance.totalTipMoneyAmount);
+  writeNotNull('appFeeMoneyAmount', instance.appFeeMoneyAmount);
+  writeNotNull('subtotalMoneyAmount', instance.subtotalMoneyAmount);
+  writeNotNull('displayId', instance.displayId);
   return val;
 }
 

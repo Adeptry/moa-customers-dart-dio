@@ -16,15 +16,12 @@ part 'line_item_modifier_entity.g.dart';
 class LineItemModifierEntity {
   /// Returns a new [LineItemModifierEntity] instance.
   LineItemModifierEntity({
-    this.baseMoneyAmount,
     this.id,
     this.name,
     this.quantity,
+    this.baseMoneyAmount,
     this.totalMoneyAmount,
   });
-
-  @JsonKey(name: r'baseMoneyAmount', required: false, includeIfNull: false)
-  final num? baseMoneyAmount;
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
@@ -35,6 +32,9 @@ class LineItemModifierEntity {
   @JsonKey(name: r'quantity', required: false, includeIfNull: false)
   final String? quantity;
 
+  @JsonKey(name: r'baseMoneyAmount', required: false, includeIfNull: false)
+  final num? baseMoneyAmount;
+
   @JsonKey(name: r'totalMoneyAmount', required: false, includeIfNull: false)
   final num? totalMoneyAmount;
 
@@ -42,18 +42,18 @@ class LineItemModifierEntity {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is LineItemModifierEntity &&
-          other.baseMoneyAmount == baseMoneyAmount &&
           other.id == id &&
           other.name == name &&
           other.quantity == quantity &&
+          other.baseMoneyAmount == baseMoneyAmount &&
           other.totalMoneyAmount == totalMoneyAmount;
 
   @override
   int get hashCode =>
-      (baseMoneyAmount == null ? 0 : baseMoneyAmount.hashCode) +
       (id == null ? 0 : id.hashCode) +
       (name == null ? 0 : name.hashCode) +
       (quantity == null ? 0 : quantity.hashCode) +
+      (baseMoneyAmount == null ? 0 : baseMoneyAmount.hashCode) +
       (totalMoneyAmount == null ? 0 : totalMoneyAmount.hashCode);
 
   factory LineItemModifierEntity.fromJson(Map<String, dynamic> json) =>

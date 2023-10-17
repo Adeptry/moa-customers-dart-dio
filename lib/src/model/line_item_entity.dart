@@ -17,42 +17,49 @@ part 'line_item_entity.g.dart';
 class LineItemEntity {
   /// Returns a new [LineItemEntity] instance.
   LineItemEntity({
-    this.basePriceMoneyAmount,
-    this.grossSalesMoneyAmount,
     this.id,
-    this.modifiers,
     this.name,
-    this.note,
     this.quantity,
+    this.note,
+    this.variationName,
+    this.basePriceMoneyAmount,
+    this.variationTotalMoneyAmount,
+    this.grossSalesMoneyAmount,
+    this.totalTaxMoneyAmount,
     this.totalDiscountMoneyAmount,
     this.totalMoneyAmount,
     this.totalServiceChargeMoneyAmount,
-    this.totalTaxMoneyAmount,
-    this.variationName,
-    this.variationTotalMoneyAmount,
+    this.modifiers,
   });
+
+  @JsonKey(name: r'id', required: false, includeIfNull: false)
+  final String? id;
+
+  @JsonKey(name: r'name', required: false, includeIfNull: false)
+  final String? name;
+
+  @JsonKey(name: r'quantity', required: false, includeIfNull: false)
+  final String? quantity;
+
+  @JsonKey(name: r'note', required: false, includeIfNull: false)
+  final String? note;
+
+  @JsonKey(name: r'variationName', required: false, includeIfNull: false)
+  final String? variationName;
 
   @JsonKey(name: r'basePriceMoneyAmount', required: false, includeIfNull: false)
   final num? basePriceMoneyAmount;
 
   @JsonKey(
+      name: r'variationTotalMoneyAmount', required: false, includeIfNull: false)
+  final num? variationTotalMoneyAmount;
+
+  @JsonKey(
       name: r'grossSalesMoneyAmount', required: false, includeIfNull: false)
   final num? grossSalesMoneyAmount;
 
-  @JsonKey(name: r'id', required: false, includeIfNull: false)
-  final String? id;
-
-  @JsonKey(name: r'modifiers', required: false, includeIfNull: false)
-  final List<LineItemModifierEntity>? modifiers;
-
-  @JsonKey(name: r'name', required: false, includeIfNull: false)
-  final String? name;
-
-  @JsonKey(name: r'note', required: false, includeIfNull: false)
-  final String? note;
-
-  @JsonKey(name: r'quantity', required: false, includeIfNull: false)
-  final String? quantity;
+  @JsonKey(name: r'totalTaxMoneyAmount', required: false, includeIfNull: false)
+  final num? totalTaxMoneyAmount;
 
   @JsonKey(
       name: r'totalDiscountMoneyAmount', required: false, includeIfNull: false)
@@ -67,44 +74,41 @@ class LineItemEntity {
       includeIfNull: false)
   final num? totalServiceChargeMoneyAmount;
 
-  @JsonKey(name: r'totalTaxMoneyAmount', required: false, includeIfNull: false)
-  final num? totalTaxMoneyAmount;
-
-  @JsonKey(name: r'variationName', required: false, includeIfNull: false)
-  final String? variationName;
-
-  @JsonKey(
-      name: r'variationTotalMoneyAmount', required: false, includeIfNull: false)
-  final num? variationTotalMoneyAmount;
+  @JsonKey(name: r'modifiers', required: false, includeIfNull: false)
+  final List<LineItemModifierEntity>? modifiers;
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is LineItemEntity &&
-          other.basePriceMoneyAmount == basePriceMoneyAmount &&
-          other.grossSalesMoneyAmount == grossSalesMoneyAmount &&
           other.id == id &&
-          other.modifiers == modifiers &&
           other.name == name &&
-          other.note == note &&
           other.quantity == quantity &&
+          other.note == note &&
+          other.variationName == variationName &&
+          other.basePriceMoneyAmount == basePriceMoneyAmount &&
+          other.variationTotalMoneyAmount == variationTotalMoneyAmount &&
+          other.grossSalesMoneyAmount == grossSalesMoneyAmount &&
+          other.totalTaxMoneyAmount == totalTaxMoneyAmount &&
           other.totalDiscountMoneyAmount == totalDiscountMoneyAmount &&
           other.totalMoneyAmount == totalMoneyAmount &&
           other.totalServiceChargeMoneyAmount ==
               totalServiceChargeMoneyAmount &&
-          other.totalTaxMoneyAmount == totalTaxMoneyAmount &&
-          other.variationName == variationName &&
-          other.variationTotalMoneyAmount == variationTotalMoneyAmount;
+          other.modifiers == modifiers;
 
   @override
   int get hashCode =>
-      (basePriceMoneyAmount == null ? 0 : basePriceMoneyAmount.hashCode) +
-      (grossSalesMoneyAmount == null ? 0 : grossSalesMoneyAmount.hashCode) +
       (id == null ? 0 : id.hashCode) +
-      (modifiers == null ? 0 : modifiers.hashCode) +
       (name == null ? 0 : name.hashCode) +
-      (note == null ? 0 : note.hashCode) +
       (quantity == null ? 0 : quantity.hashCode) +
+      (note == null ? 0 : note.hashCode) +
+      (variationName == null ? 0 : variationName.hashCode) +
+      (basePriceMoneyAmount == null ? 0 : basePriceMoneyAmount.hashCode) +
+      (variationTotalMoneyAmount == null
+          ? 0
+          : variationTotalMoneyAmount.hashCode) +
+      (grossSalesMoneyAmount == null ? 0 : grossSalesMoneyAmount.hashCode) +
+      (totalTaxMoneyAmount == null ? 0 : totalTaxMoneyAmount.hashCode) +
       (totalDiscountMoneyAmount == null
           ? 0
           : totalDiscountMoneyAmount.hashCode) +
@@ -112,11 +116,7 @@ class LineItemEntity {
       (totalServiceChargeMoneyAmount == null
           ? 0
           : totalServiceChargeMoneyAmount.hashCode) +
-      (totalTaxMoneyAmount == null ? 0 : totalTaxMoneyAmount.hashCode) +
-      (variationName == null ? 0 : variationName.hashCode) +
-      (variationTotalMoneyAmount == null
-          ? 0
-          : variationTotalMoneyAmount.hashCode);
+      (modifiers == null ? 0 : modifiers.hashCode);
 
   factory LineItemEntity.fromJson(Map<String, dynamic> json) =>
       _$LineItemEntityFromJson(json);

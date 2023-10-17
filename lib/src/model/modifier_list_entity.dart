@@ -19,17 +19,14 @@ class ModifierListEntity {
   /// Returns a new [ModifierListEntity] instance.
   ModifierListEntity({
     this.id,
-    this.modifiers,
     this.name,
     this.ordinal,
     this.selectionType,
+    this.modifiers,
   });
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
-
-  @JsonKey(name: r'modifiers', required: false, includeIfNull: false)
-  final List<ModifierEntity>? modifiers;
 
   @JsonKey(name: r'name', required: false, includeIfNull: false)
   final String? name;
@@ -40,23 +37,26 @@ class ModifierListEntity {
   @JsonKey(name: r'selectionType', required: false, includeIfNull: false)
   final MoaSelectionType? selectionType;
 
+  @JsonKey(name: r'modifiers', required: false, includeIfNull: false)
+  final List<ModifierEntity>? modifiers;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is ModifierListEntity &&
           other.id == id &&
-          other.modifiers == modifiers &&
           other.name == name &&
           other.ordinal == ordinal &&
-          other.selectionType == selectionType;
+          other.selectionType == selectionType &&
+          other.modifiers == modifiers;
 
   @override
   int get hashCode =>
       (id == null ? 0 : id.hashCode) +
-      (modifiers == null ? 0 : modifiers.hashCode) +
       (name == null ? 0 : name.hashCode) +
       (ordinal == null ? 0 : ordinal.hashCode) +
-      selectionType.hashCode;
+      selectionType.hashCode +
+      (modifiers == null ? 0 : modifiers.hashCode);
 
   factory ModifierListEntity.fromJson(Map<String, dynamic> json) =>
       _$ModifierListEntityFromJson(json);
