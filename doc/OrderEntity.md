@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **totalTipMoneyAmount** | **num** |  | [optional] 
 **totalServiceChargeMoneyAmount** | **num** |  | [optional] 
 **appFeeMoneyAmount** | **num** |  | [optional] 
+**note** | **String** |  | [optional] 
 **subtotalMoneyAmount** | **num** |  | [optional] 
 **displayId** | **String** |  | [optional] 
 

@@ -46,6 +46,7 @@ OrderEntity _$OrderEntityFromJson(Map<String, dynamic> json) => $checkedCreate(
               'totalServiceChargeMoneyAmount', (v) => v as num?),
           appFeeMoneyAmount:
               $checkedConvert('appFeeMoneyAmount', (v) => v as num?),
+          note: $checkedConvert('note', (v) => v as String?),
           subtotalMoneyAmount:
               $checkedConvert('subtotalMoneyAmount', (v) => v as num?),
           displayId: $checkedConvert('displayId', (v) => v as String?),
@@ -79,6 +80,7 @@ Map<String, dynamic> _$OrderEntityToJson(OrderEntity instance) {
   writeNotNull(
       'totalServiceChargeMoneyAmount', instance.totalServiceChargeMoneyAmount);
   writeNotNull('appFeeMoneyAmount', instance.appFeeMoneyAmount);
+  writeNotNull('note', instance.note);
   writeNotNull('subtotalMoneyAmount', instance.subtotalMoneyAmount);
   writeNotNull('displayId', instance.displayId);
   return val;

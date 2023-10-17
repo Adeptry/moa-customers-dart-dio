@@ -33,6 +33,7 @@ class OrderEntity {
     this.totalTipMoneyAmount,
     this.totalServiceChargeMoneyAmount,
     this.appFeeMoneyAmount,
+    this.note,
     this.subtotalMoneyAmount,
     this.displayId,
   });
@@ -81,6 +82,9 @@ class OrderEntity {
   @JsonKey(name: r'appFeeMoneyAmount', required: false, includeIfNull: false)
   final num? appFeeMoneyAmount;
 
+  @JsonKey(name: r'note', required: false, includeIfNull: false)
+  final String? note;
+
   @JsonKey(name: r'subtotalMoneyAmount', required: false, includeIfNull: false)
   final num? subtotalMoneyAmount;
 
@@ -105,6 +109,7 @@ class OrderEntity {
           other.totalServiceChargeMoneyAmount ==
               totalServiceChargeMoneyAmount &&
           other.appFeeMoneyAmount == appFeeMoneyAmount &&
+          other.note == note &&
           other.subtotalMoneyAmount == subtotalMoneyAmount &&
           other.displayId == displayId;
 
@@ -127,6 +132,7 @@ class OrderEntity {
           ? 0
           : totalServiceChargeMoneyAmount.hashCode) +
       (appFeeMoneyAmount == null ? 0 : appFeeMoneyAmount.hashCode) +
+      (note == null ? 0 : note.hashCode) +
       (subtotalMoneyAmount == null ? 0 : subtotalMoneyAmount.hashCode) +
       (displayId == null ? 0 : displayId.hashCode);
 
