@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**postEmailConfirm**](AuthenticationApi.md#postemailconfirm) | **POST** /v2/auth/email/confirm | Confirm email
 [**postEmailLogin**](AuthenticationApi.md#postemaillogin) | **POST** /v2/auth/email/login | Get access token
 [**postEmailRegister**](AuthenticationApi.md#postemailregister) | **POST** /v2/auth/email/register | Create User and Authorize, note: tries to login first
+[**postLoginApple**](AuthenticationApi.md#postloginapple) | **POST** /v2/auth/apple/login | Apple login
+[**postLoginGoogle**](AuthenticationApi.md#postlogingoogle) | **POST** /v2/auth/google/login | Google login
 [**postPasswordForgot**](AuthenticationApi.md#postpasswordforgot) | **POST** /v2/auth/password/forgot | Forgot password
 [**postPasswordReset**](AuthenticationApi.md#postpasswordreset) | **POST** /v2/auth/password/reset | Reset password
 [**postRefresh**](AuthenticationApi.md#postrefresh) | **POST** /v2/auth/refresh | Refresh token
@@ -233,6 +235,100 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authenticationEmailRegisterRequestBody** | [**AuthenticationEmailRegisterRequestBody**](AuthenticationEmailRegisterRequestBody.md)|  | 
+ **xCustomLang** | **String**|  | [optional] 
+
+### Return type
+
+[**AuthenticationResponse**](AuthenticationResponse.md)
+
+### Authorization
+
+[Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postLoginApple**
+> AuthenticationResponse postLoginApple(authAppleLoginDto, xCustomLang)
+
+Apple login
+
+### Example
+```dart
+import 'package:myorderapp_square/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MyorderappSquare().getAuthenticationApi();
+final AuthAppleLoginDto authAppleLoginDto = ; // AuthAppleLoginDto | 
+final String xCustomLang = xCustomLang_example; // String | 
+
+try {
+    final response = api.postLoginApple(authAppleLoginDto, xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AuthenticationApi->postLoginApple: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authAppleLoginDto** | [**AuthAppleLoginDto**](AuthAppleLoginDto.md)|  | 
+ **xCustomLang** | **String**|  | [optional] 
+
+### Return type
+
+[**AuthenticationResponse**](AuthenticationResponse.md)
+
+### Authorization
+
+[Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **postLoginGoogle**
+> AuthenticationResponse postLoginGoogle(authGoogleLoginDto, xCustomLang)
+
+Google login
+
+### Example
+```dart
+import 'package:myorderapp_square/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MyorderappSquare().getAuthenticationApi();
+final AuthGoogleLoginDto authGoogleLoginDto = ; // AuthGoogleLoginDto | 
+final String xCustomLang = xCustomLang_example; // String | 
+
+try {
+    final response = api.postLoginGoogle(authGoogleLoginDto, xCustomLang);
+    print(response);
+} catch on DioException (e) {
+    print('Exception when calling AuthenticationApi->postLoginGoogle: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authGoogleLoginDto** | [**AuthGoogleLoginDto**](AuthGoogleLoginDto.md)|  | 
  **xCustomLang** | **String**|  | [optional] 
 
 ### Return type

@@ -12,13 +12,13 @@ CatalogEntity _$CatalogEntityFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = CatalogEntity(
-          id: $checkedConvert('id', (v) => v as String?),
           categories: $checkedConvert(
               'categories',
               (v) => (v as List<dynamic>?)
                   ?.map(
                       (e) => CategoryEntity.fromJson(e as Map<String, dynamic>))
                   .toList()),
+          id: $checkedConvert('id', (v) => v as String?),
           merchantId: $checkedConvert('merchantId', (v) => v as String?),
         );
         return val;
@@ -34,9 +34,9 @@ Map<String, dynamic> _$CatalogEntityToJson(CatalogEntity instance) {
     }
   }
 
-  writeNotNull('id', instance.id);
   writeNotNull(
       'categories', instance.categories?.map((e) => e.toJson()).toList());
+  writeNotNull('id', instance.id);
   writeNotNull('merchantId', instance.merchantId);
   return val;
 }

@@ -2,6 +2,8 @@ import 'package:myorderapp_square/src/model/address_entity.dart';
 import 'package:myorderapp_square/src/model/app_config_entity.dart';
 import 'package:myorderapp_square/src/model/app_config_update_body.dart';
 import 'package:myorderapp_square/src/model/app_install_post_body.dart';
+import 'package:myorderapp_square/src/model/auth_apple_login_dto.dart';
+import 'package:myorderapp_square/src/model/auth_google_login_dto.dart';
 import 'package:myorderapp_square/src/model/authentication_email_confirm_request_body.dart';
 import 'package:myorderapp_square/src/model/authentication_email_login_request_body.dart';
 import 'package:myorderapp_square/src/model/authentication_email_register_request_body.dart';
@@ -90,6 +92,12 @@ ReturnType deserialize<ReturnType, BaseType>(dynamic value, String targetType,
           as ReturnType;
     case 'AppInstallPostBody':
       return AppInstallPostBody.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'AuthAppleLoginDto':
+      return AuthAppleLoginDto.fromJson(value as Map<String, dynamic>)
+          as ReturnType;
+    case 'AuthGoogleLoginDto':
+      return AuthGoogleLoginDto.fromJson(value as Map<String, dynamic>)
           as ReturnType;
     case 'AuthenticationEmailConfirmRequestBody':
       return AuthenticationEmailConfirmRequestBody.fromJson(

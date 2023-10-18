@@ -12,10 +12,10 @@ StatisticsOutput _$StatisticsOutputFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = StatisticsOutput(
-          sum: $checkedConvert('sum', (v) => v as num?),
           average: $checkedConvert('average', (v) => v as num?),
-          minimum: $checkedConvert('minimum', (v) => v as num?),
           maximum: $checkedConvert('maximum', (v) => v as num?),
+          minimum: $checkedConvert('minimum', (v) => v as num?),
+          sum: $checkedConvert('sum', (v) => v as num?),
         );
         return val;
       },
@@ -30,9 +30,9 @@ Map<String, dynamic> _$StatisticsOutputToJson(StatisticsOutput instance) {
     }
   }
 
-  writeNotNull('sum', instance.sum);
   writeNotNull('average', instance.average);
-  writeNotNull('minimum', instance.minimum);
   writeNotNull('maximum', instance.maximum);
+  writeNotNull('minimum', instance.minimum);
+  writeNotNull('sum', instance.sum);
   return val;
 }

@@ -7,6 +7,8 @@ doc/AppConfigEntity.md
 doc/AppConfigUpdateBody.md
 doc/AppConfigsApi.md
 doc/AppInstallPostBody.md
+doc/AuthAppleLoginDto.md
+doc/AuthGoogleLoginDto.md
 doc/AuthenticationApi.md
 doc/AuthenticationEmailConfirmRequestBody.md
 doc/AuthenticationEmailLoginRequestBody.md
@@ -98,6 +100,8 @@ lib/src/model/address_entity.dart
 lib/src/model/app_config_entity.dart
 lib/src/model/app_config_update_body.dart
 lib/src/model/app_install_post_body.dart
+lib/src/model/auth_apple_login_dto.dart
+lib/src/model/auth_google_login_dto.dart
 lib/src/model/authentication_email_confirm_request_body.dart
 lib/src/model/authentication_email_login_request_body.dart
 lib/src/model/authentication_email_register_request_body.dart
@@ -159,3 +163,5 @@ lib/src/model/user_patch_body.dart
 lib/src/model/variation_entity.dart
 lib/src/model/variation_patch_body.dart
 pubspec.yaml
+test/auth_apple_login_dto_test.dart
+test/auth_google_login_dto_test.dart

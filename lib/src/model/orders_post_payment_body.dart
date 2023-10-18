@@ -17,36 +17,30 @@ part 'orders_post_payment_body.g.dart';
 class OrdersPostPaymentBody {
   /// Returns a new [OrdersPostPaymentBody] instance.
   OrdersPostPaymentBody({
-    this.pickupDateString,
-    required this.paymentSquareId,
-    this.note,
     required this.idempotencyKey,
-    required this.tipMoneyAmount,
-    this.recipient,
+    this.note,
+    required this.paymentSquareId,
+    this.pickupDateString,
     this.platformIsAndroid,
     this.platformIsIos,
     this.platformIsWeb,
+    this.recipient,
+    required this.tipMoneyAmount,
   });
-
-  /// If not provided, prepare ASAP, else will validate it's within business hours and schedule. Represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
-  @JsonKey(name: r'pickupDateString', required: false, includeIfNull: false)
-  final String? pickupDateString;
-
-  @JsonKey(name: r'paymentSquareId', required: true, includeIfNull: false)
-  final String paymentSquareId;
-
-  @JsonKey(name: r'note', required: false, includeIfNull: false)
-  final String? note;
 
   /// Should be generated on checkout screen presentation.
   @JsonKey(name: r'idempotencyKey', required: true, includeIfNull: false)
   final String idempotencyKey;
 
-  @JsonKey(name: r'tipMoneyAmount', required: true, includeIfNull: false)
-  final num tipMoneyAmount;
+  @JsonKey(name: r'note', required: false, includeIfNull: false)
+  final String? note;
 
-  @JsonKey(name: r'recipient', required: false, includeIfNull: false)
-  final FulfillmentRecipientInput? recipient;
+  @JsonKey(name: r'paymentSquareId', required: true, includeIfNull: false)
+  final String paymentSquareId;
+
+  /// If not provided, prepare ASAP, else will validate it's within business hours and schedule. Represents the start of the pickup window. Must be in RFC 3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\".
+  @JsonKey(name: r'pickupDateString', required: false, includeIfNull: false)
+  final String? pickupDateString;
 
   @JsonKey(name: r'platformIsAndroid', required: false, includeIfNull: false)
   final bool? platformIsAndroid;
@@ -57,31 +51,37 @@ class OrdersPostPaymentBody {
   @JsonKey(name: r'platformIsWeb', required: false, includeIfNull: false)
   final bool? platformIsWeb;
 
+  @JsonKey(name: r'recipient', required: false, includeIfNull: false)
+  final FulfillmentRecipientInput? recipient;
+
+  @JsonKey(name: r'tipMoneyAmount', required: true, includeIfNull: false)
+  final num tipMoneyAmount;
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is OrdersPostPaymentBody &&
-          other.pickupDateString == pickupDateString &&
-          other.paymentSquareId == paymentSquareId &&
-          other.note == note &&
           other.idempotencyKey == idempotencyKey &&
-          other.tipMoneyAmount == tipMoneyAmount &&
-          other.recipient == recipient &&
+          other.note == note &&
+          other.paymentSquareId == paymentSquareId &&
+          other.pickupDateString == pickupDateString &&
           other.platformIsAndroid == platformIsAndroid &&
           other.platformIsIos == platformIsIos &&
-          other.platformIsWeb == platformIsWeb;
+          other.platformIsWeb == platformIsWeb &&
+          other.recipient == recipient &&
+          other.tipMoneyAmount == tipMoneyAmount;
 
   @override
   int get hashCode =>
-      (pickupDateString == null ? 0 : pickupDateString.hashCode) +
-      paymentSquareId.hashCode +
-      (note == null ? 0 : note.hashCode) +
       idempotencyKey.hashCode +
-      tipMoneyAmount.hashCode +
-      (recipient == null ? 0 : recipient.hashCode) +
+      (note == null ? 0 : note.hashCode) +
+      paymentSquareId.hashCode +
+      (pickupDateString == null ? 0 : pickupDateString.hashCode) +
       (platformIsAndroid == null ? 0 : platformIsAndroid.hashCode) +
       (platformIsIos == null ? 0 : platformIsIos.hashCode) +
-      (platformIsWeb == null ? 0 : platformIsWeb.hashCode);
+      (platformIsWeb == null ? 0 : platformIsWeb.hashCode) +
+      (recipient == null ? 0 : recipient.hashCode) +
+      tipMoneyAmount.hashCode;
 
   factory OrdersPostPaymentBody.fromJson(Map<String, dynamic> json) =>
       _$OrdersPostPaymentBodyFromJson(json);

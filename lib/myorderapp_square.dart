@@ -22,6 +22,8 @@ export 'package:myorderapp_square/src/model/address_entity.dart';
 export 'package:myorderapp_square/src/model/app_config_entity.dart';
 export 'package:myorderapp_square/src/model/app_config_update_body.dart';
 export 'package:myorderapp_square/src/model/app_install_post_body.dart';
+export 'package:myorderapp_square/src/model/auth_apple_login_dto.dart';
+export 'package:myorderapp_square/src/model/auth_google_login_dto.dart';
 export 'package:myorderapp_square/src/model/authentication_email_confirm_request_body.dart';
 export 'package:myorderapp_square/src/model/authentication_email_login_request_body.dart';
 export 'package:myorderapp_square/src/model/authentication_email_register_request_body.dart';

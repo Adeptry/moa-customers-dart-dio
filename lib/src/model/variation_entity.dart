@@ -17,23 +17,23 @@ class VariationEntity {
   /// Returns a new [VariationEntity] instance.
   VariationEntity({
     this.id,
-    this.ordinal,
     this.moaEnabled,
     this.name,
+    this.ordinal,
     this.priceMoneyAmount,
   });
 
   @JsonKey(name: r'id', required: false, includeIfNull: false)
   final String? id;
 
-  @JsonKey(name: r'ordinal', required: false, includeIfNull: false)
-  final num? ordinal;
-
   @JsonKey(name: r'moaEnabled', required: false, includeIfNull: false)
   final bool? moaEnabled;
 
   @JsonKey(name: r'name', required: false, includeIfNull: false)
   final String? name;
+
+  @JsonKey(name: r'ordinal', required: false, includeIfNull: false)
+  final num? ordinal;
 
   @JsonKey(name: r'priceMoneyAmount', required: false, includeIfNull: false)
   final num? priceMoneyAmount;
@@ -43,17 +43,17 @@ class VariationEntity {
       identical(this, other) ||
       other is VariationEntity &&
           other.id == id &&
-          other.ordinal == ordinal &&
           other.moaEnabled == moaEnabled &&
           other.name == name &&
+          other.ordinal == ordinal &&
           other.priceMoneyAmount == priceMoneyAmount;
 
   @override
   int get hashCode =>
       (id == null ? 0 : id.hashCode) +
-      (ordinal == null ? 0 : ordinal.hashCode) +
       (moaEnabled == null ? 0 : moaEnabled.hashCode) +
       (name == null ? 0 : name.hashCode) +
+      (ordinal == null ? 0 : ordinal.hashCode) +
       (priceMoneyAmount == null ? 0 : priceMoneyAmount.hashCode);
 
   factory VariationEntity.fromJson(Map<String, dynamic> json) =>

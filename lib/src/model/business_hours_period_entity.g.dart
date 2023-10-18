@@ -13,11 +13,11 @@ BusinessHoursPeriodEntity _$BusinessHoursPeriodEntityFromJson(
       json,
       ($checkedConvert) {
         final val = BusinessHoursPeriodEntity(
-          id: $checkedConvert('id', (v) => v as String?),
           dayOfWeek: $checkedConvert('dayOfWeek', (v) => v as String?),
+          endLocalTime: $checkedConvert('endLocalTime', (v) => v as String?),
+          id: $checkedConvert('id', (v) => v as String?),
           startLocalTime:
               $checkedConvert('startLocalTime', (v) => v as String?),
-          endLocalTime: $checkedConvert('endLocalTime', (v) => v as String?),
         );
         return val;
       },
@@ -33,9 +33,9 @@ Map<String, dynamic> _$BusinessHoursPeriodEntityToJson(
     }
   }
 
-  writeNotNull('id', instance.id);
   writeNotNull('dayOfWeek', instance.dayOfWeek);
-  writeNotNull('startLocalTime', instance.startLocalTime);
   writeNotNull('endLocalTime', instance.endLocalTime);
+  writeNotNull('id', instance.id);
+  writeNotNull('startLocalTime', instance.startLocalTime);
   return val;
 }

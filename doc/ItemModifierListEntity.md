@@ -8,11 +8,11 @@ import 'package:myorderapp_square/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
-**minSelectedModifiers** | **num** |  | [optional] 
-**maxSelectedModifiers** | **num** |  | [optional] 
 **enabled** | **bool** |  | [optional] 
+**id** | **String** |  | [optional] 
 **item** | [**ItemEntity**](ItemEntity.md) |  | [optional] 
+**maxSelectedModifiers** | **num** |  | [optional] 
+**minSelectedModifiers** | **num** |  | [optional] 
 **modifierList** | [**ModifierListEntity**](ModifierListEntity.md) |  | [optional] 
 **onByDefaultModifierIds** | **List&lt;String&gt;** |  | [optional] 
 
