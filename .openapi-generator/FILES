@@ -163,5 +163,3 @@ lib/src/model/user_patch_body.dart
 lib/src/model/variation_entity.dart
 lib/src/model/variation_patch_body.dart
 pubspec.yaml
-test/auth_apple_login_dto_test.dart
-test/auth_google_login_dto_test.dart

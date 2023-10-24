@@ -50,6 +50,7 @@ LocationEntity _$LocationEntityFromJson(Map<String, dynamic> json) =>
           phoneNumber: $checkedConvert('phoneNumber', (v) => v as String?),
           posBackgroundUrl:
               $checkedConvert('posBackgroundUrl', (v) => v as String?),
+          squareId: $checkedConvert('squareId', (v) => v as String?),
           status: $checkedConvert('status', (v) => v as String?),
           timezone: $checkedConvert('timezone', (v) => v as String?),
           twitterUsername:
@@ -93,6 +94,7 @@ Map<String, dynamic> _$LocationEntityToJson(LocationEntity instance) {
   writeNotNull('name', instance.name);
   writeNotNull('phoneNumber', instance.phoneNumber);
   writeNotNull('posBackgroundUrl', instance.posBackgroundUrl);
+  writeNotNull('squareId', instance.squareId);
   writeNotNull('status', instance.status);
   writeNotNull('timezone', instance.timezone);
   writeNotNull('twitterUsername', instance.twitterUsername);

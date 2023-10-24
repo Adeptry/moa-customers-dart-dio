@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **name** | **String** |  | [optional] 
 **phoneNumber** | **String** |  | [optional] 
 **posBackgroundUrl** | **String** |  | [optional] 
+**squareId** | **String** |  | [optional] 
 **status** | **String** |  | [optional] 
 **timezone** | **String** |  | [optional] 
 **twitterUsername** | **String** |  | [optional] 

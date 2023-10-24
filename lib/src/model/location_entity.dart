@@ -40,6 +40,7 @@ class LocationEntity {
     this.name,
     this.phoneNumber,
     this.posBackgroundUrl,
+    this.squareId,
     this.status,
     this.timezone,
     this.twitterUsername,
@@ -113,6 +114,9 @@ class LocationEntity {
   @JsonKey(name: r'posBackgroundUrl', required: false, includeIfNull: false)
   final String? posBackgroundUrl;
 
+  @JsonKey(name: r'squareId', required: false, includeIfNull: false)
+  final String? squareId;
+
   @JsonKey(name: r'status', required: false, includeIfNull: false)
   final String? status;
 
@@ -154,6 +158,7 @@ class LocationEntity {
           other.name == name &&
           other.phoneNumber == phoneNumber &&
           other.posBackgroundUrl == posBackgroundUrl &&
+          other.squareId == squareId &&
           other.status == status &&
           other.timezone == timezone &&
           other.twitterUsername == twitterUsername &&
@@ -184,6 +189,7 @@ class LocationEntity {
       (name == null ? 0 : name.hashCode) +
       (phoneNumber == null ? 0 : phoneNumber.hashCode) +
       (posBackgroundUrl == null ? 0 : posBackgroundUrl.hashCode) +
+      (squareId == null ? 0 : squareId.hashCode) +
       (status == null ? 0 : status.hashCode) +
       (timezone == null ? 0 : timezone.hashCode) +
       (twitterUsername == null ? 0 : twitterUsername.hashCode) +
