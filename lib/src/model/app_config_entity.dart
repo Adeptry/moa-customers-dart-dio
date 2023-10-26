@@ -31,6 +31,7 @@ class AppConfigEntity {
     this.seedColor,
     this.themeMode,
     this.title,
+    this.useAdaptiveScaffold,
     this.useMaterial3,
   });
 
@@ -78,6 +79,9 @@ class AppConfigEntity {
   @JsonKey(name: r'title', required: false, includeIfNull: false)
   final String? title;
 
+  @JsonKey(name: r'useAdaptiveScaffold', required: false, includeIfNull: false)
+  final bool? useAdaptiveScaffold;
+
   @JsonKey(name: r'useMaterial3', required: false, includeIfNull: false)
   final bool? useMaterial3;
 
@@ -99,6 +103,7 @@ class AppConfigEntity {
           other.seedColor == seedColor &&
           other.themeMode == themeMode &&
           other.title == title &&
+          other.useAdaptiveScaffold == useAdaptiveScaffold &&
           other.useMaterial3 == useMaterial3;
 
   @override
@@ -117,6 +122,7 @@ class AppConfigEntity {
       (seedColor == null ? 0 : seedColor.hashCode) +
       themeMode.hashCode +
       (title == null ? 0 : title.hashCode) +
+      (useAdaptiveScaffold == null ? 0 : useAdaptiveScaffold.hashCode) +
       (useMaterial3 == null ? 0 : useMaterial3.hashCode);
 
   factory AppConfigEntity.fromJson(Map<String, dynamic> json) =>

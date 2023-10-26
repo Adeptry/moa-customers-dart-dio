@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **seedColor** | **String** |  | [optional] 
 **themeMode** | [**ThemeModeEnum**](ThemeModeEnum.md) |  | [optional] 
 **title** | **String** |  | [optional] 
+**useAdaptiveScaffold** | **bool** |  | [optional] 
 **useMaterial3** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

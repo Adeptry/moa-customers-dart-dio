@@ -33,6 +33,8 @@ AppConfigEntity _$AppConfigEntityFromJson(Map<String, dynamic> json) =>
           themeMode: $checkedConvert('themeMode',
               (v) => $enumDecodeNullable(_$ThemeModeEnumEnumMap, v)),
           title: $checkedConvert('title', (v) => v as String?),
+          useAdaptiveScaffold:
+              $checkedConvert('useAdaptiveScaffold', (v) => v as bool?),
           useMaterial3: $checkedConvert('useMaterial3', (v) => v as bool?),
         );
         return val;
@@ -62,6 +64,7 @@ Map<String, dynamic> _$AppConfigEntityToJson(AppConfigEntity instance) {
   writeNotNull('seedColor', instance.seedColor);
   writeNotNull('themeMode', _$ThemeModeEnumEnumMap[instance.themeMode]);
   writeNotNull('title', instance.title);
+  writeNotNull('useAdaptiveScaffold', instance.useAdaptiveScaffold);
   writeNotNull('useMaterial3', instance.useMaterial3);
   return val;
 }

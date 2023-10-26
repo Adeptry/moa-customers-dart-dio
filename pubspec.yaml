@@ -1,5 +1,5 @@
 name: myorderapp_square
-version: 2.5.6
+version: 2.5.7
 description: A Dart client for MyOrderApp customer HTTP API
 homepage: https://github.com/Adeptry/myorderapp_square_dart
 
