@@ -20,6 +20,7 @@ class AppConfigEntity {
     this.bannerFileContentType,
     this.bannerFileDisplayName,
     this.bannerFileFullUrl,
+    this.categoryCollapseThreshold,
     this.description,
     this.enabled,
     this.fontFamily,
@@ -45,6 +46,10 @@ class AppConfigEntity {
 
   @JsonKey(name: r'bannerFileFullUrl', required: false, includeIfNull: false)
   final String? bannerFileFullUrl;
+
+  @JsonKey(
+      name: r'categoryCollapseThreshold', required: false, includeIfNull: false)
+  final num? categoryCollapseThreshold;
 
   @JsonKey(name: r'description', required: false, includeIfNull: false)
   final String? description;
@@ -92,6 +97,7 @@ class AppConfigEntity {
           other.bannerFileContentType == bannerFileContentType &&
           other.bannerFileDisplayName == bannerFileDisplayName &&
           other.bannerFileFullUrl == bannerFileFullUrl &&
+          other.categoryCollapseThreshold == categoryCollapseThreshold &&
           other.description == description &&
           other.enabled == enabled &&
           other.fontFamily == fontFamily &&
@@ -111,6 +117,9 @@ class AppConfigEntity {
       (bannerFileContentType == null ? 0 : bannerFileContentType.hashCode) +
       (bannerFileDisplayName == null ? 0 : bannerFileDisplayName.hashCode) +
       (bannerFileFullUrl == null ? 0 : bannerFileFullUrl.hashCode) +
+      (categoryCollapseThreshold == null
+          ? 0
+          : categoryCollapseThreshold.hashCode) +
       (description == null ? 0 : description.hashCode) +
       (enabled == null ? 0 : enabled.hashCode) +
       (fontFamily == null ? 0 : fontFamily.hashCode) +

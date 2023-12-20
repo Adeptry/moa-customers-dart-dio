@@ -5,11 +5,12 @@
 import 'package:myorderapp_square/api.dart';
 ```
 
-All URIs are relative to *https://api.myorderapp.dev*
+All URIs are relative to *https://api.myorderapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteMerchantMe**](MerchantsApi.md#deletemerchantme) | **DELETE** /v2/merchants/me | Delete current Merchant
+[**getMeSquareLogout**](MerchantsApi.md#getmesquarelogout) | **GET** /v2/merchants/me/square/logout | Delete Square Oauth
 [**getMerchant**](MerchantsApi.md#getmerchant) | **GET** /v2/merchants/{idOrPath} | Get Merchant
 [**getMerchantMe**](MerchantsApi.md#getmerchantme) | **GET** /v2/merchants/me | Get current Merchant
 [**getSquareSyncMe**](MerchantsApi.md#getsquaresyncme) | **GET** /v2/merchants/me/square/sync | Sync your Square Catalog
@@ -52,6 +53,50 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MerchantEntity**](MerchantEntity.md)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getMeSquareLogout**
+> getMeSquareLogout(xCustomLang)
+
+Delete Square Oauth
+
+### Example
+```dart
+import 'package:myorderapp_square/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MyorderappSquare().getMerchantsApi();
+final String xCustomLang = xCustomLang_example; // String | 
+
+try {
+    api.getMeSquareLogout(xCustomLang);
+} catch on DioException (e) {
+    print('Exception when calling MerchantsApi->getMeSquareLogout: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xCustomLang** | **String**|  | [optional] 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 

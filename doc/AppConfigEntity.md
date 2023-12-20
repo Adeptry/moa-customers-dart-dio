@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **bannerFileContentType** | **String** |  | [optional] 
 **bannerFileDisplayName** | **String** |  | [optional] 
 **bannerFileFullUrl** | **String** |  | [optional] 
+**categoryCollapseThreshold** | **num** |  | [optional] 
 **description** | **String** |  | [optional] 
 **enabled** | **bool** |  | [optional] 
 **fontFamily** | **String** |  | [optional] 

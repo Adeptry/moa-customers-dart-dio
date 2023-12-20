@@ -27,6 +27,7 @@ class MerchantEntity {
     this.languageCode,
     this.pickupLeadDurationMinutes,
     this.squareBusinessName,
+    this.squareConnected,
     this.squareId,
     this.stripeId,
     this.tier,
@@ -60,10 +61,13 @@ class MerchantEntity {
 
   /// The name of the merchant's overall business.
   @JsonKey(name: r'squareBusinessName', required: false, includeIfNull: false)
-  final Object? squareBusinessName;
+  final String? squareBusinessName;
+
+  @JsonKey(name: r'squareConnected', required: false, includeIfNull: false)
+  final bool? squareConnected;
 
   @JsonKey(name: r'squareId', required: false, includeIfNull: false)
-  final String? squareId;
+  final Object? squareId;
 
   @JsonKey(name: r'stripeId', required: false, includeIfNull: false)
   final String? stripeId;
@@ -86,6 +90,7 @@ class MerchantEntity {
           other.languageCode == languageCode &&
           other.pickupLeadDurationMinutes == pickupLeadDurationMinutes &&
           other.squareBusinessName == squareBusinessName &&
+          other.squareConnected == squareConnected &&
           other.squareId == squareId &&
           other.stripeId == stripeId &&
           other.tier == tier &&
@@ -103,6 +108,7 @@ class MerchantEntity {
           ? 0
           : pickupLeadDurationMinutes.hashCode) +
       (squareBusinessName == null ? 0 : squareBusinessName.hashCode) +
+      (squareConnected == null ? 0 : squareConnected.hashCode) +
       (squareId == null ? 0 : squareId.hashCode) +
       (stripeId == null ? 0 : stripeId.hashCode) +
       (tier == null ? 0 : tier.hashCode) +

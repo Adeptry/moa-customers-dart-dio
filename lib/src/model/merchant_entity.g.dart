@@ -28,8 +28,11 @@ MerchantEntity _$MerchantEntityFromJson(Map<String, dynamic> json) =>
           languageCode: $checkedConvert('languageCode', (v) => v),
           pickupLeadDurationMinutes:
               $checkedConvert('pickupLeadDurationMinutes', (v) => v as num?),
-          squareBusinessName: $checkedConvert('squareBusinessName', (v) => v),
-          squareId: $checkedConvert('squareId', (v) => v as String?),
+          squareBusinessName:
+              $checkedConvert('squareBusinessName', (v) => v as String?),
+          squareConnected:
+              $checkedConvert('squareConnected', (v) => v as bool?),
+          squareId: $checkedConvert('squareId', (v) => v),
           stripeId: $checkedConvert('stripeId', (v) => v as String?),
           tier: $checkedConvert('tier', (v) => v as num?),
           user: $checkedConvert(
@@ -59,6 +62,7 @@ Map<String, dynamic> _$MerchantEntityToJson(MerchantEntity instance) {
   writeNotNull('languageCode', instance.languageCode);
   writeNotNull('pickupLeadDurationMinutes', instance.pickupLeadDurationMinutes);
   writeNotNull('squareBusinessName', instance.squareBusinessName);
+  writeNotNull('squareConnected', instance.squareConnected);
   writeNotNull('squareId', instance.squareId);
   writeNotNull('stripeId', instance.stripeId);
   writeNotNull('tier', instance.tier);
