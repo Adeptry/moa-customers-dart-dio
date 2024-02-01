@@ -27,8 +27,12 @@ class AppConfigEntity {
     this.iconFileContentType,
     this.iconFileDisplayName,
     this.iconFileFullUrl,
+    this.itunesUrl,
     this.name,
     this.path,
+    this.playAppId,
+    this.playAppUrl,
+    this.preferRelatedApplications,
     this.seedColor,
     this.themeMode,
     this.title,
@@ -69,11 +73,24 @@ class AppConfigEntity {
   @JsonKey(name: r'iconFileFullUrl', required: false, includeIfNull: false)
   final String? iconFileFullUrl;
 
+  @JsonKey(name: r'itunesUrl', required: false, includeIfNull: false)
+  final String? itunesUrl;
+
   @JsonKey(name: r'name', required: false, includeIfNull: false)
   final String? name;
 
   @JsonKey(name: r'path', required: false, includeIfNull: false)
   final String? path;
+
+  @JsonKey(name: r'playAppId', required: false, includeIfNull: false)
+  final String? playAppId;
+
+  @JsonKey(name: r'playAppUrl', required: false, includeIfNull: false)
+  final String? playAppUrl;
+
+  @JsonKey(
+      name: r'preferRelatedApplications', required: false, includeIfNull: false)
+  final bool? preferRelatedApplications;
 
   @JsonKey(name: r'seedColor', required: false, includeIfNull: false)
   final String? seedColor;
@@ -104,8 +121,12 @@ class AppConfigEntity {
           other.iconFileContentType == iconFileContentType &&
           other.iconFileDisplayName == iconFileDisplayName &&
           other.iconFileFullUrl == iconFileFullUrl &&
+          other.itunesUrl == itunesUrl &&
           other.name == name &&
           other.path == path &&
+          other.playAppId == playAppId &&
+          other.playAppUrl == playAppUrl &&
+          other.preferRelatedApplications == preferRelatedApplications &&
           other.seedColor == seedColor &&
           other.themeMode == themeMode &&
           other.title == title &&
@@ -126,8 +147,14 @@ class AppConfigEntity {
       (iconFileContentType == null ? 0 : iconFileContentType.hashCode) +
       (iconFileDisplayName == null ? 0 : iconFileDisplayName.hashCode) +
       (iconFileFullUrl == null ? 0 : iconFileFullUrl.hashCode) +
+      (itunesUrl == null ? 0 : itunesUrl.hashCode) +
       (name == null ? 0 : name.hashCode) +
       (path == null ? 0 : path.hashCode) +
+      (playAppId == null ? 0 : playAppId.hashCode) +
+      (playAppUrl == null ? 0 : playAppUrl.hashCode) +
+      (preferRelatedApplications == null
+          ? 0
+          : preferRelatedApplications.hashCode) +
       (seedColor == null ? 0 : seedColor.hashCode) +
       themeMode.hashCode +
       (title == null ? 0 : title.hashCode) +

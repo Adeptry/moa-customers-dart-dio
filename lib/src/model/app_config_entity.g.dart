@@ -29,8 +29,13 @@ AppConfigEntity _$AppConfigEntityFromJson(Map<String, dynamic> json) =>
               $checkedConvert('iconFileDisplayName', (v) => v as String?),
           iconFileFullUrl:
               $checkedConvert('iconFileFullUrl', (v) => v as String?),
+          itunesUrl: $checkedConvert('itunesUrl', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String?),
           path: $checkedConvert('path', (v) => v as String?),
+          playAppId: $checkedConvert('playAppId', (v) => v as String?),
+          playAppUrl: $checkedConvert('playAppUrl', (v) => v as String?),
+          preferRelatedApplications:
+              $checkedConvert('preferRelatedApplications', (v) => v as bool?),
           seedColor: $checkedConvert('seedColor', (v) => v as String?),
           themeMode: $checkedConvert('themeMode',
               (v) => $enumDecodeNullable(_$ThemeModeEnumEnumMap, v)),
@@ -62,8 +67,12 @@ Map<String, dynamic> _$AppConfigEntityToJson(AppConfigEntity instance) {
   writeNotNull('iconFileContentType', instance.iconFileContentType);
   writeNotNull('iconFileDisplayName', instance.iconFileDisplayName);
   writeNotNull('iconFileFullUrl', instance.iconFileFullUrl);
+  writeNotNull('itunesUrl', instance.itunesUrl);
   writeNotNull('name', instance.name);
   writeNotNull('path', instance.path);
+  writeNotNull('playAppId', instance.playAppId);
+  writeNotNull('playAppUrl', instance.playAppUrl);
+  writeNotNull('preferRelatedApplications', instance.preferRelatedApplications);
   writeNotNull('seedColor', instance.seedColor);
   writeNotNull('themeMode', _$ThemeModeEnumEnumMap[instance.themeMode]);
   writeNotNull('title', instance.title);

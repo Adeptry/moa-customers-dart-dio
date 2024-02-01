@@ -19,7 +19,7 @@ import 'package:myorderapp_square/src/api/orders_api.dart';
 import 'package:myorderapp_square/src/api/users_api.dart';
 
 class MyorderappSquare {
-  static const String basePath = r'https://api.myorderapp.com';
+  static const String basePath = r'https://api.myorderapp.dev';
 
   final Dio dio;
   MyorderappSquare({

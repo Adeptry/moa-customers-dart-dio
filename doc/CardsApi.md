@@ -5,7 +5,7 @@
 import 'package:myorderapp_square/api.dart';
 ```
 
-All URIs are relative to *https://api.myorderapp.com*
+All URIs are relative to *https://api.myorderapp.dev*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

@@ -5,7 +5,7 @@
 import 'package:myorderapp_square/api.dart';
 ```
 
-All URIs are relative to *https://api.myorderapp.com*
+All URIs are relative to *https://api.myorderapp.dev*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -564,7 +564,7 @@ import 'package:myorderapp_square/api.dart';
 //defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
 
 final api = MyorderappSquare().getCatalogsApi();
-final String idempotencyKey = M-C9rcyQJxF7E35S278Ro; // String | 
+final String idempotencyKey = ROWASMGs210_SbYc-r6LM; // String | 
 final String id = id_example; // String | 
 final String xCustomLang = xCustomLang_example; // String | 
 final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 
