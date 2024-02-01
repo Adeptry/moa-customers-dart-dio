@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **iconFileContentType** | **String** |  | [optional] 
 **iconFileDisplayName** | **String** |  | [optional] 
 **iconFileFullUrl** | **String** |  | [optional] 
+**itunesId** | **String** |  | [optional] 
 **itunesUrl** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **path** | **String** |  | [optional] 
