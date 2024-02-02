@@ -27,6 +27,7 @@ class AppConfigEntity {
     this.iconFileContentType,
     this.iconFileDisplayName,
     this.iconFileFullUrl,
+    this.iconFileSize,
     this.itunesId,
     this.itunesUrl,
     this.name,
@@ -73,6 +74,9 @@ class AppConfigEntity {
 
   @JsonKey(name: r'iconFileFullUrl', required: false, includeIfNull: false)
   final String? iconFileFullUrl;
+
+  @JsonKey(name: r'iconFileSize', required: false, includeIfNull: false)
+  final String? iconFileSize;
 
   @JsonKey(name: r'itunesId', required: false, includeIfNull: false)
   final String? itunesId;
@@ -125,6 +129,7 @@ class AppConfigEntity {
           other.iconFileContentType == iconFileContentType &&
           other.iconFileDisplayName == iconFileDisplayName &&
           other.iconFileFullUrl == iconFileFullUrl &&
+          other.iconFileSize == iconFileSize &&
           other.itunesId == itunesId &&
           other.itunesUrl == itunesUrl &&
           other.name == name &&
@@ -152,6 +157,7 @@ class AppConfigEntity {
       (iconFileContentType == null ? 0 : iconFileContentType.hashCode) +
       (iconFileDisplayName == null ? 0 : iconFileDisplayName.hashCode) +
       (iconFileFullUrl == null ? 0 : iconFileFullUrl.hashCode) +
+      (iconFileSize == null ? 0 : iconFileSize.hashCode) +
       (itunesId == null ? 0 : itunesId.hashCode) +
       (itunesUrl == null ? 0 : itunesUrl.hashCode) +
       (name == null ? 0 : name.hashCode) +

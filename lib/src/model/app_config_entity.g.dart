@@ -29,6 +29,7 @@ AppConfigEntity _$AppConfigEntityFromJson(Map<String, dynamic> json) =>
               $checkedConvert('iconFileDisplayName', (v) => v as String?),
           iconFileFullUrl:
               $checkedConvert('iconFileFullUrl', (v) => v as String?),
+          iconFileSize: $checkedConvert('iconFileSize', (v) => v as String?),
           itunesId: $checkedConvert('itunesId', (v) => v as String?),
           itunesUrl: $checkedConvert('itunesUrl', (v) => v as String?),
           name: $checkedConvert('name', (v) => v as String?),
@@ -68,6 +69,7 @@ Map<String, dynamic> _$AppConfigEntityToJson(AppConfigEntity instance) {
   writeNotNull('iconFileContentType', instance.iconFileContentType);
   writeNotNull('iconFileDisplayName', instance.iconFileDisplayName);
   writeNotNull('iconFileFullUrl', instance.iconFileFullUrl);
+  writeNotNull('iconFileSize', instance.iconFileSize);
   writeNotNull('itunesId', instance.itunesId);
   writeNotNull('itunesUrl', instance.itunesUrl);
   writeNotNull('name', instance.name);
