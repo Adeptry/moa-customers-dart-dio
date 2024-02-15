@@ -9,6 +9,7 @@ All URIs are relative to *https://api.myorderapp.dev*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**deleteCustomerId**](CustomersApi.md#deletecustomerid) | **DELETE** /v2/customers/{id} | Delete Customer with ID
 [**deleteCustomerMe**](CustomersApi.md#deletecustomerme) | **DELETE** /v2/customers/me | Delete current Customer
 [**getCustomerMe**](CustomersApi.md#getcustomerme) | **GET** /v2/customers/me | Get current Customer
 [**getCustomers**](CustomersApi.md#getcustomers) | **GET** /v2/customers | Get my Customers
@@ -16,6 +17,52 @@ Method | HTTP request | Description
 [**postCustomerMe**](CustomersApi.md#postcustomerme) | **POST** /v2/customers/me | Create Customer for current User
 [**updateAppInstallMe**](CustomersApi.md#updateappinstallme) | **POST** /v2/customers/me/app-install | Create or update Customer App Install
 
+
+# **deleteCustomerId**
+> deleteCustomerId(id, xCustomLang)
+
+Delete Customer with ID
+
+### Example
+```dart
+import 'package:myorderapp_square/api.dart';
+// TODO Configure API key authorization: Api-Key
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKey = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//defaultApiClient.getAuthentication<ApiKeyAuth>('Api-Key').apiKeyPrefix = 'Bearer';
+
+final api = MyorderappSquare().getCustomersApi();
+final String id = id_example; // String | 
+final String xCustomLang = xCustomLang_example; // String | 
+
+try {
+    api.deleteCustomerId(id, xCustomLang);
+} catch on DioException (e) {
+    print('Exception when calling CustomersApi->deleteCustomerId: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**|  | 
+ **xCustomLang** | **String**|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearer](../README.md#bearer), [Api-Key](../README.md#Api-Key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteCustomerMe**
 > CustomerEntity deleteCustomerMe(merchantIdOrPath, xCustomLang)
